@@ -9,6 +9,7 @@ use App\Models\PatientMedicalCondition;
 use App\Models\Permission;
 use App\Models\Person;
 use App\Models\Role;
+use App\Models\StockLocation;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -66,6 +67,17 @@ class DatabaseSeeder extends Seeder
             'complete-observations' => 'Penyelesaian Episode Observasi',
             'cancel-observations' => 'Pembatalan Episode Observasi',
             'view-observation-audit' => 'Lihat Audit Trail Observasi',
+
+            // Phase 2D1 Permissions
+            'view-pharmacy-inventory' => 'Lihat Stok & Inventaris Farmasi',
+            'manage-medicine-master' => 'Kelola Master Data Obat',
+            'receive-medicine-stock' => 'Penerimaan Stok Obat Baru',
+            'adjust-medicine-stock' => 'Penyesuaian Stok (Stock Opname)',
+            'reverse-stock-movements' => 'Pembatalan Mutasi Stok (Reversal)',
+            'transfer-medicine-stock' => 'Transfer Stok Antar-Lokasi',
+            'view-stock-movements' => 'Lihat Riwayat Mutasi Stok',
+            'view-stock-reconciliation' => 'Lihat Laporan Rekonsiliasi Stok',
+            'manage-stock-locations' => 'Kelola Lokasi Penyimpanan Stok',
         ];
 
         $createdPermissions = [];
@@ -97,12 +109,12 @@ class DatabaseSeeder extends Seeder
             $createdPermissions['manage-system-settings']->id,
         ]);
 
-        // 2. Role Petugas Kesehatan (Medical Staff)
+        // 2. Role Petugas Kesehatan & Farmasi (Medical & Pharmacy Staff)
         $medicalRole = Role::firstOrCreate([
             'name' => 'petugas_kesehatan',
         ], [
             'display_name' => 'Tim Kesehatan POSKESTREN',
-            'description' => 'Tenaga medis/kesehatan yang melayani santri dan warga di Poskestren',
+            'description' => 'Tenaga medis/kesehatan dan farmasi yang melayani santri dan warga di Poskestren',
         ]);
         $medicalRole->permissions()->sync([
             $createdPermissions['view-people']->id,
@@ -134,6 +146,24 @@ class DatabaseSeeder extends Seeder
             $createdPermissions['complete-observations']->id,
             $createdPermissions['cancel-observations']->id,
             $createdPermissions['view-observation-audit']->id,
+            $createdPermissions['view-pharmacy-inventory']->id,
+            $createdPermissions['manage-medicine-master']->id,
+            $createdPermissions['receive-medicine-stock']->id,
+            $createdPermissions['adjust-medicine-stock']->id,
+            $createdPermissions['reverse-stock-movements']->id,
+            $createdPermissions['transfer-medicine-stock']->id,
+            $createdPermissions['view-stock-movements']->id,
+            $createdPermissions['view-stock-reconciliation']->id,
+            $createdPermissions['manage-stock-locations']->id,
+        ]);
+
+        // Default Stock Location
+        StockLocation::firstOrCreate([
+            'code' => 'PHARMACY_MAIN',
+        ], [
+            'name' => 'Ruang Apotek Utama Poskestren',
+            'description' => 'Gudang & penyimpanan utama obat-obatan Poskestren',
+            'is_active' => true,
         ]);
 
         // Create Seed Person & Admin User

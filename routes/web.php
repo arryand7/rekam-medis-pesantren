@@ -3,17 +3,21 @@
 use App\Http\Controllers\HealthController;
 use App\Models\AuditLog;
 use App\Models\MedicalVisit;
+use App\Models\Medicine;
+use App\Models\MedicineBatch;
 use App\Models\ObservationEpisode;
 use App\Models\ObservationHandover;
 use App\Models\Patient;
 use App\Models\Permission;
 use App\Models\Person;
 use App\Models\Role;
+use App\Models\StockLocation;
 use App\Models\User;
 use App\Services\ClinicalAssessmentService;
 use App\Services\Gate\GateSyncDryRunService;
 use App\Services\MedicalVisitService;
 use App\Services\ObservationService;
+use App\Services\PharmacyService;
 use App\Services\VitalSignService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -303,3 +307,87 @@ Route::post('/observations/{id}/complete', function (string $id, Request $reques
         return redirect()->back()->withInput()->with('error', $e->getMessage());
     }
 })->name('observations.complete');
+
+// Phase 2D1 Pharmacy Foundation Routes
+
+Route::get('/pharmacy/medicines', function () {
+    $medicines = Medicine::latest()->paginate(15);
+
+    return view('pages.pharmacy.medicines.index', compact('medicines'));
+})->name('pharmacy.medicines.index');
+
+Route::post('/pharmacy/medicines', function (Request $request, PharmacyService $pharmacyService) {
+    $validated = $request->validate([
+        'code' => 'required|string|unique:medicines,code',
+        'generic_name' => 'required|string|min:2',
+        'brand_name' => 'nullable|string',
+        'dosage_form' => 'required|string',
+        'strength_text' => 'nullable|string',
+        'base_unit' => 'required|string',
+        'minimum_stock' => 'required|integer|min:1',
+    ]);
+
+    try {
+        $pharmacyService->createMedicine($validated);
+
+        return redirect()->route('pharmacy.medicines.index')->with('success', 'Master obat baru berhasil didaftarkan.');
+    } catch (Exception $e) {
+        return redirect()->back()->withInput()->with('error', $e->getMessage());
+    }
+})->name('pharmacy.medicines.store');
+
+Route::get('/pharmacy/inventory', function () {
+    $batches = MedicineBatch::with(['medicine', 'location'])->where('status', '!=', 'entered_in_error')->latest()->paginate(15);
+
+    return view('pages.pharmacy.inventory.index', compact('batches'));
+})->name('pharmacy.inventory.index');
+
+Route::get('/pharmacy/receipt/create', function () {
+    $medicines = Medicine::where('is_active', true)->get();
+    $locations = StockLocation::where('is_active', true)->get();
+
+    return view('pages.pharmacy.receipt.create', compact('medicines', 'locations'));
+})->name('pharmacy.receipt.create');
+
+Route::post('/pharmacy/receipt', function (Request $request, PharmacyService $pharmacyService) {
+    $validated = $request->validate([
+        'medicine_id' => 'required|exists:medicines,id',
+        'stock_location_id' => 'required|exists:stock_locations,id',
+        'batch_number' => 'required|string|min:2',
+        'expiry_date' => 'nullable|date',
+        'quantity' => 'required|integer|min:1',
+        'supplier_name' => 'nullable|string',
+        'reason' => 'nullable|string',
+    ]);
+
+    try {
+        $pharmacyService->receiveStock($validated);
+
+        return redirect()->route('pharmacy.inventory.index')->with('success', 'Penerimaan stok obat baru berhasil dicatat.');
+    } catch (Exception $e) {
+        return redirect()->back()->withInput()->with('error', $e->getMessage());
+    }
+})->name('pharmacy.receipt.store');
+
+Route::get('/pharmacy/adjustments/create', function () {
+    $batches = MedicineBatch::with(['medicine', 'location'])->where('status', 'active')->get();
+
+    return view('pages.pharmacy.adjustments.create', compact('batches'));
+})->name('pharmacy.adjustments.create');
+
+Route::post('/pharmacy/adjustments', function (Request $request, PharmacyService $pharmacyService) {
+    $validated = $request->validate([
+        'medicine_batch_id' => 'required|exists:medicine_batches,id',
+        'movement_type' => 'required|in:adjustment_in,adjustment_out',
+        'quantity' => 'required|integer|min:1',
+        'reason' => 'required|string|min:3',
+    ]);
+
+    try {
+        $pharmacyService->adjustStock($validated);
+
+        return redirect()->route('pharmacy.inventory.index')->with('success', 'Penyesuaian stok opname berhasil dicatat.');
+    } catch (Exception $e) {
+        return redirect()->back()->withInput()->with('error', $e->getMessage());
+    }
+})->name('pharmacy.adjustments.store');

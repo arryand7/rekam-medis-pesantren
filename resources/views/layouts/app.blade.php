@@ -113,6 +113,22 @@
                 </a>
 
                 <div class="pt-3 border-t border-[var(--border)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--foreground-muted)]">
+                    Farmasi & Inventaris
+                </div>
+
+                <a href="{{ route('pharmacy.medicines.index') }}" 
+                   class="flex items-center gap-3 px-3 py-2 text-xs font-medium rounded-xl transition-colors {{ request()->routeIs('pharmacy.medicines.*') ? 'bg-[var(--primary)] text-white' : 'text-[var(--foreground-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]' }}">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    <span>Master Data Obat</span>
+                </a>
+
+                <a href="{{ route('pharmacy.inventory.index') }}" 
+                   class="flex items-center gap-3 px-3 py-2 text-xs font-medium rounded-xl transition-colors {{ request()->routeIs('pharmacy.inventory.*') || request()->routeIs('pharmacy.receipt.*') || request()->routeIs('pharmacy.adjustments.*') ? 'bg-[var(--primary)] text-white' : 'text-[var(--foreground-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]' }}">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                    <span>Stok & Batch Obat</span>
+                </a>
+
+                <div class="pt-3 border-t border-[var(--border)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--foreground-muted)]">
                     Identitas & Pasien
                 </div>
 
@@ -155,11 +171,6 @@
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
                     <span>Log Audit System</span>
                 </a>
-
-                <div class="pt-3 border-t border-[var(--border)] px-3 py-2 text-xs text-[var(--foreground-muted)] leading-relaxed rounded-xl bg-[var(--surface-muted)] border border-[var(--border)]">
-                    <p class="font-semibold text-[var(--foreground)] mb-1">📢 SOP Poskestren:</p>
-                    Santri sakit wajib diantarkan ke Poskestren dan tidak diizinkan tetap di asrama.
-                </div>
             </nav>
         </aside>
 

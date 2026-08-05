@@ -8,6 +8,33 @@ last_updated: 2026-08-05
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 2D1 — Pharmacy Inventory Foundation & Stock Ledger Mapping
+
+```text
+MEDICATION-ADMINISTRATION.md & FUNCTIONAL-REQUIREMENTS.md & DATA-DICTIONARY.md
+  -> database/migrations/2026_08_05_001900_create_medicines_table.php
+  -> database/migrations/2026_08_05_002000_create_stock_locations_table.php
+  -> database/migrations/2026_08_05_002100_create_medicine_batches_table.php
+  -> database/migrations/2026_08_05_002200_create_stock_movements_table.php
+  -> app/Models/Medicine.php
+  -> app/Models/StockLocation.php
+  -> app/Models/MedicineBatch.php
+  -> app/Models/StockMovement.php
+  -> app/Services/PharmacyService.php
+  -> app/Policies/MedicinePolicy.php
+  -> app/Policies/MedicineBatchPolicy.php
+  -> app/Policies/StockMovementPolicy.php
+  -> app/Policies/StockLocationPolicy.php
+  -> resources/views/pages/pharmacy/medicines/index.blade.php
+  -> resources/views/pages/pharmacy/inventory/index.blade.php
+  -> resources/views/pages/pharmacy/receipt/create.blade.php
+  -> resources/views/pages/pharmacy/adjustments/create.blade.php
+  -> tests/Feature/Pharmacy/MedicineMasterTest.php
+  -> tests/Feature/Pharmacy/StockReceiptTest.php
+  -> tests/Feature/Pharmacy/StockAdjustmentTest.php
+  -> tests/Feature/Pharmacy/StockReversalTest.php
+```
+
 ## Phase 2C — POSKESTREN Observation, Periodic Monitoring & Shift Handover Mapping
 
 ```text

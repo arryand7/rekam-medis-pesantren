@@ -12,7 +12,19 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
-## [0.7.0] — 2026-08-05
+## [0.8.0] — 2026-08-05
+
+### Added
+
+- **Master Data Obat (Medicine Master)**: Tabel `medicines` dan `PharmacyService::createMedicine` untuk mengelola katalog obat Poskestren.
+- **Master Lokasi Penyimpanan Stok**: Tabel `stock_locations` dengan lokasi default `Ruang Apotek Utama Poskestren`.
+- **Tracking Batch & Kedaluwarsa**: Tabel `medicine_batches` untuk pemantauan masa aktif, kedaluwarsa, dan status quarantine/depleted batch obat.
+- **Append-Only Stock Ledger (`stock_movements`)**: Tabel mutasi stok append-only untuk pencatatan `receipt`, `adjustment_in`, `adjustment_out`, dan `reversal`.
+- **Pencegahan Stok Negatif (No Negative Stock Guard)**: Validasi tingkat database transaction yang menolak mutasi pengeluaran melebihi sisa stok batch.
+- **Hak Akses & Policy Baru**: Otorisasi server-side untuk master obat, batch, lokasi, dan mutasi stok (`MedicinePolicy`, `MedicineBatchPolicy`, `StockMovementPolicy`, `StockLocationPolicy`).
+- **Pharmacy UI Shell**: Antarmuka master obat (`/pharmacy/medicines`), dashboard stok & batch (`/pharmacy/inventory`), form penerimaan stok (`/pharmacy/receipt/create`), dan form penyesuaian stok (`/pharmacy/adjustments/create`).
+- **Feature Tests**: Pengujian Pest untuk `MedicineMasterTest`, `StockReceiptTest`, `StockAdjustmentTest`, dan `StockReversalTest` (33 tests, 107 assertions passed).
+
 
 ### Added
 
