@@ -17,7 +17,7 @@ class MedicalVisit extends Model
     protected $fillable = [
         'visit_number',
         'patient_id',
-        'status', // registered, waiting_assessment, under_assessment, assessment_completed, cancelled
+        'status', // registered, waiting_assessment, under_assessment, assessment_completed, under_observation, observation_completed, cancelled
         'arrived_at',
         'chief_complaint',
         'reporting_type',
@@ -83,9 +83,19 @@ class MedicalVisit extends Model
         return $this->hasMany(ClinicalAction::class, 'medical_visit_id');
     }
 
+    public function observationEpisodes(): HasMany
+    {
+        return $this->hasMany(ObservationEpisode::class, 'medical_visit_id');
+    }
+
+    public function activeObservationEpisode(): HasOne
+    {
+        return $this->hasOne(ObservationEpisode::class, 'medical_visit_id')->whereIn('status', ['planned', 'active']);
+    }
+
     public function isActive(): bool
     {
-        return in_array($this->status, ['registered', 'waiting_assessment', 'under_assessment'], true);
+        return in_array($this->status, ['registered', 'waiting_assessment', 'under_assessment', 'under_observation'], true);
     }
 
     /**

@@ -12,7 +12,19 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
-## [0.6.0] — 2026-08-05
+## [0.7.0] — 2026-08-05
+
+### Added
+
+- **Episode Observasi Poskestren (Observation Episodes)**: Tabel `observation_episodes` dan `ObservationService` untuk mengelola masa pemantauan tirah baring santri di Poskestren.
+- **Active Observation Guard**: Penguncian transaksi database untuk memastikan 1 episode observasi aktif per kunjungan medis.
+- **Pemantauan Berkala (Periodic Monitoring)**: Tabel `observation_records` untuk mencatat ringkasan kondisi santri dan evaluasi berkala.
+- **Shift Handover & Transfer Tanggung Jawab Atomik**: Tabel `observation_handovers` untuk serah terima tugas jaga antarpetugas, yang secara atomik mengubah `responsible_officer_id` saat disetujui (*acknowledged*).
+- **Hasil Observasi (Outcome) & State Machine**: Penyelasaian episode observasi dengan rekomendasi outcome dan transisi status kunjungan ke `under_observation` lalu `observation_completed`.
+- **Hak Akses & Policy Baru**: Otorisasi server-side untuk episode observasi, pemantauan berkala, dan handover shift (`ObservationEpisodePolicy`, `ObservationRecordPolicy`, `ObservationHandoverPolicy`).
+- **Observation UI Shell**: Antarmuka antrean observasi (`/observations`) dan workspace observasi santri (`/observations/{id}`).
+- **Feature Tests**: Pengujian Pest untuk `ObservationEpisodeTest`, `ObservationMonitoringTest`, `ObservationHandoverTest`, dan `ObservationOutcomeTest` (27 tests, 89 assertions passed).
+
 
 ### Added
 

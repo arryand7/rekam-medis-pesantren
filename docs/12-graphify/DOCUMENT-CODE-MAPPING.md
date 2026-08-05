@@ -8,6 +8,29 @@ last_updated: 2026-08-05
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 2C — POSKESTREN Observation, Periodic Monitoring & Shift Handover Mapping
+
+```text
+OBSERVATION-AND-CARE.md & VISIT-STATUS-LIFECYCLE.md & STATE-MACHINES.md
+  -> database/migrations/2026_08_05_001600_create_observation_episodes_table.php
+  -> database/migrations/2026_08_05_001700_create_observation_records_table.php
+  -> database/migrations/2026_08_05_001800_create_observation_handovers_table.php
+  -> app/Models/ObservationEpisode.php
+  -> app/Models/ObservationRecord.php
+  -> app/Models/ObservationHandover.php
+  -> app/Models/MedicalVisit.php
+  -> app/Services/ObservationService.php
+  -> app/Policies/ObservationEpisodePolicy.php
+  -> app/Policies/ObservationRecordPolicy.php
+  -> app/Policies/ObservationHandoverPolicy.php
+  -> resources/views/pages/observations/index.blade.php
+  -> resources/views/pages/observations/show.blade.php
+  -> tests/Feature/Observation/ObservationEpisodeTest.php
+  -> tests/Feature/Observation/ObservationMonitoringTest.php
+  -> tests/Feature/Observation/ObservationHandoverTest.php
+  -> tests/Feature/Observation/ObservationOutcomeTest.php
+```
+
 ## Phase 2B — Vital Signs, Clinical Assessment & Disposition Recommendation Mapping
 
 ```text
@@ -88,20 +111,4 @@ ADR-006 (Person Patient Separation) & PERSON-PATIENT-IDENTITY.md
   -> tests/Feature/Authorization/PolicyAccessTest.php
   -> tests/Feature/GateSync/DryRunSyncTest.php
   -> tests/Feature/Audit/AuditLogTest.php
-```
-
-## Phase 0 — Foundation & Theme Engine Mapping
-
-```text
-ADR-005 (Theme Strategy) & LIGHT-DARK-THEME.md
-  -> DESIGN-SYSTEM.md
-  -> resources/css/app.css (Semantic Tokens)
-  -> resources/js/theme-switcher.js (Anti-Flicker & Persistence)
-  -> resources/views/components/theme-switcher.blade.php
-  -> resources/views/layouts/app.blade.php (App Shell)
-  -> app/View/Components/AppLayout.php
-  -> app/Http/Controllers/HealthController.php
-  -> tests/Feature/ThemePreferenceTest.php
-  -> tests/Feature/DashboardTest.php
-  -> tests/Feature/HealthCheckTest.php
 ```

@@ -3,6 +3,8 @@
 use App\Http\Controllers\HealthController;
 use App\Models\AuditLog;
 use App\Models\MedicalVisit;
+use App\Models\ObservationEpisode;
+use App\Models\ObservationHandover;
 use App\Models\Patient;
 use App\Models\Permission;
 use App\Models\Person;
@@ -11,6 +13,7 @@ use App\Models\User;
 use App\Services\ClinicalAssessmentService;
 use App\Services\Gate\GateSyncDryRunService;
 use App\Services\MedicalVisitService;
+use App\Services\ObservationService;
 use App\Services\VitalSignService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -164,7 +167,7 @@ Route::post('/visits/{id}/vital-signs', function (string $id, Request $request, 
     }
 })->name('visits.vital-signs.store');
 
-Route::post('/visits/{id}/assessment', function (string $id, Request $request, ClinicalAssessmentService $assessmentService) {
+Route::post('/visits/{id}/assessment', function (string $id, Request $request, ClinicalAssessmentService $assessmentService, ObservationService $obsService) {
     $visit = MedicalVisit::findOrFail($id);
 
     $validated = $request->validate([
@@ -182,6 +185,16 @@ Route::post('/visits/{id}/assessment', function (string $id, Request $request, C
 
         if (! empty($request->input('finalize')) && $request->input('finalize') == '1') {
             $assessmentService->finalizeAssessment($assessment);
+
+            // Auto start observation episode if disposition recommendation is observation_required or rest_at_poskestren
+            if (in_array($validated['disposition_recommendation'], ['observation_required', 'rest_at_poskestren'])) {
+                $episode = $obsService->startEpisode($visit, [
+                    'reason' => 'Rekomendasi observasi dari pengkajian medis: '.$validated['assessment_summary'],
+                    'location_label' => 'Ruang Observasi Poskestren',
+                ]);
+
+                return redirect()->route('observations.show', $episode->id)->with('success', 'Pengkajian medis selesai & episode observasi Poskestren telah dimulai.');
+            }
 
             return redirect()->route('visits.show', $visit->id)->with('success', 'Pengkajian klinis medis telah difinalisasi.');
         }
@@ -209,3 +222,84 @@ Route::post('/visits/{id}/actions', function (string $id, Request $request, Clin
         return redirect()->back()->withInput()->with('error', $e->getMessage());
     }
 })->name('visits.actions.store');
+
+// Phase 2C Observation Workspace Routes
+
+Route::get('/observations', function () {
+    $episodes = ObservationEpisode::with(['medicalVisit.patient.person', 'responsibleOfficer'])->latest()->paginate(15);
+
+    return view('pages.observations.index', compact('episodes'));
+})->name('observations.index');
+
+Route::get('/observations/{id}', function (string $id) {
+    $episode = ObservationEpisode::with(['medicalVisit.patient.person', 'medicalVisit.patient.activeAllergies', 'responsibleOfficer', 'records.recordedBy', 'handovers.fromUser', 'handovers.toUser'])->findOrFail($id);
+    $medicalUsers = User::where('is_active', true)->get();
+
+    return view('pages.observations.show', compact('episode', 'medicalUsers'));
+})->name('observations.show');
+
+Route::post('/observations/{id}/monitoring', function (string $id, Request $request, ObservationService $obsService) {
+    $episode = ObservationEpisode::findOrFail($id);
+
+    $validated = $request->validate([
+        'condition_summary' => 'required|string|min:3',
+        'symptom_changes' => 'nullable|string',
+        'general_condition' => 'nullable|string',
+    ]);
+
+    try {
+        $obsService->recordMonitoring($episode, $validated);
+
+        return redirect()->route('observations.show', $episode->id)->with('success', 'Lembar pemantauan berkala berhasil dicatat.');
+    } catch (Exception $e) {
+        return redirect()->back()->withInput()->with('error', $e->getMessage());
+    }
+})->name('observations.monitoring.store');
+
+Route::post('/observations/{id}/handover', function (string $id, Request $request, ObservationService $obsService) {
+    $episode = ObservationEpisode::findOrFail($id);
+
+    $validated = $request->validate([
+        'to_user_id' => 'nullable|exists:users,id',
+        'summary' => 'required|string|min:3',
+        'current_condition' => 'required|string|min:3',
+        'pending_tasks' => 'nullable|string',
+    ]);
+
+    try {
+        $obsService->submitHandover($episode, $validated);
+
+        return redirect()->route('observations.show', $episode->id)->with('success', 'Handover shift jaga berhasil diajukan.');
+    } catch (Exception $e) {
+        return redirect()->back()->withInput()->with('error', $e->getMessage());
+    }
+})->name('observations.handover.store');
+
+Route::post('/handovers/{id}/acknowledge', function (string $id, ObservationService $obsService) {
+    $handover = ObservationHandover::findOrFail($id);
+
+    try {
+        $obsService->acknowledgeHandover($handover);
+
+        return redirect()->route('observations.show', $handover->observation_episode_id)->with('success', 'Handover shift disetujui & penanggung jawab observasi berhasil dialihkan.');
+    } catch (Exception $e) {
+        return redirect()->back()->with('error', $e->getMessage());
+    }
+})->name('observations.handover.acknowledge');
+
+Route::post('/observations/{id}/complete', function (string $id, Request $request, ObservationService $obsService) {
+    $episode = ObservationEpisode::findOrFail($id);
+
+    $validated = $request->validate([
+        'outcome' => 'required|string',
+        'outcome_reason' => 'required|string|min:3',
+    ]);
+
+    try {
+        $obsService->completeEpisode($episode, $validated['outcome'], $validated['outcome_reason']);
+
+        return redirect()->route('observations.show', $episode->id)->with('success', 'Episode observasi Poskestren telah diselesaikan.');
+    } catch (Exception $e) {
+        return redirect()->back()->withInput()->with('error', $e->getMessage());
+    }
+})->name('observations.complete');

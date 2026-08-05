@@ -54,6 +54,18 @@ class DatabaseSeeder extends Seeder
             'record-working-diagnosis' => 'Pencatatan Impresi Diagnostik',
             'record-initial-actions' => 'Tindakan Awal Non-Obat',
             'recommend-visit-disposition' => 'Penetapan Rekomendasi Disposisi',
+
+            // Phase 2C Permissions
+            'start-observations' => 'Memulai Observasi Poskestren',
+            'view-observations' => 'Lihat Antrean & Monitoring Observasi',
+            'record-observation-monitoring' => 'Catat Pemantauan Berkala Observasi',
+            'finalize-observation-monitoring' => 'Finalisasi Pemantauan Berkala',
+            'amend-observation-monitoring' => 'Addendum Lembar Pemantauan',
+            'prepare-observation-handover' => 'Pengajuan Serah Terima Jaga (Handover)',
+            'acknowledge-observation-handover' => 'Konfirmasi Handover & Alih Penanggung Jawab',
+            'complete-observations' => 'Penyelesaian Episode Observasi',
+            'cancel-observations' => 'Pembatalan Episode Observasi',
+            'view-observation-audit' => 'Lihat Audit Trail Observasi',
         ];
 
         $createdPermissions = [];
@@ -112,6 +124,16 @@ class DatabaseSeeder extends Seeder
             $createdPermissions['record-working-diagnosis']->id,
             $createdPermissions['record-initial-actions']->id,
             $createdPermissions['recommend-visit-disposition']->id,
+            $createdPermissions['start-observations']->id,
+            $createdPermissions['view-observations']->id,
+            $createdPermissions['record-observation-monitoring']->id,
+            $createdPermissions['finalize-observation-monitoring']->id,
+            $createdPermissions['amend-observation-monitoring']->id,
+            $createdPermissions['prepare-observation-handover']->id,
+            $createdPermissions['acknowledge-observation-handover']->id,
+            $createdPermissions['complete-observations']->id,
+            $createdPermissions['cancel-observations']->id,
+            $createdPermissions['view-observation-audit']->id,
         ]);
 
         // Create Seed Person & Admin User
