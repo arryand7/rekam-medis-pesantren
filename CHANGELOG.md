@@ -12,7 +12,28 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
-## [0.10.0] — 2026-08-05
+## [0.11.0] — 2026-08-05 (Phase 3B)
+
+### Added
+
+- **Actual Referral Workflow**: Tabel `referrals` dengan state machine lengkap, one-active-referral guard (pessimistic lock), dan referral number concurrency-safe (ULID suffix).
+- **Referral Versions (Immutable Snapshot)**: Tabel `referral_versions` dengan SHA256 checksum dan payload minimum-necessary untuk dokumen rujukan.
+- **Referral Transport**: Tabel `referral_transports` untuk pengaturan kendaraan/pengemudi dengan status tracking.
+- **Referral Companions**: Tabel `referral_companions` dengan primary companion uniqueness enforcement.
+- **Clinical Handover**: Tabel `referral_handovers` dengan idempotency key — handiff ≠ acceptance.
+- **Destination Status Events**: Tabel `referral_status_events` untuk pelacakan status destinasi (arrived/accepted/declined) secara terpisah dari handover.
+- **Return from Referral**: Tabel `referral_returns` — satu kepulangan per rujukan, timestamps server-authoritative, hasil eksternal tidak otomatis mutasi diagnosis/obat lokal.
+- **Local Return Review**: Tabel `referral_return_reviews` — tinjauan klinis lokal terpisah, tidak membuat discharge otomatis.
+- **ReferralService**: Layanan bisnis rujukan dengan seluruh state transitions, audit trail, dan invariant keamanan.
+- **ReferralPolicy**: Otorisasi granular 12 operasi rujukan.
+- **Routes & Views**: CRUD referral, transport, companion, handover, status event, return, dan return review.
+- **Phase 3B Tests**: 15 feature tests baru (58 total, 201 assertions) — semua lulus ✅.
+
+### Security
+
+- Emergency referral tidak tertahan oleh konsultasi atau persetujuan administratif.
+- External diagnosis/obat dari kepulangan tidak otomatis memodifikasi rekam medis lokal.
+- Tidak ada discharge otomatis dari tinjauan kepulangan.
 
 ### Added
 

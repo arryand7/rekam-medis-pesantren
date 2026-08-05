@@ -10,7 +10,7 @@ last_updated: 2026-08-05
 
 ## Fase saat ini
 
-**Phase 3A Completed — External Clinical Consultation and Healthcare Partner Integration**
+**Phase 3B Completed — Actual Referral, Transport, Clinical Handover, and Return from Referral**
 
 ## Perubahan & Fitur Selesai di Phase 3A
 

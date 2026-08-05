@@ -121,14 +121,24 @@ class Referral extends Model
         return $this->hasOne(ReferralReturn::class, 'referral_id');
     }
 
+    public function statusEvents(): HasMany
+    {
+        return $this->hasMany(ReferralStatusEvent::class, 'referral_id')->orderBy('occurred_at');
+    }
+
     /**
      * Generate concurrency-safe unique referral number.
+     *
+     * Uses date prefix + ULID-based opaque suffix. The suffix is derived from
+     * Str::ulid() which is monotonically ordered within the same millisecond
+     * and globally unique — no MAX()+1, no table lock needed. Uniqueness is
+     * enforced by the database unique constraint on referral_number.
      */
     public static function generateReferralNumber(): string
     {
         $prefix = 'REF-'.date('Ymd');
-        $random = strtoupper(Str::random(5));
+        $suffix = strtoupper(substr((string) Str::ulid(), -8));
 
-        return "{$prefix}-{$random}";
+        return "{$prefix}-{$suffix}";
     }
 }
