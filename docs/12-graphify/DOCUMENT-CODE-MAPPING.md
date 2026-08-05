@@ -8,6 +8,40 @@ last_updated: 2026-08-05
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 3A — External Clinical Consultation & Healthcare Partner Integration Mapping
+
+```text
+REMOTE-CLINICAL-CONSULTATION.md & INTEGRATION-CONTRACTS.md & ADR-007
+  -> database/migrations/2026_08_05_002600_create_healthcare_partners_table.php
+  -> database/migrations/2026_08_05_002700_create_healthcare_partner_contacts_table.php
+  -> database/migrations/2026_08_05_002800_create_clinical_consultations_table.php
+  -> database/migrations/2026_08_05_002900_create_clinical_consultation_versions_table.php
+  -> database/migrations/2026_08_05_003000_create_clinical_consultation_transmissions_table.php
+  -> database/migrations/2026_08_05_003100_create_external_clinical_advices_table.php
+  -> database/migrations/2026_08_05_003200_create_consultation_local_decisions_table.php
+  -> app/Models/HealthcarePartner.php
+  -> app/Models/HealthcarePartnerContact.php
+  -> app/Models/ClinicalConsultation.php
+  -> app/Models/ClinicalConsultationVersion.php
+  -> app/Models/ClinicalConsultationTransmission.php
+  -> app/Models/ExternalClinicalAdvice.php
+  -> app/Models/ConsultationLocalDecision.php
+  -> app/Models/MedicalVisit.php
+  -> app/Contracts/ClinicalConsultationTransportContract.php
+  -> app/Services/Transport/FakeClinicalConsultationTransport.php
+  -> app/Services/ClinicalConsultationService.php
+  -> app/Policies/HealthcarePartnerPolicy.php
+  -> app/Policies/ClinicalConsultationPolicy.php
+  -> resources/views/pages/healthcare-partners/index.blade.php
+  -> resources/views/pages/consultations/index.blade.php
+  -> resources/views/pages/consultations/create.blade.php
+  -> resources/views/pages/consultations/show.blade.php
+  -> tests/Feature/Consultation/HealthcarePartnerTest.php
+  -> tests/Feature/Consultation/ClinicalConsultationTest.php
+  -> tests/Feature/Consultation/ConsultationTransmissionTest.php
+  -> tests/Feature/Consultation/ExternalAdviceAndLocalDecisionTest.php
+```
+
 ## Phase 2D2 — Medication Orders, Medication Administration & Atomic Stock Issue Mapping
 
 ```text
@@ -18,7 +52,6 @@ MEDICATION-ADMINISTRATION.md & SAFETY-ACKNOWLEDGEMENTS.md & STATE-MACHINES.md
   -> app/Models/MedicationOrder.php
   -> app/Models/MedicationSafetyAcknowledgement.php
   -> app/Models/MedicationAdministration.php
-  -> app/Models/MedicalVisit.php
   -> app/Services/MedicationService.php
   -> app/Policies/MedicationOrderPolicy.php
   -> app/Policies/MedicationAdministrationPolicy.php
@@ -66,7 +99,6 @@ OBSERVATION-AND-CARE.md & VISIT-STATUS-LIFECYCLE.md & STATE-MACHINES.md
   -> app/Models/ObservationEpisode.php
   -> app/Models/ObservationRecord.php
   -> app/Models/ObservationHandover.php
-  -> app/Models/MedicalVisit.php
   -> app/Services/ObservationService.php
   -> app/Policies/ObservationEpisodePolicy.php
   -> app/Policies/ObservationRecordPolicy.php

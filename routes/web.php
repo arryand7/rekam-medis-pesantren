@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\HealthController;
 use App\Models\AuditLog;
+use App\Models\ClinicalConsultation;
+use App\Models\HealthcarePartner;
 use App\Models\MedicalVisit;
 use App\Models\MedicationAdministration;
 use App\Models\MedicationOrder;
@@ -16,6 +18,7 @@ use App\Models\Role;
 use App\Models\StockLocation;
 use App\Models\User;
 use App\Services\ClinicalAssessmentService;
+use App\Services\ClinicalConsultationService;
 use App\Services\Gate\GateSyncDryRunService;
 use App\Services\MedicalVisitService;
 use App\Services\MedicationService;
@@ -459,3 +462,118 @@ Route::post('/medication-administrations/{id}/correct', function (string $id, Re
         return redirect()->back()->with('error', $e->getMessage());
     }
 })->name('visits.medications.administer.correct');
+
+// Phase 3A Clinical Consultation & Healthcare Partners Routes
+
+Route::get('/healthcare-partners', function () {
+    $partners = HealthcarePartner::with('contacts')->latest()->paginate(15);
+
+    return view('pages.healthcare-partners.index', compact('partners'));
+})->name('healthcare-partners.index');
+
+Route::post('/healthcare-partners', function (Request $request, ClinicalConsultationService $consultationService) {
+    $validated = $request->validate([
+        'code' => 'required|string|unique:healthcare_partners,code',
+        'name' => 'required|string|min:2',
+        'partner_type' => 'required|string',
+        'phone' => 'nullable|string',
+        'official_email' => 'nullable|email',
+        'cooperation_reference' => 'nullable|string',
+    ]);
+
+    try {
+        $consultationService->createPartner($validated);
+
+        return redirect()->route('healthcare-partners.index')->with('success', 'Faskes mitra baru berhasil didaftarkan.');
+    } catch (Exception $e) {
+        return redirect()->back()->withInput()->with('error', $e->getMessage());
+    }
+})->name('healthcare-partners.store');
+
+Route::get('/consultations', function () {
+    $consultations = ClinicalConsultation::with(['medicalVisit.patient.person', 'partner', 'recipientContact'])->latest()->paginate(15);
+
+    return view('pages.consultations.index', compact('consultations'));
+})->name('consultations.index');
+
+Route::get('/visits/{id}/consultations/create', function (string $id) {
+    $visit = MedicalVisit::with(['patient.person', 'latestAssessment', 'latestVitalSign'])->findOrFail($id);
+    $partners = HealthcarePartner::with('contacts')->where('is_active', true)->where('consultation_enabled', true)->get();
+
+    return view('pages.consultations.create', compact('visit', 'partners'));
+})->name('visits.consultations.create');
+
+Route::post('/visits/{id}/consultations', function (string $id, Request $request, ClinicalConsultationService $consultationService) {
+    $visit = MedicalVisit::findOrFail($id);
+
+    $validated = $request->validate([
+        'healthcare_partner_id' => 'required|exists:healthcare_partners,id',
+        'recipient_contact_id' => 'nullable|exists:healthcare_partner_contacts,id',
+        'purpose' => 'required|string|min:3',
+        'clinical_question' => 'required|string|min:5',
+        'urgency' => 'required|in:routine,urgent,emergency',
+        'redaction_notes' => 'nullable|string',
+    ]);
+
+    try {
+        $consultation = $consultationService->createConsultation($visit, $validated);
+
+        return redirect()->route('consultations.show', $consultation->id)->with('success', 'Pengajuan ringkasan konsultasi eksternal berhasil dibuat.');
+    } catch (Exception $e) {
+        return redirect()->back()->withInput()->with('error', $e->getMessage());
+    }
+})->name('visits.consultations.store');
+
+Route::get('/consultations/{id}', function (string $id) {
+    $consultation = ClinicalConsultation::with(['medicalVisit.patient.person', 'partner', 'recipientContact', 'latestVersion', 'transmissions', 'externalAdvices', 'latestAdvice', 'latestDecision'])->findOrFail($id);
+
+    return view('pages.consultations.show', compact('consultation'));
+})->name('consultations.show');
+
+Route::post('/consultations/{id}/transmit', function (string $id, ClinicalConsultationService $consultationService) {
+    $consultation = ClinicalConsultation::findOrFail($id);
+
+    try {
+        $consultationService->transmitConsultation($consultation);
+
+        return redirect()->route('consultations.show', $consultation->id)->with('success', 'Ringkasan konsultasi berhasil dikirim ke mitra faskes.');
+    } catch (Exception $e) {
+        return redirect()->back()->with('error', $e->getMessage());
+    }
+})->name('consultations.transmit');
+
+Route::post('/consultations/{id}/advice', function (string $id, Request $request, ClinicalConsultationService $consultationService) {
+    $consultation = ClinicalConsultation::findOrFail($id);
+
+    $validated = $request->validate([
+        'clinician_name' => 'required|string|min:2',
+        'clinician_profession' => 'required|string|min:2',
+        'advice_text' => 'required|string|min:5',
+        'recommended_next_step' => 'nullable|string',
+    ]);
+
+    try {
+        $consultationService->recordExternalAdvice($consultation, $validated);
+
+        return redirect()->route('consultations.show', $consultation->id)->with('success', 'Jawaban/advice klinis eksternal berhasil dicatat.');
+    } catch (Exception $e) {
+        return redirect()->back()->withInput()->with('error', $e->getMessage());
+    }
+})->name('consultations.advice.store');
+
+Route::post('/consultations/{id}/decision', function (string $id, Request $request, ClinicalConsultationService $consultationService) {
+    $consultation = ClinicalConsultation::findOrFail($id);
+
+    $validated = $request->validate([
+        'decision_type' => 'required|string',
+        'rationale' => 'required|string|min:3',
+    ]);
+
+    try {
+        $consultationService->recordLocalDecision($consultation, $validated);
+
+        return redirect()->route('consultations.show', $consultation->id)->with('success', 'Keputusan klinis lokal Poskestren telah difinalisasi.');
+    } catch (Exception $e) {
+        return redirect()->back()->withInput()->with('error', $e->getMessage());
+    }
+})->name('consultations.decision.store');

@@ -10,25 +10,30 @@ last_updated: 2026-08-05
 
 ## Fase saat ini
 
-**Phase 2D2 Completed — Medication Orders, Medication Administration, and Atomic Stock Issue**
+**Phase 3A Completed — External Clinical Consultation and Healthcare Partner Integration**
 
-## Perubahan & Fitur Selesai di Phase 2D2
+## Perubahan & Fitur Selesai di Phase 3A
 
-- [x] **Phase 2D1 Closure Audit**: Laporan closure Phase 2D1 diterbitkan di [PHASE-2D1-CLOSURE.md](file:///Users/ryand/Documents/LARAVEL/sabira/rekam-medis-ponpes/docs/10-delivery/PHASE-2D1-CLOSURE.md) dengan status `PASSED`.
-- [x] **Instruksi Obat Terstruktur (Medication Orders)**:
-  - Skema ULID `medication_orders` (`medical_visit_id`, `medicine_id`, `dose_value`, `dose_unit`, `route`, `frequency_text`, `ordered_by_id`, `ordered_at`, `status`).
-  - **Aturan Keamanan Stok**: Pembuatan instruksi obat **TIDAK MENGURANGI STOK**.
-- [x] **Penelusuran Alergi Pasien (Allergy Safety Acknowledgement)**:
-  - Tabel `medication_safety_acknowledgements` mencatat konfirmasi alasan klinis sebelum obat diinstruksikan pada pasien yang memiliki riwayat alergi aktif.
-- [x] **Pencatatan Pemberian Obat Santri (Medication Administration)**:
-  - Skema ULID `medication_administrations` (`status` [`scheduled`, `administered`, `held`, `refused`, `missed`, `cancelled`, `entered_in_error`]).
-- [x] **Pengeluaran Stok Atomik (Atomic Stock Issue)**:
-  - Stok **HANYA BERKURANG** secara atomik pada transaksi database saat status pemberian obat bertransisi menjadi `administered` dengan membuat ledger `stock_movements` (tipe `medication_administration_issue`).
-  - Pembatalan catatan pemberian obat (`entered_in_error`) secara atomik mengembalikan saldo batch obat dan mencatat `medication_administration_reversal`.
+- [x] **Phase 2D2 Closure Audit**: Laporan closure Phase 2D2 diterbitkan di [PHASE-2D2-CLOSURE.md](file:///Users/ryand/Documents/LARAVEL/sabira/rekam-medis-ponpes/docs/10-delivery/PHASE-2D2-CLOSURE.md) dengan status `PASSED`.
+- [x] **Master Mitra Layanan Kesehatan (Healthcare Partners & Contacts)**:
+  - Tabel `healthcare_partners` (`code`, `name`, `partner_type`, `phone`, `official_email`, `cooperation_reference`, `is_active`).
+  - Tabel `healthcare_partner_contacts` (`name`, `profession`, `registration_identifier`, `official_contact`, `is_active`, `verified_at`).
+- [x] **Agregat Konsultasi Klinis Eksternal (Clinical Consultations)**:
+  - Skema ULID `clinical_consultations` (`medical_visit_id`, `clinical_assessment_id`, `healthcare_partner_id`, `purpose`, `clinical_question`, `urgency`, `status`).
+- [x] **Versioned Summary Snapshot (`clinical_consultation_versions`)**:
+  - Ringkasan rekam medis snapshot versi 1 dengan verifikasi integritas hash sha256 `checksum`.
+- [x] **Abstraksi Transmisi Pengiriman (Transport Abstraction)**:
+  - Interface `ClinicalConsultationTransportContract` & kelas `FakeClinicalConsultationTransport` dengan pelacakan `clinical_consultation_transmissions` dan idempotency.
+- [x] **Jawaban / Advice Klinis Eksternal (External Clinical Advice)**:
+  - Pencatatan jawaban dari dokter/tenaga medis faskes mitra dengan atribusi terstruktur (`clinician_name`, `clinician_profession`, `advice_text`, `verification_status`).
+- [x] **Penetapan Keputusan Klinis Lokal (Local Clinical Decision)**:
+  - Penetapan keputusan klinis lokal Poskestren (`consultation_local_decisions`) yang terpisah dari advice eksternal secara berwenang dan terarah.
+- [x] **Emergency Referral Guard**:
+  - Warning rujukan darurat menonjol apabila kondisi pasien membutuhkan rujukan darurat, tanpa menahan atau menunda workflow rujukan.
 - [x] **Otorisasi Server-Side & Policy**:
-  - `MedicationOrderPolicy` dan `MedicationAdministrationPolicy`.
-- [x] **Medication Workspace UI Shell**:
-  - Halaman Workspace Pemberian Obat Santri (`/visits/{id}/medications`) dengan Form Order Obat, Warning Alergi Aktif, Jadwal Pemberian, Modal Konfirmasi Pemberian Pilih Batch, dan Logs Pemberian Obat & Reversal.
+  - `HealthcarePartnerPolicy` dan `ClinicalConsultationPolicy`.
+- [x] **Consultation UI Shell**:
+  - Direktori Faskes Mitra (`/healthcare-partners`), Antrean Konsultasi Eksternal (`/consultations`), Form Composer Konsultasi Baru (`/visits/{id}/consultations/create`), dan Detail Konsultasi (`/consultations/{id}`) dengan ringkasan versioned payload, transmisi log, form respons advice eksternal, dan form local decision.
 
 ## Kemajuan Phase
 
@@ -39,12 +44,13 @@ last_updated: 2026-08-05
 - [x] **Phase 2C — POSKESTREN Observation, Periodic Monitoring & Shift Handover**: Selesai.
 - [x] **Phase 2D1 — Pharmacy Inventory Foundation & Append-Only Stock Ledger**: Selesai.
 - [x] **Phase 2D2 — Medication Orders, Medication Administration, and Atomic Stock Issue**: Selesai.
-- [ ] **Phase 3 — External Clinical Consultation, Emergency Referral & Final Discharge**: Menunggu instruksi pengguna.
+- [x] **Phase 3A — External Clinical Consultation and Healthcare Partner Integration**: Selesai.
+- [ ] **Phase 3B / Phase 4 — Hospital Referral Execution, Transportation & Discharge Final**: Menunggu instruksi pengguna.
 
 ## Last verified
 
 - Tanggal: 2026-08-05
-- Test Suite: 39 tests, 125 assertions (100% Passed)
+- Test Suite: 43 tests, 141 assertions (100% Passed)
 - Code Formatter: Pint Passed
 - Static Analysis: PHPStan Level 5 Passed (0 errors)
-- Route List: 48 routes terdaftar bersih
+- Route List: 57 routes terdaftar bersih

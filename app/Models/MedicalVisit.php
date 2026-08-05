@@ -17,7 +17,7 @@ class MedicalVisit extends Model
     protected $fillable = [
         'visit_number',
         'patient_id',
-        'status', // registered, waiting_assessment, under_assessment, assessment_completed, under_observation, observation_completed, cancelled
+        'status', // registered, waiting_assessment, under_assessment, assessment_completed, under_observation, observation_completed, external_consultation_pending, external_consultation_completed, cancelled
         'arrived_at',
         'chief_complaint',
         'reporting_type',
@@ -103,9 +103,14 @@ class MedicalVisit extends Model
         return $this->hasMany(MedicationAdministration::class, 'medical_visit_id');
     }
 
+    public function consultations(): HasMany
+    {
+        return $this->hasMany(ClinicalConsultation::class, 'medical_visit_id');
+    }
+
     public function isActive(): bool
     {
-        return in_array($this->status, ['registered', 'waiting_assessment', 'under_assessment', 'under_observation'], true);
+        return in_array($this->status, ['registered', 'waiting_assessment', 'under_assessment', 'under_observation', 'external_consultation_pending'], true);
     }
 
     /**

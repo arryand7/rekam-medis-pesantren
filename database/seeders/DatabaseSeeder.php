@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\HealthcarePartner;
+use App\Models\HealthcarePartnerContact;
 use App\Models\Patient;
 use App\Models\PatientAllergy;
 use App\Models\PatientHealthProfile;
@@ -91,8 +93,23 @@ class DatabaseSeeder extends Seeder
             'administer-one-time-medication' => 'Pemberian Obat Sekali Jalan (One-Time)',
             'hold-medications' => 'Tunda Pemberian Obat (Hold)',
             'record-medication-refusal' => 'Catat Penolakan Obat Pasien',
-            'record-missed-medication' => 'Catat Terlewats Pemberian Obat',
+            'record-missed-medication' => 'Catat Terlewat Pemberian Obat',
             'correct-medication-administrations' => 'Koreksi Pemberian Obat & Reversal Stok',
+
+            // Phase 3A Permissions
+            'view-healthcare-partners' => 'Lihat Mitra Layanan Kesehatan',
+            'manage-healthcare-partners' => 'Kelola Master Data Mitra Kesehatan',
+            'verify-healthcare-partner-contacts' => 'Verifikasi Kontak Medis Mitra',
+            'view-clinical-consultations' => 'Lihat Direktori Konsultasi Eksternal',
+            'create-clinical-consultations' => 'Buat Konsultasi Klinis Eksternal',
+            'finalize-clinical-consultation-summaries' => 'Finalisasi Ringkasan Konsultasi',
+            'send-clinical-consultations' => 'Kirim Ringkasan Konsultasi ke Mitra',
+            'cancel-clinical-consultations' => 'Batalkan Pengajuan Konsultasi',
+            'record-external-clinical-advice' => 'Catat Jawaban/Advice Klinis Eksternal',
+            'verify-external-clinical-advice' => 'Verifikasi Advice Klinis Eksternal',
+            'finalize-local-clinical-decisions' => 'Penetapan Keputusan Klinis Lokal',
+            'download-clinical-consultation-documents' => 'Unduh Dokumen PDF Konsultasi',
+            'view-clinical-consultation-transmissions' => 'Lihat Log Transmisi Konsultasi',
         ];
 
         $createdPermissions = [];
@@ -122,6 +139,7 @@ class DatabaseSeeder extends Seeder
             $createdPermissions['resolve-identity-conflicts']->id,
             $createdPermissions['view-audit-log']->id,
             $createdPermissions['manage-system-settings']->id,
+            $createdPermissions['manage-healthcare-partners']->id,
         ]);
 
         // 2. Role Petugas Kesehatan & Farmasi (Medical & Pharmacy Staff)
@@ -142,6 +160,35 @@ class DatabaseSeeder extends Seeder
             'name' => 'Ruang Apotek Utama Poskestren',
             'description' => 'Gudang & penyimpanan utama obat-obatan Poskestren',
             'is_active' => true,
+        ]);
+
+        // Default Healthcare Partner Facility
+        $partner = HealthcarePartner::firstOrCreate([
+            'code' => 'PUSKESMAS-AMPEL',
+        ], [
+            'name' => 'Puskesmas Pembantu / Kecamatan Ampel',
+            'partner_type' => 'puskesmas',
+            'address' => 'Jl. Raya Ampel No. 12, Surabaya',
+            'phone' => '031-5550199',
+            'official_email' => 'pkm.ampel@surabaya.go.id',
+            'cooperation_reference' => 'MOU-POSKESTREN-2026/01',
+            'is_active' => true,
+            'consultation_enabled' => true,
+            'referral_enabled' => true,
+            'default_channel' => 'fake_transport',
+        ]);
+
+        HealthcarePartnerContact::firstOrCreate([
+            'healthcare_partner_id' => $partner->id,
+            'name' => 'dr. H. Ahmad Dahlan, Sp.PD',
+        ], [
+            'profession' => 'Dokter Spesialis Penyakit Dalam',
+            'registration_identifier' => 'SIP-3578/2025/8812',
+            'department' => 'Poli Penyakit Dalam / Konsultasi Faskes',
+            'official_contact' => '0812-3456-7890',
+            'channel_type' => 'fake_transport',
+            'is_active' => true,
+            'verified_at' => now(),
         ]);
 
         // Create Seed Person & Admin User

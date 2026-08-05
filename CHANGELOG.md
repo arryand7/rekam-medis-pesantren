@@ -12,7 +12,20 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
-## [0.9.0] — 2026-08-05
+## [0.10.0] — 2026-08-05
+
+### Added
+
+- **Master Mitra Layanan Kesehatan (Healthcare Partners & Contacts)**: Tabel `healthcare_partners` dan `healthcare_partner_contacts` untuk mengelola direktori Faskes (Puskesmas/RS) dan dokter/kontak medis mitra rujukan.
+- **Agregat Konsultasi Klinis Eksternal (Clinical Consultations)**: Tabel `clinical_consultations` untuk mengkomunikasikan pertanyaan klinis profesional antar-tenaga kesehatan.
+- **Versioned Summary Snapshot Payload**: Tabel `clinical_consultation_versions` yang menyimpan snapshot ringkasan rekam medis terstruktur versi 1 dengan verifikasi integritas hash sha256 `checksum`.
+- **Abstraksi Transmisi Pengiriman (Transport Abstraction)**: Interface `ClinicalConsultationTransportContract` & `FakeClinicalConsultationTransport` dengan log transmisi `clinical_consultation_transmissions` dan idempotency.
+- **Pencatatan Jawaban / Advice Klinis Eksternal**: Tabel `external_clinical_advices` untuk mencatat respons nasehat klinis dari dokter faskes mitra dengan atribusi terstruktur.
+- **Penetapan Keputusan Klinis Lokal**: Tabel `consultation_local_decisions` untuk memformulasikan keputusan perawatan lokal Poskestren secara berwenang.
+- **Hak Akses & Policy Baru**: Otorisasi server-side untuk mitra faskes dan konsultasi eksternal (`HealthcarePartnerPolicy`, `ClinicalConsultationPolicy`).
+- **Consultation UI Shell**: Halaman direktori faskes mitra (`/healthcare-partners`), antrean konsultasi (`/consultations`), form composer (`/visits/{id}/consultations/create`), dan detail konsultasi (`/consultations/{id}`) dengan transmisi log dan form nasehat & keputusan lokal.
+- **Feature Tests**: Pengujian Pest untuk `HealthcarePartnerTest`, `ClinicalConsultationTest`, `ConsultationTransmissionTest`, dan `ExternalAdviceAndLocalDecisionTest` (43 tests, 141 assertions passed).
+
 
 ### Added
 
