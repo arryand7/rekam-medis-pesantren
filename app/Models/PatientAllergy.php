@@ -16,7 +16,9 @@ class PatientAllergy extends Model
         'allergen',
         'reaction',
         'severity',
-        'status',
+        'status', // Legacy compatibility
+        'clinical_status', // active, inactive, resolved, entered_in_error
+        'verification_status', // unconfirmed, provisional, confirmed, refuted
         'notes',
         'recorded_by_id',
         'verified_by_id',
@@ -39,6 +41,8 @@ class PatientAllergy extends Model
 
     public function isActive(): bool
     {
-        return in_array($this->status, ['suspected', 'confirmed'], true);
+        $status = $this->clinical_status ?? $this->status;
+
+        return in_array($status, ['active', 'suspected', 'confirmed'], true);
     }
 }

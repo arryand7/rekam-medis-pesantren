@@ -44,6 +44,16 @@ class DatabaseSeeder extends Seeder
             'view-medical-visits' => 'Lihat Antrean Kunjungan Medis',
             'cancel-medical-visits' => 'Batalkan Kunjungan Medis',
             'override-active-visit' => 'Override Kunjungan Aktif Pasien',
+
+            // Phase 2B Permissions
+            'record-vital-signs' => 'Pencatatan Tanda Vital',
+            'finalize-vital-signs' => 'Finalisasi Tanda Vital',
+            'create-clinical-assessments' => 'Pengkajian Klinis Medis',
+            'finalize-clinical-assessments' => 'Finalisasi Pengkajian Klinis',
+            'amend-clinical-assessments' => 'Addendum Pengkajian Klinis',
+            'record-working-diagnosis' => 'Pencatatan Impresi Diagnostik',
+            'record-initial-actions' => 'Tindakan Awal Non-Obat',
+            'recommend-visit-disposition' => 'Penetapan Rekomendasi Disposisi',
         ];
 
         $createdPermissions = [];
@@ -94,6 +104,14 @@ class DatabaseSeeder extends Seeder
             $createdPermissions['view-medical-visits']->id,
             $createdPermissions['cancel-medical-visits']->id,
             $createdPermissions['override-active-visit']->id,
+            $createdPermissions['record-vital-signs']->id,
+            $createdPermissions['finalize-vital-signs']->id,
+            $createdPermissions['create-clinical-assessments']->id,
+            $createdPermissions['finalize-clinical-assessments']->id,
+            $createdPermissions['amend-clinical-assessments']->id,
+            $createdPermissions['record-working-diagnosis']->id,
+            $createdPermissions['record-initial-actions']->id,
+            $createdPermissions['recommend-visit-disposition']->id,
         ]);
 
         // Create Seed Person & Admin User
@@ -119,7 +137,8 @@ class DatabaseSeeder extends Seeder
             'allergen' => 'Penicillin',
             'reaction' => 'Ruam kulit & gatal',
             'severity' => 'moderate',
-            'status' => 'confirmed',
+            'clinical_status' => 'active',
+            'verification_status' => 'confirmed',
             'notes' => 'Tercatat dari riwayat masa lalu',
         ]);
 

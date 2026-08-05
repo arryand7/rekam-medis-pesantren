@@ -8,8 +8,10 @@ use App\Models\Permission;
 use App\Models\Person;
 use App\Models\Role;
 use App\Models\User;
+use App\Services\ClinicalAssessmentService;
 use App\Services\Gate\GateSyncDryRunService;
 use App\Services\MedicalVisitService;
+use App\Services\VitalSignService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -71,7 +73,7 @@ Route::get('/audit-logs', function () {
     return view('pages.audit-logs.index', compact('auditLogs'));
 })->name('audit-logs.index');
 
-// Phase 2A Medical Visit Intake Routes
+// Phase 2A & 2B Medical Visit & Assessment Routes
 
 Route::get('/visits', function () {
     $visits = MedicalVisit::with(['patient.person', 'receivingOfficer'])->latest()->paginate(15);
@@ -99,14 +101,14 @@ Route::post('/visits', function (Request $request, MedicalVisitService $visitSer
     try {
         $visit = $visitService->registerVisit($validated);
 
-        return redirect()->route('visits.show', $visit->id)->with('success', 'Kunjungan medis berhasil didaftarkan.');
+        return redirect()->route('visits.assessment', $visit->id)->with('success', 'Kunjungan medis berhasil didaftarkan. Silakan lakukan pengkajian.');
     } catch (Exception $e) {
         return redirect()->back()->withInput()->with('error', $e->getMessage());
     }
 })->name('visits.store');
 
 Route::get('/visits/{id}', function (string $id) {
-    $visit = MedicalVisit::with(['patient.person', 'receivingOfficer', 'assignedOfficer'])->findOrFail($id);
+    $visit = MedicalVisit::with(['patient.person', 'receivingOfficer', 'assignedOfficer', 'vitalSigns', 'latestAssessment', 'actions'])->findOrFail($id);
 
     return view('pages.visits.show', compact('visit'));
 })->name('visits.show');
@@ -126,3 +128,84 @@ Route::post('/visits/{id}/cancel', function (string $id, Request $request, Medic
         return redirect()->back()->with('error', $e->getMessage());
     }
 })->name('visits.cancel');
+
+// Phase 2B Clinical Assessment Workspace Routes
+
+Route::get('/visits/{id}/assessment', function (string $id) {
+    $visit = MedicalVisit::with(['patient.person', 'patient.activeAllergies', 'vitalSigns', 'latestAssessment', 'actions'])->findOrFail($id);
+
+    return view('pages.visits.assessment', compact('visit'));
+})->name('visits.assessment');
+
+Route::post('/visits/{id}/vital-signs', function (string $id, Request $request, VitalSignService $vitalService) {
+    $visit = MedicalVisit::findOrFail($id);
+
+    $validated = $request->validate([
+        'temperature_c' => 'nullable|numeric|between:30,45',
+        'systolic_bp' => 'nullable|integer|between:40,250',
+        'diastolic_bp' => 'nullable|integer|between:30,150',
+        'pulse_bpm' => 'nullable|integer|between:30,220',
+        'respiratory_rate' => 'nullable|integer|between:5,60',
+        'spo2_percent' => 'nullable|integer|between:50,100',
+        'weight_kg' => 'nullable|numeric|between:5,300',
+        'height_cm' => 'nullable|numeric|between:50,250',
+        'pain_score' => 'nullable|integer|between:0,10',
+        'consciousness_level' => 'nullable|string',
+        'notes' => 'nullable|string',
+        'finalize' => 'nullable|boolean',
+    ]);
+
+    try {
+        $vitalService->record($visit, $validated);
+
+        return redirect()->route('visits.assessment', $visit->id)->with('success', 'Data tanda vital berhasil dicatat.');
+    } catch (Exception $e) {
+        return redirect()->back()->withInput()->with('error', $e->getMessage());
+    }
+})->name('visits.vital-signs.store');
+
+Route::post('/visits/{id}/assessment', function (string $id, Request $request, ClinicalAssessmentService $assessmentService) {
+    $visit = MedicalVisit::findOrFail($id);
+
+    $validated = $request->validate([
+        'history_current_illness' => 'required|string|min:3',
+        'relevant_history' => 'nullable|string',
+        'examination_findings' => 'required|string|min:3',
+        'assessment_summary' => 'required|string|min:3',
+        'working_diagnosis' => 'nullable|string',
+        'disposition_recommendation' => 'required|string',
+        'finalize' => 'nullable|boolean',
+    ]);
+
+    try {
+        $assessment = $assessmentService->saveDraft($visit, $validated);
+
+        if (! empty($request->input('finalize')) && $request->input('finalize') == '1') {
+            $assessmentService->finalizeAssessment($assessment);
+
+            return redirect()->route('visits.show', $visit->id)->with('success', 'Pengkajian klinis medis telah difinalisasi.');
+        }
+
+        return redirect()->route('visits.assessment', $visit->id)->with('success', 'Draft pengkajian klinis medis disimpan.');
+    } catch (Exception $e) {
+        return redirect()->back()->withInput()->with('error', $e->getMessage());
+    }
+})->name('visits.assessment.store');
+
+Route::post('/visits/{id}/actions', function (string $id, Request $request, ClinicalAssessmentService $assessmentService) {
+    $visit = MedicalVisit::findOrFail($id);
+
+    $validated = $request->validate([
+        'action_type' => 'required|string',
+        'description' => 'required|string|min:3',
+        'notes' => 'nullable|string',
+    ]);
+
+    try {
+        $assessmentService->recordAction($visit, $validated);
+
+        return redirect()->route('visits.assessment', $visit->id)->with('success', 'Tindakan awal non-obat berhasil dicatat.');
+    } catch (Exception $e) {
+        return redirect()->back()->withInput()->with('error', $e->getMessage());
+    }
+})->name('visits.actions.store');

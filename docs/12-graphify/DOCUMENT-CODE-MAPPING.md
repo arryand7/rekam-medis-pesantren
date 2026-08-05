@@ -8,6 +8,28 @@ last_updated: 2026-08-05
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 2B — Vital Signs, Clinical Assessment & Disposition Recommendation Mapping
+
+```text
+ADR-006 & INITIAL-ASSESSMENT.md & VISIT-STATUS-LIFECYCLE.md & STATE-MACHINES.md
+  -> database/migrations/2026_08_05_001200_refactor_patient_allergies_split_status_fields.php
+  -> database/migrations/2026_08_05_001300_create_vital_signs_table.php
+  -> database/migrations/2026_08_05_001400_create_clinical_assessments_table.php
+  -> database/migrations/2026_08_05_001500_create_clinical_actions_table.php
+  -> app/Models/VitalSign.php
+  -> app/Models/ClinicalAssessment.php
+  -> app/Models/ClinicalAction.php
+  -> app/Services/VitalSignService.php
+  -> app/Services/ClinicalAssessmentService.php
+  -> app/Policies/VitalSignPolicy.php
+  -> app/Policies/ClinicalAssessmentPolicy.php
+  -> app/Policies/ClinicalActionPolicy.php
+  -> resources/views/pages/visits/assessment.blade.php
+  -> tests/Feature/VitalSign/VitalSignTest.php
+  -> tests/Feature/ClinicalAssessment/ClinicalAssessmentTest.php
+  -> tests/Feature/ClinicalAction/ClinicalActionTest.php
+```
+
 ## Phase 2A — Patient Health Profile & Medical Visit Intake Mapping
 
 ```text

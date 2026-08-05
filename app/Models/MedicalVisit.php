@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
 
 class MedicalVisit extends Model
@@ -15,7 +17,7 @@ class MedicalVisit extends Model
     protected $fillable = [
         'visit_number',
         'patient_id',
-        'status',
+        'status', // registered, waiting_assessment, under_assessment, assessment_completed, cancelled
         'arrived_at',
         'chief_complaint',
         'reporting_type',
@@ -56,9 +58,34 @@ class MedicalVisit extends Model
         return $this->belongsTo(User::class, 'created_by_id');
     }
 
+    public function vitalSigns(): HasMany
+    {
+        return $this->hasMany(VitalSign::class, 'medical_visit_id');
+    }
+
+    public function latestVitalSign(): HasOne
+    {
+        return $this->hasOne(VitalSign::class, 'medical_visit_id')->where('status', 'finalized')->latestOfMany();
+    }
+
+    public function assessments(): HasMany
+    {
+        return $this->hasMany(ClinicalAssessment::class, 'medical_visit_id');
+    }
+
+    public function latestAssessment(): HasOne
+    {
+        return $this->hasOne(ClinicalAssessment::class, 'medical_visit_id')->whereIn('status', ['finalized', 'amended'])->latestOfMany();
+    }
+
+    public function actions(): HasMany
+    {
+        return $this->hasMany(ClinicalAction::class, 'medical_visit_id');
+    }
+
     public function isActive(): bool
     {
-        return in_array($this->status, ['registered', 'waiting_assessment'], true);
+        return in_array($this->status, ['registered', 'waiting_assessment', 'under_assessment'], true);
     }
 
     /**

@@ -12,7 +12,19 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
-## [0.5.0] — 2026-08-05
+## [0.6.0] — 2026-08-05
+
+### Added
+
+- **Penyempurnaan Status Alergi**: Memisahkan `clinical_status` dan `verification_status` pada `patient_allergies`.
+- **Modul Tanda Vital Terstruktur**: Tabel `vital_signs` dan `VitalSignService` dengan validasi rentang fisiologis dan penguncian finalization.
+- **Modul Pengkajian Klinis Medis**: Tabel `clinical_assessments` dan `ClinicalAssessmentService` untuk anamnesis, pemeriksaan fisik, impresi diagnostik, dan addendum/revisi.
+- **Tindakan Awal Murni Non-Obat**: Tabel `clinical_actions` untuk P3K, perawatan luka, hidrasi, dan tirah baring tanpa pemberian obat.
+- **Rekomendasi Disposisi & Visit State Machine**: Penetapan rekomendasi disposisi dan transisi siklus hidup kunjungan medis ke `assessment_completed`.
+- **Hak Akses & Policy Baru**: Otorisasi server-side untuk tanda vital, assessment klinis, dan tindakan awal (`VitalSignPolicy`, `ClinicalAssessmentPolicy`, `ClinicalActionPolicy`).
+- **Clinical Assessment Workspace UI**: Antarmuka kerja pengkajian medis lengkap (`/visits/{id}/assessment`).
+- **Feature Tests**: Pengujian Pest untuk `VitalSignTest`, `ClinicalAssessmentTest`, dan `ClinicalActionTest` (22 tests, 73 assertions passed).
+
 
 ### Added
 
