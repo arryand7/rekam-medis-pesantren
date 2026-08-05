@@ -12,7 +12,20 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
-## [0.3.0] — 2026-08-05
+## [0.4.0] — 2026-08-05
+
+### Added
+
+- **Model Identitas ULID**: Implementasi tabel dan Model Eloquent `Person`, `User`, dan `Patient` dengan pemisahan entitas yang aman.
+- **Rules Pasien**: Aturan kelayakan pasien untuk seluruh pengguna manusia dari Gate (termasuk admin) dan pengecualian untuk akun teknis/bot.
+- **Sistem Role & Permission**: Skema `roles`, `permissions`, `model_has_roles`, `role_has_permissions` dengan Policy server-side (`UserPolicy`, `PersonPolicy`, `PatientPolicy`, `GateSyncPolicy`, `AuditLogPolicy`).
+- **Keamanan Akses Medis**: Menerapkan aturan bahwa role Admin tidak otomatis memiliki akses rekam medis tanpa permission `view-patients`.
+- **Fondasi Audit Append-Only**: Tabel `audit_logs` dan `AuditLogService` yang terdesinfeksi dari password/secret.
+- **Gate SSO Contract & Fake Service**: Implementasi `GateClientContract`, `GateUserDTO`, dan `FakeGateClientService` dengan data sintetis.
+- **Dry-Run Sync Engine**: Mesin simulasi dry-run `GateSyncDryRunService` non-mutating dengan 10 kategori klasifikasi.
+- **UI Management Shell**: Halaman Direktori Person, Status Pasien, Akun Pengguna, Role & Permission, Gate Sync Preview, Konflik Identitas, dan Log Audit Viewer.
+- **Feature Tests**: Pengujian Pest untuk `PersonUserPatientTest`, `PolicyAccessTest`, `DryRunSyncTest`, dan `AuditLogTest`.
+
 
 ### Added
 

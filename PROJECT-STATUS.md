@@ -10,51 +10,40 @@ last_updated: 2026-08-05
 
 ## Fase saat ini
 
-**Phase 0: Tahap D — Laravel Foundation Bootstrap & Application Shell**
+**Phase 1 Completed — Identity, Access Control, Gate Contract & Dry-Run Sync**
 
-## Keputusan yang sudah ditambahkan
+## Perubahan & Fitur Selesai di Phase 1
 
-- Gate menjadi sumber kebenaran identitas, tipe pengguna, dan status akun.
-- Model pasien bersifat person-centric, bukan hanya santri.
-- Semua pengguna manusia dari Gate dapat memiliki profil pasien.
-- Akun teknis atau administratif murni tidak menjadi pasien.
-- Permission admin pada pengguna manusia tidak menghapus kelayakan pasien.
-- Tim kesehatan dapat membuat ringkasan konsultasi klinis untuk Puskesmas/rumah sakit tanpa pasien langsung datang.
-- Respons eksternal harus memiliki atribusi, waktu, dan sumber.
-- Konsultasi jarak jauh tidak boleh menunda rujukan kondisi darurat.
-- Graphify dipasang pada scope proyek dan memetakan kode serta Markdown.
-- Semantic design token untuk Light (`#F0F9FF`), Dark (`#071621`), dan System theme dengan anti-flicker baseline disetujui.
+- [x] **Phase 0 Closure**: Dikonfirmasi `PASSED` (`docs/10-delivery/PHASE-0-CLOSURE.md`).
+- [x] **Pemisahan Identitas (Person, User, Patient)**:
+  - Skema ULID untuk `people`, `users`, dan `patients`.
+  - Aturan: `Person` manusia (santri, guru, staf, pengasuh, admin) eligible sebagai `Patient`. Akun teknis/bot tidak eligible.
+  - Deaktivasi `User` tidak menghapus record `Person` atau `Patient`.
+- [x] **Role, Permission & Authorization Server-Side**:
+  - Skema `roles`, `permissions`, `model_has_roles`, `role_has_permissions`.
+  - Hak akses berbasis Policy (`UserPolicy`, `PersonPolicy`, `PatientPolicy`, `GateSyncPolicy`, `AuditLogPolicy`).
+  - Aturan keamanan: Admin tidak otomatis memiliki akses data medis tanpa permission `view-patients`.
+- [x] **Audit Log Append-Only**:
+  - Skema `audit_logs` append-only dengan penguraian data sensitif (sanitizing password/token).
+  - Integrasi via `AuditLogService`.
+- [x] **Gate SSO Client Contract**:
+  - Implementation `GateClientContract`, `GateUserDTO`, dan `FakeGateClientService`.
+- [x] **Gate Dry-Run Sync Engine**:
+  - `GateSyncDryRunService` dengan klasifikasi 10 status (`new`, `matched`, `changed`, `deactivated`, `conflict`, dll.).
+  - Diisolasi secara **Non-Mutating** (tidak merubah data database utama saat dry-run).
+  - Aturan pencocokan: `gate_user_id` -> candidate review -> new. Dilarang auto-merge berdasarkan nama.
+- [x] **Halaman Management UI Shell**:
+  - People directory, Patient eligibility status, Users management, Roles & Permissions, Gate Sync Preview, Identity Conflicts, dan Audit Log viewer.
 
-## Sudah tersedia
+## Kemajuan Phase
 
-- Dokumentasi domain dan workflow utama lengkap (106 file Markdown).
-- Laporan Preflight Lingkungan (`docs/10-delivery/ENVIRONMENT-PREFLIGHT.md`).
-- Laporan Baseline Graphify (`docs/10-delivery/GRAPHIFY-BASELINE-REVIEW.md`).
-- Laporan Evaluasi Kesiapan Repositori (`docs/10-delivery/READINESS-REVIEW.md`).
-- Tema light, dark, dan system tokens.
-
-## Masih perlu dikonfirmasi (Clinical & Integration Domain)
-
-- Tipe pengguna resmi yang dikirim Gate.
-- Definisi akun administratif murni.
-- Field authoritative Gate dan field lokal.
-- Strategi matching pengguna lama.
-- Kanal resmi konsultasi dengan Puskesmas/rumah sakit.
-- Dasar persetujuan dan pihak yang boleh mengirim data.
-- Format respons tenaga kesehatan eksternal.
-- SOP red flag yang wajib langsung dirujuk.
-- Apakah POSKESTREN memiliki kerja sama formal sebagai jejaring fasilitas kesehatan.
-- Retensi dan status hukum dokumen konsultasi.
-
-## Kemajuan Phase 0
-
-- [x] **Tahap A — Repository Preflight**: Selesai (`ENVIRONMENT-PREFLIGHT.md`).
-- [x] **Tahap B — Graphify Baseline**: Selesai (`GRAPHIFY-BASELINE-REVIEW.md`).
-- [x] **Tahap C — Readiness Review**: Selesai (`READINESS-REVIEW.md`).
-- [ ] **Tahap D — Laravel Foundation Bootstrap**: Sedang Berlangsung.
+- [x] **Phase 0 — Readiness & Foundation**: Selesai.
+- [x] **Phase 1 — Identity, Access Control, Gate Contract & Dry-Run Sync**: Selesai.
+- [ ] **Phase 2 — Modul Pelayanan Medis & Rekam Kesehatan**: Menunggu persetujuan pengguna.
 
 ## Last verified
 
 - Tanggal: 2026-08-05
-- Status Preflight: READY-WITH-BLOCKERS (Diizinkan lanjut ke Tahap D)
-- Environment: PHP 8.4.1, Composer 2.8.12, Node.js 24.4.1, npm 11.4.2
+- Test Suite: 12 tests, 44 assertions (100% Passed)
+- Code Formatter: Pint Passed
+- Static Analysis: PHPStan Level 5 Passed (0 errors)
