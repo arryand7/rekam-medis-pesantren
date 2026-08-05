@@ -3,6 +3,8 @@
 use App\Http\Controllers\HealthController;
 use App\Models\AuditLog;
 use App\Models\MedicalVisit;
+use App\Models\MedicationAdministration;
+use App\Models\MedicationOrder;
 use App\Models\Medicine;
 use App\Models\MedicineBatch;
 use App\Models\ObservationEpisode;
@@ -16,6 +18,7 @@ use App\Models\User;
 use App\Services\ClinicalAssessmentService;
 use App\Services\Gate\GateSyncDryRunService;
 use App\Services\MedicalVisitService;
+use App\Services\MedicationService;
 use App\Services\ObservationService;
 use App\Services\PharmacyService;
 use App\Services\VitalSignService;
@@ -391,3 +394,68 @@ Route::post('/pharmacy/adjustments', function (Request $request, PharmacyService
         return redirect()->back()->withInput()->with('error', $e->getMessage());
     }
 })->name('pharmacy.adjustments.store');
+
+// Phase 2D2 Medication Administration Routes
+
+Route::get('/visits/{id}/medications', function (string $id) {
+    $visit = MedicalVisit::with(['patient.person', 'patient.activeAllergies', 'medicationOrders.medicine.batches', 'medicationOrders.orderedBy', 'medicationAdministrations.medicine', 'medicationAdministrations.batch', 'medicationAdministrations.administeredBy'])->findOrFail($id);
+    $medicines = Medicine::with('batches')->where('is_active', true)->get();
+
+    return view('pages.visits.medications', compact('visit', 'medicines'));
+})->name('visits.medications.index');
+
+Route::post('/visits/{id}/medications/orders', function (string $id, Request $request, MedicationService $medicationService) {
+    $visit = MedicalVisit::findOrFail($id);
+
+    $validated = $request->validate([
+        'medicine_id' => 'required|exists:medicines,id',
+        'dose_value' => 'required|string',
+        'dose_unit' => 'required|string',
+        'frequency_text' => 'required|string|min:2',
+        'instructions' => 'nullable|string',
+        'allergy_acknowledgement_reason' => 'nullable|string',
+    ]);
+
+    try {
+        $medicationService->createOrder($visit, $validated);
+
+        return redirect()->route('visits.medications.index', $visit->id)->with('success', 'Instruksi obat baru berhasil disimpan.');
+    } catch (Exception $e) {
+        return redirect()->back()->withInput()->with('error', $e->getMessage());
+    }
+})->name('visits.medications.orders.store');
+
+Route::post('/medication-orders/{id}/administer', function (string $id, Request $request, MedicationService $medicationService) {
+    $order = MedicationOrder::findOrFail($id);
+
+    $request->validate([
+        'medicine_batch_id' => 'required|exists:medicine_batches,id',
+    ]);
+
+    $batch = MedicineBatch::findOrFail($request->input('medicine_batch_id'));
+
+    try {
+        $admin = $medicationService->scheduleAdministration($order, []);
+        $medicationService->administerMedication($admin, $batch);
+
+        return redirect()->route('visits.medications.index', $order->medical_visit_id)->with('success', 'Pemberian obat ke pasien selesai & stok batch berhasil dipotong secara atomik.');
+    } catch (Exception $e) {
+        return redirect()->back()->with('error', $e->getMessage());
+    }
+})->name('visits.medications.administer.store');
+
+Route::post('/medication-administrations/{id}/correct', function (string $id, Request $request, MedicationService $medicationService) {
+    $admin = MedicationAdministration::findOrFail($id);
+
+    $request->validate([
+        'reason' => 'required|string|min:3',
+    ]);
+
+    try {
+        $medicationService->correctAdministration($admin, $request->input('reason'));
+
+        return redirect()->route('visits.medications.index', $admin->medical_visit_id)->with('success', 'Pemberian obat dibatalkan & stok batch berhasil dikembalikan secara atomik.');
+    } catch (Exception $e) {
+        return redirect()->back()->with('error', $e->getMessage());
+    }
+})->name('visits.medications.administer.correct');

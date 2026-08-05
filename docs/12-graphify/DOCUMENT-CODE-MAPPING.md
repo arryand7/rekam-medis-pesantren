@@ -8,6 +8,27 @@ last_updated: 2026-08-05
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 2D2 — Medication Orders, Medication Administration & Atomic Stock Issue Mapping
+
+```text
+MEDICATION-ADMINISTRATION.md & SAFETY-ACKNOWLEDGEMENTS.md & STATE-MACHINES.md
+  -> database/migrations/2026_08_05_002300_create_medication_orders_table.php
+  -> database/migrations/2026_08_05_002400_create_medication_safety_acknowledgements_table.php
+  -> database/migrations/2026_08_05_002500_create_medication_administrations_table.php
+  -> app/Models/MedicationOrder.php
+  -> app/Models/MedicationSafetyAcknowledgement.php
+  -> app/Models/MedicationAdministration.php
+  -> app/Models/MedicalVisit.php
+  -> app/Services/MedicationService.php
+  -> app/Policies/MedicationOrderPolicy.php
+  -> app/Policies/MedicationAdministrationPolicy.php
+  -> resources/views/pages/visits/medications.blade.php
+  -> tests/Feature/Medication/MedicationOrderTest.php
+  -> tests/Feature/Medication/MedicationAdministrationTest.php
+  -> tests/Feature/Medication/MedicationStatusTest.php
+  -> tests/Feature/Medication/MedicationReversalTest.php
+```
+
 ## Phase 2D1 — Pharmacy Inventory Foundation & Stock Ledger Mapping
 
 ```text

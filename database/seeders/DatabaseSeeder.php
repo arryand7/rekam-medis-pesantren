@@ -78,6 +78,21 @@ class DatabaseSeeder extends Seeder
             'view-stock-movements' => 'Lihat Riwayat Mutasi Stok',
             'view-stock-reconciliation' => 'Lihat Laporan Rekonsiliasi Stok',
             'manage-stock-locations' => 'Kelola Lokasi Penyimpanan Stok',
+
+            // Phase 2D2 Permissions
+            'view-medication-orders' => 'Lihat Instruksi Obat (Orders)',
+            'create-medication-orders' => 'Buat Instruksi Obat Baru',
+            'activate-medication-orders' => 'Aktivasi Instruksi Obat',
+            'revise-medication-orders' => 'Revisi Instruksi Obat',
+            'discontinue-medication-orders' => 'Penghentian Instruksi Obat',
+            'view-medication-administrations' => 'Lihat Catatan Pemberian Obat',
+            'schedule-medication-administrations' => 'Jadwalkan Pemberian Obat',
+            'administer-medications' => 'Catat Pemberian Obat ke Pasien & Potong Stok',
+            'administer-one-time-medication' => 'Pemberian Obat Sekali Jalan (One-Time)',
+            'hold-medications' => 'Tunda Pemberian Obat (Hold)',
+            'record-medication-refusal' => 'Catat Penolakan Obat Pasien',
+            'record-missed-medication' => 'Catat Terlewats Pemberian Obat',
+            'correct-medication-administrations' => 'Koreksi Pemberian Obat & Reversal Stok',
         ];
 
         $createdPermissions = [];
@@ -116,46 +131,9 @@ class DatabaseSeeder extends Seeder
             'display_name' => 'Tim Kesehatan POSKESTREN',
             'description' => 'Tenaga medis/kesehatan dan farmasi yang melayani santri dan warga di Poskestren',
         ]);
-        $medicalRole->permissions()->sync([
-            $createdPermissions['view-people']->id,
-            $createdPermissions['view-patients']->id,
-            $createdPermissions['view-patient-health-profile']->id,
-            $createdPermissions['update-patient-health-profile']->id,
-            $createdPermissions['manage-patient-allergies']->id,
-            $createdPermissions['manage-patient-conditions']->id,
-            $createdPermissions['manage-emergency-contacts']->id,
-            $createdPermissions['create-medical-visits']->id,
-            $createdPermissions['view-medical-visits']->id,
-            $createdPermissions['cancel-medical-visits']->id,
-            $createdPermissions['override-active-visit']->id,
-            $createdPermissions['record-vital-signs']->id,
-            $createdPermissions['finalize-vital-signs']->id,
-            $createdPermissions['create-clinical-assessments']->id,
-            $createdPermissions['finalize-clinical-assessments']->id,
-            $createdPermissions['amend-clinical-assessments']->id,
-            $createdPermissions['record-working-diagnosis']->id,
-            $createdPermissions['record-initial-actions']->id,
-            $createdPermissions['recommend-visit-disposition']->id,
-            $createdPermissions['start-observations']->id,
-            $createdPermissions['view-observations']->id,
-            $createdPermissions['record-observation-monitoring']->id,
-            $createdPermissions['finalize-observation-monitoring']->id,
-            $createdPermissions['amend-observation-monitoring']->id,
-            $createdPermissions['prepare-observation-handover']->id,
-            $createdPermissions['acknowledge-observation-handover']->id,
-            $createdPermissions['complete-observations']->id,
-            $createdPermissions['cancel-observations']->id,
-            $createdPermissions['view-observation-audit']->id,
-            $createdPermissions['view-pharmacy-inventory']->id,
-            $createdPermissions['manage-medicine-master']->id,
-            $createdPermissions['receive-medicine-stock']->id,
-            $createdPermissions['adjust-medicine-stock']->id,
-            $createdPermissions['reverse-stock-movements']->id,
-            $createdPermissions['transfer-medicine-stock']->id,
-            $createdPermissions['view-stock-movements']->id,
-            $createdPermissions['view-stock-reconciliation']->id,
-            $createdPermissions['manage-stock-locations']->id,
-        ]);
+        $medicalRole->permissions()->sync(array_values(array_map(fn ($p) => $p->id, array_diff_key($createdPermissions, array_flip([
+            'manage-users', 'manage-roles', 'manage-permissions', 'manage-gate-sync', 'resolve-identity-conflicts', 'manage-system-settings',
+        ])))));
 
         // Default Stock Location
         StockLocation::firstOrCreate([

@@ -93,6 +93,16 @@ class MedicalVisit extends Model
         return $this->hasOne(ObservationEpisode::class, 'medical_visit_id')->whereIn('status', ['planned', 'active']);
     }
 
+    public function medicationOrders(): HasMany
+    {
+        return $this->hasMany(MedicationOrder::class, 'medical_visit_id');
+    }
+
+    public function medicationAdministrations(): HasMany
+    {
+        return $this->hasMany(MedicationAdministration::class, 'medical_visit_id');
+    }
+
     public function isActive(): bool
     {
         return in_array($this->status, ['registered', 'waiting_assessment', 'under_assessment', 'under_observation'], true);

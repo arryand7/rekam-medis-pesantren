@@ -12,7 +12,19 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
-## [0.8.0] — 2026-08-05
+## [0.9.0] — 2026-08-05
+
+### Added
+
+- **Instruksi Obat Terstruktur (Medication Orders)**: Tabel `medication_orders` dan `MedicationService::createOrder` untuk mencatat instruksi obat internal Poskestren.
+- **Penelusuran Alergi Pasien (Safety Acknowledgement)**: Tabel `medication_safety_acknowledgements` untuk mencatat konfirmasi alasan klinis penelusuran alergi aktif pasien.
+- **Pencatatan Pemberian Obat (Medication Administration)**: Tabel `medication_administrations` untuk mengelola status pemberian obat (`scheduled`, `administered`, `held`, `refused`, `missed`, `cancelled`, `entered_in_error`).
+- **Pengeluaran Stok Obat Atomik (Atomic Stock Issue)**: Pengurangan stok obat secara atomik pada tingkat transaksi database hanya saat status bertransisi menjadi `administered` (movement_type `medication_administration_issue`).
+- **Koreksi Pemberian Obat & Reversal Stok**: Pembatalan catatan pemberian (`entered_in_error`) mengembalikan sisa stok batch secara atomik dan mencatat `medication_administration_reversal`.
+- **Hak Akses & Policy Baru**: Otorisasi server-side untuk instruksi dan pemberian obat (`MedicationOrderPolicy`, `MedicationAdministrationPolicy`).
+- **Medication Workspace UI Shell**: Workspace Pemberian Obat Santri (`/visits/{id}/medications`) dengan Form Order Obat, Warning Alergi Aktif, Jadwal Pemberian, Modal Konfirmasi Pilih Batch, dan Riwayat Pemberian.
+- **Feature Tests**: Pengujian Pest untuk `MedicationOrderTest`, `MedicationAdministrationTest`, `MedicationStatusTest`, dan `MedicationReversalTest` (39 tests, 125 assertions passed).
+
 
 ### Added
 
