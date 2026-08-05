@@ -20,11 +20,6 @@ class PatientFactory extends Factory
             'patient_number' => Patient::generatePatientNumber(),
             'is_eligible' => true,
             'ineligibility_reason' => null,
-            'blood_type' => fake()->randomElement(['A+', 'B+', 'O+', 'AB+']),
-            'allergies_summary' => 'Tidak ada riwayat alergi obat yang diketahui.',
-            'emergency_contact_name' => fake()->name(),
-            'emergency_contact_phone' => fake()->phoneNumber(),
-            'emergency_contact_relation' => 'Orang Tua / Wali',
         ];
     }
 }

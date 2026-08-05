@@ -12,7 +12,20 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
-## [0.4.0] — 2026-08-05
+## [0.5.0] — 2026-08-05
+
+### Added
+
+- **Pemisahan Boundary Pasien**: Memindahkan data kesehatan dari tabel `patients` ke `patient_health_profiles` terpisah.
+- **Alergi Terstruktur**: Implementasi `patient_allergies` terstruktur dengan penandaan status `entered-in-error` tanpa hard delete.
+- **Kondisi Medis & Kontak Darurat**: Tabel dan relasi `patient_medical_conditions` serta `patient_emergency_contacts`.
+- **Intake Kunjungan Medis**: Implementasi registrasi kunjungan medis `medical_visits` dengan nomor kunjungan server-side (`VIS-YYYYMMDD-XXXXX`) dan timestamp server `arrived_at`.
+- **Active Visit Concurrency Guard**: Mencegah kunjungan aktif ganda pada pasien yang sama di dalam transaksi database dengan row locking dan opsi override ber-alasan.
+- **Pembatalan Kunjungan Non-Destruktif**: Pembatalan kunjungan medis wajib menyertakan alasan dan dicatat pada log audit append-only.
+- **Hak Akses & Policy Baru**: Otorisasi server-side untuk profil kesehatan dan registrasi kunjungan medis (`PatientHealthProfilePolicy`, `PatientAllergyPolicy`, `MedicalVisitPolicy`).
+- **Tampilan UI Pelayanan Medis**: Profil Lengkap Pasien, Antrean Intake Kunjungan Medis, Form Registrasi Kedatangan, dan Detail Kunjungan Medis.
+- **Feature Tests**: Pengujian Pest untuk `PatientHealthProfileTest` dan `MedicalVisitIntakeTest` (17 tests, 59 assertions passed).
+
 
 ### Added
 

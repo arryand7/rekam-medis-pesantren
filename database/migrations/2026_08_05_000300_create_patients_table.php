@@ -17,11 +17,6 @@ return new class extends Migration
             $table->string('patient_number')->unique()->index();
             $table->boolean('is_eligible')->default(true)->index();
             $table->string('ineligibility_reason')->nullable();
-            $table->string('blood_type', 5)->nullable();
-            $table->text('allergies_summary')->nullable();
-            $table->string('emergency_contact_name')->nullable();
-            $table->string('emergency_contact_phone')->nullable();
-            $table->string('emergency_contact_relation')->nullable();
             $table->timestamps();
         });
     }

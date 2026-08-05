@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
 
 class Patient extends Model
@@ -17,11 +19,6 @@ class Patient extends Model
         'patient_number',
         'is_eligible',
         'ineligibility_reason',
-        'blood_type',
-        'allergies_summary',
-        'emergency_contact_name',
-        'emergency_contact_phone',
-        'emergency_contact_relation',
     ];
 
     protected function casts(): array
@@ -34,6 +31,46 @@ class Patient extends Model
     public function person(): BelongsTo
     {
         return $this->belongsTo(Person::class, 'person_id');
+    }
+
+    public function healthProfile(): HasOne
+    {
+        return $this->hasOne(PatientHealthProfile::class, 'patient_id');
+    }
+
+    public function allergies(): HasMany
+    {
+        return $this->hasMany(PatientAllergy::class, 'patient_id');
+    }
+
+    public function activeAllergies(): HasMany
+    {
+        return $this->hasMany(PatientAllergy::class, 'patient_id')->whereIn('status', ['suspected', 'confirmed']);
+    }
+
+    public function medicalConditions(): HasMany
+    {
+        return $this->hasMany(PatientMedicalCondition::class, 'patient_id');
+    }
+
+    public function activeMedicalConditions(): HasMany
+    {
+        return $this->hasMany(PatientMedicalCondition::class, 'patient_id')->where('status', 'active');
+    }
+
+    public function emergencyContacts(): HasMany
+    {
+        return $this->hasMany(PatientEmergencyContact::class, 'patient_id')->where('is_active', true)->orderBy('priority');
+    }
+
+    public function visits(): HasMany
+    {
+        return $this->hasMany(MedicalVisit::class, 'patient_id');
+    }
+
+    public function activeVisit(): HasOne
+    {
+        return $this->hasOne(MedicalVisit::class, 'patient_id')->whereIn('status', ['registered', 'waiting_assessment']);
     }
 
     /**

@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Patient;
+use App\Models\PatientAllergy;
+use App\Models\PatientHealthProfile;
+use App\Models\PatientMedicalCondition;
 use App\Models\Permission;
 use App\Models\Person;
 use App\Models\Role;
@@ -30,6 +33,17 @@ class DatabaseSeeder extends Seeder
             'resolve-identity-conflicts' => 'Resolusi Konflik Identitas',
             'view-audit-log' => 'Lihat Log Audit Sistem',
             'manage-system-settings' => 'Kelola Pengaturan Sistem',
+
+            // Phase 2A Permissions
+            'view-patient-health-profile' => 'Lihat Profil Kesehatan Pasien',
+            'update-patient-health-profile' => 'Perbarui Profil Kesehatan Pasien',
+            'manage-patient-allergies' => 'Kelola Alergi Terstruktur',
+            'manage-patient-conditions' => 'Kelola Kondisi Medis Penting',
+            'manage-emergency-contacts' => 'Kelola Kontak Darurat',
+            'create-medical-visits' => 'Registrasi Kunjungan Medis (Intake)',
+            'view-medical-visits' => 'Lihat Antrean Kunjungan Medis',
+            'cancel-medical-visits' => 'Batalkan Kunjungan Medis',
+            'override-active-visit' => 'Override Kunjungan Aktif Pasien',
         ];
 
         $createdPermissions = [];
@@ -71,6 +85,15 @@ class DatabaseSeeder extends Seeder
         $medicalRole->permissions()->sync([
             $createdPermissions['view-people']->id,
             $createdPermissions['view-patients']->id,
+            $createdPermissions['view-patient-health-profile']->id,
+            $createdPermissions['update-patient-health-profile']->id,
+            $createdPermissions['manage-patient-allergies']->id,
+            $createdPermissions['manage-patient-conditions']->id,
+            $createdPermissions['manage-emergency-contacts']->id,
+            $createdPermissions['create-medical-visits']->id,
+            $createdPermissions['view-medical-visits']->id,
+            $createdPermissions['cancel-medical-visits']->id,
+            $createdPermissions['override-active-visit']->id,
         ]);
 
         // Create Seed Person & Admin User
@@ -80,10 +103,31 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@poskestren.sabira.test',
         ]);
 
-        // Patient profile for Admin Person (All humans are eligible)
-        Patient::factory()->create([
+        $patient = Patient::factory()->create([
             'person_id' => $adminPerson->id,
             'is_eligible' => true,
+        ]);
+
+        PatientHealthProfile::create([
+            'patient_id' => $patient->id,
+            'blood_type' => 'O+',
+            'emergency_notes' => 'Tidak ada penyakit kronis bawaan.',
+        ]);
+
+        PatientAllergy::create([
+            'patient_id' => $patient->id,
+            'allergen' => 'Penicillin',
+            'reaction' => 'Ruam kulit & gatal',
+            'severity' => 'moderate',
+            'status' => 'confirmed',
+            'notes' => 'Tercatat dari riwayat masa lalu',
+        ]);
+
+        PatientMedicalCondition::create([
+            'patient_id' => $patient->id,
+            'condition_name' => 'Asma Bronkial',
+            'status' => 'active',
+            'notes' => 'Kambuh bila dingin ekstrem',
         ]);
 
         $adminUser = User::factory()->create([
@@ -94,5 +138,20 @@ class DatabaseSeeder extends Seeder
             'is_active' => true,
         ]);
         $adminUser->roles()->attach($adminRole->id);
+
+        // Create Doctor/Nurse User
+        $doctorPerson = Person::factory()->create([
+            'name' => 'dr. Fatimah Medis',
+            'user_type' => 'petugas_kesehatan',
+            'email' => 'fatimah.medis@sabira.test',
+        ]);
+        $doctorUser = User::factory()->create([
+            'person_id' => $doctorPerson->id,
+            'name' => $doctorPerson->name,
+            'email' => 'fatimah.medis@sabira.test',
+            'password' => bcrypt('password'),
+            'is_active' => true,
+        ]);
+        $doctorUser->roles()->attach($medicalRole->id);
     }
 }
