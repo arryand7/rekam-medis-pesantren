@@ -1,0 +1,1 @@
+{"nodes": [{"id": "users_ryand_documents_laravel_sabira_rekam_medis_ponpes_vendor_laravel_framework_src_illuminate_queue_workerstopreason_php", "label": "WorkerStopReason.php", "file_type": "code", "source_file": "vendor/laravel/framework/src/Illuminate/Queue/WorkerStopReason.php", "source_location": "L1"}], "edges": [], "raw_calls": []}

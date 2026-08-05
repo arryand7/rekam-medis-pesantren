@@ -1,0 +1,107 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* -------------------------------------------------------------------------- */
+/* Design Tokens & Theme Palettes                                            */
+/* -------------------------------------------------------------------------- */
+
+:root {
+    /* Light Palette */
+    --background: #F0F9FF;
+    --surface: #FFFFFF;
+    --surface-muted: #E0F2FE;
+    --foreground: #0C4A6E;
+    --foreground-muted: #334155;
+    --border: #BAE6FD;
+    --primary: #0284C7;
+    --primary-hover: #0369A1;
+    --primary-soft: #BAE6FD;
+    --focus-ring: #38BDF8;
+
+    /* Semantic Status Tokens */
+    --success: #16A34A;
+    --success-bg: #DCFCE7;
+    --success-text: #14532D;
+    --warning: #D97706;
+    --warning-bg: #FEF3C7;
+    --warning-text: #78350F;
+    --danger: #DC2626;
+    --danger-bg: #FEE2E2;
+    --danger-text: #7F1D1D;
+    --info: #0284C7;
+    --info-bg: #E0F2FE;
+    --info-text: #0C4A6E;
+}
+
+html.dark {
+    /* Dark Palette */
+    --background: #071621;
+    --surface: #0C2433;
+    --surface-muted: #123447;
+    --foreground: #E0F2FE;
+    --foreground-muted: #CBD5E1;
+    --border: #1E4B63;
+    --primary: #38BDF8;
+    --primary-hover: #7DD3FC;
+    --primary-soft: #1E4B63;
+    --focus-ring: #7DD3FC;
+
+    /* Semantic Status Tokens Dark */
+    --success: #4ADE80;
+    --success-bg: #064E3B;
+    --success-text: #DCFCE7;
+    --warning: #FBBF24;
+    --warning-bg: #78350F;
+    --warning-text: #FEF3C7;
+    --danger: #F87171;
+    --danger-bg: #7F1D1D;
+    --danger-text: #FEE2E2;
+    --info: #38BDF8;
+    --info-bg: #0C4A6E;
+    --info-text: #E0F2FE;
+}
+
+/* Global Base Applied Styles */
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    min-height: 100vh;
+}
+
+/* Accessibility Focus Ring */
+*:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+/* Print View Override - Always Light Theme */
+@media print {
+    :root, html.dark {
+        --background: #FFFFFF !important;
+        --surface: #FFFFFF !important;
+        --surface-muted: #F8FAFC !important;
+        --foreground: #0F172A !important;
+        --foreground-muted: #334155 !important;
+        --border: #CBD5E1 !important;
+        --primary: #0284C7 !important;
+        color-scheme: light !important;
+    }
+
+    body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+}

@@ -1,0 +1,1 @@
+{"nodes": [{"id": "users_ryand_documents_laravel_sabira_rekam_medis_ponpes_vendor_laravel_framework_src_illuminate_contracts_queue_shouldqueue_php", "label": "ShouldQueue.php", "file_type": "code", "source_file": "vendor/laravel/framework/src/Illuminate/Contracts/Queue/ShouldQueue.php", "source_location": "L1"}], "edges": [], "raw_calls": []}
