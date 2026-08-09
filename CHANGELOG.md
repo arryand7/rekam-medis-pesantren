@@ -12,7 +12,21 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
+## [0.14.0] — 2026-08-09 (Phase 3C2 Operational Outbox, Role Dashboards & Health Reports Foundation)
+
+### Added
+
+- **Transactional Integration Outbox (`integration_outbox_events`, `integration_delivery_attempts`)**: Pola outbox asinkron dengan locking baris MariaDB (`lockForUpdate()`), idempotensi unik, dan penanganan retry/dead-letter.
+- **SABIRA Absensi Integration Contract & DTO (`AttendanceIntegrationContract`, `AttendanceHealthDispositionDTO`)**: Kontrak antarmuka dan DTO immutable dengan validasi otomatis terhadap kunci klinis terlarang (*forbidden keys guard*), didukung adapter sandbox `FakeAttendanceIntegration`.
+- **Privacy Payload Profiles (`AttendanceDispositionPayloadBuilder`)**: Penegakan standar *Minimum Necessary* (zero clinical diagnoses/medications/allergies/vital signs) untuk Asrama, Guru, dan Absensi.
+- **Operational Notifications & In-App User Inbox (`operational_notifications`, `user_notifications`)**: Alur notifikasi operasional terarah ke pembina asrama/guru dengan pelacakan konfirmasi, serta kotak masuk in-app untuk staf poskestren.
+- **Role-Aware Dashboards (`dashboards.clinical`, `dashboards.management`, `dashboards.operational`)**: Dashboard klinis, dashboard manajemen statistik agregat (tanpa data individu), dan dashboard operasional santri berstatus restriksi.
+- **Health Reports Foundation (`HealthReportService`)**: Sensus kunjungan, sensus observasi, sensus rujukan, laporan kepulangan & kontrol, laporan inventaris farmasi, dan audit pengiriman outbox.
+- **Controllers, Policies, & Blade Views**: 6 controller dedicated di `App\Http\Controllers\*` (0 Route Closures), 13 permission baru, 5 policies, 4 form requests, dan 11 view responsif light & dark theme.
+- **Test Suite Expansion**: 23 feature test baru (total 134 tests, 526 assertions, 100% passed di MariaDB).
+
 ## [0.13.0] — 2026-08-09 (Phase 3C1 Visit Discharge, Follow-up & Operational Handoff)
+
 
 ### Added
 

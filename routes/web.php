@@ -586,11 +586,16 @@ Route::post('/consultations/{id}/decision', function (string $id, Request $reque
 
 // ─── Phase 3B — Referral Module Routes (Controller-based, Policy-enforced) ───────
 
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Discharge\ActivityRestrictionController;
 use App\Http\Controllers\Discharge\ClinicalOperationalHandoffController;
 use App\Http\Controllers\Discharge\VisitDischargeController;
 use App\Http\Controllers\Discharge\VisitDischargeDocumentController;
 use App\Http\Controllers\Discharge\VisitFollowUpPlanController;
+use App\Http\Controllers\Integration\AttendanceIntegrationController;
+use App\Http\Controllers\Integration\IntegrationOutboxController;
+use App\Http\Controllers\Notification\OperationalNotificationController;
+use App\Http\Controllers\Notification\UserNotificationController;
 use App\Http\Controllers\Referral\ReferralCompanionController;
 use App\Http\Controllers\Referral\ReferralController;
 use App\Http\Controllers\Referral\ReferralDepartureController;
@@ -600,6 +605,7 @@ use App\Http\Controllers\Referral\ReferralReturnController;
 use App\Http\Controllers\Referral\ReferralReturnReviewController;
 use App\Http\Controllers\Referral\ReferralStatusController;
 use App\Http\Controllers\Referral\ReferralTransportController;
+use App\Http\Controllers\Reporting\HealthReportController;
 
 Route::middleware('auth')->group(function () {
     // Referral main CRUD
@@ -674,4 +680,28 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/discharges/{dischargeId}/versions/{versionId}/document/generate', [VisitDischargeDocumentController::class, 'generate'])
         ->name('discharges.document.generate');
+
+    // Phase 3C2 Integration Outbox & Identity Conflicts
+    Route::get('/integration/outbox', [IntegrationOutboxController::class, 'index'])->name('integration.outbox.index');
+    Route::get('/integration/outbox/{id}', [IntegrationOutboxController::class, 'show'])->name('integration.outbox.show');
+    Route::post('/integration/outbox/{id}/retry', [IntegrationOutboxController::class, 'retry'])->name('integration.outbox.retry');
+    Route::get('/integration/attendance/status', [AttendanceIntegrationController::class, 'status'])->name('integration.attendance.status');
+    Route::get('/integration/conflicts', [AttendanceIntegrationController::class, 'conflicts'])->name('integration.conflicts.index');
+    Route::post('/integration/conflicts/{id}/resolve', [AttendanceIntegrationController::class, 'resolveConflict'])->name('integration.conflicts.resolve');
+
+    // Phase 3C2 Operational Notifications & Inbox
+    Route::get('/notifications/operational', [OperationalNotificationController::class, 'index'])->name('notifications.operational.index');
+    Route::post('/notifications/operational/{id}/acknowledge', [OperationalNotificationController::class, 'acknowledge'])->name('notifications.operational.acknowledge');
+    Route::get('/notifications/inbox', [UserNotificationController::class, 'index'])->name('notifications.inbox.index');
+    Route::post('/notifications/inbox/{id}/read', [UserNotificationController::class, 'markAsRead'])->name('notifications.inbox.read');
+    Route::post('/notifications/inbox/read-all', [UserNotificationController::class, 'markAllAsRead'])->name('notifications.inbox.read-all');
+
+    // Phase 3C2 Role-aware Dashboards
+    Route::get('/dashboards/clinical', [DashboardController::class, 'clinical'])->name('dashboards.clinical');
+    Route::get('/dashboards/management', [DashboardController::class, 'management'])->name('dashboards.management');
+    Route::get('/dashboards/operational', [DashboardController::class, 'operational'])->name('dashboards.operational');
+
+    // Phase 3C2 Health Reports Foundation
+    Route::get('/reports', [HealthReportController::class, 'index'])->name('reports.index');
+    Route::get('/reports/view', [HealthReportController::class, 'show'])->name('reports.show');
 });
