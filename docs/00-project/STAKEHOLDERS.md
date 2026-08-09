@@ -2,7 +2,7 @@
 id: DOC-STAKEHOLDERS
 title: "Stakeholder"
 status: draft
-owner: "Tim Pengembang POSKESTREN"
+owner: "Ryand Arifriantoni"
 last_updated: 2026-08-05
 ---
 

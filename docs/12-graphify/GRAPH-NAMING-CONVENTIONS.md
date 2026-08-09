@@ -2,7 +2,7 @@
 id: DOC-GRAPH-NAMING
 title: "Konvensi Penamaan Graph"
 status: draft
-owner: "Tim Pengembang POSKESTREN"
+owner: "Ryand Arifriantoni"
 last_updated: 2026-08-05
 ---
 

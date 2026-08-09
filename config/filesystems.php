@@ -64,6 +64,15 @@ return [
             'throw' => true,
         ],
 
+        // Private clinical discharge summaries — never accessible via public URL
+        // Stored outside public/ directory, served only via authorized controller
+        'discharge_documents' => [
+            'driver' => 'local',
+            'root' => storage_path('app/private/discharges'),
+            'visibility' => 'private',
+            'throw' => true,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

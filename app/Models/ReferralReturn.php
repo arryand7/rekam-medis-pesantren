@@ -55,6 +55,11 @@ class ReferralReturn extends Model
         return $this->hasMany(ReferralReturnReview::class, 'referral_return_id');
     }
 
+    public function review(): HasOne
+    {
+        return $this->hasOne(ReferralReturnReview::class, 'referral_return_id');
+    }
+
     public function latestReview(): HasOne
     {
         return $this->hasOne(ReferralReturnReview::class, 'referral_return_id')->latestOfMany();

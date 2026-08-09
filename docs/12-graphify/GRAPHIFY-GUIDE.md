@@ -2,7 +2,7 @@
 id: DOC-GRAPHIFY-GUIDE
 title: "Panduan Penggunaan Graphify"
 status: active
-owner: "Tim Pengembang POSKESTREN"
+owner: "Ryand Arifriantoni"
 last_updated: 2026-08-05
 ---
 

@@ -12,7 +12,21 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
+## [0.13.0] — 2026-08-09 (Phase 3C1 Visit Discharge, Follow-up & Operational Handoff)
+
+### Added
+
+- **Visit Discharge Domain Aggregate (`visit_discharges`)**: Model kepulangan klinis ULID lengkap dengan penutupan kunjungan medis atomik, status lifecycle (`draft`, `finalized`, `amended`, `entered_in_error`), rekomendasi aktivitas, anjuran istirahat, dan catatan batasan.
+- **Discharge Readiness Engine (`EvaluateVisitDischargeReadinessAction`)**: Validasi prasyarat teknis/administrasi penutupan kunjungan (pengkajian final, observasi/rujukan tuntas, peringatan obat aktif tanpa auto-discontinue).
+- **Follow-Up Planning (`visit_follow_up_plans`)**: Perencanaan jadwal kontrol ulang berstruktur, penanggung jawab, dan penyelesaian/pembatalan manual berizin dan diaudit.
+- **Activity Restrictions (`activity_restrictions`)**: Penerbitan surat/rekomendasi istirahat, bed rest, dan pembatasan aktivitas berjangka waktu.
+- **Internal Operational Handoff (`clinical_operational_handoffs`)**: Serah terima instruksi perawatan internal ke pengasuh asrama/guru berprinsip *minimum-necessary privacy* dengan pelacakan konfirmasi penerimaan (*acknowledgement*).
+- **Private Discharge Documents (`discharge_documents`)**: Disk penyimpanan privat `storage/app/private/discharges` dengan nama berkas ULID opaque, SHA-256 hash checksum, rate limiting (`throttle:30,1`), dan audit unduhan.
+- **Controller & Policy Suite**: 5 controller dedicated di `App\Http\Controllers\Discharge\*` (0 Route Closures), 9 permission baru, Form Requests, dan Policies.
+- **Test Suite**: 26 feature tests baru (total 111 tests, 408 assertions, 100% passed on MariaDB).
+
 ## [0.12.0] — 2026-08-09 (Phase 3B Hardening & Final Validation)
+
 
 ### Added
 

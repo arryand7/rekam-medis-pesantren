@@ -30,5 +30,11 @@ last_updated: 2026-08-09
 | Return Review | ✓ | ✓ | ✓ | no auto-discharge | ✓ |
 | Referral Document | ✓ | ✓ | ✓ | immutability / path traversal | download audit |
 | MariaDB Concurrency | ✓ | ✓ | ✓ | 4 concurrent tests | ✓ |
+| Discharge Readiness | ✓ | ✓ | ✓ | blockers & warnings | - |
+| Visit Discharge Closure | ✓ | ✓ | ✓ | atomic visit transition | ✓ |
+| Follow-Up Planning | ✓ | ✓ | ✓ | manual completion | ✓ |
+| Activity Restrictions | ✓ | ✓ | ✓ | duration & rules | ✓ |
+| Operational Handoffs | ✓ | ✓ | ✓ | minimum-necessary privacy | ✓ |
+| Private Discharge Doc | ✓ | ✓ | ✓ | immutability / path traversal | download audit |
 | Theme & Dashboard | ✓ | enum | ✓ | - | - |
 | Health Endpoint | ✓ | - | - | - | - |

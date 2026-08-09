@@ -586,6 +586,11 @@ Route::post('/consultations/{id}/decision', function (string $id, Request $reque
 
 // ─── Phase 3B — Referral Module Routes (Controller-based, Policy-enforced) ───────
 
+use App\Http\Controllers\Discharge\ActivityRestrictionController;
+use App\Http\Controllers\Discharge\ClinicalOperationalHandoffController;
+use App\Http\Controllers\Discharge\VisitDischargeController;
+use App\Http\Controllers\Discharge\VisitDischargeDocumentController;
+use App\Http\Controllers\Discharge\VisitFollowUpPlanController;
 use App\Http\Controllers\Referral\ReferralCompanionController;
 use App\Http\Controllers\Referral\ReferralController;
 use App\Http\Controllers\Referral\ReferralDepartureController;
@@ -638,4 +643,35 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/referrals/{referralId}/versions/{versionId}/document/generate', [ReferralDocumentController::class, 'generate'])
         ->name('referrals.document.generate');
+
+    // Phase 3C1 Discharge & Clinical Closure Routes
+    Route::get('/discharges', [VisitDischargeController::class, 'index'])->name('discharges.index');
+    Route::get('/visits/{id}/discharge', [VisitDischargeController::class, 'workspace'])->name('visits.discharge');
+    Route::post('/visits/{id}/discharge', [VisitDischargeController::class, 'store'])->name('visits.discharge.store');
+    Route::get('/discharges/{id}', [VisitDischargeController::class, 'show'])->name('discharges.show');
+    Route::post('/discharges/{id}/finalize', [VisitDischargeController::class, 'finalize'])->name('discharges.finalize');
+    Route::post('/discharges/{id}/amend', [VisitDischargeController::class, 'amend'])->name('discharges.amend');
+
+    // Follow-up Plans
+    Route::get('/follow-up-plans', [VisitFollowUpPlanController::class, 'index'])->name('follow-up-plans.index');
+    Route::post('/discharges/{id}/follow-up-plans', [VisitFollowUpPlanController::class, 'store'])->name('discharges.follow-up-plans.store');
+    Route::post('/follow-up-plans/{id}/complete', [VisitFollowUpPlanController::class, 'complete'])->name('follow-up-plans.complete');
+    Route::post('/follow-up-plans/{id}/cancel', [VisitFollowUpPlanController::class, 'cancel'])->name('follow-up-plans.cancel');
+
+    // Activity Restrictions
+    Route::post('/discharges/{id}/activity-restrictions', [ActivityRestrictionController::class, 'store'])->name('discharges.activity-restrictions.store');
+    Route::post('/activity-restrictions/{id}/cancel', [ActivityRestrictionController::class, 'cancel'])->name('activity-restrictions.cancel');
+
+    // Operational Handoffs
+    Route::get('/operational-handoffs', [ClinicalOperationalHandoffController::class, 'index'])->name('operational-handoffs.index');
+    Route::post('/discharges/{id}/operational-handoffs', [ClinicalOperationalHandoffController::class, 'store'])->name('discharges.operational-handoffs.store');
+    Route::post('/operational-handoffs/{id}/acknowledge', [ClinicalOperationalHandoffController::class, 'acknowledge'])->name('operational-handoffs.acknowledge');
+
+    // Private Discharge Summary Document (download + generate)
+    Route::get('/discharges/{dischargeId}/versions/{versionId}/document', [VisitDischargeDocumentController::class, 'show'])
+        ->name('discharges.document.download')
+        ->middleware('throttle:30,1');
+
+    Route::post('/discharges/{dischargeId}/versions/{versionId}/document/generate', [VisitDischargeDocumentController::class, 'generate'])
+        ->name('discharges.document.generate');
 });

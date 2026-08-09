@@ -121,6 +121,11 @@ class Referral extends Model
         return $this->hasOne(ReferralReturn::class, 'referral_id');
     }
 
+    public function referralReturn(): HasOne
+    {
+        return $this->hasOne(ReferralReturn::class, 'referral_id');
+    }
+
     public function statusEvents(): HasMany
     {
         return $this->hasMany(ReferralStatusEvent::class, 'referral_id')->orderBy('occurred_at');

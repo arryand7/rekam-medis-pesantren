@@ -2,13 +2,62 @@
 id: DOC-DOC-CODE-MAP
 title: "Pemetaan Dokumen ke Kode"
 status: active
-owner: "Tim Pengembang POSKESTREN"
+owner: "Ryand Arifriantoni"
 last_updated: 2026-08-09
 ---
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 3C1 — Visit Discharge, Follow-Up, Return-to-Activity & Operational Handoff Mapping
+
+```text
+DISCHARGE-AND-RETURN.md & VISIT-STATUS-LIFECYCLE.md & ACCESS-CONTROL-MATRIX.md
+  -> database/migrations/2026_08_05_004100_create_visit_discharges_table.php
+  -> database/migrations/2026_08_05_004200_create_visit_discharge_versions_table.php
+  -> database/migrations/2026_08_05_004300_create_visit_follow_up_plans_table.php
+  -> database/migrations/2026_08_05_004400_create_activity_restrictions_table.php
+  -> database/migrations/2026_08_05_004500_create_clinical_operational_handoffs_table.php
+  -> database/migrations/2026_08_05_004600_add_phase_3c1_permissions.php
+  -> app/Models/VisitDischarge.php
+  -> app/Models/VisitDischargeVersion.php
+  -> app/Models/VisitFollowUpPlan.php
+  -> app/Models/ActivityRestriction.php
+  -> app/Models/ClinicalOperationalHandoff.php
+  -> app/Actions/Discharge/EvaluateVisitDischargeReadinessAction.php
+  -> app/Services/VisitDischargeService.php
+  -> app/Services/VisitDischargeDocumentService.php
+  -> app/Policies/VisitDischargePolicy.php
+  -> app/Policies/VisitFollowUpPlanPolicy.php
+  -> app/Policies/ActivityRestrictionPolicy.php
+  -> app/Policies/ClinicalOperationalHandoffPolicy.php
+  -> app/Http/Controllers/Discharge/VisitDischargeController.php
+  -> app/Http/Controllers/Discharge/VisitFollowUpPlanController.php
+  -> app/Http/Controllers/Discharge/ActivityRestrictionController.php
+  -> app/Http/Controllers/Discharge/ClinicalOperationalHandoffController.php
+  -> app/Http/Controllers/Discharge/VisitDischargeDocumentController.php
+  -> app/Http/Requests/Discharge/StoreVisitDischargeRequest.php
+  -> app/Http/Requests/Discharge/FinalizeVisitDischargeRequest.php
+  -> app/Http/Requests/Discharge/AmendVisitDischargeRequest.php
+  -> app/Http/Requests/Discharge/StoreFollowUpPlanRequest.php
+  -> app/Http/Requests/Discharge/StoreActivityRestrictionRequest.php
+  -> app/Http/Requests/Discharge/StoreOperationalHandoffRequest.php
+  -> app/Http/Requests/Discharge/AcknowledgeOperationalHandoffRequest.php
+  -> resources/views/pages/discharges/workspace.blade.php
+  -> resources/views/pages/discharges/index.blade.php
+  -> resources/views/pages/discharges/show.blade.php
+  -> resources/views/pages/discharges/handoffs.blade.php
+  -> resources/views/pages/discharges/follow-ups.blade.php
+  -> tests/Feature/Discharge/VisitDischargeReadinessTest.php
+  -> tests/Feature/Discharge/VisitDischargeCreationAndFinalizationTest.php
+  -> tests/Feature/Discharge/VisitFollowUpPlanTest.php
+  -> tests/Feature/Discharge/ActivityRestrictionTest.php
+  -> tests/Feature/Discharge/ClinicalOperationalHandoffTest.php
+  -> tests/Feature/Discharge/VisitDischargeDocumentTest.php
+  -> tests/Feature/Discharge/VisitDischargeAuthorizationTest.php
+```
+
 ## Phase 3B — Hospital Referral Execution, Transportation, Handover & Hardening Mapping
+
 
 ```text
 HOSPITAL-REFERRAL.md & STATE-MACHINES.md & ACCESS-CONTROL-MATRIX.md

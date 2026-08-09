@@ -2,7 +2,7 @@
 id: DOC-GRAPHIFY-INSTALL
 title: "Instalasi Graphify pada Proyek"
 status: active
-owner: "Tim Pengembang POSKESTREN"
+owner: "Ryand Arifriantoni"
 last_updated: 2026-08-05
 ---
 

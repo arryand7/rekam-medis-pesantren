@@ -10,30 +10,25 @@ last_updated: 2026-08-09
 
 ## Fase saat ini
 
-**Phase 3B Closed & Validated — Actual Referral, Transport, Clinical Handover, Return, and MariaDB Concurrency Hardening** (Status: `PRODUCTION-READY-FOUNDATION`)
+**Phase 3C1 Closed & Validated — Visit Discharge, Follow-up, Return-to-Activity, and Operational Handoff** (Status: `PRODUCTION-READY-FOUNDATION`)
 
-## Perubahan & Fitur Selesai di Phase 3B
+## Perubahan & Fitur Selesai di Phase 3C1
 
-- [x] **Agregat Rujukan Eksternal (`referrals`)**:
-  - Model rujukan ULID lengkap dengan status machine (`prepared` -> `approved` -> `ready_to_depart` -> `departed` -> `arrived` -> `accepted` -> `under_external_care` -> `return_planned` -> `returned` -> `completed`).
-- [x] **Snapshot Dokumen & Private Storage (`referral_versions`, `referral_documents`)**:
-  - Snapshot rekam medis immutable dengan SHA-256 checksum.
-  - Berkas private tersimpan di disk `referral_documents` (`storage/app/private/referrals`) dengan nama file ULID opaque tanpa data identitas pasien.
-  - Proteksi path traversal dan audit log pada setiap unduhan berkas.
-- [x] **Logistik Transportasi & Pendamping (`referral_transports`, `referral_companions`)**:
-  - Manajemen moda transportasi (ambulans mitra/sekolah/kendaraan pribadi) dan pendampingan santri.
-- [x] **Serah Terima Klinis & Status Destinasi (`referral_handovers`, `referral_status_events`)**:
-  - Serah terima klinis dengan idempotency key.
-  - Pelacakan status fasilitas penerima secara granular (handoff ≠ acceptance).
-- [x] **Kepulangan & Tinjauan Klinis Lokal (`referral_returns`, `referral_return_reviews`)**:
-  - Pencatatan kepulangan dengan one-return guard dan timestamp server.
-  - Tinjauan klinis kepulangan lokal poskestren dengan rekonsiliasi obat (tanpa auto-discharge).
-- [x] **Controller & Policy Refactoring**:
-  - 13 Route rujukan direfaktor ke 9 Controller method dedicated di `App\Http\Controllers\Referral` (0 Route Closures).
-  - Otorisasi server-side `$this->authorize()` (Policy-enforced) di setiap endpoint.
-  - Form Requests untuk seluruh input mutasi data rujukan.
-- [x] **MariaDB Concurrency Tests**:
-  - 4 concurrency test invariant dibuktikan pada MariaDB 10.4.28 nyata (one-active-referral lock, referral number uniqueness, handoff idempotency, one-return guard).
+- [x] **Agregat Kepulangan & Penutupan Kunjungan (`visit_discharges`, `visit_discharge_versions`)**:
+  - Model kepulangan klinis ULID lengkap dengan versioning snapshot immutable, status lifecycle (`draft` -> `finalized` -> `amended` / `entered_in_error`), dan penutupan kunjungan atomik.
+- [x] **Discharge Readiness Engine (`EvaluateVisitDischargeReadinessAction`)**:
+  - Evaluasi prasyarat teknis/administrasi penutupan kunjungan (pengkajian final, observasi/rujukan tuntas, peringatan obat aktif tanpa auto-discontinue).
+- [x] **Rencana Tindak Lanjut / Follow-Up (`visit_follow_up_plans`)**:
+  - Perencanaan kontrol ulang, peninjauan obat, evaluasi luka, dan penyelesaian/pembatalan manual berizin dan diaudit.
+- [x] **Rekomendasi Aktivitas & Restriksi (`activity_restrictions`)**:
+  - Penerbitan surat/rekomendasi istirahat, bed rest, dan pembatasan aktivitas fisik berjangka waktu.
+- [x] **Serah Terima Operasional Internal (`clinical_operational_handoffs`)**:
+  - Handoff instruksi perawatan ke pengasuh asrama/guru berprinsip *minimum-necessary privacy* dengan pelacakan konfirmasi penerimaan (*acknowledgement*).
+- [x] **Dokumen Ringkasan Kepulangan Privat (`discharge_documents`)**:
+  - Penyimpanan berkas privat di `storage/app/private/discharges` dengan SHA-256 integrity hash, nama file ULID opaque, dan unduhan berizin serta diaudit.
+- [x] **Controller & Otorisasi Lengkap**:
+  - 11 route kepulangan ditangani 5 controller terdedikasi di `App\Http\Controllers\Discharge\*` (0 Route Closures).
+  - 9 granular permission dan Policy server-side.
 
 ## Kemajuan Phase
 
@@ -46,7 +41,9 @@ last_updated: 2026-08-09
 - [x] **Phase 2D2 — Medication Orders, Medication Administration, and Atomic Stock Issue**: Selesai.
 - [x] **Phase 3A — External Clinical Consultation and Healthcare Partner Integration**: Selesai.
 - [x] **Phase 3B — Actual Referral Execution, Transportation, Clinical Handover & Hardening**: Selesai & Tervalidasi di MariaDB.
-- [ ] **Phase 3C / Phase 4 — Final Discharge / Auth / Telemedicine**: Menunggu instruksi pengguna.
+- [x] **Phase 3C1 — Visit Discharge, Follow-up, Return-to-Activity, and Operational Handoff**: Selesai & Tervalidasi.
+- [ ] **Phase 3C2 / Phase 4 — Final Discharge Hardening / Auth / Telemedicine**: Menunggu instruksi pengguna.
+
 
 ## Last verified
 

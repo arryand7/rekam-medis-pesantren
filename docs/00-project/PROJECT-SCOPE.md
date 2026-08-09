@@ -2,7 +2,7 @@
 id: DOC-PROJECT-SCOPE
 title: "Ruang Lingkup Proyek"
 status: draft
-owner: "Tim Pengembang POSKESTREN"
+owner: "Ryand Arifriantoni"
 last_updated: 2026-08-05
 ---
 

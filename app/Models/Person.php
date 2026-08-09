@@ -47,6 +47,11 @@ class Person extends Model
         return $this->hasOne(Patient::class, 'person_id');
     }
 
+    public function getFullNameAttribute(): string
+    {
+        return $this->name ?? '';
+    }
+
     /**
      * Check if person is a human eligible to become a patient.
      * Rule: All humans are eligible (santri, guru, staf, pengasuh, health workers, admins).

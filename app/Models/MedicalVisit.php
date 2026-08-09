@@ -8,8 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
+/**
+ * @property string $id
+ * @property string $visit_number
+ * @property string $patient_id
+ * @property string $status
+ * @property Carbon|null $arrived_at
+ * @property string $chief_complaint
+ * @property string|null $reporting_type
+ * @property string|null $reporting_name
+ * @property string|null $origin_location
+ * @property string|null $receiving_officer_id
+ * @property string|null $assigned_officer_id
+ * @property string|null $cancellation_reason
+ * @property string $created_by_id
+ * @property int $lock_version
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ */
 class MedicalVisit extends Model
 {
     use HasFactory, HasUlids;
@@ -108,9 +127,32 @@ class MedicalVisit extends Model
         return $this->hasMany(ClinicalConsultation::class, 'medical_visit_id');
     }
 
+    public function discharge(): HasOne
+    {
+        return $this->hasOne(VisitDischarge::class, 'medical_visit_id');
+    }
+
+    public function discharges(): HasMany
+    {
+        return $this->hasMany(VisitDischarge::class, 'medical_visit_id');
+    }
+
+    public function operationalHandoffs(): HasMany
+    {
+        return $this->hasMany(ClinicalOperationalHandoff::class, 'medical_visit_id');
+    }
+
     public function isActive(): bool
     {
-        return in_array($this->status, ['registered', 'waiting_assessment', 'under_assessment', 'under_observation', 'external_consultation_pending'], true);
+        return in_array($this->status, [
+            'registered',
+            'waiting_assessment',
+            'under_assessment',
+            'under_observation',
+            'external_consultation_pending',
+            'referral_prepared',
+            'discharge_prepared',
+        ], true);
     }
 
     /**
