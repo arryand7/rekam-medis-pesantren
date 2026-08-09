@@ -8,16 +8,11 @@ class GateSyncPolicy
 {
     public function view(User $user): bool
     {
-        return $user->hasPermission('view-gate-sync') || $user->hasPermission('manage-gate-sync');
+        return $user->hasPermission('view-gate-sync');
     }
 
-    public function dryRun(User $user): bool
+    public function apply(User $user): bool
     {
-        return $user->hasPermission('manage-gate-sync');
-    }
-
-    public function resolveConflict(User $user): bool
-    {
-        return $user->hasPermission('resolve-identity-conflicts') || $user->hasPermission('manage-gate-sync');
+        return $user->hasPermission('execute-gate-sync-apply');
     }
 }

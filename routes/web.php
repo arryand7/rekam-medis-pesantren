@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\GateOidcAuthController;
+use App\Http\Controllers\Gate\GateReconciliationController;
+use App\Http\Controllers\Gate\GateSyncController;
 use App\Http\Controllers\HealthController;
 use App\Models\AuditLog;
 use App\Models\ClinicalConsultation;
@@ -35,10 +38,11 @@ Route::get('/', function () {
 
 Route::get('/health', HealthController::class)->name('health');
 
-// Authentication stub — to be implemented in Phase 4 (Filament/Breeze/custom auth)
-// Required for auth middleware redirect target
-Route::get('/login', fn () => response('Halaman login belum diimplementasikan.', 200))
-    ->name('login');
+// Gate SSO Authentication Routes
+Route::get('/login', [GateOidcAuthController::class, 'login'])->name('login');
+Route::get('/auth/gate/callback', [GateOidcAuthController::class, 'callback'])->name('auth.gate.callback');
+Route::get('/auth/gate/access-denied', [GateOidcAuthController::class, 'accessDenied'])->name('auth.gate.access_denied');
+Route::post('/logout', [GateOidcAuthController::class, 'logout'])->name('logout');
 
 // Phase 1 Management Shell Routes
 
@@ -704,4 +708,16 @@ Route::middleware('auth')->group(function () {
     // Phase 3C2 Health Reports Foundation
     Route::get('/reports', [HealthReportController::class, 'index'])->name('reports.index');
     Route::get('/reports/view', [HealthReportController::class, 'show'])->name('reports.show');
+
+    // Phase 4A Gate User Synchronization & Reconciliation
+    Route::prefix('gate')->name('gate.')->group(function () {
+        Route::get('/sync', [GateSyncController::class, 'index'])->name('sync.index');
+        Route::get('/sync/dry-run', [GateSyncController::class, 'dryRun'])->name('sync.dry_run');
+        Route::post('/sync/apply', [GateSyncController::class, 'apply'])->name('sync.apply');
+        Route::get('/sync/runs/{run}', [GateSyncController::class, 'showRun'])->name('sync.show');
+
+        Route::get('/reconciliation', [GateReconciliationController::class, 'index'])->name('reconciliation.index');
+        Route::post('/reconciliation/{mapping}/approve', [GateReconciliationController::class, 'approveMapping'])->name('reconciliation.approve');
+        Route::post('/reconciliation/{mapping}/reject', [GateReconciliationController::class, 'rejectMapping'])->name('reconciliation.reject');
+    });
 });

@@ -3,8 +3,12 @@
 namespace App\Providers;
 
 use App\Contracts\GateClientContract;
+use App\Contracts\GateOidcClientContract;
 use App\Contracts\Integration\AttendanceIntegrationContract;
 use App\Services\Gate\FakeGateClientService;
+use App\Services\Gate\FakeGateOidcClient;
+use App\Services\Gate\HttpGateClient;
+use App\Services\Gate\HttpGateOidcClient;
 use App\Services\Integration\FakeAttendanceIntegration;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -16,7 +20,24 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(GateClientContract::class, FakeGateClientService::class);
+        $this->app->bind(
+            GateOidcClientContract::class,
+            function () {
+                return config('gate.driver') === 'http'
+                    ? new HttpGateOidcClient
+                    : new FakeGateOidcClient;
+            }
+        );
+
+        $this->app->bind(
+            GateClientContract::class,
+            function () {
+                return config('gate.driver') === 'http'
+                    ? new HttpGateClient
+                    : new FakeGateClientService;
+            }
+        );
+
         $this->app->bind(
             AttendanceIntegrationContract::class,
             FakeAttendanceIntegration::class
@@ -33,5 +54,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('view-operational-dashboard', fn ($user) => $user->hasPermission('view-operational-dashboard'));
         Gate::define('view-health-reports', fn ($user) => $user->hasPermission('view-health-reports'));
         Gate::define('export-health-reports', fn ($user) => $user->hasPermission('export-health-reports'));
+        Gate::define('view-gate-sync', fn ($user) => $user->hasPermission('view-gate-sync'));
+        Gate::define('execute-gate-sync-apply', fn ($user) => $user->hasPermission('execute-gate-sync-apply'));
+        Gate::define('manage-identity-mappings', fn ($user) => $user->hasPermission('manage-identity-mappings'));
+        Gate::define('view-gate-reconciliation', fn ($user) => $user->hasPermission('view-gate-reconciliation'));
     }
 }
