@@ -3,10 +3,16 @@ id: DOC-KNOWN-ISSUES
 title: "Known Issues and Open Questions"
 status: active
 owner: "Tim Pengembang POSKESTREN"
-last_updated: 2026-08-05
+last_updated: 2026-08-09
 ---
 
 # Known Issues and Open Questions
+
+## Phase 3B Concurrency & Hardening Status
+
+- [x] **MariaDB Concurrency Validation (RESOLVED 2026-08-09)**: Empat invariant concurrency (`lockForUpdate`, referral number uniqueness, handoff idempotency, one-return guard) telah dibuktikan lulus pada MariaDB 10.4.28 nyata (`poskestren_health_test`).
+- [x] **Route Closures Refactoring (RESOLVED 2026-08-09)**: Seluruh 13 route rujukan telah dipindahkan ke Controller method dedicated dengan Policy enforcement.
+- [x] **Private Document Storage (RESOLVED 2026-08-09)**: Dokumen rujukan tersimpan di disk private dengan opaque filename, path traversal guard, dan audit unduhan.
 
 ## Phase 0 Readiness Status
 

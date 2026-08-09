@@ -47,6 +47,23 @@ return [
             'report' => false,
         ],
 
+        // Private medical referral documents — never accessible via public URL
+        // Stored outside public/ directory, served only via authorized controller
+        'referral_documents' => [
+            'driver' => 'local',
+            'root' => storage_path('app/private/referrals'),
+            'visibility' => 'private',
+            'throw' => true,
+        ],
+
+        // Private external documents received from referral destination
+        'referral_external_documents' => [
+            'driver' => 'local',
+            'root' => storage_path('app/private/referral-external'),
+            'visibility' => 'private',
+            'throw' => true,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

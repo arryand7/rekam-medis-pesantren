@@ -23,8 +23,9 @@ return new class extends Migration
             $table->text('redaction_notes')->nullable();
             $table->timestamps();
 
-            $table->unique(['clinical_consultation_id', 'version_number']);
+            $table->unique(['clinical_consultation_id', 'version_number'], 'consult_version_unique');
         });
+
     }
 
     /**

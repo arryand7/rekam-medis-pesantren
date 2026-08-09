@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('clinical_consultation_transmissions', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->foreignUlid('clinical_consultation_id')->constrained('clinical_consultations')->onDelete('cascade');
-            $table->foreignUlid('clinical_consultation_version_id')->constrained('clinical_consultation_versions')->onDelete('cascade');
-            $table->foreignUlid('healthcare_partner_id')->constrained('healthcare_partners')->onDelete('restrict');
+            $table->foreignUlid('clinical_consultation_id')->constrained('clinical_consultations', 'id', 'cct_consultation_id_foreign')->onDelete('cascade');
+            $table->foreignUlid('clinical_consultation_version_id')->constrained('clinical_consultation_versions', 'id', 'cct_version_id_foreign')->onDelete('cascade');
+            $table->foreignUlid('healthcare_partner_id')->constrained('healthcare_partners', 'id', 'cct_partner_id_foreign')->onDelete('restrict');
             $table->foreignUlid('recipient_contact_id')->nullable()->constrained('healthcare_partner_contacts')->onDelete('set null');
             $table->string('channel')->default('fake_transport');
             $table->string('status')->default('sent')->index(); // queued, sending, sent, acknowledged, failed, cancelled

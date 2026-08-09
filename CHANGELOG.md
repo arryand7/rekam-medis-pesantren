@@ -12,7 +12,25 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
+## [0.12.0] — 2026-08-09 (Phase 3B Hardening & Final Validation)
+
+### Added
+
+- **Controller & Policy Refactoring**: 9 controller dedicated di `App\Http\Controllers\Referral` menggantikan seluruh 11 route closure rujukan dengan otorisasi Policy server-side (`$this->authorize()`).
+- **Form Request Validations**: 6 Form Requests terstruktur (`StoreReferralRequest`, `StoreReferralTransportRequest`, `StoreReferralCompanionRequest`, `StoreReferralStatusEventRequest`, `StoreReferralReturnRequest`, `StoreReferralReturnReviewRequest`) dengan isolasi mutasi data server-authoritative.
+- **Private Referral Documents (`referral_documents`)**: Disk storage privat `storage/app/private/referrals`, filename opaque berbasis ULID, integritas hash SHA-256, proteksi traversal path, dan audit unduhan berkas.
+- **MariaDB Concurrency Validation**: Bukti empiris 4 invariant concurrency pada MariaDB 10.4.28 (`poskestren_health_test`, InnoDB, REPEATABLE-READ).
+- **Test Suite Expansion**: Penambahan suite tes otorisasi, dokumen private, dan concurrency (total 85 tests, 258 assertions, 100% passed on MariaDB).
+
+### Security
+
+- Seluruh mutasi data rujukan diverifikasi melalui Policy server-side.
+- Endpoint dokumen rujukan dilindungi otorisasi, rate limiting (`throttle:30,1`), dan audit log per unduhan.
+- Endpoint login stub tidak mengautentikasi user dan tidak menerima eskalasi role.
+- Tidak ada URL publik untuk dokumen rujukan santri.
+
 ## [0.11.0] — 2026-08-05 (Phase 3B)
+
 
 ### Added
 

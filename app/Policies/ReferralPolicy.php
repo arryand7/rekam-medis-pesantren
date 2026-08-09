@@ -71,4 +71,34 @@ class ReferralPolicy
     {
         return $user->hasPermission('review-return-from-referral');
     }
+
+    /** Alias used by ReferralReturnReviewController. */
+    public function recordReturnReview(User $user, Referral $referral): bool
+    {
+        return $user->hasPermission('review-return-from-referral');
+    }
+
+    /** Alias used by ReferralStatusController. */
+    public function recordStatusEvent(User $user, Referral $referral): bool
+    {
+        return $user->hasPermission('record-destination-status');
+    }
+
+    /**
+     * Download an existing private referral document.
+     * Separate from prepareDocument so download can be audited independently.
+     */
+    public function downloadDocument(User $user, Referral $referral): bool
+    {
+        return $user->hasPermission('download-referral-document');
+    }
+
+    /**
+     * Generate/finalize a referral document snapshot.
+     * Only users with document preparation permission can trigger generation.
+     */
+    public function finalizeDocument(User $user, Referral $referral): bool
+    {
+        return $user->hasPermission('prepare-referral-documents');
+    }
 }

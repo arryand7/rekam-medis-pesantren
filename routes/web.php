@@ -25,7 +25,6 @@ use App\Services\MedicalVisitService;
 use App\Services\MedicationService;
 use App\Services\ObservationService;
 use App\Services\PharmacyService;
-use App\Services\ReferralService;
 use App\Services\VitalSignService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +34,11 @@ Route::get('/', function () {
 })->name('dashboard');
 
 Route::get('/health', HealthController::class)->name('health');
+
+// Authentication stub — to be implemented in Phase 4 (Filament/Breeze/custom auth)
+// Required for auth middleware redirect target
+Route::get('/login', fn () => response('Halaman login belum diimplementasikan.', 200))
+    ->name('login');
 
 // Phase 1 Management Shell Routes
 
@@ -580,198 +584,58 @@ Route::post('/consultations/{id}/decision', function (string $id, Request $reque
     }
 })->name('consultations.decision.store');
 
-// ─── Phase 3B — Referral Module Routes ────────────────────────────────────────
+// ─── Phase 3B — Referral Module Routes (Controller-based, Policy-enforced) ───────
 
-Route::get('/referrals', function (Request $request) {
-    $referrals = Referral::with(['medicalVisit.patient.person', 'partner'])
-        ->latest()
-        ->paginate(20);
+use App\Http\Controllers\Referral\ReferralCompanionController;
+use App\Http\Controllers\Referral\ReferralController;
+use App\Http\Controllers\Referral\ReferralDepartureController;
+use App\Http\Controllers\Referral\ReferralDocumentController;
+use App\Http\Controllers\Referral\ReferralHandoverController;
+use App\Http\Controllers\Referral\ReferralReturnController;
+use App\Http\Controllers\Referral\ReferralReturnReviewController;
+use App\Http\Controllers\Referral\ReferralStatusController;
+use App\Http\Controllers\Referral\ReferralTransportController;
 
-    return view('pages.referrals.index', compact('referrals'));
-})->name('referrals.index');
+Route::middleware('auth')->group(function () {
+    // Referral main CRUD
+    Route::get('/referrals', [ReferralController::class, 'index'])->name('referrals.index');
+    Route::get('/referrals/{id}', [ReferralController::class, 'show'])->name('referrals.show');
+    Route::get('/visits/{id}/referrals/create', [ReferralController::class, 'create'])->name('visits.referrals.create');
+    Route::post('/visits/{id}/referrals', [ReferralController::class, 'store'])->name('visits.referrals.store');
 
-Route::get('/visits/{id}/referrals/create', function (string $id) {
-    $visit = MedicalVisit::with(['patient.person', 'latestAssessment'])->findOrFail($id);
-    $partners = HealthcarePartner::where('is_active', true)
-        ->where('referral_enabled', true)
-        ->orderBy('name')
-        ->get();
+    // Transport
+    Route::post('/referrals/{id}/transport', [ReferralTransportController::class, 'store'])
+        ->name('referrals.transport.store');
 
-    return view('pages.referrals.create', compact('visit', 'partners'));
-})->name('visits.referrals.create');
+    // Companion
+    Route::post('/referrals/{id}/companion', [ReferralCompanionController::class, 'store'])
+        ->name('referrals.companion.store');
 
-Route::post('/visits/{id}/referrals', function (string $id, Request $request, ReferralService $referralService) {
-    $visit = MedicalVisit::findOrFail($id);
+    // Departure (server timestamp, no client time accepted)
+    Route::post('/referrals/{id}/depart', [ReferralDepartureController::class, 'store'])
+        ->name('referrals.depart.store');
 
-    $validated = $request->validate([
-        'healthcare_partner_id' => 'required|string',
-        'urgency' => 'required|in:routine,urgent,emergency',
-        'reason' => 'required|string|min:5',
-        'clinical_summary' => 'required|string|min:10',
-        'requested_service_or_department' => 'nullable|string',
-        'recipient_contact_id' => 'nullable|string',
-    ]);
+    // Handover (idempotent)
+    Route::post('/referrals/{id}/handover', [ReferralHandoverController::class, 'store'])
+        ->name('referrals.handover.store');
 
-    try {
-        $referral = $referralService->createReferral($visit, $validated, $request->user());
+    // Destination status events (handoff ≠ acceptance)
+    Route::post('/referrals/{id}/status-event', [ReferralStatusController::class, 'store'])
+        ->name('referrals.status-event.store');
 
-        return redirect()->route('referrals.show', $referral->id)->with('success', "Rujukan {$referral->referral_number} berhasil dibuat.");
-    } catch (Exception $e) {
-        return redirect()->back()->withInput()->with('error', $e->getMessage());
-    }
-})->name('visits.referrals.store');
+    // Return from referral
+    Route::post('/referrals/{id}/return', [ReferralReturnController::class, 'store'])
+        ->name('referrals.return.store');
 
-Route::get('/referrals/{id}', function (string $id) {
-    $referral = Referral::with([
-        'medicalVisit.patient.person',
-        'clinicalAssessment',
-        'partner',
-        'recipientContact',
-        'versions',
-        'transports',
-        'companions',
-        'handovers.fromUser',
-        'statusEvents',
-        'returnRecord.reviews',
-    ])->findOrFail($id);
+    // Return review (no auto-discharge)
+    Route::post('/referral-returns/{id}/review', [ReferralReturnReviewController::class, 'store'])
+        ->name('referrals.return-review.store');
 
-    return view('pages.referrals.show', compact('referral'));
-})->name('referrals.show');
+    // Private referral document (download + generate)
+    Route::get('/referrals/{referralId}/versions/{versionId}/document', [ReferralDocumentController::class, 'show'])
+        ->name('referrals.document.download')
+        ->middleware('throttle:30,1'); // rate limiting: 30 downloads/minute
 
-Route::post('/referrals/{id}/transport', function (string $id, Request $request, ReferralService $referralService) {
-    $referral = Referral::findOrFail($id);
-
-    $validated = $request->validate([
-        'transport_type' => 'required|in:school_vehicle,ambulance_partner,external_ambulance,private_vehicle,other',
-        'vehicle_identifier' => 'nullable|string',
-        'driver_name' => 'nullable|string',
-        'driver_contact' => 'nullable|string',
-        'notes' => 'nullable|string',
-    ]);
-
-    try {
-        $referralService->arrangeTransport($referral, $validated, $request->user());
-
-        return redirect()->route('referrals.show', $referral->id)->with('success', 'Transportasi rujukan berhasil diatur.');
-    } catch (Exception $e) {
-        return redirect()->back()->withInput()->with('error', $e->getMessage());
-    }
-})->name('referrals.transport.store');
-
-Route::post('/referrals/{id}/companion', function (string $id, Request $request, ReferralService $referralService) {
-    $referral = Referral::findOrFail($id);
-
-    $validated = $request->validate([
-        'name_snapshot' => 'required|string',
-        'role_relationship' => 'required|string',
-        'phone' => 'nullable|string',
-        'is_primary' => 'boolean',
-    ]);
-
-    try {
-        $referralService->assignCompanion($referral, $validated, $request->user());
-
-        return redirect()->route('referrals.show', $referral->id)->with('success', 'Pendamping rujukan berhasil ditugaskan.');
-    } catch (Exception $e) {
-        return redirect()->back()->withInput()->with('error', $e->getMessage());
-    }
-})->name('referrals.companion.store');
-
-Route::post('/referrals/{id}/depart', function (string $id, Request $request, ReferralService $referralService) {
-    $referral = Referral::findOrFail($id);
-
-    $validated = $request->validate([
-        'emergency_override_reason' => 'nullable|string',
-    ]);
-
-    try {
-        $referralService->recordDeparture($referral, $validated, $request->user());
-
-        return redirect()->route('referrals.show', $referral->id)->with('success', 'Keberangkatan rujukan berhasil dicatat.');
-    } catch (Exception $e) {
-        return redirect()->back()->with('error', $e->getMessage());
-    }
-})->name('referrals.depart.store');
-
-Route::post('/referrals/{id}/handover', function (string $id, Request $request, ReferralService $referralService) {
-    $referral = Referral::findOrFail($id);
-
-    $validated = $request->validate([
-        'notes' => 'nullable|string',
-    ]);
-
-    try {
-        $referralService->recordHandover($referral, $validated, $request->user());
-
-        return redirect()->route('referrals.show', $referral->id)->with('success', 'Serah terima klinis berhasil dicatat.');
-    } catch (Exception $e) {
-        return redirect()->back()->with('error', $e->getMessage());
-    }
-})->name('referrals.handover.store');
-
-Route::post('/referrals/{id}/status-event', function (string $id, Request $request, ReferralService $referralService) {
-    $referral = Referral::findOrFail($id);
-
-    $validated = $request->validate([
-        'event_type' => 'required|in:arrived,accepted,declined,under_external_care,return_planned,returned',
-        'occurred_at' => 'nullable|date',
-        'contact_attribution' => 'nullable|string',
-        'notes' => 'nullable|string',
-    ]);
-
-    try {
-        $referralService->recordStatusEvent($referral, $validated, $request->user());
-
-        return redirect()->route('referrals.show', $referral->id)->with('success', 'Status destinasi rujukan berhasil diperbarui.');
-    } catch (Exception $e) {
-        return redirect()->back()->withInput()->with('error', $e->getMessage());
-    }
-})->name('referrals.status-event.store');
-
-Route::post('/referrals/{id}/return', function (string $id, Request $request, ReferralService $referralService) {
-    $referral = Referral::findOrFail($id);
-
-    $validated = $request->validate([
-        'external_outcome_summary' => 'required|string|min:5',
-        'external_diagnosis_text' => 'nullable|string',
-        'external_procedures_text' => 'nullable|string',
-        'external_medication_instructions' => 'nullable|string',
-        'restrictions_text' => 'nullable|string',
-        'follow_up_date' => 'nullable|date',
-        'follow_up_facility' => 'nullable|string',
-        'return_transport_notes' => 'nullable|string',
-        'accompanied_by_notes' => 'nullable|string',
-        'documents_received_notes' => 'nullable|string',
-    ]);
-
-    try {
-        $referralService->recordReturn($referral, $validated, $request->user());
-
-        return redirect()->route('referrals.show', $referral->id)->with('success', 'Kepulangan dari rujukan berhasil dicatat.');
-    } catch (Exception $e) {
-        return redirect()->back()->withInput()->with('error', $e->getMessage());
-    }
-})->name('referrals.return.store');
-
-Route::post('/referrals/{id}/return-review', function (string $id, Request $request, ReferralService $referralService) {
-    $referral = Referral::with('returnRecord')->findOrFail($id);
-    $referralReturn = $referral->returnRecord;
-
-    if (! $referralReturn) {
-        return redirect()->back()->with('error', 'Data kepulangan dari rujukan belum tersedia.');
-    }
-
-    $validated = $request->validate([
-        'review_summary' => 'required|string|min:5',
-        'decision_type' => 'required|in:continue_poskestren_care,continue_observation,follow_up_external,rest_recommended,return_to_activity_recommended,new_referral_recommended,emergency_referral_required,other',
-        'medication_reconciliation_note' => 'nullable|string',
-    ]);
-
-    try {
-        $referralService->recordReturnReview($referralReturn, $validated, $request->user());
-
-        return redirect()->route('referrals.show', $referral->id)->with('success', 'Tinjauan klinis lokal kepulangan berhasil difinalisasi.');
-    } catch (Exception $e) {
-        return redirect()->back()->withInput()->with('error', $e->getMessage());
-    }
-})->name('referrals.return-review.store');
+    Route::post('/referrals/{referralId}/versions/{versionId}/document/generate', [ReferralDocumentController::class, 'generate'])
+        ->name('referrals.document.generate');
+});

@@ -3,12 +3,64 @@ id: DOC-DOC-CODE-MAP
 title: "Pemetaan Dokumen ke Kode"
 status: active
 owner: "Tim Pengembang POSKESTREN"
-last_updated: 2026-08-05
+last_updated: 2026-08-09
 ---
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 3B — Hospital Referral Execution, Transportation, Handover & Hardening Mapping
+
+```text
+HOSPITAL-REFERRAL.md & STATE-MACHINES.md & ACCESS-CONTROL-MATRIX.md
+  -> database/migrations/2026_08_05_003300_create_referrals_table.php
+  -> database/migrations/2026_08_05_003400_create_referral_versions_table.php
+  -> database/migrations/2026_08_05_003500_create_referral_transports_table.php
+  -> database/migrations/2026_08_05_003600_create_referral_companions_table.php
+  -> database/migrations/2026_08_05_003700_create_referral_handovers_table.php
+  -> database/migrations/2026_08_05_003800_create_referral_returns_table.php
+  -> database/migrations/2026_08_05_003900_create_referral_return_reviews_table.php
+  -> database/migrations/2026_08_05_004000_create_referral_status_events_table.php
+  -> app/Models/Referral.php
+  -> app/Models/ReferralVersion.php
+  -> app/Models/ReferralTransport.php
+  -> app/Models/ReferralCompanion.php
+  -> app/Models/ReferralHandover.php
+  -> app/Models/ReferralReturn.php
+  -> app/Models/ReferralReturnReview.php
+  -> app/Models/ReferralStatusEvent.php
+  -> app/Services/ReferralService.php
+  -> app/Services/ReferralDocumentService.php
+  -> app/Policies/ReferralPolicy.php
+  -> app/Http/Controllers/Referral/ReferralController.php
+  -> app/Http/Controllers/Referral/ReferralTransportController.php
+  -> app/Http/Controllers/Referral/ReferralCompanionController.php
+  -> app/Http/Controllers/Referral/ReferralDepartureController.php
+  -> app/Http/Controllers/Referral/ReferralHandoverController.php
+  -> app/Http/Controllers/Referral/ReferralStatusController.php
+  -> app/Http/Controllers/Referral/ReferralReturnController.php
+  -> app/Http/Controllers/Referral/ReferralReturnReviewController.php
+  -> app/Http/Controllers/Referral/ReferralDocumentController.php
+  -> app/Http/Requests/Referral/StoreReferralRequest.php
+  -> app/Http/Requests/Referral/StoreReferralTransportRequest.php
+  -> app/Http/Requests/Referral/StoreReferralCompanionRequest.php
+  -> app/Http/Requests/Referral/StoreReferralStatusEventRequest.php
+  -> app/Http/Requests/Referral/StoreReferralReturnRequest.php
+  -> app/Http/Requests/Referral/StoreReferralReturnReviewRequest.php
+  -> resources/views/pages/referrals/index.blade.php
+  -> resources/views/pages/referrals/create.blade.php
+  -> resources/views/pages/referrals/show.blade.php
+  -> tests/Feature/Referral/ReferralCreationTest.php
+  -> tests/Feature/Referral/ReferralLogisticsTest.php
+  -> tests/Feature/Referral/ReferralHandoffTest.php
+  -> tests/Feature/Referral/ReferralReturnTest.php
+  -> tests/Feature/Referral/ReferralAuthorizationTest.php
+  -> tests/Feature/Referral/ReferralDocumentTest.php
+  -> tests/Feature/Referral/ReferralMariaDBConcurrencyTest.php
+  -> tests/scripts/concurrency-referral-test.sh
+```
+
 ## Phase 3A — External Clinical Consultation & Healthcare Partner Integration Mapping
+
 
 ```text
 REMOTE-CLINICAL-CONSULTATION.md & INTEGRATION-CONTRACTS.md & ADR-007
