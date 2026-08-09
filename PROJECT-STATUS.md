@@ -2,7 +2,7 @@
 id: DOC-PROJECT-STATUS
 title: "Status Proyek"
 status: active
-owner: "Tim Pengembang POSKESTREN"
+owner: "Ryand Arifriantoni"
 last_updated: 2026-08-09
 ---
 
@@ -10,24 +10,24 @@ last_updated: 2026-08-09
 
 ## Fase saat ini
 
-**Phase 3C2 Closed & Validated — Operational Outbox, Role-Aware Dashboards & Health Reports Foundation** (Status: `PRODUCTION-READY-FOUNDATION`)
+**Phase 4A Closed & Validated — Real Gate SSO, Secure User Sync Apply, Application Entitlement Enforcement, and Identity Production Hardening** (Status: `PRODUCTION-READY-FOUNDATION`)
 
-## Perubahan & Fitur Selesai di Phase 3C2
+## Perubahan & Fitur Selesai di Phase 4A
 
-- [x] **Transactional Integration Outbox (`integration_outbox_events`, `integration_delivery_attempts`)**:
-  - Pola transactional outbox asinkron dengan status lifecycle lengkap, concurrency locking (`lockForUpdate()`), idempotensi unik, dan penanganan retry/dead-letter.
-- [x] **Kontrak & DTO SABIRA Absensi (`AttendanceIntegrationContract`, `AttendanceHealthDispositionDTO`)**:
-  - Standarisasi DTO immutable dengan validasi runtime otomatis terhadap kunci klinis terlarang, driver fake/sandbox untuk pengujian aman, dan kesiapan arsitektural konektor masa depan.
-- [x] **Profil Privasi & Isolasi Data Medis (`AttendanceDispositionPayloadBuilder`)**:
-  - Penegakan standar *Minimum Necessary*: Nol diagnosis, gejala, resep obat, atau narasi klinis pada payload asrama, guru wali kelas, maupun sistem absensi.
-- [x] **Pusat Notifikasi Operasional & Inbox Internal (`operational_notifications`, `user_notifications`)**:
-  - Alur notifikasi operasional terarah ke pembina asrama dan wali kelas dengan pelacakan konfirmasi (*acknowledgement*), serta kotak masuk in-app untuk staf poskestren.
-- [x] **Dashboard Berbasis Peran (`dashboards.clinical`, `dashboards.management`, `dashboards.operational`)**:
-  - Dashboard Klinis untuk dokter/perawat, Dashboard Manajemen Eksekutif (hanya metrik agregat statistik tanpa data individual), dan Dashboard Operasional Asrama & Guru.
-- [x] **Pusat Sensus & Laporan Kesehatan (`HealthReportService`)**:
-  - Direktori laporan sensus kunjungan, observasi, rujukan eksternal, kepulangan/kontrol, stok obat/kedaluwarsa, dan audit riwayat pengiriman integrasi.
-- [x] **Controller, Route & Blade Views Lengkap (0 Route Closures)**:
-  - 13 route terdedikasi, 13 permission granular, 5 policy server-side, 4 form request, dan 11 Blade view responsif mendukung light & dark mode.
+- [x] **Gate SSO Authentication Flow (`GateOidcAuthController`, `GateAuthenticationService`)**:
+  - Penggantian login stub Phase 1 dengan alur OAuth2 Authorization Code Flow penuh melalui Gate IdP, termasuk state/nonce CSRF/replay protection, code-for-token exchange server-to-server, dan session regeneration.
+- [x] **Application Entitlement Enforcement (`EnforceGateApplicationEntitlement`)**:
+  - Hanya pengguna dengan entitlement `allowed` yang boleh mengakses aplikasi. Status `revoked`, `suspended`, dan `not_assigned` ditolak dengan audit log. Middleware runtime memeriksa `is_active` pada setiap request.
+- [x] **Identity Projection (Person/User/Patient)**:
+  - Proyeksi identitas atomik dengan `DB::transaction()` dan `lockForUpdate()`. Hanya field authoritative yang diperbarui. Nol mutasi data medis dari payload Gate. Deaktivasi non-destruktif.
+- [x] **Secure Sync Apply (`GateSyncApplyService`)**:
+  - Peningkatan dry-run sync ke transactional apply sync yang idempotent, conflict-aware, dan mendukung checksum-based unchanged detection. Per-item error handling tanpa menggagalkan seluruh batch.
+- [x] **Reconciliation & Conflict Resolution (`GateReconciliationController`)**:
+  - Dashboard rekonsiliasi untuk meninjau dan menyetujui/menolak mapping identitas yang berkonflik. Manual approval diperlukan untuk NIS/NIP/NIK match tanpa gate_user_id.
+- [x] **Role Mapping Security**:
+  - Pemetaan role Gate ke role lokal melalui konfigurasi eksplisit. Gate admin TIDAK otomatis mendapat permission klinis. Unknown roles diabaikan (default deny).
+- [x] **Dedicated Controllers, Policies, Views (0 Auth/Sync Route Closures)**:
+  - 3 controller dedicated, 4 permission baru, 2 policies, 2 form requests, dan 7 Blade view responsif light & dark theme.
 
 ## Kemajuan Phase
 
@@ -42,15 +42,15 @@ last_updated: 2026-08-09
 - [x] **Phase 3B — Actual Referral Execution, Transportation, Clinical Handover & Hardening**: Selesai & Tervalidasi di MariaDB.
 - [x] **Phase 3C1 — Visit Discharge, Follow-up, Return-to-Activity, and Operational Handoff**: Selesai & Tervalidasi.
 - [x] **Phase 3C2 — Operational Outbox, Role-Aware Dashboards & Reporting Foundation**: Selesai & Tervalidasi (Fase 3 Lengkap).
-- [ ] **Phase 4 — Telemedicine / Public Portal / Production Hardening**: Menunggu instruksi pengguna.
+- [x] **Phase 4A — Real Gate SSO, Secure Sync Apply, Application Entitlement & Identity Hardening**: Selesai & Tervalidasi.
+- [ ] **Phase 4B — Production Integration & UAT**: Menunggu instruksi pengguna.
 
 ## Last verified
 
 - Tanggal: 2026-08-09
 - Database: MariaDB 10.4.28 (`poskestren_health_test`, InnoDB, REPEATABLE-READ)
-- Test Suite: 134 tests, 526 assertions (100% Passed, 0 Skipped, 0 Failed)
+- Test Suite: 152 tests, 593 assertions (100% Passed, 0 Skipped, 0 Failed)
 - Code Formatter: Pint Passed
 - Static Analysis: PHPStan Level 5 Passed (0 errors)
-- Frontend: Vite Build Passed (2.52s)
-- Route List: 70 routes terdaftar bersih (0 closure pada mutation/action routes)
-
+- Frontend: Vite Build Passed (~1.6s)
+- Route List: 80+ routes terdaftar bersih (0 closure pada mutation/action routes)

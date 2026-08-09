@@ -15,8 +15,8 @@
     "semantic_hash": ""
   },
   "app/Providers/AppServiceProvider.php": {
-    "mtime": 1786259780.6718893,
-    "ast_hash": "54a22ed9cc0bbb5b24b5ebc0ba83b96f",
+    "mtime": 1786260981.693563,
+    "ast_hash": "9284596686027d6a13e1f5bf16f313b6",
     "semantic_hash": ""
   },
   "app/View/Components/AppLayout.php": {
@@ -165,8 +165,8 @@
     "semantic_hash": ""
   },
   "routes/web.php": {
-    "mtime": 1786259782.51602,
-    "ast_hash": "c03e3a969f8fc0005caef1b5ea269bad",
+    "mtime": 1786260982.7525918,
+    "ast_hash": "c2272c075b5cde8aeb85a236bab89f28",
     "semantic_hash": ""
   },
   "tests/Feature/DashboardTest.php": {
@@ -280,8 +280,8 @@
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1786257962.0424833,
-    "ast_hash": "bfd0d6ddb62e99b5da9b981270e483d4",
+    "mtime": 1786262234.643591,
+    "ast_hash": "b80a477bea46d480f2ca90af8f1bce6c",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -295,8 +295,8 @@
     "semantic_hash": ""
   },
   "PROJECT-STATUS.md": {
-    "mtime": 1786259023.247424,
-    "ast_hash": "6bc6192910ae9d39a95ad7be259eb405",
+    "mtime": 1786262206.4562497,
+    "ast_hash": "402716087ee3fe73059f8c8431c06688",
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-PHASE-0.md": {
@@ -655,8 +655,8 @@
     "semantic_hash": ""
   },
   "docs/09-testing/FEATURE-TEST-MATRIX.md": {
-    "mtime": 1786257986.8201692,
-    "ast_hash": "5ec8edc3d875805701e6d8fe80eb6112",
+    "mtime": 1786262268.2355957,
+    "ast_hash": "d3df060cf9f7aed90b4fa99fde5739e6",
     "semantic_hash": ""
   },
   "docs/09-testing/SECURITY-TESTS.md": {
@@ -765,8 +765,8 @@
     "semantic_hash": ""
   },
   "docs/12-graphify/DOCUMENT-CODE-MAPPING.md": {
-    "mtime": 1786257977.8837643,
-    "ast_hash": "25468116c91da86fed870c7953a67a7c",
+    "mtime": 1786262300.2456357,
+    "ast_hash": "433f282461021b7db2a99cf1ac0ff5e7",
     "semantic_hash": ""
   },
   "docs/12-graphify/GRAPH-NAMING-CONVENTIONS.md": {
@@ -1115,8 +1115,8 @@
     "semantic_hash": ""
   },
   "app/Policies/GateSyncPolicy.php": {
-    "mtime": 1785917174.730772,
-    "ast_hash": "e4a20767e93818aa1943f922477e2a61",
+    "mtime": 1786260557.1589646,
+    "ast_hash": "f5a103d3c11fe1566b29fc6ee0b06aa7",
     "semantic_hash": ""
   },
   "app/Policies/HealthcarePartnerPolicy.php": {
@@ -2289,11 +2289,6 @@
     "ast_hash": "14be49ddae6d963bb7c0ec66803dd7f1",
     "semantic_hash": ""
   },
-  "public/fonts-manifest.dev.json": {
-    "mtime": 1786259361.7184799,
-    "ast_hash": "f093340a544dba9c4fcd7b6e80705ae0",
-    "semantic_hash": ""
-  },
   "resources/views/pages/dashboards/clinical.blade.php": {
     "mtime": 1786259562.9120133,
     "ast_hash": "11b633ef11cf382dfed3898cc630b9f2",
@@ -2402,6 +2397,251 @@
   "docs/10-delivery/PHASE-3C1-FINAL-CLOSURE.md": {
     "mtime": 1786259035.3981304,
     "ast_hash": "3c2718a47c889ea6f65758df2275f5a4",
+    "semantic_hash": ""
+  },
+  "app/Contracts/GateOidcClientContract.php": {
+    "mtime": 1786260479.7937462,
+    "ast_hash": "c0140c53914a873106b1d412d30f46f1",
+    "semantic_hash": ""
+  },
+  "app/DTOs/GateApplicationEntitlementDTO.php": {
+    "mtime": 1786260475.015389,
+    "ast_hash": "478f22830e1816a152a20796181c720e",
+    "semantic_hash": ""
+  },
+  "app/DTOs/GateOidcTokenResponseDTO.php": {
+    "mtime": 1786260463.3059013,
+    "ast_hash": "d8ab91431244aa67fecf8209e5f4b527",
+    "semantic_hash": ""
+  },
+  "app/DTOs/GateUserInfoDTO.php": {
+    "mtime": 1786260469.5543616,
+    "ast_hash": "2e2a40f8ebb4bd735f29ce4ecaf982d1",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Auth/GateOidcAuthController.php": {
+    "mtime": 1786261687.8730211,
+    "ast_hash": "829aa5a69eb74b898a48c48960055d51",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Gate/GateReconciliationController.php": {
+    "mtime": 1786260579.3227406,
+    "ast_hash": "d1186fa56012ef9ba7f0dea0d559870a",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Gate/GateSyncController.php": {
+    "mtime": 1786260573.4703443,
+    "ast_hash": "b8214d07f360a37ade2d7d4915bba935",
+    "semantic_hash": ""
+  },
+  "app/Http/Middleware/EnforceGateApplicationEntitlement.php": {
+    "mtime": 1786260542.1222498,
+    "ast_hash": "0395f060002f4fdf7e44c8f539261fc8",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Gate/ApplyGateSyncRequest.php": {
+    "mtime": 1786260547.4625084,
+    "ast_hash": "10b35acbfe18218897e385a2ddde507f",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Gate/ApproveIdentityMappingRequest.php": {
+    "mtime": 1786260552.273377,
+    "ast_hash": "38546544dc0a8f2ab7de0881d4a3ab3f",
+    "semantic_hash": ""
+  },
+  "app/Models/GateIdentityMapping.php": {
+    "mtime": 1786260451.7323172,
+    "ast_hash": "4af8cbe3904bbda3fe95e16632e4ef71",
+    "semantic_hash": ""
+  },
+  "app/Models/GateSyncRun.php": {
+    "mtime": 1786260457.040189,
+    "ast_hash": "76eb4f5e8ca3c6a49f9905863e2b324d",
+    "semantic_hash": ""
+  },
+  "app/Policies/GateMappingPolicy.php": {
+    "mtime": 1786260561.8484,
+    "ast_hash": "d1d80fd1ac51a4c713bad2db7d68ce8e",
+    "semantic_hash": ""
+  },
+  "app/Services/Gate/FakeGateOidcClient.php": {
+    "mtime": 1786260487.5940022,
+    "ast_hash": "e6b61b4cb727cda3faad4980e0a9ccc3",
+    "semantic_hash": ""
+  },
+  "app/Services/Gate/GateAuthenticationService.php": {
+    "mtime": 1786260982.0463583,
+    "ast_hash": "276f77f35e6b1f27cd6a03ba6a59d63b",
+    "semantic_hash": ""
+  },
+  "app/Services/Gate/GateIdentityReconciliationService.php": {
+    "mtime": 1786260536.9677606,
+    "ast_hash": "3d62714ca717e6525480030990a4fae3",
+    "semantic_hash": ""
+  },
+  "app/Services/Gate/GateSyncApplyService.php": {
+    "mtime": 1786260981.8781059,
+    "ast_hash": "73b2d3460f019f8e41106852170cdf5a",
+    "semantic_hash": ""
+  },
+  "app/Services/Gate/HttpGateClient.php": {
+    "mtime": 1786260500.3857682,
+    "ast_hash": "7af1c26d7916d48bbf2ae663f8a3e9b7",
+    "semantic_hash": ""
+  },
+  "app/Services/Gate/HttpGateOidcClient.php": {
+    "mtime": 1786260494.7350113,
+    "ast_hash": "c06a080aa7f8405ef30c1a2278ab3778",
+    "semantic_hash": ""
+  },
+  "app/View/Components/GuestLayout.php": {
+    "mtime": 1786260795.009771,
+    "ast_hash": "aefcd0a8c6a6a8b4d88313ff2998fbb5",
+    "semantic_hash": ""
+  },
+  "config/gate.php": {
+    "mtime": 1786260419.78985,
+    "ast_hash": "1c1e3c159727facdfc02414c54422652",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_005300_create_gate_identity_mappings_table.php": {
+    "mtime": 1786260425.9554882,
+    "ast_hash": "da68b62d8f50f504a4f327d1d4e2516e",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_005400_create_gate_sync_runs_table.php": {
+    "mtime": 1786260431.0645797,
+    "ast_hash": "48799b26147c519c1218ab1419696dfc",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_005500_add_phase_4a_permissions.php": {
+    "mtime": 1786260436.5476792,
+    "ast_hash": "649fcf6cf32f7be43d328101584edb32",
+    "semantic_hash": ""
+  },
+  "resources/views/layouts/guest.blade.php": {
+    "mtime": 1786260742.6340203,
+    "ast_hash": "daf5fa5371e2a25a9deaeb43b31eef47",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/auth/access-denied.blade.php": {
+    "mtime": 1786260594.8763416,
+    "ast_hash": "850bfab628edc420d0f4fd5f1fc30a40",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/auth/login.blade.php": {
+    "mtime": 1786260588.680226,
+    "ast_hash": "d7e011d925bc24614b4f42fa36a7a2dc",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/gate/dry-run-preview.blade.php": {
+    "mtime": 1786261728.761429,
+    "ast_hash": "96203d0d9eff593049a4c7e1e5df4caf",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/gate/reconciliation.blade.php": {
+    "mtime": 1786260626.3636398,
+    "ast_hash": "c20138ee9221ce85b10e8facea802fc5",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/gate/run-detail.blade.php": {
+    "mtime": 1786261728.7626452,
+    "ast_hash": "6686af572f36a57f71918fb580620aad",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/gate/sync.blade.php": {
+    "mtime": 1786260605.0195339,
+    "ast_hash": "2da7838a62b61e75b2bdfbc63d62ce27",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Auth/GateApplicationEntitlementTest.php": {
+    "mtime": 1786260982.1093035,
+    "ast_hash": "1126b970c7a5d0b50b6bec58ac5eb1bd",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Auth/GateSsoAuthenticationTest.php": {
+    "mtime": 1786260982.0803287,
+    "ast_hash": "0b0c9a7ff9a7f4bee052e5108737b07b",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Gate/GateIdentityProjectionTest.php": {
+    "mtime": 1786260982.18639,
+    "ast_hash": "3ffbec9900488be1ede7461604e1ba22",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Gate/GateMariaDBSyncConcurrencyTest.php": {
+    "mtime": 1786260982.1496851,
+    "ast_hash": "91f8765efee01f7a48c55d03ee1bae25",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Gate/GateReconciliationTest.php": {
+    "mtime": 1786260683.7603233,
+    "ast_hash": "cbebcdea9dbe2c9e7a6731108e069c6d",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Gate/GateSyncApplyTest.php": {
+    "mtime": 1786260982.137648,
+    "ast_hash": "67ce2536d51f67b40716d640d2d8ab99",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-4A.md": {
+    "mtime": 1786260307.897653,
+    "ast_hash": "dfb22c3ecc1b79b826b2f91dd2f49531",
+    "semantic_hash": ""
+  },
+  "PROMPT-CLAUDE-OPUS-RESUME-PHASE-4A.md": {
+    "mtime": 1786261351.6853447,
+    "ast_hash": "8e04d773d90c4419db0d2687749e02e5",
+    "semantic_hash": ""
+  },
+  "docs/02-workflows/GATE-LOGIN-AND-ACCESS.md": {
+    "mtime": 1786262116.5889306,
+    "ast_hash": "6035d6af859fc7873f5d75cd542a3f34",
+    "semantic_hash": ""
+  },
+  "docs/07-security/GATE-SSO-SECURITY.md": {
+    "mtime": 1786262070.8907864,
+    "ast_hash": "cf5021b3a9caf518d3918c20794f0c7c",
+    "semantic_hash": ""
+  },
+  "docs/07-security/OPERATIONAL-DATA-SHARING.md": {
+    "mtime": 1786259965.701724,
+    "ast_hash": "8a92351e233acf0a42084f10b3a55edf",
+    "semantic_hash": ""
+  },
+  "docs/08-api/ATTENDANCE-INTEGRATION-CONTRACT.md": {
+    "mtime": 1786259959.2712076,
+    "ast_hash": "d94fefe6a744649e90f90c3342f55572",
+    "semantic_hash": ""
+  },
+  "docs/08-api/GATE-OIDC-CONTRACT.md": {
+    "mtime": 1786262021.6498551,
+    "ast_hash": "39f7d10505b1484090ce0d2206a305f6",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-3C2-CLOSURE.md": {
+    "mtime": 1786259952.0735316,
+    "ast_hash": "1f9a719aaa6b62e73a7fe1948d73c2ad",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-3C2-FINAL-CLOSURE.md": {
+    "mtime": 1786260376.4337702,
+    "ast_hash": "62f816eb43b0b9eaa551ca84842dcdfa",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4A-AUTH-PREFLIGHT.md": {
+    "mtime": 1786260409.3774295,
+    "ast_hash": "771a21f4a3a6b1bc9a464c3c5fbcc077",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4A-CLOSURE.md": {
+    "mtime": 1786262171.7811995,
+    "ast_hash": "3ef2a888df20f1fe334eddfcde5471ff",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4A-RESUME-STATE.md": {
+    "mtime": 1786261983.026733,
+    "ast_hash": "76b5053096f2d0e647f8332f4e460191",
     "semantic_hash": ""
   }
 }

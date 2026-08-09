@@ -2,8 +2,8 @@
 id: DOC-CHANGELOG
 title: "Changelog"
 status: active
-owner: "Tim Pengembang POSKESTREN"
-last_updated: 2026-08-05
+owner: "Ryand Arifriantoni"
+last_updated: 2026-08-09
 ---
 
 # Changelog
@@ -12,7 +12,23 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
-## [0.14.0] — 2026-08-09 (Phase 3C2 Operational Outbox, Role Dashboards & Health Reports Foundation)
+## [0.15.0] — 2026-08-09 (Phase 4A Gate SSO, Secure Sync Apply & Identity Hardening)
+
+### Added
+
+- **Gate SSO Authentication Flow (`GateOidcAuthController`, `GateAuthenticationService`)**: Penggantian login stub Phase 1 dengan OAuth2 Authorization Code Flow penuh melalui Gate IdP, termasuk state/nonce CSRF/replay protection, code-for-token exchange, dan session regeneration.
+- **Application Entitlement Enforcement (`EnforceGateApplicationEntitlement`)**: Middleware yang memastikan hanya pengguna dengan entitlement `allowed` yang dapat mengakses aplikasi. Status `revoked`, `suspended`, `not_assigned` ditolak dengan audit log.
+- **Identity Projection (Person/User/Patient)**: Proyeksi identitas atomik dengan `DB::transaction()` dan `lockForUpdate()`, hanya memperbarui field authoritative, nol mutasi data medis dari payload Gate, deaktivasi non-destruktif.
+- **Secure Sync Apply (`GateSyncApplyService`)**: Peningkatan dry-run sync ke transactional apply sync yang idempotent dan conflict-aware, dengan checksum-based unchanged detection dan per-item error handling.
+- **Reconciliation Dashboard (`GateReconciliationController`)**: Dashboard rekonsiliasi untuk meninjau, menyetujui, dan menolak mapping identitas berkonflik. Manual approval untuk NIS/NIP/NIK match tanpa gate_user_id.
+- **Gate OIDC Client Contract & Implementations**: `GateOidcClientContract` dengan `FakeGateOidcClient` (testing) dan `HttpGateOidcClient` (production). Dynamic binding via `config('gate.driver')`.
+- **Role Mapping Security**: Pemetaan role Gate → role lokal melalui konfigurasi eksplisit. Gate admin TIDAK otomatis mendapat permission klinis. Unknown roles diabaikan (default deny).
+- **Database Migrations**: `gate_identity_mappings`, `gate_sync_runs`, dan 4 permission baru Phase 4A.
+- **Controllers, Policies, & Views**: 3 controller dedicated, 2 policies, 2 form requests, 7 Blade view responsif light & dark theme (0 auth/sync closures).
+- **Test Suite Expansion**: 18 feature test baru (total 152 tests, 593 assertions, 100% passed di MariaDB). Termasuk MariaDB concurrency test.
+- **Documentation**: `GATE-OIDC-CONTRACT.md`, `GATE-SSO-SECURITY.md`, `GATE-LOGIN-AND-ACCESS.md`, `PHASE-4A-CLOSURE.md`, `PHASE-4A-RESUME-STATE.md`.
+
+
 
 ### Added
 

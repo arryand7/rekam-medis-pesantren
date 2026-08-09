@@ -8,7 +8,52 @@ last_updated: 2026-08-09
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 4A — Gate SSO, Secure Sync Apply, Application Entitlement & Identity Hardening Mapping
+
+```text
+GATE-OIDC-CONTRACT.md & GATE-SSO-SECURITY.md & GATE-LOGIN-AND-ACCESS.md & ACCESS-CONTROL-MATRIX.md
+  -> config/gate.php
+  -> database/migrations/2026_08_05_005300_create_gate_identity_mappings_table.php
+  -> database/migrations/2026_08_05_005400_create_gate_sync_runs_table.php
+  -> database/migrations/2026_08_05_005500_add_phase_4a_permissions.php
+  -> app/Contracts/GateOidcClientContract.php
+  -> app/DTOs/GateOidcTokenResponseDTO.php
+  -> app/DTOs/GateUserInfoDTO.php
+  -> app/DTOs/GateApplicationEntitlementDTO.php
+  -> app/Models/GateIdentityMapping.php
+  -> app/Models/GateSyncRun.php
+  -> app/Services/Gate/FakeGateOidcClient.php
+  -> app/Services/Gate/HttpGateOidcClient.php
+  -> app/Services/Gate/HttpGateClient.php
+  -> app/Services/Gate/GateAuthenticationService.php
+  -> app/Services/Gate/GateSyncApplyService.php
+  -> app/Services/Gate/GateIdentityReconciliationService.php
+  -> app/Http/Middleware/EnforceGateApplicationEntitlement.php
+  -> app/Http/Controllers/Auth/GateOidcAuthController.php
+  -> app/Http/Controllers/Gate/GateSyncController.php
+  -> app/Http/Controllers/Gate/GateReconciliationController.php
+  -> app/Http/Requests/Gate/ApplyGateSyncRequest.php
+  -> app/Http/Requests/Gate/ApproveIdentityMappingRequest.php
+  -> app/Policies/GateSyncPolicy.php
+  -> app/Policies/GateMappingPolicy.php
+  -> app/View/Components/GuestLayout.php
+  -> resources/views/layouts/guest.blade.php
+  -> resources/views/pages/auth/login.blade.php
+  -> resources/views/pages/auth/access-denied.blade.php
+  -> resources/views/pages/gate/sync.blade.php
+  -> resources/views/pages/gate/dry-run-preview.blade.php
+  -> resources/views/pages/gate/run-detail.blade.php
+  -> resources/views/pages/gate/reconciliation.blade.php
+  -> tests/Feature/Auth/GateSsoAuthenticationTest.php
+  -> tests/Feature/Auth/GateApplicationEntitlementTest.php
+  -> tests/Feature/Gate/GateIdentityProjectionTest.php
+  -> tests/Feature/Gate/GateSyncApplyTest.php
+  -> tests/Feature/Gate/GateMariaDBSyncConcurrencyTest.php
+  -> tests/Feature/Gate/GateReconciliationTest.php
+```
+
 ## Phase 3C1 — Visit Discharge, Follow-Up, Return-to-Activity & Operational Handoff Mapping
+
 
 ```text
 DISCHARGE-AND-RETURN.md & VISIT-STATUS-LIFECYCLE.md & ACCESS-CONTROL-MATRIX.md

@@ -2,7 +2,7 @@
 id: DOC-FEATURE-TEST-MATRIX
 title: "Feature Test Matrix"
 status: active
-owner: "Tim Pengembang POSKESTREN"
+owner: "Ryand Arifriantoni"
 last_updated: 2026-08-09
 ---
 
@@ -12,6 +12,12 @@ last_updated: 2026-08-09
 |---|:---:|:---:|:---:|:---:|:---:|
 | Identity & Access | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Gate Sync Dry-Run | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Gate SSO Authentication | ✓ | ✓ | state/nonce | CSRF/replay | ✓ |
+| Gate Application Entitlement | ✓ | ✓ | ✓ | admin ≠ clinical | ✓ |
+| Gate Identity Projection | ✓ | ✓ | ✓ | lockForUpdate | ✓ |
+| Gate Sync Apply | ✓ | ✓ | ✓ | idempotent | ✓ |
+| Gate MariaDB Sync Concurrency | ✓ | ✓ | ✓ | deterministic single Person | ✓ |
+| Gate Reconciliation | ✓ | ✓ | ✓ | approve/reject | ✓ |
 | Health Profile | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Medical Visit Intake | ✓ | ✓ | ✓ | lockForUpdate | ✓ |
 | Vital Signs | ✓ | ✓ | ✓ | finalized lock | ✓ |

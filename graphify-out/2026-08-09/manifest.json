@@ -15,8 +15,8 @@
     "semantic_hash": ""
   },
   "app/Providers/AppServiceProvider.php": {
-    "mtime": 1785917209.3998528,
-    "ast_hash": "419e76c13f5fe8137e1187382253dd6c",
+    "mtime": 1786259780.6718893,
+    "ast_hash": "54a22ed9cc0bbb5b24b5ebc0ba83b96f",
     "semantic_hash": ""
   },
   "app/View/Components/AppLayout.php": {
@@ -165,8 +165,8 @@
     "semantic_hash": ""
   },
   "routes/web.php": {
-    "mtime": 1786257820.3108475,
-    "ast_hash": "f7d6d18062ac6cd42744e32d8c157f02",
+    "mtime": 1786259782.51602,
+    "ast_hash": "c03e3a969f8fc0005caef1b5ea269bad",
     "semantic_hash": ""
   },
   "tests/Feature/DashboardTest.php": {
@@ -280,8 +280,8 @@
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1786255799.1829333,
-    "ast_hash": "1d03b63655fd27e867c8d5863dfbefaf",
+    "mtime": 1786257962.0424833,
+    "ast_hash": "bfd0d6ddb62e99b5da9b981270e483d4",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -295,12 +295,12 @@
     "semantic_hash": ""
   },
   "PROJECT-STATUS.md": {
-    "mtime": 1786255790.6236181,
-    "ast_hash": "dba85ff1ecccc7238b2ebf7cd99a1a72",
+    "mtime": 1786259023.247424,
+    "ast_hash": "6bc6192910ae9d39a95ad7be259eb405",
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-PHASE-0.md": {
-    "mtime": 1785915101.906679,
+    "mtime": 1786259023.249352,
     "ast_hash": "f2ecc05652973d1760311fa0cc0997f1",
     "semantic_hash": ""
   },
@@ -655,8 +655,8 @@
     "semantic_hash": ""
   },
   "docs/09-testing/FEATURE-TEST-MATRIX.md": {
-    "mtime": 1786256223.1913276,
-    "ast_hash": "6ccd0423301800ff12b19109da63cb0c",
+    "mtime": 1786257986.8201692,
+    "ast_hash": "5ec8edc3d875805701e6d8fe80eb6112",
     "semantic_hash": ""
   },
   "docs/09-testing/SECURITY-TESTS.md": {
@@ -765,8 +765,8 @@
     "semantic_hash": ""
   },
   "docs/12-graphify/DOCUMENT-CODE-MAPPING.md": {
-    "mtime": 1786257463.932316,
-    "ast_hash": "432e22866a1337068c00c898cd84b95b",
+    "mtime": 1786257977.8837643,
+    "ast_hash": "25468116c91da86fed870c7953a67a7c",
     "semantic_hash": ""
   },
   "docs/12-graphify/GRAPH-NAMING-CONVENTIONS.md": {
@@ -955,8 +955,8 @@
     "semantic_hash": ""
   },
   "app/Models/MedicalVisit.php": {
-    "mtime": 1786257887.5083344,
-    "ast_hash": "2f12a3a02174e492bd7721f3e8b6d51d",
+    "mtime": 1786258035.9252226,
+    "ast_hash": "a54e997be14107ed8efc462c692616f7",
     "semantic_hash": ""
   },
   "app/Models/MedicationAdministration.php": {
@@ -1770,57 +1770,57 @@
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-PHASE-1.md": {
-    "mtime": 1785916889.3945818,
+    "mtime": 1786259023.2498367,
     "ast_hash": "a3f1ca347090a6010d712143aa97fafc",
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-PHASE-2A.md": {
-    "mtime": 1785917801.2546616,
+    "mtime": 1786259023.251108,
     "ast_hash": "1f7d272cf873390113008ba1e4a9ba01",
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-PHASE-2B.md": {
-    "mtime": 1785918453.149182,
+    "mtime": 1786259023.2518923,
     "ast_hash": "3b7b75de7bdb913473c3a895cd6aec43",
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-PHASE-2C.md": {
-    "mtime": 1785918951.9727285,
+    "mtime": 1786259023.252439,
     "ast_hash": "fbae59ee7f59b0d308d575c5b14ddde1",
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-PHASE-2D1.md": {
-    "mtime": 1785920577.4398928,
+    "mtime": 1786259023.2529845,
     "ast_hash": "5269238ef3ea46f5d2dd0e9a4f275394",
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-PHASE-2D2.md": {
-    "mtime": 1785921112.5583534,
+    "mtime": 1786259023.253931,
     "ast_hash": "3d3e9743748cd0d4d1eb2579b092e0fe",
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-PHASE-3A.md": {
-    "mtime": 1785922282.4582849,
+    "mtime": 1786259023.2549212,
     "ast_hash": "e40b807350a31380b2a0ccab441a6d13",
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-PHASE-3B-FINAL-VALIDATION.md": {
-    "mtime": 1786007246.1346388,
+    "mtime": 1786259023.2556558,
     "ast_hash": "dfd8ddf90187eeddbc5d8973a590a1b2",
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-PHASE-3B-HARDENING.md": {
-    "mtime": 1786005753.0659952,
+    "mtime": 1786259023.2560806,
     "ast_hash": "d1bd573cf88a106579dc833abf79c06f",
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-PHASE-3B.md": {
-    "mtime": 1785923074.4940786,
+    "mtime": 1786259023.256572,
     "ast_hash": "da1b7c59ba47e4bc267841c95226410a",
     "semantic_hash": ""
   },
   "PROMPT-CLAUDE-RESUME-PHASE-3B.md": {
-    "mtime": 1785923921.0586298,
+    "mtime": 1786259023.257719,
     "ast_hash": "79e5a4ce6393f825c41b26e40036c15d",
     "semantic_hash": ""
   },
@@ -1875,8 +1875,8 @@
     "semantic_hash": ""
   },
   "app/Actions/Discharge/EvaluateVisitDischargeReadinessAction.php": {
-    "mtime": 1786257837.80429,
-    "ast_hash": "3d18ebb8193a403a7d8571cf2a4ee0b7",
+    "mtime": 1786258035.98349,
+    "ast_hash": "780aebf493480999f8a47ab56da7fd21",
     "semantic_hash": ""
   },
   "app/Http/Controllers/Discharge/ActivityRestrictionController.php": {
@@ -1950,8 +1950,8 @@
     "semantic_hash": ""
   },
   "app/Models/VisitDischarge.php": {
-    "mtime": 1786257844.4806952,
-    "ast_hash": "480bfbb661ee71672b1283b6d60df8e5",
+    "mtime": 1786258035.859044,
+    "ast_hash": "028f973e9bba1a1f17f7db34250140c7",
     "semantic_hash": ""
   },
   "app/Models/VisitDischargeVersion.php": {
@@ -1990,8 +1990,8 @@
     "semantic_hash": ""
   },
   "app/Services/VisitDischargeService.php": {
-    "mtime": 1786257871.5278552,
-    "ast_hash": "1b7841cd4445ef85215048dac88b0a36",
+    "mtime": 1786258036.4181032,
+    "ast_hash": "c6aba8a50ebdb22ab70acca3f2eb8ec9",
     "semantic_hash": ""
   },
   "database/migrations/2026_08_05_004100_create_visit_discharges_table.php": {
@@ -2085,18 +2085,323 @@
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-PHASE-3C1.md": {
-    "mtime": 1786256963.5783625,
+    "mtime": 1786259023.257306,
     "ast_hash": "91caf57d35b2d774fbe3ccde592edde8",
     "semantic_hash": ""
   },
   "docs/10-delivery/PHASE-3B-FINAL-CLOSURE.md": {
-    "mtime": 1786257108.5782168,
-    "ast_hash": "6778c5aac28c5f4f9b86f47561e33849",
+    "mtime": 1786258114.1750982,
+    "ast_hash": "0188c2f71bd70cea5c23087ba00ded59",
     "semantic_hash": ""
   },
   "docs/10-delivery/PHASE-3B-MARIADB-CONCURRENCY-REPORT.md": {
     "mtime": 1786256242.4168751,
     "ast_hash": "fec7ef365eb2c6574c8a9c4142ddb1e0",
+    "semantic_hash": ""
+  },
+  "app/Contracts/Integration/AttendanceIntegrationContract.php": {
+    "mtime": 1786259111.944153,
+    "ast_hash": "d4840314af0ef85bb81ecce3093f99aa",
+    "semantic_hash": ""
+  },
+  "app/DTOs/Integration/AttendanceHealthDispositionDTO.php": {
+    "mtime": 1786259117.9748926,
+    "ast_hash": "78994c41e92b59376c499fc17de4dc9a",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Dashboard/DashboardController.php": {
+    "mtime": 1786259780.8187993,
+    "ast_hash": "e1014ba00c5f6a360f6f419749e33b3d",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Integration/AttendanceIntegrationController.php": {
+    "mtime": 1786259239.1084943,
+    "ast_hash": "1759b6a8ec935e2c694ff7ab88efa21a",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Integration/IntegrationOutboxController.php": {
+    "mtime": 1786259232.893047,
+    "ast_hash": "6a6ca4c8507842e991832c42dd5b08c1",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Notification/OperationalNotificationController.php": {
+    "mtime": 1786259243.6249585,
+    "ast_hash": "55507eeeb025f0442809b61f177d68f5",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Notification/UserNotificationController.php": {
+    "mtime": 1786259248.830743,
+    "ast_hash": "c2eca11d3f456d4e9e3d10bcafc74fca",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Reporting/HealthReportController.php": {
+    "mtime": 1786259858.954663,
+    "ast_hash": "f3b0c9058fe7d0c24552aa238d80b4cb",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Integration/ResolveIdentityConflictRequest.php": {
+    "mtime": 1786259780.7579062,
+    "ast_hash": "38c2eefd16539b4a56dbd84cb0463863",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Integration/RetryOutboxEventRequest.php": {
+    "mtime": 1786259213.1964853,
+    "ast_hash": "9a5fb812f8e84fd0bc67791b740da3d8",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Notification/AcknowledgeOperationalNotificationRequest.php": {
+    "mtime": 1786259780.735845,
+    "ast_hash": "ac65fa6514c5539168125c6f89c520af",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Reporting/QueryReportRequest.php": {
+    "mtime": 1786259780.7168875,
+    "ast_hash": "0da5abcec82076afb0128b2c69c4678a",
+    "semantic_hash": ""
+  },
+  "app/Models/IntegrationDeliveryAttempt.php": {
+    "mtime": 1786259097.1599607,
+    "ast_hash": "2833b6ea8252bf5b5f7d49194fefac68",
+    "semantic_hash": ""
+  },
+  "app/Models/IntegrationIdentityConflict.php": {
+    "mtime": 1786259102.4650238,
+    "ast_hash": "b3848f0581460e2b39bf2dd0028aff03",
+    "semantic_hash": ""
+  },
+  "app/Models/IntegrationOutboxEvent.php": {
+    "mtime": 1786259086.9920216,
+    "ast_hash": "0fe3dd56c2a185dc091443d04562c4a9",
+    "semantic_hash": ""
+  },
+  "app/Models/OperationalNotification.php": {
+    "mtime": 1786259092.2545297,
+    "ast_hash": "25e27bb35604f6e3921a8b583771bdec",
+    "semantic_hash": ""
+  },
+  "app/Models/UserNotification.php": {
+    "mtime": 1786259107.2530098,
+    "ast_hash": "f5cfc6f6f48f98dc53b8f65efe4ce900",
+    "semantic_hash": ""
+  },
+  "app/Policies/DashboardPolicy.php": {
+    "mtime": 1786259204.2867818,
+    "ast_hash": "e6747914a815b3a056452741c37e9707",
+    "semantic_hash": ""
+  },
+  "app/Policies/IntegrationIdentityConflictPolicy.php": {
+    "mtime": 1786259199.2854745,
+    "ast_hash": "6f4c0e34ee80e0d6ba01a442c7e3035a",
+    "semantic_hash": ""
+  },
+  "app/Policies/IntegrationOutboxPolicy.php": {
+    "mtime": 1786259189.6515484,
+    "ast_hash": "7b7fba72fa49c0d4126f402f88206436",
+    "semantic_hash": ""
+  },
+  "app/Policies/OperationalNotificationPolicy.php": {
+    "mtime": 1786259194.6583548,
+    "ast_hash": "7512988ecfba526019cebe1bceae7069",
+    "semantic_hash": ""
+  },
+  "app/Policies/ReportPolicy.php": {
+    "mtime": 1786259208.7968025,
+    "ast_hash": "afebd563f30f46bbb69b62c84a478d75",
+    "semantic_hash": ""
+  },
+  "app/Services/Dashboard/ClinicalDashboardService.php": {
+    "mtime": 1786259781.1132634,
+    "ast_hash": "60cc878b35120f24a11e85b56fec6841",
+    "semantic_hash": ""
+  },
+  "app/Services/Dashboard/ManagementDashboardService.php": {
+    "mtime": 1786259781.146605,
+    "ast_hash": "adfad67b469b6815c3069e36cc1e2869",
+    "semantic_hash": ""
+  },
+  "app/Services/Dashboard/OperationalDashboardService.php": {
+    "mtime": 1786259821.7722168,
+    "ast_hash": "7b912a7f4737f7a1553f67086e499a22",
+    "semantic_hash": ""
+  },
+  "app/Services/Integration/AttendanceDispositionPayloadBuilder.php": {
+    "mtime": 1786259831.1416726,
+    "ast_hash": "fe23b3cfd08892ee26dfce127ab897e9",
+    "semantic_hash": ""
+  },
+  "app/Services/Integration/FakeAttendanceIntegration.php": {
+    "mtime": 1786259131.182983,
+    "ast_hash": "930cb283054a41423439303e4aeb1680",
+    "semantic_hash": ""
+  },
+  "app/Services/IntegrationOutboxService.php": {
+    "mtime": 1786259781.3427746,
+    "ast_hash": "64e3ad6beb25c5f024372a7294f0ef7f",
+    "semantic_hash": ""
+  },
+  "app/Services/OperationalNotificationService.php": {
+    "mtime": 1786259886.0697122,
+    "ast_hash": "53b7b22c1e00bc3c7d62e692ee2f138d",
+    "semantic_hash": ""
+  },
+  "app/Services/Reporting/HealthReportService.php": {
+    "mtime": 1786259859.049539,
+    "ast_hash": "ff0e0f646211cef202bfc5e4f37aa3a3",
+    "semantic_hash": ""
+  },
+  "app/Services/UserNotificationService.php": {
+    "mtime": 1786259781.085138,
+    "ast_hash": "c11d29a1c607f1242b0cc07ce137de15",
+    "semantic_hash": ""
+  },
+  "config/integration.php": {
+    "mtime": 1786259081.5452003,
+    "ast_hash": "26b2b1d08bb1672f02beeb608cf8db00",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_004700_create_integration_outbox_events_table.php": {
+    "mtime": 1786259040.6107771,
+    "ast_hash": "6db49157ffaf8b2b231c3150a8d303ae",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_004800_create_operational_notifications_table.php": {
+    "mtime": 1786259045.9802926,
+    "ast_hash": "80d34296cf1b5a74de1793e24b1e1cd7",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_004900_create_integration_delivery_attempts_table.php": {
+    "mtime": 1786259051.1918774,
+    "ast_hash": "a3843786ea871c8b3c0f6b696eafdea4",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_005000_create_integration_identity_conflicts_table.php": {
+    "mtime": 1786259056.1748786,
+    "ast_hash": "87f1bf58629b0b462d860dc9367de2af",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_005100_create_user_notifications_table.php": {
+    "mtime": 1786259060.9114897,
+    "ast_hash": "c427bf759a486be225fba722cf8ea0a0",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_005200_add_phase_3c2_permissions.php": {
+    "mtime": 1786259067.5938227,
+    "ast_hash": "14be49ddae6d963bb7c0ec66803dd7f1",
+    "semantic_hash": ""
+  },
+  "public/fonts-manifest.dev.json": {
+    "mtime": 1786259361.7184799,
+    "ast_hash": "f093340a544dba9c4fcd7b6e80705ae0",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/dashboards/clinical.blade.php": {
+    "mtime": 1786259562.9120133,
+    "ast_hash": "11b633ef11cf382dfed3898cc630b9f2",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/dashboards/management.blade.php": {
+    "mtime": 1786259572.4351423,
+    "ast_hash": "648c101efa2d513437dccc38f5b710ed",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/dashboards/operational.blade.php": {
+    "mtime": 1786259580.9032922,
+    "ast_hash": "adb4aeff5705c3e1bc4f113b25d8505b",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/integration/attendance.blade.php": {
+    "mtime": 1786259623.711554,
+    "ast_hash": "83a3cae4f432c45f49d333067569bd24",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/integration/conflicts.blade.php": {
+    "mtime": 1786259633.1999893,
+    "ast_hash": "e59b096650d924d1ebacf594fc0366a7",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/integration/outbox-detail.blade.php": {
+    "mtime": 1786259615.2453237,
+    "ast_hash": "4687857f5a13ada15eac0cb30a1e6a9e",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/integration/outbox.blade.php": {
+    "mtime": 1786259606.596135,
+    "ast_hash": "e2fcba41b3b9ba4795d2f82f0e229e5b",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/notifications/operational.blade.php": {
+    "mtime": 1786259589.5740573,
+    "ast_hash": "148a48ffe591716915fc9a0558a4252f",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/notifications/user-inbox.blade.php": {
+    "mtime": 1786259597.9800613,
+    "ast_hash": "185065c66225b85d4f4973b59471b248",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/reports/index.blade.php": {
+    "mtime": 1786259553.053084,
+    "ast_hash": "69d8a94080ccfab1e7bf458d178fff72",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/reports/show.blade.php": {
+    "mtime": 1786259813.4258587,
+    "ast_hash": "9623d079aff201fa77f2701f15367dcf",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Dashboard/DashboardAuthorizationAndPrivacyTest.php": {
+    "mtime": 1786259781.6538863,
+    "ast_hash": "054eec539ef943cd07ee95cdf41813e1",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Integration/AttendanceIntegrationContractTest.php": {
+    "mtime": 1786259781.6219373,
+    "ast_hash": "96a5ce533d61969a5e10a3165f820e9c",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Integration/IntegrationMariaDBConcurrencyTest.php": {
+    "mtime": 1786259384.4578586,
+    "ast_hash": "0dd4fca5a8ac7306d28aabd6479e51d6",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Integration/IntegrationOutboxTest.php": {
+    "mtime": 1786259781.5782325,
+    "ast_hash": "29c12fd02248131ec0986a12b1367810",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Integration/PrivacyPayloadProfileTest.php": {
+    "mtime": 1786259781.4998627,
+    "ast_hash": "8a8e58bc5429ce1cfa96fad27d2e16de",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Notification/OperationalNotificationTest.php": {
+    "mtime": 1786259781.4353614,
+    "ast_hash": "805293f0af5884c5f6ea30b0f9724419",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Notification/UserNotificationTest.php": {
+    "mtime": 1786259396.4882195,
+    "ast_hash": "46e83939b0a67362212153115c7d75e3",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Reporting/HealthReportTest.php": {
+    "mtime": 1786259781.3829021,
+    "ast_hash": "f2f754c476d8f00acb961dce654b2dfe",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-3C2.md": {
+    "mtime": 1786258707.6535943,
+    "ast_hash": "712842438f8de93ce002aa0ecd3d708a",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-3C1-CLOSURE.md": {
+    "mtime": 1786257943.3963182,
+    "ast_hash": "4384d24febb950297c5e6b77fbfe1fc0",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-3C1-FINAL-CLOSURE.md": {
+    "mtime": 1786259035.3981304,
+    "ast_hash": "3c2718a47c889ea6f65758df2275f5a4",
     "semantic_hash": ""
   }
 }
