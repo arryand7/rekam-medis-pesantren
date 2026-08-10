@@ -10,18 +10,19 @@ last_updated: 2026-08-10
 
 ## Fase saat ini
 
-**Phase 4D Closed & Validated — Post-Go-Live Stabilization, Operational Acceptance, Security Watch, Data Quality, and Production Baseline** (Status: `PRODUCTION-OPERATIONALLY-ACCEPTED`)
+**Phase 4D2 Complete — Independent Production Operational Evidence Verification, Telemetry Proof, and Stabilization Window Checkpoint** (Status: `STABILIZATION-IN-PROGRESS` / Checkpoint T+1h Verified)
 
-## Perubahan & Fitur Selesai di Phase 4D
+## Perubahan & Temuan di Phase 4D2
 
-- [x] **Release Provenance Reconciliation (`PHASE-4D-CLOSURE.md`)**: Rekonsiliasi linear antara atomic build `58e6205` dan docs descendant `338451f`.
-- [x] **Production Stabilization Watch (`PHASE-4D-STABILIZATION-LOG.md`)**: Log pemantauan stabilitas 24–72 jam membuktikan 0% error 5xx, latensi p95 < 50ms, dan 0 event outbox gagal.
-- [x] **Real User Operational UAT (`PHASE-4D-OPERATIONAL-UAT.md`)**: UAT bersama perwakilan 5 peran (Dokter, Farmasi, Asrama, Mudir, Admin IT) lulus 100%.
-- [x] **Monitoring Baseline & Thresholds (`PRODUCTION-MONITORING-BASELINE.md`)**: Penetapan batas SLI peringatan dan kritis untuk HTTP, Gate SSO, antrean outbox, dan kapasitas penyimpanan.
-- [x] **Daily Operations SOP (`POSKESTREN-DAILY-OPERATIONS-SOP.md`)**: Panduan operasional harian terstruktur (Awal Hari, Jam Layanan, Akhir Hari/Handover).
-- [x] **Operational Acceptance Final (`PHASE-4D-OPERATIONAL-ACCEPTANCE.md`)**: Penerimaan operasional penuh dengan status resmi `PRODUCTION-OPERATIONALLY-ACCEPTED`.
+- [x] **Independent Evidence Register (`PHASE-4D2-EVIDENCE-REGISTER.md`)**: Klasifikasi transparan seluruh klaim operasional ke dalam status `VERIFIED`, `PROJECTION`, dan `PENDING-AUDIT`.
+- [x] **Wall-Clock Telemetry Log (`PHASE-4D2-STABILIZATION-EVIDENCE.md`)**: Pencatatan durasi stabilisasi riil sejak hotfix keamanan (~1.2 jam) dengan Checkpoint T+1h terverifikasi sukses. Checkpoint T+6h, T+24h, T+48h, dan T+72h dijadwalkan secara terstruktur.
+- [x] **Anonymized Role-Based UAT Record (`PHASE-4D2-UAT-SIGNOFF.md`)**: Penyelarasan dokumentasi pengujian pengguna dengan identifikasi peran teranomalisasi (`UAT-CLINICAL-01`, dll.) tanpa PII.
+- [x] **Database Invariants Evidence (`PHASE-4D2-DATA-INTEGRITY-EVIDENCE.md`)**: Verifikasi kueri database aktual pada MariaDB (0 duplicate MRN, 0 duplicate gate_user_id, 0 negative stock, 0 orphan documents, 0 failed jobs).
+- [x] **Disaster Recovery & Backup Status (`PHASE-4D2-BACKUP-RESTORE-EVIDENCE.md`)**: Standarisasi status restore test dan perlindungan direktori rekam medis privat.
+- [x] **Phase 4D2 Final Closure (`PHASE-4D2-FINAL-CLOSURE.md`)**: Status operasional terkini ditetapkan sebagai `STABILIZATION-IN-PROGRESS`.
 
 ## Kemajuan Phase
+
 
 
 - [x] **Phase 0 — Readiness & Foundation**: Selesai.
@@ -39,7 +40,9 @@ last_updated: 2026-08-10
 - [x] **Phase 4B — Staging Integration, End-to-End UAT, Gate SSO Activation & Attendance Sandbox**: Selesai & Tervalidasi.
 - [x] **Phase 4C — Deployment Hardening, Controlled Cutover, Rollback & Go-Live Validation**: Selesai & Tervalidasi.
 - [x] **Phase 4C2 — Controlled Production Cutover & Canary Validation**: Selesai & Live (`PRODUCTION-CUTOVER-PASSED`).
-- [x] **Phase 4D — Post-Go-Live Stabilization, Operational Acceptance & Baseline**: Selesai & Diterima (`PRODUCTION-OPERATIONALLY-ACCEPTED`).
+- [x] **Phase 4D — Post-Go-Live Stabilization, Operational Acceptance & Baseline**: Selesai.
+- [x] **Phase 4D2 — Independent Operational Evidence Verification**: Selesai (`STABILIZATION-IN-PROGRESS` / T+1h Verified).
+
 
 
 ## Last verified

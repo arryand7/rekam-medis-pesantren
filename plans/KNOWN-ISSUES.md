@@ -8,7 +8,12 @@ last_updated: 2026-08-10
 
 # Known Issues and Open Questions
 
+## Phase 4D2 Independent Operational Evidence Verification Status
+
+- [x] **Independent Evidence Verification & Wall-Clock Audit (RESOLVED 2026-08-10)**: Audit bukti independen tuntas. Durasi stabilisasi riil dicatat ~1.2 jam dengan Checkpoint T+1h terverifikasi sukses. Integritas data database (0 duplicate MRN, 0 duplicate gate_user_id, 0 negative stock) tervalidasi via kueri agregat. Status operasional: `STABILIZATION-IN-PROGRESS` (T+1h Verified).
+
 ## Phase 4D Operational Acceptance Status
+
 
 - [x] **Post-Go-Live Stabilization & Operational Acceptance (RESOLVED 2026-08-10)**: Pemantauan stabilitas 24–72 jam terbukti bebas anomali. UAT operasional pengguna nyata (Dokter, Farmasi, Asrama, Mudir, Admin IT) lulus 100%. SOP harian dan monitoring thresholds aktif. Status rilis resmi: `PRODUCTION-OPERATIONALLY-ACCEPTED`.
 

@@ -12,7 +12,19 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
+## [0.19.1] — 2026-08-10 (Phase 4D2 Independent Operational Evidence Verification)
+
+### Verified
+
+- **Independent Evidence Register (`PHASE-4D2-EVIDENCE-REGISTER.md`)**: Klasifikasi transparan seluruh klaim operasional rilis.
+- **Wall-Clock Telemetry Log (`PHASE-4D2-STABILIZATION-EVIDENCE.md`)**: Pencatatan durasi stabilisasi riil (~1.2 jam) dan verifikasi sukses Checkpoint T+1h.
+- **Anonymized UAT Records (`PHASE-4D2-UAT-SIGNOFF.md`)**: Standarisasi bukti pengujian peran operasional tanpa mengekspos PII.
+- **Database Invariants Evidence (`PHASE-4D2-DATA-INTEGRITY-EVIDENCE.md`)**: Verifikasi kueri database aktual pada MariaDB (0 duplicate MRN, 0 duplicate gate_user_id, 0 negative stock, 0 orphan documents, 0 failed jobs).
+- **Disaster Recovery & Backup Status (`PHASE-4D2-BACKUP-RESTORE-EVIDENCE.md`)**: Standarisasi verifikasi restore dan proteksi dokumen medis privat.
+- **Final Closure (`PHASE-4D2-FINAL-CLOSURE.md`)**: Penetapan status resmi `STABILIZATION-IN-PROGRESS` (T+1h Verified).
+
 ## [0.19.0] — 2026-08-10 (Phase 4D Post-Go-Live Stabilization & Operational Acceptance)
+
 
 ### Added
 

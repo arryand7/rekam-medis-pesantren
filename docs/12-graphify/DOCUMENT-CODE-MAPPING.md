@@ -8,7 +8,19 @@ last_updated: 2026-08-09
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 4D2 — Independent Operational Evidence Verification Mapping
+
+```text
+PHASE-4D2-EVIDENCE-REGISTER.md & PHASE-4D2-STABILIZATION-EVIDENCE.md & PHASE-4D2-UAT-SIGNOFF.md & PHASE-4D2-DATA-INTEGRITY-EVIDENCE.md & PHASE-4D2-BACKUP-RESTORE-EVIDENCE.md & PHASE-4D2-FINAL-CLOSURE.md
+  -> app/Http/Controllers/Dashboard/DashboardController.php
+  -> app/Http/Controllers/HealthController.php
+  -> app/Services/Gate/GateAuthenticationService.php
+  -> tests/Feature/Auth/AuthenticationRuntimeAuditAndProtectionTest.php
+  -> tests/Feature/Production/Phase4C2ProductionCutoverTest.php
+```
+
 ## Phase 4D — Post-Go-Live Stabilization, Operational Acceptance & Baseline Mapping
+
 
 ```text
 PHASE-4D-STABILIZATION-LOG.md & PHASE-4D-OPERATIONAL-UAT.md & PRODUCTION-MONITORING-BASELINE.md & POSKESTREN-DAILY-OPERATIONS-SOP.md & PHASE-4D-OPERATIONAL-ACCEPTANCE.md & PHASE-4D-CLOSURE.md
