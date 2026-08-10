@@ -196,3 +196,24 @@ test('logout properly invalidates session and redirects to login', function () {
     // Re-visiting dashboard after logout must redirect to login
     $this->get('/dashboard')->assertRedirect(route('login'));
 });
+
+test('gate before only allows exact local permission and defers to model policy otherwise', function () {
+    $adminRole = Role::firstOrCreate(['name' => 'sysadmin_role'], ['display_name' => 'System Admin']);
+    $perm = Permission::firstOrCreate(['name' => 'manage-users'], ['display_name' => 'Manage Users']);
+    $adminRole->permissions()->syncWithoutDetaching([$perm->id]);
+
+    $admin = User::factory()->create();
+    $admin->roles()->attach($adminRole->id);
+
+    // Exact permission check passes
+    expect(Gate::forUser($admin)->allows('manage-users'))->toBeTrue();
+
+    // Ability without permission returns false and is not granted
+    expect(Gate::forUser($admin)->allows('view-patients'))->toBeFalse();
+    expect(Gate::forUser($admin)->allows('view-clinical-dashboard'))->toBeFalse();
+    expect(Gate::forUser($admin)->allows('non_existent_ability'))->toBeFalse();
+
+    // Model policy evaluation: PatientPolicy view requires 'view-patients'
+    $patient = Patient::factory()->create();
+    expect(Gate::forUser($admin)->allows('view', $patient))->toBeFalse();
+});

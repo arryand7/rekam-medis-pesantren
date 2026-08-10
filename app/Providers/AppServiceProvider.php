@@ -62,10 +62,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::before(function ($user, $ability) {
+        Gate::before(function ($user, string $ability): ?bool {
             if ($user && method_exists($user, 'hasPermission') && $user->hasPermission($ability)) {
                 return true;
             }
+
+            return null;
         });
 
         Gate::define('view-clinical-dashboard', fn ($user) => $user->hasPermission('view-clinical-dashboard'));
