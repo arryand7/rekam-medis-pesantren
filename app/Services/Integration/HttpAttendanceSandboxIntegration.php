@@ -193,8 +193,9 @@ class HttpAttendanceSandboxIntegration implements AttendanceIntegrationContract
      *
      * @param  array<string, mixed>  $payload
      */
-    protected function assertPayloadCompliant(array $payload): void
+    public function assertPayloadCompliant(array $payload): void
     {
+
         $forbiddenKeys = [
             'diagnosis', 'diagnoses', 'icd10', 'icd_code', 'complaint', 'symptoms',
             'vital_signs', 'blood_pressure', 'heart_rate', 'temperature',

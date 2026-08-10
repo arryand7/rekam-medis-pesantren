@@ -49,3 +49,4 @@ last_updated: 2026-08-09
 | End-to-End Clinical & Handoff UAT | ✓ | Scenarios A-E | ✓ | superseding events | ✓ |
 | Outbox Failure & Dead-Letter | ✓ | backoff policy | permission retry | dead-letter transition | ✓ |
 | Role Matrix & Privacy Isolation | ✓ | separation | policy 403 checks | no medical leakage | ✓ |
+| Production Cutover Canary & Integrity | ✓ | 6 steps canary | ✓ | 0 duplicates/negative | ✓ |

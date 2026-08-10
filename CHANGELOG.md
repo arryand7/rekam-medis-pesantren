@@ -12,7 +12,16 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
+## [0.18.0] — 2026-08-10 (Phase 4C2 Production Cutover Complete & Live Validation)
+
+### Added
+
+- **Production Cutover Execution (`PHASE-4C2-CUTOVER-EXECUTION.md`)**: Pelaksanaan cutover produksi resmi setelah menerima otorisasi eksplisit `SETUJUI CUTOVER PRODUCTION POSKESTREN`.
+- **Canary Test Suite (`Phase4C2ProductionCutoverTest.php`)**: 6 pengujian canary lengkap mencakup liveness & readiness probes, Gate SSO OIDC flow, application entitlement enforcement, identitas sync dry-run, integritas privasi absensi (*zero clinical keys*), dan invariansi data MariaDB.
+- **Post-Cutover UAT & Integrity Reports (`PHASE-4C2-POST-CUTOVER-UAT.md`, `PHASE-4C2-FINAL-STATUS.md`)**: Verifikasi 0 duplikasi data dan penetapan status rilis resmi `PRODUCTION-CUTOVER-PASSED`.
+
 ## [0.17.1] — 2026-08-10 (Phase 4C2 Controlled Cutover Plan & Preflight State)
+
 
 ### Added
 

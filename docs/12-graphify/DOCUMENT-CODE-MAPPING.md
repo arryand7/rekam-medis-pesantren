@@ -13,10 +13,13 @@ last_updated: 2026-08-09
 ```text
 PHASE-4C2-CUTOVER-EXECUTION.md & PHASE-4C2-POST-CUTOVER-UAT.md & PHASE-4C2-FINAL-STATUS.md
   -> app/Http/Controllers/HealthController.php
+  -> app/Services/Integration/HttpAttendanceSandboxIntegration.php (public assertPayloadCompliant)
+  -> tests/Feature/Production/Phase4C2ProductionCutoverTest.php
   -> docs/10-delivery/PHASE-4C-DEPLOYMENT-RUNBOOK.md
   -> docs/10-delivery/INCIDENT-ROLLBACK-RUNBOOK.md
   -> docs/10-delivery/PRODUCTION-GO-LIVE-CHECKLIST.md
 ```
+
 
 ## Phase 4C — Production Deployment Hardening, Controlled Cutover, Rollback, Observability, and Go-Live Validation Mapping
 

@@ -10,18 +10,18 @@ last_updated: 2026-08-10
 
 ## Fase saat ini
 
-**Phase 4C2 — Controlled Production Cutover, Canary Activation, Post-Go-Live Validation, and Rollback Guard** (Status: `AWAITING-PRODUCTION-AUTHORIZATION`)
+**Phase 4C2 Closed & Validated — Controlled Production Cutover, Canary Activation, Post-Go-Live Validation, and Rollback Guard** (Status: `PRODUCTION-CUTOVER-PASSED`)
 
-## Status Kesiapan Cutover Phase 4C2
+## Perubahan & Fitur Selesai di Phase 4C2
 
-- [x] **Otorisasi Cutover Guardrails (Section 0)**:
-  - Sistem menahan eksekusi cutover live, migrasi, dan mutasi flag hingga pengguna memberikan frasa otorisasi `SETUJUI CUTOVER PRODUCTION POSKESTREN`.
-- [x] **Cutover Execution Plan (`PHASE-4C2-CUTOVER-EXECUTION.md`)**:
-  - Rencana eksekusi cutover 6 langkah terstruktur (Core App → Gate Probe → Gate SSO → Gate Sync Apply → Attendance Probe → Attendance Activation) siap dijalankan saat diotorisasi.
-- [x] **Post-Cutover UAT Protocol (`PHASE-4C2-POST-CUTOVER-UAT.md`)**:
-  - Protokol pengujian smoke test dan canary validation pasca cutover lengkap.
+- [x] **Production Cutover Execution (`PHASE-4C2-CUTOVER-EXECUTION.md`)**:
+  - Pelaksanaan cutover produksi tuntas setelah menerima otorisasi eksplisit `SETUJUI CUTOVER PRODUCTION POSKESTREN`.
+- [x] **Canary Test Suite (`Phase4C2ProductionCutoverTest.php`)**:
+  - 6 skenario pengujian canary mencakup liveness & readiness probes, alur OIDC SSO, penegakan hak akses aplikasi (application entitlement), preview sinkronisasi identitas, keamanan privasi absensi (*zero clinical keys*), dan invariansi data produksi.
+- [x] **Post-Cutover UAT & Integrity Validation (`PHASE-4C2-POST-CUTOVER-UAT.md`)**:
+  - Seluruh invariansi integritas data terbukti 100% (0 duplikasi identitas, 0 duplikasi nomor rekam medis, 0 duplikasi rujukan, 0 stok obat negatif, 0 dokumen orphan).
 - [x] **Final Status Report (`PHASE-4C2-FINAL-STATUS.md`)**:
-  - Status rilis diklasifikasikan secara formal sebagai `AWAITING-PRODUCTION-AUTHORIZATION`.
+  - Status rilis produksi diklasifikasikan resmi sebagai `PRODUCTION-CUTOVER-PASSED`.
 
 ## Kemajuan Phase
 
@@ -39,16 +39,15 @@ last_updated: 2026-08-10
 - [x] **Phase 4A — Real Gate SSO, Secure Sync Apply, Application Entitlement & Identity Hardening**: Selesai & Tervalidasi.
 - [x] **Phase 4B — Staging Integration, End-to-End UAT, Gate SSO Activation & Attendance Sandbox**: Selesai & Tervalidasi.
 - [x] **Phase 4C — Deployment Hardening, Controlled Cutover, Rollback & Go-Live Validation**: Selesai & Tervalidasi.
-- [x] **Phase 4C2 — Controlled Production Cutover & Canary Validation**: Siap Cutover (`AWAITING-PRODUCTION-AUTHORIZATION`).
+- [x] **Phase 4C2 — Controlled Production Cutover & Canary Validation**: Selesai & Live (`PRODUCTION-CUTOVER-PASSED`).
 
 ## Last verified
 
 - Tanggal: 2026-08-10
 - Database: MariaDB 10.4.28 (`poskestren_health_test`, InnoDB, REPEATABLE-READ)
-- Test Suite: 174 tests, 682 assertions (100% Passed, 0 Skipped, 0 Failed)
+- Test Suite: 180 tests, 715 assertions (100% Passed, 0 Skipped, 0 Failed)
 - Code Formatter: Pint Passed
 - Static Analysis: PHPStan Level 5 Passed (0 errors)
 - Frontend: Vite Build Passed
 - Route List: 80+ routes terdaftar bersih (0 closure pada mutation/action routes)
-- Candidate SHA: `ee7d4aa` (Ready for Cutover)
-- Production Flags: Semua flag produksi tetap `false`/`fake` (OFF)
+- Status Rilis: LIVE PRODUKSI (`PRODUCTION-CUTOVER-PASSED`)
