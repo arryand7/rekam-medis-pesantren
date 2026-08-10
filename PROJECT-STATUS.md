@@ -10,22 +10,18 @@ last_updated: 2026-08-10
 
 ## Fase saat ini
 
-**Phase 4C Closed & Validated — Production Deployment Hardening, Controlled Cutover, Rollback, Observability, and Go-Live Validation** (Status: `PRODUCTION-READY-NOT-CUTOVER`)
+**Phase 4C2 — Controlled Production Cutover, Canary Activation, Post-Go-Live Validation, and Rollback Guard** (Status: `AWAITING-PRODUCTION-AUTHORIZATION`)
 
-## Perubahan & Fitur Selesai di Phase 4C
+## Status Kesiapan Cutover Phase 4C2
 
-- [x] **Production Environment Audit & Preflight (`PHASE-4C-PRODUCTION-PREFLIGHT.md`)**:
-  - Audit menyeluruh terhadap OS Linux, PHP 8.4 runtime, OPcache, Composer, MariaDB 10.4.28+, Redis, Supervisor Queue Worker, Crontab Scheduler, Private Storage, Nginx TLS 1.3, dan Trusted Proxies.
-- [x] **Pre-Cutover Backup & Multi-Tiered Rollback Protocol (`PHASE-4C-BACKUP-AND-ROLLBACK.md`, `INCIDENT-ROLLBACK-RUNBOOK.md`)**:
-  - Prosedur snapshot terverifikasi (DB, Storage, Config) dan strategi pemulihan 3 tingkat (Feature Rollback, Symlink Switch Rollback, Database Disaster Recovery).
-- [x] **Atomic Deployment Runbook & 6-Step Feature Activation (`PHASE-4C-DEPLOYMENT-RUNBOOK.md`)**:
-  - Panduan eksekusi rilis produksi atomik bebas *clinical disruption* dengan alur aktivasi berurutan: Core App → Gate Connectivity Probe → Gate SSO → Gate Sync Apply → Attendance Probe → Attendance Activation.
-- [x] **Health & Readiness Endpoints (`/health` & `/health/ready`)**:
-  - Implementasi liveness check (`/health`) dan readiness check (`/health/ready`) yang memverifikasi database, cache, dan private storage tanpa mengekspos rahasia/kredensial.
-- [x] **Private Document Storage Hardening**:
-  - Verifikasi isolasi seluruh disk berkas rekam medis privat (`referral_documents`, `referral_external_documents`, `discharge_documents`) di luar web root.
-- [x] **Production Go-Live Checklist (`PRODUCTION-GO-LIVE-CHECKLIST.md`)**:
-  - Seluruh guardrail keamanan, migrasi aman, privasi data, dan keandalan operasional tervalidasi 100%.
+- [x] **Otorisasi Cutover Guardrails (Section 0)**:
+  - Sistem menahan eksekusi cutover live, migrasi, dan mutasi flag hingga pengguna memberikan frasa otorisasi `SETUJUI CUTOVER PRODUCTION POSKESTREN`.
+- [x] **Cutover Execution Plan (`PHASE-4C2-CUTOVER-EXECUTION.md`)**:
+  - Rencana eksekusi cutover 6 langkah terstruktur (Core App → Gate Probe → Gate SSO → Gate Sync Apply → Attendance Probe → Attendance Activation) siap dijalankan saat diotorisasi.
+- [x] **Post-Cutover UAT Protocol (`PHASE-4C2-POST-CUTOVER-UAT.md`)**:
+  - Protokol pengujian smoke test dan canary validation pasca cutover lengkap.
+- [x] **Final Status Report (`PHASE-4C2-FINAL-STATUS.md`)**:
+  - Status rilis diklasifikasikan secara formal sebagai `AWAITING-PRODUCTION-AUTHORIZATION`.
 
 ## Kemajuan Phase
 
@@ -42,15 +38,17 @@ last_updated: 2026-08-10
 - [x] **Phase 3C2 — Operational Outbox, Role-Aware Dashboards & Reporting Foundation**: Selesai & Tervalidasi (Fase 3 Lengkap).
 - [x] **Phase 4A — Real Gate SSO, Secure Sync Apply, Application Entitlement & Identity Hardening**: Selesai & Tervalidasi.
 - [x] **Phase 4B — Staging Integration, End-to-End UAT, Gate SSO Activation & Attendance Sandbox**: Selesai & Tervalidasi.
-- [x] **Phase 4C — Deployment Hardening, Controlled Cutover, Rollback & Go-Live Validation**: Selesai & Tervalidasi (`PRODUCTION-READY-NOT-CUTOVER`).
+- [x] **Phase 4C — Deployment Hardening, Controlled Cutover, Rollback & Go-Live Validation**: Selesai & Tervalidasi.
+- [x] **Phase 4C2 — Controlled Production Cutover & Canary Validation**: Siap Cutover (`AWAITING-PRODUCTION-AUTHORIZATION`).
 
 ## Last verified
 
 - Tanggal: 2026-08-10
 - Database: MariaDB 10.4.28 (`poskestren_health_test`, InnoDB, REPEATABLE-READ)
-- Test Suite: 174 tests, 664 assertions (100% Passed, 0 Skipped, 0 Failed)
+- Test Suite: 174 tests, 682 assertions (100% Passed, 0 Skipped, 0 Failed)
 - Code Formatter: Pint Passed
 - Static Analysis: PHPStan Level 5 Passed (0 errors)
 - Frontend: Vite Build Passed
 - Route List: 80+ routes terdaftar bersih (0 closure pada mutation/action routes)
+- Candidate SHA: `ee7d4aa` (Ready for Cutover)
 - Production Flags: Semua flag produksi tetap `false`/`fake` (OFF)

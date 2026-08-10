@@ -8,7 +8,18 @@ last_updated: 2026-08-09
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 4C2 — Controlled Production Cutover, Canary Activation, Post-Go-Live Validation & Rollback Guard Mapping
+
+```text
+PHASE-4C2-CUTOVER-EXECUTION.md & PHASE-4C2-POST-CUTOVER-UAT.md & PHASE-4C2-FINAL-STATUS.md
+  -> app/Http/Controllers/HealthController.php
+  -> docs/10-delivery/PHASE-4C-DEPLOYMENT-RUNBOOK.md
+  -> docs/10-delivery/INCIDENT-ROLLBACK-RUNBOOK.md
+  -> docs/10-delivery/PRODUCTION-GO-LIVE-CHECKLIST.md
+```
+
 ## Phase 4C — Production Deployment Hardening, Controlled Cutover, Rollback, Observability, and Go-Live Validation Mapping
+
 
 ```text
 PHASE-4C-PRODUCTION-PREFLIGHT.md & PHASE-4C-BACKUP-AND-ROLLBACK.md & PHASE-4C-DEPLOYMENT-RUNBOOK.md & PHASE-4C-PRODUCTION-UAT.md & PHASE-4C-CLOSURE.md & PRODUCTION-GO-LIVE-CHECKLIST.md & INCIDENT-ROLLBACK-RUNBOOK.md

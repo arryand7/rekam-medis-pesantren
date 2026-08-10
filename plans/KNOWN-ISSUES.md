@@ -8,7 +8,13 @@ last_updated: 2026-08-10
 
 # Known Issues and Open Questions
 
+## Phase 4C2 Production Cutover Status
+
+- [x] **Cutover Authorization Guardrails (RESOLVED 2026-08-10)**: Otorisasi cutover diamankan di bawah frasa wajib `SETUJUI CUTOVER PRODUCTION POSKESTREN`. Status rilis diklasifikasikan sebagai `AWAITING-PRODUCTION-AUTHORIZATION`.
+- [x] **Cutover Execution Runbook (RESOLVED 2026-08-10)**: Rencana eksekusi rilis bertahap 6 langkah (`PHASE-4C2-CUTOVER-EXECUTION.md`) dan protokol verifikasi canary (`PHASE-4C2-POST-CUTOVER-UAT.md`) siap dieksekusi.
+
 ## Phase 4C Production Hardening Status
+
 
 - [x] **Health & Readiness Endpoints (RESOLVED 2026-08-10)**: Endpoint `/health` (Liveness) dan `/health/ready` (Readiness) memverifikasi subsistem database, cache, dan penyimpanan privat secara aman tanpa membocorkan kredensial.
 - [x] **Private Document Storage Isolation (RESOLVED 2026-08-10)**: Seluruh berkas rekam medis privat terisolasi di luar public directory web server.

@@ -12,7 +12,17 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
+## [0.17.1] — 2026-08-10 (Phase 4C2 Controlled Cutover Plan & Preflight State)
+
+### Added
+
+- **Cutover Authorization Guardrails (Section 0)**: Penguncian seluruh tindakan mutatif produksi hingga menerima frasa otorisasi eksplisit `SETUJUI CUTOVER PRODUCTION POSKESTREN`.
+- **Phase 4C2 Cutover Execution Plan (`PHASE-4C2-CUTOVER-EXECUTION.md`)**: Rencana eksekusi rilis bertahap 6 langkah dengan integrasi Gate SSO, Sync Apply, dan Absensi canary.
+- **Phase 4C2 Post-Cutover UAT Protocol (`PHASE-4C2-POST-CUTOVER-UAT.md`)**: Protokol verifikasi smoke test pasca cutover dan pemantauan stabilitas log 15–30 menit.
+- **Phase 4C2 Final Status Report (`PHASE-4C2-FINAL-STATUS.md`)**: Laporan status resmi terklasifikasi sebagai `AWAITING-PRODUCTION-AUTHORIZATION`.
+
 ## [0.17.0] — 2026-08-10 (Phase 4C Production Deployment Hardening, Runbooks & Go-Live Readiness)
+
 
 ### Added
 
