@@ -44,3 +44,8 @@ last_updated: 2026-08-09
 | Private Discharge Doc | ✓ | ✓ | ✓ | immutability / path traversal | download audit |
 | Theme & Dashboard | ✓ | enum | ✓ | - | - |
 | Health Endpoint | ✓ | - | - | - | - |
+| Patient Number Collision Hardening | ✓ | 1000 items | ✓ | retry & catch 1062 | ✓ |
+| Attendance Sandbox Integration | ✓ | forbidden keys guard | ✓ | supersede/revoke | probe |
+| End-to-End Clinical & Handoff UAT | ✓ | Scenarios A-E | ✓ | superseding events | ✓ |
+| Outbox Failure & Dead-Letter | ✓ | backoff policy | permission retry | dead-letter transition | ✓ |
+| Role Matrix & Privacy Isolation | ✓ | separation | policy 403 checks | no medical leakage | ✓ |

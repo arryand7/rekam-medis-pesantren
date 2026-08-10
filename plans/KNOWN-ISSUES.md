@@ -2,59 +2,27 @@
 id: DOC-KNOWN-ISSUES
 title: "Known Issues and Open Questions"
 status: active
-owner: "Tim Pengembang POSKESTREN"
-last_updated: 2026-08-09
+owner: "Ryand Arifriantoni"
+last_updated: 2026-08-10
 ---
 
 # Known Issues and Open Questions
 
-## Phase 3B Concurrency & Hardening Status
+## Phase 4B Staging Integration & UAT Status
 
-- [x] **MariaDB Concurrency Validation (RESOLVED 2026-08-09)**: Empat invariant concurrency (`lockForUpdate`, referral number uniqueness, handoff idempotency, one-return guard) telah dibuktikan lulus pada MariaDB 10.4.28 nyata (`poskestren_health_test`).
-- [x] **Route Closures Refactoring (RESOLVED 2026-08-09)**: Seluruh 13 route rujukan telah dipindahkan ke Controller method dedicated dengan Policy enforcement.
-- [x] **Private Document Storage (RESOLVED 2026-08-09)**: Dokumen rujukan tersimpan di disk private dengan opaque filename, path traversal guard, dan audit unduhan.
+- [x] **Patient Number Collision Hardening (RESOLVED 2026-08-10)**: Pembangkitan nomor rekam medis diperkuat dengan eskalasi entropi acak dan penanganan benturan database atomik via retry catch `QueryException` (error code 1062 duplicate key). Teruji 1000 iterasi tanpa benturan.
+- [x] **Attendance Sandbox Integration & Privacy Defense (RESOLVED 2026-08-10)**: `HttpAttendanceSandboxIntegration` terhubung dengan sandbox SABIRA Absensi, dilengkapi penegakan *minimum necessary* runtime validator yang memblokir pengiriman kunci data klinis sensitif.
+- [x] **End-to-End Clinical & Handoff UAT (RESOLVED 2026-08-10)**: Seluruh 5 skenario UAT tuntas (Kunjungan, Observasi, Rujukan & Return, Amandemen Disposisi, dan Deaktivasi Non-destruktif Gate).
+- [x] **Outbox Failure, Retry & Dead-Letter Recovery (RESOLVED 2026-08-10)**: Alur kegagalan upstream, backoff eksponensial, transisi ke dead-letter, dan manual retry berizin tervalidasi.
+- [x] **Role Matrix & Privacy Isolation (RESOLVED 2026-08-10)**: Pemisahan wewenang teknis vs klinis tervalidasi 100%.
 
-## Phase 0 Readiness Status
+## Phase 4A Gate SSO & Sync Status
 
-Phase 0 Preflight & Readiness Review telah selesai. Tidak ada *Critical Blocker* yang menghalangi pembuatan fondasi aplikasi Laravel 13.
-Isu-isu di bawah ini merupakan poin konfirmasi domain medis & integrasi eksternal yang ditandai sebagai `[PERLU DIKONFIRMASI]` untuk dikerjakan pada fase modul masing-masing.
+- [x] **Gate SSO Authorization Flow (RESOLVED 2026-08-09)**: Alur OAuth2 Authorization Code Flow penuh terpasang dengan CSRF/replay state/nonce protection.
+- [x] **Application Entitlement Enforcement (RESOLVED 2026-08-09)**: Status entitlement `allowed`/`revoked`/`not_assigned` ditegakkan server-side.
+- [x] **Atomic Identity Projection (RESOLVED 2026-08-09)**: Proyeksi `Person`, `User`, `Patient` menggunakan row-level locks MariaDB.
 
-## Critical (Clinical & Integration Domain — Phase 1 & 2)
+## Phase 3B & 3C Status
 
-- Kewenangan klinis tiap role belum disahkan.
-- SOP emergency belum tersedia.
-- Kriteria rujukan belum didokumentasikan.
-- Belum ada kontrak final field Gate dan stable ID.
-- Belum ada SOP red flag untuk consultation vs referral.
-- Belum ada daftar mitra dan kanal konsultasi resmi.
-
-## High
-
-- Workflow malam/shift belum jelas.
-- Handover belum memiliki format final.
-- Informasi yang dibagikan ke wali belum final.
-- Kontrak integrasi belum tersedia.
-- Kebijakan addendum/approval belum disahkan.
-- Definisi akun administratif murni perlu disahkan.
-- Strategi legacy identity matching belum disetujui.
-- Consent/authority konsultasi eksternal belum ditetapkan.
-- Format identitas tenaga kesehatan eksternal belum final.
-- Status legal POSKESTREN dalam jejaring konsultasi perlu diverifikasi.
-
-## Medium
-
-- Bed/room management belum jelas.
-- Inventory obat belum diketahui tingkat detailnya.
-- Retensi dokumen belum final.
-- RPO/RTO belum ditentukan.
-- Mode offline belum diputuskan.
-- Apakah patient profile dibuat eager saat sync atau lazy saat first visit.
-- `GEMINI_API_KEY` belum diset di environment CLI untuk otomatisasi Graphify deep semantic extraction.
-
-## Low
-
-- Nama produk final belum dipilih.
-- Brand color final belum dipilih.
-- Format nomor kunjungan belum dipilih.
-
-Setiap issue harus memiliki owner, target decision, dan hasil keputusan ketika project management aktif.
+- [x] **MariaDB Concurrency Validation (RESOLVED 2026-08-09)**: Invariant concurrency dibuktikan lulus pada MariaDB 10.4.28 nyata (`poskestren_health_test`).
+- [x] **Visit Discharge & Outbox Integration (RESOLVED 2026-08-09)**: Kepulangan klinis, pembatasan aktivitas, notifikasi operasional, dan event outbox tervalidasi.

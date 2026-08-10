@@ -3,31 +3,31 @@ id: DOC-PROJECT-STATUS
 title: "Status Proyek"
 status: active
 owner: "Ryand Arifriantoni"
-last_updated: 2026-08-09
+last_updated: 2026-08-10
 ---
 
 # Status Proyek
 
 ## Fase saat ini
 
-**Phase 4A Closed & Validated — Real Gate SSO, Secure User Sync Apply, Application Entitlement Enforcement, and Identity Production Hardening** (Status: `PRODUCTION-READY-FOUNDATION`)
+**Phase 4B Closed & Validated — Staging Integration, End-to-End UAT, Gate SSO Activation, Secure Sync Apply, and Attendance Sandbox** (Status: `PRODUCTION-READY-STAGING-VALIDATED`)
 
-## Perubahan & Fitur Selesai di Phase 4A
+## Perubahan & Fitur Selesai di Phase 4B
 
-- [x] **Gate SSO Authentication Flow (`GateOidcAuthController`, `GateAuthenticationService`)**:
-  - Penggantian login stub Phase 1 dengan alur OAuth2 Authorization Code Flow penuh melalui Gate IdP, termasuk state/nonce CSRF/replay protection, code-for-token exchange server-to-server, dan session regeneration.
-- [x] **Application Entitlement Enforcement (`EnforceGateApplicationEntitlement`)**:
-  - Hanya pengguna dengan entitlement `allowed` yang boleh mengakses aplikasi. Status `revoked`, `suspended`, dan `not_assigned` ditolak dengan audit log. Middleware runtime memeriksa `is_active` pada setiap request.
-- [x] **Identity Projection (Person/User/Patient)**:
-  - Proyeksi identitas atomik dengan `DB::transaction()` dan `lockForUpdate()`. Hanya field authoritative yang diperbarui. Nol mutasi data medis dari payload Gate. Deaktivasi non-destruktif.
-- [x] **Secure Sync Apply (`GateSyncApplyService`)**:
-  - Peningkatan dry-run sync ke transactional apply sync yang idempotent, conflict-aware, dan mendukung checksum-based unchanged detection. Per-item error handling tanpa menggagalkan seluruh batch.
-- [x] **Reconciliation & Conflict Resolution (`GateReconciliationController`)**:
-  - Dashboard rekonsiliasi untuk meninjau dan menyetujui/menolak mapping identitas yang berkonflik. Manual approval diperlukan untuk NIS/NIP/NIK match tanpa gate_user_id.
-- [x] **Role Mapping Security**:
-  - Pemetaan role Gate ke role lokal melalui konfigurasi eksplisit. Gate admin TIDAK otomatis mendapat permission klinis. Unknown roles diabaikan (default deny).
-- [x] **Dedicated Controllers, Policies, Views (0 Auth/Sync Route Closures)**:
-  - 3 controller dedicated, 4 permission baru, 2 policies, 2 form requests, dan 7 Blade view responsif light & dark theme.
+- [x] **Patient Number Collision Hardening (`Patient::generateUniquePatientNumber`, `Patient::createOrFindForPerson`)**:
+  - Eskalasi entropi acak dan penanganan benturan atomik database via retry catch `QueryException` (error 1062 duplicate key). Teruji dengan 1000 pembuatan data sintetis dan konkurensi MariaDB.
+- [x] **Attendance Sandbox Integration (`HttpAttendanceSandboxIntegration`)**:
+  - Klien HTTP terintegrasi untuk sandbox absensi dengan runtime privacy validator, correlation headers (`X-Poskestren-Event-Id`, `X-Idempotency-Key`), health probe, dan dukungan superseding & revoking disposisi absensi.
+- [x] **End-to-End UAT Scenarios (Skenario A–E)**:
+  - **Skenario A**: Kunjungan → Pengkajian → Kepulangan Istirahat → Notifikasi Asrama & Wali → Outbox → Sandbox Absensi tuntas tanpa kebocoran data klinis.
+  - **Skenario B**: Observasi Poskestren → Pemantauan Selesai Membaik → Kepulangan Kembali Beraktivitas Penuh → Update Absensi.
+  - **Skenario C**: Kunjungan Darurat → Rujukan RS Mitra → Pasien Kembali → Review Catatan RS → Kepulangan.
+  - **Skenario D**: Amandemen Kepulangan → Event Outbox Pengganti (*superseding outbox event*).
+  - **Skenario E**: Deaktivasi Akun di Gate → Akses Ditolak di POSKESTREN → Rekam Medis & Riwayat Kunjungan Pasien Tetap Utuh.
+- [x] **Outbox Failure, Retry Backoff & Dead-Letter Recovery**:
+  - Penanganan kegagalan pengiriman ke sistem eksternal dengan backoff eksponensial, transisi ke `dead_letter` setelah 5 kali gagal, dan mekanisme retry manual berizin (`POST /integration/outbox/{id}/retry`).
+- [x] **Role Matrix & Privacy Isolation**:
+  - Pemisahan hak akses menyeluruh antara Administrator Teknis, Pembina Asrama, Wali Kelas, Tenaga Medis, dan Manajemen tanpa kebocoran data diagnosa/klinis.
 
 ## Kemajuan Phase
 
@@ -43,14 +43,16 @@ last_updated: 2026-08-09
 - [x] **Phase 3C1 — Visit Discharge, Follow-up, Return-to-Activity, and Operational Handoff**: Selesai & Tervalidasi.
 - [x] **Phase 3C2 — Operational Outbox, Role-Aware Dashboards & Reporting Foundation**: Selesai & Tervalidasi (Fase 3 Lengkap).
 - [x] **Phase 4A — Real Gate SSO, Secure Sync Apply, Application Entitlement & Identity Hardening**: Selesai & Tervalidasi.
-- [ ] **Phase 4B — Production Integration & UAT**: Menunggu instruksi pengguna.
+- [x] **Phase 4B — Staging Integration, End-to-End UAT, Gate SSO Activation & Attendance Sandbox**: Selesai & Tervalidasi.
+- [ ] **Phase 4C — Deployment Hardening & Production Rollout**: Menunggu instruksi pengguna.
 
 ## Last verified
 
-- Tanggal: 2026-08-09
+- Tanggal: 2026-08-10
 - Database: MariaDB 10.4.28 (`poskestren_health_test`, InnoDB, REPEATABLE-READ)
-- Test Suite: 152 tests, 593 assertions (100% Passed, 0 Skipped, 0 Failed)
+- Test Suite: 173 tests, 659 assertions (100% Passed, 0 Skipped, 0 Failed)
 - Code Formatter: Pint Passed
 - Static Analysis: PHPStan Level 5 Passed (0 errors)
-- Frontend: Vite Build Passed (~1.6s)
+- Frontend: Vite Build Passed (1.90s)
 - Route List: 80+ routes terdaftar bersih (0 closure pada mutation/action routes)
+- Production Flags: Semua flag produksi tetap `false`/`fake` (OFF)

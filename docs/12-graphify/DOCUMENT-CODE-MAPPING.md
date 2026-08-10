@@ -8,7 +8,24 @@ last_updated: 2026-08-09
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 4B — Staging Integration, End-to-End UAT, Gate SSO Activation & Attendance Sandbox Mapping
+
+```text
+PHASE-4B-STAGING-PREFLIGHT.md & PHASE-4B-GATE-SSO-UAT.md & PHASE-4B-UAT-EVIDENCE.md & PHASE-4B-CLOSURE.md
+  -> app/Models/Patient.php (collision hardening methods)
+  -> app/Services/Integration/HttpAttendanceSandboxIntegration.php
+  -> config/integration.php (sandbox & http drivers)
+  -> app/Providers/AppServiceProvider.php (driver binding & explicit policy registration)
+  -> app/Policies/ClinicalOperationalHandoffPolicy.php (acknowledge permission visibility)
+  -> tests/Feature/Patient/PatientNumberCollisionHardeningTest.php
+  -> tests/Feature/Integration/AttendanceSandboxIntegrationTest.php
+  -> tests/Feature/UAT/Phase4BEndToEndUatTest.php
+  -> tests/Feature/Integration/IntegrationOutboxFailureAndRetryTest.php
+  -> tests/Feature/UAT/Phase4BRoleMatrixPrivacyUatTest.php
+```
+
 ## Phase 4A — Gate SSO, Secure Sync Apply, Application Entitlement & Identity Hardening Mapping
+
 
 ```text
 GATE-OIDC-CONTRACT.md & GATE-SSO-SECURITY.md & GATE-LOGIN-AND-ACCESS.md & ACCESS-CONTROL-MATRIX.md

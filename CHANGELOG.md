@@ -3,7 +3,7 @@ id: DOC-CHANGELOG
 title: "Changelog"
 status: active
 owner: "Ryand Arifriantoni"
-last_updated: 2026-08-09
+last_updated: 2026-08-10
 ---
 
 # Changelog
@@ -12,7 +12,20 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
+## [0.16.0] — 2026-08-10 (Phase 4B Staging Integration, End-to-End UAT & Attendance Sandbox)
+
+### Added
+
+- **Patient Number Collision Hardening (`Patient::generateUniquePatientNumber`, `Patient::createOrFindForPerson`)**: Pembangkitan nomor rekam medis dengan eskalasi entropi dan strategi pemulihan benturan database atomik via retry catch `QueryException` (error code 1062 duplicate key).
+- **Attendance Sandbox HTTP Integration (`HttpAttendanceSandboxIntegration`)**: Klien HTTP integrasi sandbox SABIRA Absensi dengan runtime privacy defense-in-depth validator, header korelasi & idempotensi, dan dukungan superseding & revoking disposisi.
+- **Dynamic Integration Binding (`AppServiceProvider`)**: Binding dinamis untuk `AttendanceIntegrationContract` sesuai driver (`fake`, `sandbox`, `http`) dan registrasi policy eksplisit untuk `IntegrationOutboxEvent` dan `IntegrationIdentityConflict`.
+- **End-to-End Staging UAT Test Suite (`Phase4BEndToEndUatTest`)**: 5 skenario UAT lengkap (Skenario A: Kunjungan → Pengkajian → Kepulangan Istirahat → Outbox → Sandbox Absensi; Skenario B: Observasi → Selesai → Kembali Beraktivitas; Skenario C: Kunjungan Darurat → Rujukan RS → Kembali → Review; Skenario D: Amandemen Kepulangan → Superseding Outbox; Skenario E: Deaktivasi Akun Gate → Revalidasi Akses Ditolak → Data Pasien & Kunjungan Utuh).
+- **Outbox Failure, Retry & Dead-Letter Test Suite (`IntegrationOutboxFailureAndRetryTest`)**: Pengujian penanganan kegagalan koneksi upstream, transisi ke dead-letter setelah percobaan maksimal, retry manual berizin, dan pemeriksaan probe kesehatan integrasi.
+- **Role Matrix & Privacy Isolation UAT (`Phase4BRoleMatrixPrivacyUatTest`)**: Pengujian pemisahan wewenang peran teknis, pembina asrama, wali kelas, tenaga medis, dan manajemen.
+- **Documentation Suite**: `PHASE-4A-FINAL-CLOSURE.md`, `PHASE-4B-STAGING-PREFLIGHT.md`, `PHASE-4B-GATE-SSO-UAT.md`, `PHASE-4B-UAT-EVIDENCE.md`, `PHASE-4B-CLOSURE.md`.
+
 ## [0.15.0] — 2026-08-09 (Phase 4A Gate SSO, Secure Sync Apply & Identity Hardening)
+
 
 ### Added
 

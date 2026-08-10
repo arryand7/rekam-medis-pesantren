@@ -2,9 +2,10 @@
 id: DOC-API-ATTENDANCE-INTEGRATION-CONTRACT
 title: "Kontrak Integrasi Disposisi Kesehatan SABIRA Absensi"
 status: active
-last_updated: 2026-08-09
-owner: "Tim Pengembang POSKESTREN"
+last_updated: 2026-08-10
+owner: "Ryand Arifriantoni"
 ---
+
 
 # Kontrak Integrasi Disposisi Kehadiran (Attendance Health Disposition Contract)
 

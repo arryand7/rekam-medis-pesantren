@@ -2,8 +2,8 @@
 id: DOC-GATE-SYNC-CONTRACT
 title: "Kontrak Sinkronisasi Pengguna Gate"
 status: active
-owner: "Tim Pengembang POSKESTREN"
-last_updated: 2026-08-05
+owner: "Ryand Arifriantoni"
+last_updated: 2026-08-10
 ---
 
 # Kontrak Sinkronisasi Pengguna Gate

@@ -1,65 +1,44 @@
 ---
 id: DOC-INTEGRATIONS
-title: "Rencana Integrasi"
-status: draft
-owner: "Tim Pengembang POSKESTREN"
-last_updated: 2026-08-05
+title: "Arsitektur Integrasi Eksternal POSKESTREN Health"
+status: active
+owner: "Ryand Arifriantoni"
+last_updated: 2026-08-10
 ---
 
-# Rencana Integrasi
+# Arsitektur Integrasi Eksternal POSKESTREN Health
 
-## Gate
+## 1. Integrasi SABIRA Gate (IAM & Identity Provider)
 
-Tujuan: SSO, identitas pengguna, dan akses aplikasi.
+- **Tujuan**: Single Sign-On (SSO) OIDC, sinkronisasi identitas autoritatif, dan penegakan hak akses aplikasi (*application entitlement*).
+- **Protokol**: OAuth2 Authorization Code Flow dengan state/nonce CSRF/replay protection.
+- **Driver Implementasi**:
+  - `FakeGateOidcClient` & `FakeGateClientService` (Testing/Development)
+  - `HttpGateOidcClient` & `HttpGateClient` (Staging/Production)
+- **Data Autoritatif**: `gate_user_id`, nama lengkap, NIK, NIS/NIP, email, nomor HP, tipe pengguna, status sumber, checksum.
+- **Larangan**: Nol mutasi data rekam medis, diagnosa, resep, atau catatan klinis dari payload Gate.
 
-Data minimum:
-- external user ID,
-- username/NIS/NIP,
-- nama,
-- email,
-- status aktif,
-- tipe pengguna,
-- hak akses aplikasi.
+## 2. Integrasi SABIRA Absensi (Attendance System)
 
-## SSS
+- **Tujuan**: Mengirim disposisi absensi santri terkait kesehatan (izin sakit, istirahat asrama, pembatasan KBM, kembali beraktivitas).
+- **Driver Implementasi**:
+  - `FakeAttendanceIntegration` (Testing)
+  - `HttpAttendanceSandboxIntegration` (Staging / Sandbox)
+  - `AttendanceIntegrationContract` (Kontrak Antarmuka)
+- **Transport**: Pola Transactional Integration Outbox (`integration_outbox_events`) dengan locking MariaDB `lockForUpdate()`, idempotensi unik, dan retry backoff eksponensial.
+- **Standar Privasi (*Minimum Necessary*)**:
+  - *Allowed*: `event_id`, `gate_user_id`, `disposition_type`, `effective_from`, `effective_until`, `activity_scope`, `source_visit_reference`.
+  - *Forbidden*: `diagnosis`, `icd10`, `complaint`, `vital_signs`, `medications`, `allergies`, `assessment`, `clinical_notes`. (Ditegakkan oleh runtime validation `assertPayloadCompliant`).
 
-Tujuan: sumber data santri, kelas, angkatan, kamar/asrama, dan wali.
+## 3. Mitra Layanan Kesehatan (Puskesmas / Rumah Sakit)
 
-## Absensi
+- **Tujuan**: Konsultasi klinis jarak jauh dan rujukan darurat/terjadwal.
+- **Mekanisme**: Pencatatan terstruktur `ClinicalConsultation` dan `Referral` lokal, berkas ringkasan terenkripsi privat, dan penyerahan resmi dengan audit unduhan.
 
-Tujuan: mengirim status izin sakit atau pembatasan aktivitas. Tidak mengirim diagnosis lengkap.
+## 4. Prinsip Arsitektur Integrasi
 
-## Notification channel
-
-WhatsApp/email/internal notification pada fase yang disetujui.
-
-## Prinsip kontrak
-
-- Versioned API.
-- Idempotency key.
-- Signed/authenticated request.
-- Timeout dan retry.
-- Dead-letter/manual retry.
-- Correlation ID.
-- Data minimization.
-- Audit.
-- Rekonsiliasi berkala.
-
-## [PERLU DIKONFIRMASI]
-
-Endpoint, payload, source of truth, dan conflict resolution tiap integrasi.
-
-## Gate user projection contract
-
-Gate menyediakan ID stabil, detail pengguna, tipe, status, dan source timestamp/version. POSKESTREN Health menyimpan mapping serta reconciliation.
-
-## Puskesmas/rumah sakit
-
-Tahap awal dapat menggunakan secure document handoff melalui kanal resmi. Integrasi API hanya dibuat setelah ada kontrak, authentication, consent basis, dan data protection agreement yang jelas.
-
-## Anti-pattern
-
-- Sinkronisasi berdasarkan nama saja.
-- Menimpa rekam medis karena perubahan role.
-- Memberikan akses database langsung kepada mitra.
-- Mengirim seluruh rekam medis melalui pesan pribadi.
+1. **Transactional Outbox**: Event outbox ditulis dalam database transaction yang sama dengan mutasi bisnis.
+2. **Idempotency**: Setiap event memiliki `idempotency_key` unik.
+3. **Correlation Tracking**: Setiap request membawa `X-Poskestren-Event-Id` dan `correlation_id`.
+4. **Dead-Letter Recovery**: Event yang gagal melebihi batas maksimal dipindahkan ke status `dead_letter` dengan opsi retry manual oleh petugas berizin.
+5. **Observability**: Probe status kesehatan endpoint tersedia di `/integration/attendance/status` dan `/health`.

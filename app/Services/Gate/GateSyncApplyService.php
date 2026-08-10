@@ -254,15 +254,7 @@ class GateSyncApplyService
 
             // 7. Project Patient (If Human and Patient record does not exist yet)
             if ($person->isHumanPatientEligible()) {
-                $patient = Patient::where('person_id', $person->id)->first();
-                if (! $patient) {
-                    $patientNumber = 'RM-'.strtoupper(substr($person->id, -10));
-                    Patient::create([
-                        'person_id' => $person->id,
-                        'patient_number' => $patientNumber,
-                        'is_eligible' => true,
-                    ]);
-                }
+                Patient::createOrFindForPerson($person);
             }
 
             $status = $isNew ? 'new' : ($dto->sourceStatus !== 'active' ? 'deactivated' : 'changed');

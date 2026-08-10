@@ -2,8 +2,8 @@
 id: DOC-SEC-OPERATIONAL-DATA-SHARING
 title: "Panduan Pembagian Data Operasional & Standar Minimum Necessary"
 status: active
-last_updated: 2026-08-09
-owner: "Tim Pengembang POSKESTREN"
+last_updated: 2026-08-10
+owner: "Ryand Arifriantoni"
 ---
 
 # Panduan Pembagian Data Operasional & Standar Minimum Necessary

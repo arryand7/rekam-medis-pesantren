@@ -255,15 +255,7 @@ class GateAuthenticationService
 
             // Create Patient record if person is human-eligible and patient record does not exist yet
             if ($person->isHumanPatientEligible()) {
-                $patient = Patient::where('person_id', $person->id)->first();
-                if (! $patient) {
-                    $patientNumber = 'RM-'.strtoupper(substr($person->id, -10));
-                    Patient::create([
-                        'person_id' => $person->id,
-                        'patient_number' => $patientNumber,
-                        'is_eligible' => true,
-                    ]);
-                }
+                Patient::createOrFindForPerson($person);
             }
 
             AuditLogService::log(

@@ -14,10 +14,12 @@ return [
 
     'attendance' => [
         'enabled' => (bool) env('ATTENDANCE_INTEGRATION_ENABLED', false),
-        'driver' => env('ATTENDANCE_INTEGRATION_DRIVER', 'fake'), // fake, local_sandbox
+        'driver' => env('ATTENDANCE_INTEGRATION_DRIVER', 'fake'), // fake, sandbox, http
         'max_retry_attempts' => (int) env('ATTENDANCE_INTEGRATION_MAX_RETRIES', 5),
         'retry_backoff_seconds' => (int) env('ATTENDANCE_INTEGRATION_BACKOFF_SECONDS', 60),
-        'endpoint_url' => env('ATTENDANCE_INTEGRATION_ENDPOINT_URL', null),
+        'endpoint_url' => env('ATTENDANCE_INTEGRATION_ENDPOINT_URL', 'https://absensi-sandbox.sabira.id/api/v1/health-dispositions'),
+        'api_key' => env('ATTENDANCE_INTEGRATION_API_KEY', null),
+        'timeout_seconds' => (int) env('ATTENDANCE_INTEGRATION_TIMEOUT', 5),
     ],
 
     'outbox' => [

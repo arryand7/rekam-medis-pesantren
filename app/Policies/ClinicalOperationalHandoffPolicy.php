@@ -9,12 +9,14 @@ class ClinicalOperationalHandoffPolicy
 {
     public function viewAny(User $user): bool
     {
-        return $user->hasPermission('view-visit-discharges');
+        return $user->hasPermission('view-visit-discharges')
+            || $user->hasPermission('acknowledge-operational-handoffs');
     }
 
     public function view(User $user, ClinicalOperationalHandoff $handoff): bool
     {
-        return $user->hasPermission('view-visit-discharges');
+        return $user->hasPermission('view-visit-discharges')
+            || $user->hasPermission('acknowledge-operational-handoffs');
     }
 
     public function create(User $user): bool

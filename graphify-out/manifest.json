@@ -15,8 +15,8 @@
     "semantic_hash": ""
   },
   "app/Providers/AppServiceProvider.php": {
-    "mtime": 1786260981.693563,
-    "ast_hash": "9284596686027d6a13e1f5bf16f313b6",
+    "mtime": 1786349366.2803962,
+    "ast_hash": "02bdc3a871fc324c78033564cec4be36",
     "semantic_hash": ""
   },
   "app/View/Components/AppLayout.php": {
@@ -280,8 +280,8 @@
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1786262234.643591,
-    "ast_hash": "b80a477bea46d480f2ca90af8f1bce6c",
+    "mtime": 1786349471.1909153,
+    "ast_hash": "041df46d1754962cca45895400389d99",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -295,8 +295,8 @@
     "semantic_hash": ""
   },
   "PROJECT-STATUS.md": {
-    "mtime": 1786262206.4562497,
-    "ast_hash": "402716087ee3fe73059f8c8431c06688",
+    "mtime": 1786349462.1643047,
+    "ast_hash": "c28ff4ff837aace86f60b6751d15c004",
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-PHASE-0.md": {
@@ -475,8 +475,8 @@
     "semantic_hash": ""
   },
   "docs/04-architecture/INTEGRATIONS.md": {
-    "mtime": 1785875920.0,
-    "ast_hash": "ce782e187a3902c40a834f5c02c26aa5",
+    "mtime": 1786349436.5563276,
+    "ast_hash": "7022acd9aa61d8e0c7cd979ea9ab741f",
     "semantic_hash": ""
   },
   "docs/04-architecture/MODULE-BOUNDARIES.md": {
@@ -640,8 +640,8 @@
     "semantic_hash": ""
   },
   "docs/08-api/GATE-USER-SYNC-CONTRACT.md": {
-    "mtime": 1785875920.0,
-    "ast_hash": "ca5e040e21136bbd85f425c1aa2ca47c",
+    "mtime": 1786349509.3591704,
+    "ast_hash": "e55cf88b43481278b812572e512b8d8d",
     "semantic_hash": ""
   },
   "docs/08-api/INTEGRATION-CONTRACTS.md": {
@@ -655,8 +655,8 @@
     "semantic_hash": ""
   },
   "docs/09-testing/FEATURE-TEST-MATRIX.md": {
-    "mtime": 1786262268.2355957,
-    "ast_hash": "d3df060cf9f7aed90b4fa99fde5739e6",
+    "mtime": 1786349426.7801948,
+    "ast_hash": "4abdb88d295e4482fda63119f28cd36b",
     "semantic_hash": ""
   },
   "docs/09-testing/SECURITY-TESTS.md": {
@@ -705,8 +705,8 @@
     "semantic_hash": ""
   },
   "docs/10-delivery/READINESS-REVIEW.md": {
-    "mtime": 1785915414.7881835,
-    "ast_hash": "7ad4d7dff17eba833f7dd4a901796b44",
+    "mtime": 1786349482.740567,
+    "ast_hash": "32f4e9b2a5a2136d11454576f507c573",
     "semantic_hash": ""
   },
   "docs/10-delivery/RELEASE-CHECKLIST.md": {
@@ -765,8 +765,8 @@
     "semantic_hash": ""
   },
   "docs/12-graphify/DOCUMENT-CODE-MAPPING.md": {
-    "mtime": 1786262300.2456357,
-    "ast_hash": "433f282461021b7db2a99cf1ac0ff5e7",
+    "mtime": 1786349452.027893,
+    "ast_hash": "1a3636d79b8ec191f1e45ced9a4d46eb",
     "semantic_hash": ""
   },
   "docs/12-graphify/GRAPH-NAMING-CONVENTIONS.md": {
@@ -805,8 +805,8 @@
     "semantic_hash": ""
   },
   "plans/KNOWN-ISSUES.md": {
-    "mtime": 1786255809.5960786,
-    "ast_hash": "d4eb0cd6bed2f01e327e9f914e2f304f",
+    "mtime": 1786349490.9840648,
+    "ast_hash": "d802d5339795afe94ac826d1f9835010",
     "semantic_hash": ""
   },
   "public/robots.txt": {
@@ -1000,8 +1000,8 @@
     "semantic_hash": ""
   },
   "app/Models/Patient.php": {
-    "mtime": 1785918067.8730278,
-    "ast_hash": "dbff438700d2f1082b85a935dd7f5da1",
+    "mtime": 1786349366.3550265,
+    "ast_hash": "2af252ba19d46a5205846eba8db1876e",
     "semantic_hash": ""
   },
   "app/Models/PatientAllergy.php": {
@@ -1970,8 +1970,8 @@
     "semantic_hash": ""
   },
   "app/Policies/ClinicalOperationalHandoffPolicy.php": {
-    "mtime": 1786257382.580286,
-    "ast_hash": "34aefda7ad12ebd4eae8cbb376627b2d",
+    "mtime": 1786349366.371233,
+    "ast_hash": "1350e00bc3d12dca9e7066db570be4ef",
     "semantic_hash": ""
   },
   "app/Policies/VisitDischargePolicy.php": {
@@ -2255,8 +2255,8 @@
     "semantic_hash": ""
   },
   "config/integration.php": {
-    "mtime": 1786259081.5452003,
-    "ast_hash": "26b2b1d08bb1672f02beeb608cf8db00",
+    "mtime": 1786349366.7183182,
+    "ast_hash": "8ab064b22215b2d685d6b1797f7d8348",
     "semantic_hash": ""
   },
   "database/migrations/2026_08_05_004700_create_integration_outbox_events_table.php": {
@@ -2470,8 +2470,8 @@
     "semantic_hash": ""
   },
   "app/Services/Gate/GateAuthenticationService.php": {
-    "mtime": 1786260982.0463583,
-    "ast_hash": "276f77f35e6b1f27cd6a03ba6a59d63b",
+    "mtime": 1786349366.7094533,
+    "ast_hash": "c591b0e3d902fb640b3459ac0b8e9d41",
     "semantic_hash": ""
   },
   "app/Services/Gate/GateIdentityReconciliationService.php": {
@@ -2480,8 +2480,8 @@
     "semantic_hash": ""
   },
   "app/Services/Gate/GateSyncApplyService.php": {
-    "mtime": 1786260981.8781059,
-    "ast_hash": "73b2d3460f019f8e41106852170cdf5a",
+    "mtime": 1786349366.5476336,
+    "ast_hash": "daf00b8774fdf38af7c81346ceec585e",
     "semantic_hash": ""
   },
   "app/Services/Gate/HttpGateClient.php": {
@@ -2605,13 +2605,13 @@
     "semantic_hash": ""
   },
   "docs/07-security/OPERATIONAL-DATA-SHARING.md": {
-    "mtime": 1786259965.701724,
-    "ast_hash": "8a92351e233acf0a42084f10b3a55edf",
+    "mtime": 1786349502.0100987,
+    "ast_hash": "06d1dfe984801c3b5dac13a1d18b7899",
     "semantic_hash": ""
   },
   "docs/08-api/ATTENDANCE-INTEGRATION-CONTRACT.md": {
-    "mtime": 1786259959.2712076,
-    "ast_hash": "d94fefe6a744649e90f90c3342f55572",
+    "mtime": 1786349444.149702,
+    "ast_hash": "4b155cb6246394cb4f5d0a9c7396c8d0",
     "semantic_hash": ""
   },
   "docs/08-api/GATE-OIDC-CONTRACT.md": {
@@ -2642,6 +2642,66 @@
   "docs/10-delivery/PHASE-4A-RESUME-STATE.md": {
     "mtime": 1786261983.026733,
     "ast_hash": "76b5053096f2d0e647f8332f4e460191",
+    "semantic_hash": ""
+  },
+  "app/Services/Integration/HttpAttendanceSandboxIntegration.php": {
+    "mtime": 1786348849.0959766,
+    "ast_hash": "991b22007ef755a1959b347bbcc48569",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Integration/AttendanceSandboxIntegrationTest.php": {
+    "mtime": 1786349367.0470228,
+    "ast_hash": "8647b8b6ad2d21ed8696cba4b1ce2a75",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Integration/IntegrationOutboxFailureAndRetryTest.php": {
+    "mtime": 1786349367.0004406,
+    "ast_hash": "0a7433aba9a35a635aad310d5063d7ce",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Patient/PatientNumberCollisionHardeningTest.php": {
+    "mtime": 1786348819.4225519,
+    "ast_hash": "cc613783a5e80621da2c7a23a5fe5a2d",
+    "semantic_hash": ""
+  },
+  "tests/Feature/UAT/Phase4BEndToEndUatTest.php": {
+    "mtime": 1786349366.9436374,
+    "ast_hash": "61681b3580f263a15a0866547f6ea827",
+    "semantic_hash": ""
+  },
+  "tests/Feature/UAT/Phase4BRoleMatrixPrivacyUatTest.php": {
+    "mtime": 1786349366.7602654,
+    "ast_hash": "71ea8d164bf719ffe25be45e16a8d6c5",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-4B.md": {
+    "mtime": 1786348498.8032644,
+    "ast_hash": "5e0a19ac26ef6e7179bc1ad85347e118",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4A-FINAL-CLOSURE.md": {
+    "mtime": 1786348779.300663,
+    "ast_hash": "255324de101fb0164ef89817f888c833",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4B-CLOSURE.md": {
+    "mtime": 1786349418.3250294,
+    "ast_hash": "a07c18194421625bb7235c8ded64d5eb",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4B-GATE-SSO-UAT.md": {
+    "mtime": 1786349399.4452055,
+    "ast_hash": "99136d8fa772f84800046f4058cabd5f",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4B-STAGING-PREFLIGHT.md": {
+    "mtime": 1786349391.7901971,
+    "ast_hash": "58457cf26b7e97b5e908c60b23c313c7",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4B-UAT-EVIDENCE.md": {
+    "mtime": 1786349409.075015,
+    "ast_hash": "76d59d9c4360854a773dfd5e44cba882",
     "semantic_hash": ""
   }
 }
