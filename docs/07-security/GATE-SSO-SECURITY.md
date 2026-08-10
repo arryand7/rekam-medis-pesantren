@@ -42,7 +42,15 @@ Dokumen ini menjelaskan kontrol keamanan yang diterapkan pada integrasi Gate SSO
 | CSRF token regeneration saat logout | `$request->session()->regenerateToken()` |
 | ID Token storage | Dalam session (untuk end-session URL, bukan untuk validasi lokal) |
 
+### 2.5 Route Middleware Enforcement & Role-Aware Dashboard Dispatch
+
+- **Group Middleware**: Seluruh rute aplikasi (Phase 0–4) dimasukkan ke dalam group `Route::middleware('auth')`.
+- **Guest Protection**: Akses unauthenticated tanpa sesi ke rute manapun mengembalikan HTTP 302 redirect ke `/login`.
+- **Role Resolver**: `DashboardController::index` merutekan pengguna terautentikasi sesuai permission peran (Klinis, Asrama, Manajemen, Admin).
+- **Gate::before**: Memastikan hanya exact local permission yang diizinkan dan mendelegasikan pengecekan lainnya ke Policy model.
+
 ## 3. Application Entitlement Enforcement
+
 
 ### 3.1 Login-time Check
 

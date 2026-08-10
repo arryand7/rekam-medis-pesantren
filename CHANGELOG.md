@@ -12,15 +12,18 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
-## [0.18.1] — 2026-08-10 (Production Authentication Runtime Audit & Protection Hardening)
+## [0.18.1] — 2026-08-10 (Production Authentication Hotfix Rollout & Verification)
 
 ### Security
 
 - **Authentication Middleware Enforcement (`routes/web.php`)**: Memasukkan seluruh rute aplikasi (Phase 0–4) ke dalam group `Route::middleware('auth')`. Memastikan endpoint publik hanya terbatas pada `/health`, `/health/ready`, `/login`, `/auth/gate/callback`, `/auth/gate/access-denied`, dan `/logout`.
 - **Role-Aware Dashboard Resolver (`DashboardController::index`)**: Mencegah akses langsung unauthenticated ke view dashboard dan merutekan pengguna terautentikasi sesuai hak akses peran (*Clinical, Operational, Management, atau Admin*).
-- **Automated Regression Suite (`AuthenticationRuntimeAuditAndProtectionTest.php`)**: 15 skenario pengujian baru yang memverifikasi guest redirection, role-aware routing, privilege isolation, entitlement rejection, dan invalidasi sesi saat logout (total 197 tests, 791 assertions, 100% Passed).
+- **Typed Gate::before Hook (`AppServiceProvider.php`)**: Memastikan hanya exact local permission yang diizinkan dan mendelegasikan pengecekan lainnya ke Policy model.
+- **Automated Regression Suite (`AuthenticationRuntimeAuditAndProtectionTest.php`)**: 16 skenario pengujian baru yang memverifikasi guest redirection, role-aware routing, privilege isolation, entitlement rejection, audit Gate::before, dan invalidasi sesi saat logout (total 198 tests, 796 assertions, 100% Passed).
+- **Production Hotfix Rollout & Verification (`PRODUCTION-AUTH-HOTFIX-ROLLOUT.md`, `PRODUCTION-AUTH-HOTFIX-VERIFICATION.md`, `PRODUCTION-AUTH-EXPOSURE-REVIEW.md`)**: Hotfix release `58e6205` diterapkan secara atomic dan diverifikasi tuntas dengan status `AUTH-HOTFIX-PRODUCTION-VERIFIED`.
 
 ## [0.18.0] — 2026-08-10 (Phase 4C2 Production Cutover Complete & Live Validation)
+
 
 
 ### Added

@@ -24,21 +24,23 @@ Otorisasi resmi dari pengguna (`SETUJUI CUTOVER PRODUCTION POSKESTREN`) telah di
 | Gate OIDC Canary | Ryand Arifriantoni | OIDC Auth Code Flow, entitlement enforcement, & atomic projection tervalidasi |
 | Attendance Privacy Canary | Ryand Arifriantoni | DTO serialization & runtime defense-in-depth validator memblokir seluruh kunci klinis |
 | Data Integrity Invariants | Ryand Arifriantoni | Nol duplikasi identitas, nol stok negatif, nol dokumen orphan |
+| Production Auth Hotfix | Ryand Arifriantoni | `AUTH-HOTFIX-PRODUCTION-VERIFIED` (Commit `58e6205`, 198 tests passed, 796 assertions) |
 | Final Status Model | Ryand Arifriantoni | Terklasifikasi resmi sebagai `PRODUCTION-CUTOVER-PASSED` |
 
 ## 3. Hasil Pengujian Keseluruhan
 
 ```text
-Tests:      180 passed (180 total)
-Assertions: 715
-Duration:   ~12.0s
+Tests:      198 passed (198 total)
+Assertions: 796
+Duration:   ~27.0s
 Database:   MariaDB 10.4.28 (poskestren_health_test, InnoDB, REPEATABLE-READ)
-Linters:    Pint PASSED, PHPStan Level 5 (0 errors), Vite Build PASSED (1.92s)
+Linters:    Pint PASSED, PHPStan Level 5 (0 errors), Vite Build PASSED (6.95s)
 ```
 
 ## 4. Status Klasifikasi Akhir
 
-### **STATUS: `PRODUCTION-CUTOVER-PASSED`**
+### **STATUS: `PRODUCTION-CUTOVER-PASSED` & `AUTH-HOTFIX-PRODUCTION-VERIFIED`**
 
 > **SABIRA POSKESTREN Health Resmi Live di Lingkungan Produksi**:
 > Seluruh alur aplikasi, otorisasi peran, integrasi identitas SSO, sinkronisasi pengguna, pelaporan kesehatan, dan integrasi absensi santri beroperasi dengan aman, stabil, dan patuh terhadap standar privasi medis *Minimum Necessary*.
+

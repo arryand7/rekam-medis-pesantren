@@ -15,8 +15,8 @@
     "semantic_hash": ""
   },
   "app/Providers/AppServiceProvider.php": {
-    "mtime": 1786371511.369026,
-    "ast_hash": "b9a6275b2e03563ce22bc768b61e5f42",
+    "mtime": 1786373524.588973,
+    "ast_hash": "f8080533dbbb5c0e36266a6fbf6a6b3f",
     "semantic_hash": ""
   },
   "app/View/Components/AppLayout.php": {
@@ -280,8 +280,8 @@
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1786372586.095912,
-    "ast_hash": "92fd27f8f26abbbfaea151a67a8791d8",
+    "mtime": 1786373763.0299394,
+    "ast_hash": "b4b0c89817e130dba4c5b86f2b9394f7",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -295,8 +295,8 @@
     "semantic_hash": ""
   },
   "PROJECT-STATUS.md": {
-    "mtime": 1786372558.7431376,
-    "ast_hash": "35274c62800981bf3406e072ccd796d2",
+    "mtime": 1786373750.8766263,
+    "ast_hash": "f3e4a84125b86a6854f6bc751651da45",
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-PHASE-0.md": {
@@ -575,8 +575,8 @@
     "semantic_hash": ""
   },
   "docs/07-security/ACCESS-CONTROL-MATRIX.md": {
-    "mtime": 1785875920.0,
-    "ast_hash": "525aaefef676e7f3c8d298bb6d37d40d",
+    "mtime": 1786373703.5222147,
+    "ast_hash": "1a0cc601f2f2f5b1dcea9075d290980d",
     "semantic_hash": ""
   },
   "docs/07-security/AUDIT-LOG.md": {
@@ -655,8 +655,8 @@
     "semantic_hash": ""
   },
   "docs/09-testing/FEATURE-TEST-MATRIX.md": {
-    "mtime": 1786352717.3058996,
-    "ast_hash": "7bf2f0c1541e60595d9eedc51d1d7f7d",
+    "mtime": 1786373721.652604,
+    "ast_hash": "f68f324024bc0e886a9e716fd7c3fcc9",
     "semantic_hash": ""
   },
   "docs/09-testing/SECURITY-TESTS.md": {
@@ -765,8 +765,8 @@
     "semantic_hash": ""
   },
   "docs/12-graphify/DOCUMENT-CODE-MAPPING.md": {
-    "mtime": 1786351868.1339521,
-    "ast_hash": "0cfc0bcd642f738f9b60232bfb86a79c",
+    "mtime": 1786373741.434613,
+    "ast_hash": "fd9aca9e80f3de61435fe86eaae688e4",
     "semantic_hash": ""
   },
   "docs/12-graphify/GRAPH-NAMING-CONVENTIONS.md": {
@@ -805,8 +805,8 @@
     "semantic_hash": ""
   },
   "plans/KNOWN-ISSUES.md": {
-    "mtime": 1786351332.585165,
-    "ast_hash": "419a78dab5b2ec2582413db7d9364a1d",
+    "mtime": 1786373731.411895,
+    "ast_hash": "8556d6f4cf595c27f4dd5d685b7be6d7",
     "semantic_hash": ""
   },
   "public/robots.txt": {
@@ -2600,8 +2600,8 @@
     "semantic_hash": ""
   },
   "docs/07-security/GATE-SSO-SECURITY.md": {
-    "mtime": 1786262070.8907864,
-    "ast_hash": "cf5021b3a9caf518d3918c20794f0c7c",
+    "mtime": 1786373713.0634859,
+    "ast_hash": "eee88d6afda402e71b3616cdf567e107",
     "semantic_hash": ""
   },
   "docs/07-security/OPERATIONAL-DATA-SHARING.md": {
@@ -2760,8 +2760,8 @@
     "semantic_hash": ""
   },
   "docs/10-delivery/PHASE-4C2-FINAL-STATUS.md": {
-    "mtime": 1786352740.4930565,
-    "ast_hash": "169e342e80cc9fa4e674348775b11815",
+    "mtime": 1786373683.9106278,
+    "ast_hash": "79717a3768bc29e8d9e2e2f3e7dde61b",
     "semantic_hash": ""
   },
   "docs/10-delivery/PHASE-4C2-POST-CUTOVER-UAT.md": {
@@ -2775,8 +2775,8 @@
     "semantic_hash": ""
   },
   "tests/Feature/Auth/AuthenticationRuntimeAuditAndProtectionTest.php": {
-    "mtime": 1786372460.9707801,
-    "ast_hash": "0f8b4fc8cd70e71238c4c9bb49bf073a",
+    "mtime": 1786373524.9771705,
+    "ast_hash": "40bda9378e008a58ed6a0bb58ba56337",
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-CRITICAL-AUTH-RUNTIME-AUDIT-FIX.md": {
@@ -2792,6 +2792,26 @@
   "docs/10-delivery/PRODUCTION-AUTH-RUNTIME-VERIFICATION.md": {
     "mtime": 1786372529.739724,
     "ast_hash": "b708f103f2c867cb23990a6b25952273",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PRODUCTION-AUTH-HOTFIX-ROLLOUT.md": {
+    "mtime": 1786373351.9355657,
+    "ast_hash": "3b49bc9ea88c8af2c8cf096ed3accb54",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PRODUCTION-AUTH-EXPOSURE-REVIEW.md": {
+    "mtime": 1786373674.224299,
+    "ast_hash": "10a84d727d0adac16e54e921923e055c",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PRODUCTION-AUTH-HOTFIX-ROLLOUT.md": {
+    "mtime": 1786373654.1856308,
+    "ast_hash": "f5eeaadf6301b626703ae166ee5c0496",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PRODUCTION-AUTH-HOTFIX-VERIFICATION.md": {
+    "mtime": 1786373665.1214778,
+    "ast_hash": "e5e53bdb6a45a1df4d281f37203e2e01",
     "semantic_hash": ""
   }
 }

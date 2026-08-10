@@ -8,10 +8,15 @@ last_updated: 2026-08-10
 
 # Known Issues and Open Questions
 
+## Production Auth Hotfix Status
+
+- [x] **Unauthenticated Route Access & Role Dispatch (RESOLVED 2026-08-10)**: Seluruh rute aplikasi (Phase 0–4) dibungkus di dalam middleware `auth`. Rute root `/` dan `/dashboard` dikontrol oleh `DashboardController::index` dengan routing berbasis peran. Terverifikasi tuntas melalui curl tanpa cookie (302 ke `/login`), 16 automated audit tests, dan berstatus `AUTH-HOTFIX-PRODUCTION-VERIFIED`.
+
 ## Phase 4C2 Production Cutover Status
 
 - [x] **Cutover Authorization Guardrails (RESOLVED 2026-08-10)**: Otorisasi cutover diamankan di bawah frasa wajib `SETUJUI CUTOVER PRODUCTION POSKESTREN`. Status rilis diklasifikasikan sebagai `AWAITING-PRODUCTION-AUTHORIZATION`.
 - [x] **Cutover Execution Runbook (RESOLVED 2026-08-10)**: Rencana eksekusi rilis bertahap 6 langkah (`PHASE-4C2-CUTOVER-EXECUTION.md`) dan protokol verifikasi canary (`PHASE-4C2-POST-CUTOVER-UAT.md`) siap dieksekusi.
+
 
 ## Phase 4C Production Hardening Status
 

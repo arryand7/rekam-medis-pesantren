@@ -1,12 +1,15 @@
 ---
 id: DOC-ACCESS-MATRIX
 title: "Access Control Matrix"
-status: draft
-owner: "Tim Pengembang POSKESTREN"
-last_updated: 2026-08-05
+status: active
+owner: "Ryand Arifriantoni"
+last_updated: 2026-08-10
 ---
 
 # Access Control Matrix
+
+Seluruh rute operasional & medis wajib dilindungi oleh `Route::middleware('auth')`. Otorisasi lanjutan ditegakkan via Policy dan `Gate::before()` granular.
+
 
 Legenda: F = penuh, T = terbatas, A = agregat, - = tidak boleh.
 

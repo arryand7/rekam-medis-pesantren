@@ -8,7 +8,18 @@ last_updated: 2026-08-09
 
 # Pemetaan Dokumen ke Kode
 
+## Production Auth Hotfix & Protection Hardening Mapping
+
+```text
+PRODUCTION-AUTH-HOTFIX-ROLLOUT.md & PRODUCTION-AUTH-HOTFIX-VERIFICATION.md & PRODUCTION-AUTH-EXPOSURE-REVIEW.md & PRODUCTION-AUTH-RUNTIME-INCIDENT.md
+  -> app/Http/Controllers/Dashboard/DashboardController.php (role-aware index method)
+  -> app/Providers/AppServiceProvider.php (typed Gate::before local permission hook)
+  -> routes/web.php (Route::middleware('auth') complete group & route-level Gate::authorize)
+  -> tests/Feature/Auth/AuthenticationRuntimeAuditAndProtectionTest.php
+```
+
 ## Phase 4C2 — Controlled Production Cutover, Canary Activation, Post-Go-Live Validation & Rollback Guard Mapping
+
 
 ```text
 PHASE-4C2-CUTOVER-EXECUTION.md & PHASE-4C2-POST-CUTOVER-UAT.md & PHASE-4C2-FINAL-STATUS.md
