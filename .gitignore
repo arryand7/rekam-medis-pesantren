@@ -3,6 +3,7 @@
 /public/build
 /public/hot
 /public/storage
+/public/fonts-manifest.dev.json
 /.env
 /.env.backup
 /.env.production
