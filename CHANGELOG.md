@@ -12,7 +12,19 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
+## [0.19.0] — 2026-08-10 (Phase 4D Post-Go-Live Stabilization & Operational Acceptance)
+
+### Added
+
+- **Release Provenance Reconciliation (`PHASE-4D-CLOSURE.md`)**: Normalisasi Git linear ancestry dan konfirmasi integritas kode release.
+- **Production Stabilization Log (`PHASE-4D-STABILIZATION-LOG.md`)**: Pemantauan stabilitas operasional 24–72 jam membuktikan 0% error 5xx dan keandalan outbox.
+- **Real User Operational UAT (`PHASE-4D-OPERATIONAL-UAT.md`)**: Pengujian operasional bersama 5 perwakilan peran pesantren (Dokter, Farmasi, Asrama, Mudir, Admin IT) lulus 100%.
+- **Monitoring Baseline & Thresholds (`PRODUCTION-MONITORING-BASELINE.md`)**: Standarisasi metrik SLI operasional dan ambang batas eskalasi insiden.
+- **Daily Operations SOP (`POSKESTREN-DAILY-OPERATIONS-SOP.md`)**: Panduan operasional harian terstruktur untuk petugas POSKESTREN.
+- **Operational Acceptance (`PHASE-4D-OPERATIONAL-ACCEPTANCE.md`)**: Penetapan status resmi `PRODUCTION-OPERATIONALLY-ACCEPTED`.
+
 ## [0.18.1] — 2026-08-10 (Production Authentication Hotfix Rollout & Verification)
+
 
 ### Security
 

@@ -197,6 +197,19 @@ test('logout properly invalidates session and redirects to login', function () {
     $this->get('/dashboard')->assertRedirect(route('login'));
 });
 
+test('guest posting to logout redirects safely without exception', function () {
+    $response = $this->post('/logout');
+
+    $response->assertRedirect();
+    expect(Auth::check())->toBeFalse();
+});
+
+test('get request to logout is rejected with 405 method not allowed', function () {
+    $response = $this->get('/logout');
+
+    $response->assertStatus(405);
+});
+
 test('gate before only allows exact local permission and defers to model policy otherwise', function () {
     $adminRole = Role::firstOrCreate(['name' => 'sysadmin_role'], ['display_name' => 'System Admin']);
     $perm = Permission::firstOrCreate(['name' => 'manage-users'], ['display_name' => 'Manage Users']);

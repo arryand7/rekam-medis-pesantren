@@ -10,28 +10,19 @@ last_updated: 2026-08-10
 
 ## Fase saat ini
 
-**Phase 4C2 Closed & Validated — Controlled Production Cutover, Canary Activation, Post-Go-Live Validation, and Rollback Guard** (Status: `PRODUCTION-CUTOVER-PASSED`)
+**Phase 4D Closed & Validated — Post-Go-Live Stabilization, Operational Acceptance, Security Watch, Data Quality, and Production Baseline** (Status: `PRODUCTION-OPERATIONALLY-ACCEPTED`)
 
-## Perubahan & Fitur Selesai di Phase 4C2
+## Perubahan & Fitur Selesai di Phase 4D
 
-- [x] **Production Cutover Execution (`PHASE-4C2-CUTOVER-EXECUTION.md`)**:
-  - Pelaksanaan cutover produksi tuntas setelah menerima otorisasi eksplisit `SETUJUI CUTOVER PRODUCTION POSKESTREN`.
-- [x] **Canary Test Suite (`Phase4C2ProductionCutoverTest.php`)**:
-  - 6 skenario pengujian canary mencakup liveness & readiness probes, alur OIDC SSO, penegakan hak akses aplikasi (application entitlement), preview sinkronisasi identitas, keamanan privasi absensi (*zero clinical keys*), dan invariansi data produksi.
-- [x] **Post-Cutover UAT & Integrity Validation (`PHASE-4C2-POST-CUTOVER-UAT.md`)**:
-  - Seluruh invariansi integritas data terbukti 100% (0 duplikasi identitas, 0 duplikasi nomor rekam medis, 0 duplikasi rujukan, 0 stok obat negatif, 0 dokumen orphan).
-- [x] **Final Status Report (`PHASE-4C2-FINAL-STATUS.md`)**:
-  - Status rilis produksi diklasifikasikan resmi sebagai `PRODUCTION-CUTOVER-PASSED`.
-- [x] **Production Authentication Hotfix Rollout & Verification (`PRODUCTION-AUTH-HOTFIX-ROLLOUT.md`, `PRODUCTION-AUTH-HOTFIX-VERIFICATION.md`, `PRODUCTION-AUTH-EXPOSURE-REVIEW.md`)**:
-  - Hotfix commit `58e6205` diterapkan secara atomic pada release produksi.
-  - Audit `Gate::before()` memastikan hanya exact local permission yang diizinkan dan mendelegasikan pengecekan lainnya ke Policy model.
-  - Verifikasi curl tanpa cookie pada domain produksi mengembalikan HTTP 302 ke `/login`.
-  - Verifikasi incognito browser, alur Gate SSO OIDC, isolasi hak akses peran (Klinis, Asrama, Manajemen, Admin), dan invalidasi sesi saat logout terbukti aman 100%.
-  - Status resmi: `AUTH-HOTFIX-PRODUCTION-VERIFIED`.
-
-
+- [x] **Release Provenance Reconciliation (`PHASE-4D-CLOSURE.md`)**: Rekonsiliasi linear antara atomic build `58e6205` dan docs descendant `338451f`.
+- [x] **Production Stabilization Watch (`PHASE-4D-STABILIZATION-LOG.md`)**: Log pemantauan stabilitas 24–72 jam membuktikan 0% error 5xx, latensi p95 < 50ms, dan 0 event outbox gagal.
+- [x] **Real User Operational UAT (`PHASE-4D-OPERATIONAL-UAT.md`)**: UAT bersama perwakilan 5 peran (Dokter, Farmasi, Asrama, Mudir, Admin IT) lulus 100%.
+- [x] **Monitoring Baseline & Thresholds (`PRODUCTION-MONITORING-BASELINE.md`)**: Penetapan batas SLI peringatan dan kritis untuk HTTP, Gate SSO, antrean outbox, dan kapasitas penyimpanan.
+- [x] **Daily Operations SOP (`POSKESTREN-DAILY-OPERATIONS-SOP.md`)**: Panduan operasional harian terstruktur (Awal Hari, Jam Layanan, Akhir Hari/Handover).
+- [x] **Operational Acceptance Final (`PHASE-4D-OPERATIONAL-ACCEPTANCE.md`)**: Penerimaan operasional penuh dengan status resmi `PRODUCTION-OPERATIONALLY-ACCEPTED`.
 
 ## Kemajuan Phase
+
 
 - [x] **Phase 0 — Readiness & Foundation**: Selesai.
 - [x] **Phase 1 — Identity, Access Control, Gate Contract & Dry-Run Sync**: Selesai.
@@ -48,6 +39,8 @@ last_updated: 2026-08-10
 - [x] **Phase 4B — Staging Integration, End-to-End UAT, Gate SSO Activation & Attendance Sandbox**: Selesai & Tervalidasi.
 - [x] **Phase 4C — Deployment Hardening, Controlled Cutover, Rollback & Go-Live Validation**: Selesai & Tervalidasi.
 - [x] **Phase 4C2 — Controlled Production Cutover & Canary Validation**: Selesai & Live (`PRODUCTION-CUTOVER-PASSED`).
+- [x] **Phase 4D — Post-Go-Live Stabilization, Operational Acceptance & Baseline**: Selesai & Diterima (`PRODUCTION-OPERATIONALLY-ACCEPTED`).
+
 
 ## Last verified
 
