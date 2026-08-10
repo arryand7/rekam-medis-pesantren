@@ -8,7 +8,18 @@ last_updated: 2026-08-09
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 4C — Production Deployment Hardening, Controlled Cutover, Rollback, Observability, and Go-Live Validation Mapping
+
+```text
+PHASE-4C-PRODUCTION-PREFLIGHT.md & PHASE-4C-BACKUP-AND-ROLLBACK.md & PHASE-4C-DEPLOYMENT-RUNBOOK.md & PHASE-4C-PRODUCTION-UAT.md & PHASE-4C-CLOSURE.md & PRODUCTION-GO-LIVE-CHECKLIST.md & INCIDENT-ROLLBACK-RUNBOOK.md
+  -> app/Http/Controllers/HealthController.php (liveness /health & readiness /health/ready endpoints)
+  -> config/filesystems.php (private document disks hardening)
+  -> routes/web.php (health.ready route)
+  -> tests/Feature/HealthCheckTest.php (liveness & readiness feature test suite)
+```
+
 ## Phase 4B — Staging Integration, End-to-End UAT, Gate SSO Activation & Attendance Sandbox Mapping
+
 
 ```text
 PHASE-4B-STAGING-PREFLIGHT.md & PHASE-4B-GATE-SSO-UAT.md & PHASE-4B-UAT-EVIDENCE.md & PHASE-4B-CLOSURE.md

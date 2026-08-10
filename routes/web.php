@@ -37,6 +37,7 @@ Route::get('/', function () {
 })->name('dashboard');
 
 Route::get('/health', HealthController::class)->name('health');
+Route::get('/health/ready', [HealthController::class, 'ready'])->name('health.ready');
 
 // Gate SSO Authentication Routes
 Route::get('/login', [GateOidcAuthController::class, 'login'])->name('login');

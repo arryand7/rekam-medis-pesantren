@@ -10,9 +10,25 @@ use Throwable;
 class HealthController extends Controller
 {
     /**
-     * Application Health Check Endpoint.
+     * Application Liveness Endpoint (/health).
+     * Exposes high-level liveness status without exposing sensitive environment internals.
      */
     public function __invoke(): JsonResponse
+    {
+        return response()->json([
+            'status' => 'ok',
+            'app' => (string) config('app.name', 'SABIRA POSKESTREN Health'),
+            'environment' => (string) config('app.env', 'production'),
+            'version' => '1.0.0',
+            'timestamp' => now()->toIso8601String(),
+        ], 200);
+    }
+
+    /**
+     * Application Readiness Probe Endpoint (/health/ready).
+     * Verifies critical subsystems (Database, Cache, Private Storage, and Integration configurations).
+     */
+    public function ready(): JsonResponse
     {
         $dbStatus = false;
         try {
@@ -24,26 +40,36 @@ class HealthController extends Controller
 
         $cacheStatus = false;
         try {
-            Cache::put('health_check', true, 10);
-            $cacheStatus = Cache::get('health_check') === true;
+            Cache::put('readiness_probe', true, 10);
+            $cacheStatus = Cache::get('readiness_probe') === true;
         } catch (Throwable $e) {
             $cacheStatus = false;
         }
 
-        $storageStatus = is_writable(storage_path());
+        $privateStoragePath = storage_path('app/private');
+        $storageStatus = is_dir($privateStoragePath) ? is_writable($privateStoragePath) : is_writable(storage_path('app'));
 
-        $isHealthy = $dbStatus && $cacheStatus && $storageStatus;
+        $isReady = $dbStatus && $cacheStatus && $storageStatus;
 
         return response()->json([
-            'status' => $isHealthy ? 'ok' : 'degraded',
-            'app' => config('app.name', 'SABIRA POSKESTREN Health'),
+            'status' => $isReady ? 'ready' : 'degraded',
             'timestamp' => now()->toIso8601String(),
-            'timezone' => config('app.timezone'),
-            'checks' => [
-                'database' => $dbStatus ? 'ok' : 'failed',
-                'cache' => $cacheStatus ? 'ok' : 'failed',
-                'storage' => $storageStatus ? 'ok' : 'failed',
+            'dependencies' => [
+                'database' => $dbStatus ? 'connected' : 'unreachable',
+                'cache' => $cacheStatus ? 'operational' : 'failed',
+                'private_storage' => $storageStatus ? 'writable' : 'unwritable',
             ],
-        ], $isHealthy ? 200 : 503);
+            'integrations' => [
+                'gate' => [
+                    'driver' => (string) config('gate.driver', 'fake'),
+                    'sso_enabled' => (bool) config('gate.sso_enabled', false),
+                    'sync_apply_enabled' => (bool) config('gate.sync_apply_enabled', false),
+                ],
+                'attendance' => [
+                    'driver' => (string) config('integration.attendance.driver', 'fake'),
+                    'enabled' => (bool) config('integration.attendance.enabled', false),
+                ],
+            ],
+        ], $isReady ? 200 : 503);
     }
 }

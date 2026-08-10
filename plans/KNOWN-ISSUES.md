@@ -8,7 +8,14 @@ last_updated: 2026-08-10
 
 # Known Issues and Open Questions
 
+## Phase 4C Production Hardening Status
+
+- [x] **Health & Readiness Endpoints (RESOLVED 2026-08-10)**: Endpoint `/health` (Liveness) dan `/health/ready` (Readiness) memverifikasi subsistem database, cache, dan penyimpanan privat secara aman tanpa membocorkan kredensial.
+- [x] **Private Document Storage Isolation (RESOLVED 2026-08-10)**: Seluruh berkas rekam medis privat terisolasi di luar public directory web server.
+- [x] **Production Preflight & Runbooks (RESOLVED 2026-08-10)**: 7 dokumen rilis operasional, backup & rollback protocol, serta go-live checklist tuntas disusun.
+
 ## Phase 4B Staging Integration & UAT Status
+
 
 - [x] **Patient Number Collision Hardening (RESOLVED 2026-08-10)**: Pembangkitan nomor rekam medis diperkuat dengan eskalasi entropi acak dan penanganan benturan database atomik via retry catch `QueryException` (error code 1062 duplicate key). Teruji 1000 iterasi tanpa benturan.
 - [x] **Attendance Sandbox Integration & Privacy Defense (RESOLVED 2026-08-10)**: `HttpAttendanceSandboxIntegration` terhubung dengan sandbox SABIRA Absensi, dilengkapi penegakan *minimum necessary* runtime validator yang memblokir pengiriman kunci data klinis sensitif.

@@ -12,7 +12,20 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
+## [0.17.0] — 2026-08-10 (Phase 4C Production Deployment Hardening, Runbooks & Go-Live Readiness)
+
+### Added
+
+- **Health Liveness & Readiness Probes (`/health` & `/health/ready`)**: Peningkatan endpoint kesehatan pada `HealthController` untuk membedakan probe liveness dasar (`/health`) dan probe readiness mendalam (`/health/ready`) yang memverifikasi database, cache, dan penyimpanan privat tanpa membocorkan kredensial atau stack trace.
+- **Private Document Storage Hardening**: Verifikasi pemisahan dan isolasi seluruh disk berkas medis privat (`referral_documents`, `referral_external_documents`, `discharge_documents`) di luar web root.
+- **Production Preflight & Audit Specification (`PHASE-4C-PRODUCTION-PREFLIGHT.md`)**: Panduan audit komprehensif untuk runtime Linux, PHP 8.4, OPcache, Composer, MariaDB, Redis, Supervisor Worker, dan Cron Scheduler.
+- **Pre-Cutover Backup & Rollback Protocol (`PHASE-4C-BACKUP-AND-ROLLBACK.md`, `INCIDENT-ROLLBACK-RUNBOOK.md`)**: Prosedur snapshot terverifikasi dan strategi pemulihan insiden darurat 3 tingkat (Feature Rollback, Atomic Symlink Switch, DB Disaster Recovery).
+- **Atomic Deployment Runbook (`PHASE-4C-DEPLOYMENT-RUNBOOK.md`)**: Prosedur deployment atomik berbasis symlink dengan protokol aktivasi integrasi bertahap 6 langkah.
+- **Production Go-Live Checklist (`PRODUCTION-GO-LIVE-CHECKLIST.md`)**: Daftar periksa otorisasi rilis produksi.
+- **Phase 4B Final Closure & Phase 4C Closure Reports**: `PHASE-4B-FINAL-CLOSURE.md` dan `PHASE-4C-CLOSURE.md`.
+
 ## [0.16.0] — 2026-08-10 (Phase 4B Staging Integration, End-to-End UAT & Attendance Sandbox)
+
 
 ### Added
 

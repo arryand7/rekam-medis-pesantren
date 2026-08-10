@@ -43,7 +43,7 @@ last_updated: 2026-08-09
 | Operational Handoffs | ✓ | ✓ | ✓ | minimum-necessary privacy | ✓ |
 | Private Discharge Doc | ✓ | ✓ | ✓ | immutability / path traversal | download audit |
 | Theme & Dashboard | ✓ | enum | ✓ | - | - |
-| Health Endpoint | ✓ | - | - | - | - |
+| Health Liveness & Readiness Probes | ✓ | no secret leaks | ✓ | DB/Cache/Storage | probe |
 | Patient Number Collision Hardening | ✓ | 1000 items | ✓ | retry & catch 1062 | ✓ |
 | Attendance Sandbox Integration | ✓ | forbidden keys guard | ✓ | supersede/revoke | probe |
 | End-to-End Clinical & Handoff UAT | ✓ | Scenarios A-E | ✓ | superseding events | ✓ |
