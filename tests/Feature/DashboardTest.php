@@ -1,9 +1,16 @@
 <?php
 
-use function Pest\Laravel\get;
+use App\Models\User;
 
-test('dashboard shell renders successfully with POSKESTREN branding', function () {
-    $response = get(route('dashboard'));
+test('dashboard shell requires authentication and redirects unauthenticated guests to login', function () {
+    $response = $this->get(route('dashboard'));
+    $response->assertRedirect(route('login'));
+});
+
+test('dashboard shell renders successfully for authenticated user with POSKESTREN branding', function () {
+    $user = User::factory()->create();
+
+    $response = $this->actingAs($user)->get(route('dashboard'));
 
     $response->assertStatus(200);
     $response->assertSee('SABIRA POSKESTREN');

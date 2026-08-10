@@ -22,6 +22,11 @@ last_updated: 2026-08-10
   - Seluruh invariansi integritas data terbukti 100% (0 duplikasi identitas, 0 duplikasi nomor rekam medis, 0 duplikasi rujukan, 0 stok obat negatif, 0 dokumen orphan).
 - [x] **Final Status Report (`PHASE-4C2-FINAL-STATUS.md`)**:
   - Status rilis produksi diklasifikasikan resmi sebagai `PRODUCTION-CUTOVER-PASSED`.
+- [x] **Production Authentication Runtime Audit & Fix (`PRODUCTION-AUTH-RUNTIME-INCIDENT.md`, `PRODUCTION-AUTH-RUNTIME-VERIFICATION.md`)**:
+  - Seluruh rute aplikasi (Phase 0–4) dimasukkan ke dalam middleware `auth` dan diverifikasi via curl tanpa cookie (mengembalikan HTTP 302 ke `/login`).
+  - Rute root `/` dan `/dashboard` dikontrol oleh `DashboardController::index()` dengan routing berbasis peran (Clinical, Operational, Management, Admin).
+  - Ditambahkan test suite `AuthenticationRuntimeAuditAndProtectionTest.php` (15 tests baru, total 197 tests, 791 assertions, 100% Passed).
+
 
 ## Kemajuan Phase
 

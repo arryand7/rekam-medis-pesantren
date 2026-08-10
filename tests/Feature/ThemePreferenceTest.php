@@ -1,9 +1,13 @@
 <?php
 
-use function Pest\Laravel\get;
+use App\Models\User;
 
-test('theme switcher component and anti-flicker script are rendered in app layout', function () {
-    $response = get(route('dashboard'));
+use function Pest\Laravel\actingAs;
+
+test('theme switcher component and anti-flicker script are rendered in app layout for authenticated user', function () {
+    $user = User::factory()->create();
+
+    $response = actingAs($user)->get(route('dashboard'));
 
     $response->assertStatus(200);
     $response->assertSee('sabira_theme_preference');

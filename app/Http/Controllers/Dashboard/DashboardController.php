@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\Dashboard\ClinicalDashboardService;
 use App\Services\Dashboard\ManagementDashboardService;
 use App\Services\Dashboard\OperationalDashboardService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -16,6 +17,41 @@ class DashboardController extends Controller
         protected ManagementDashboardService $managementService,
         protected OperationalDashboardService $operationalService
     ) {}
+
+    /**
+     * Resolve the appropriate role-aware dashboard for authenticated user.
+     */
+    public function index(Request $request): View|RedirectResponse
+    {
+        $user = $request->user();
+
+        if (! $user) {
+            return redirect()->route('login');
+        }
+
+        // Clinical / Medical staff
+        if ($user->hasPermission('view-clinical-dashboard')) {
+            return redirect()->route('dashboards.clinical');
+        }
+
+        // Dormitory / Homeroom / Operational staff
+        if ($user->hasPermission('view-operational-dashboard')) {
+            return redirect()->route('dashboards.operational');
+        }
+
+        // Management / Leadership
+        if ($user->hasPermission('view-management-dashboard')) {
+            return redirect()->route('dashboards.management');
+        }
+
+        // Administrator / System Manager
+        if ($user->hasPermission('manage-users') || $user->hasPermission('manage-system-settings') || $user->hasRole('admin') || $user->hasRole('administrator')) {
+            return view('dashboard');
+        }
+
+        // Safe fallback for other authenticated roles
+        return view('dashboard');
+    }
 
     public function clinical(Request $request): View
     {

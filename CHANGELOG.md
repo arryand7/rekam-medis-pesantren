@@ -12,7 +12,16 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
+## [0.18.1] — 2026-08-10 (Production Authentication Runtime Audit & Protection Hardening)
+
+### Security
+
+- **Authentication Middleware Enforcement (`routes/web.php`)**: Memasukkan seluruh rute aplikasi (Phase 0–4) ke dalam group `Route::middleware('auth')`. Memastikan endpoint publik hanya terbatas pada `/health`, `/health/ready`, `/login`, `/auth/gate/callback`, `/auth/gate/access-denied`, dan `/logout`.
+- **Role-Aware Dashboard Resolver (`DashboardController::index`)**: Mencegah akses langsung unauthenticated ke view dashboard dan merutekan pengguna terautentikasi sesuai hak akses peran (*Clinical, Operational, Management, atau Admin*).
+- **Automated Regression Suite (`AuthenticationRuntimeAuditAndProtectionTest.php`)**: 15 skenario pengujian baru yang memverifikasi guest redirection, role-aware routing, privilege isolation, entitlement rejection, dan invalidasi sesi saat logout (total 197 tests, 791 assertions, 100% Passed).
+
 ## [0.18.0] — 2026-08-10 (Phase 4C2 Production Cutover Complete & Live Validation)
+
 
 ### Added
 
