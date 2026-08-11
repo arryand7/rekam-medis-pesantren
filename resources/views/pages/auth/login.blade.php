@@ -48,7 +48,7 @@
                 <!-- Login / Username / Email Field -->
                 <div>
                     <label for="login" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
-                        Email / Username / NIS / NIP
+                        Email / Username / NIK / NIS / NIP
                     </label>
                     <div class="relative rounded-xl shadow-sm">
                         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -123,8 +123,9 @@
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
                     </svg>
-                    <span>Masuk ke Aplikasi</span>
+                    <span>Masuk ke Sistem</span>
                 </button>
+
             </form>
 
             <!-- Divider -->

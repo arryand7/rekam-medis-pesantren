@@ -280,8 +280,8 @@
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1786465278.7499108,
-    "ast_hash": "c0c21c83471ddde7624c4f45e2d7451b",
+    "mtime": 1786466277.4924858,
+    "ast_hash": "c6b17f761b567340ade70c6d993cfa06",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -295,8 +295,8 @@
     "semantic_hash": ""
   },
   "PROJECT-STATUS.md": {
-    "mtime": 1786465295.3578715,
-    "ast_hash": "209b5a780df1420fa82e5674aaecb122",
+    "mtime": 1786466277.49203,
+    "ast_hash": "45c24d1e898a72a04d486b17507e507a",
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-PHASE-0.md": {
@@ -2530,8 +2530,8 @@
     "semantic_hash": ""
   },
   "resources/views/pages/auth/login.blade.php": {
-    "mtime": 1786462234.432684,
-    "ast_hash": "f645f42f59bb554a0f61bf69a14d6ab9",
+    "mtime": 1786465729.116815,
+    "ast_hash": "7661e3129c83c5872fd62153d50c01b4",
     "semantic_hash": ""
   },
   "resources/views/pages/gate/dry-run-preview.blade.php": {
@@ -2940,8 +2940,8 @@
     "semantic_hash": ""
   },
   "docs/10-delivery/PHASE-5A-CLOSURE.md": {
-    "mtime": 1786465266.5300424,
-    "ast_hash": "5faebfc902493404c7bfa99ca6278ad7",
+    "mtime": 1786465354.7663186,
+    "ast_hash": "871c08c422db08deb631fbda6d09894f",
     "semantic_hash": ""
   },
   "resources/views/components/patient-context-header.blade.php": {
@@ -2977,6 +2977,26 @@
   "docs/05-ui/PHASE-5A1-MANUAL-UI-VERIFICATION.md": {
     "mtime": 1786465254.4473944,
     "ast_hash": "193cc2e0400bfbf8470582254c4b56eb",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-5A2-VISUAL-DIFF-ACCEPTANCE.md": {
+    "mtime": 1786465562.9459684,
+    "ast_hash": "7712c4f08854847d078b04cf1e53dfcb",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5A2-DIFF-HYGIENE-AUDIT.md": {
+    "mtime": 1786466153.0062113,
+    "ast_hash": "e91b9ee7fc8fe5f00dd1d9f34ff2f5ea",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5A2-VISUAL-VERIFICATION.md": {
+    "mtime": 1786466168.5459442,
+    "ast_hash": "236258e3e138cc6cad60a4da4b0119fc",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-5A2-FINAL-ACCEPTANCE.md": {
+    "mtime": 1786466179.5944328,
+    "ast_hash": "30d2d9c2505991c95ffd264d5aad7c05",
     "semantic_hash": ""
   }
 }
