@@ -4,6 +4,7 @@ use App\DTOs\GateApplicationEntitlementDTO;
 use App\DTOs\GateUserInfoDTO;
 use App\Models\Patient;
 use App\Models\Permission;
+use App\Models\Person;
 use App\Models\Role;
 use App\Models\User;
 use App\Services\Gate\FakeGateOidcClient;
@@ -229,4 +230,96 @@ test('gate before only allows exact local permission and defers to model policy 
     // Model policy evaluation: PatientPolicy view requires 'view-patients'
     $patient = Patient::factory()->create();
     expect(Gate::forUser($admin)->allows('view', $patient))->toBeFalse();
+});
+
+test('user can authenticate directly using valid email and password', function () {
+    $user = User::factory()->create([
+        'email' => 'dokter.poskestren@sabira.test',
+        'password' => bcrypt('rahasia123'),
+        'is_active' => true,
+    ]);
+
+    $response = $this->post('/login', [
+        'login' => 'dokter.poskestren@sabira.test',
+        'password' => 'rahasia123',
+    ]);
+
+    $response->assertRedirect(route('dashboard'));
+    expect(Auth::check())->toBeTrue();
+    expect(Auth::id())->toBe($user->id);
+});
+
+test('user can authenticate directly using username/name and password', function () {
+    $user = User::factory()->create([
+        'name' => 'petugas_farmasi_01',
+        'email' => 'farmasi@sabira.test',
+        'password' => bcrypt('password123'),
+        'is_active' => true,
+    ]);
+
+    $response = $this->post('/login', [
+        'login' => 'petugas_farmasi_01',
+        'password' => 'password123',
+    ]);
+
+    $response->assertRedirect(route('dashboard'));
+    expect(Auth::check())->toBeTrue();
+    expect(Auth::id())->toBe($user->id);
+});
+
+test('user can authenticate directly using person nis_nip and password', function () {
+    $person = Person::factory()->create([
+        'nis_nip' => 'NIP-2026-999',
+        'name' => 'Ustadz Ahmad Pengasuh',
+    ]);
+
+    $user = User::factory()->create([
+        'person_id' => $person->id,
+        'email' => 'ahmad.pengasuh@sabira.test',
+        'password' => bcrypt('ponpes2026'),
+        'is_active' => true,
+    ]);
+
+    $response = $this->post('/login', [
+        'login' => 'NIP-2026-999',
+        'password' => 'ponpes2026',
+    ]);
+
+    $response->assertRedirect(route('dashboard'));
+    expect(Auth::check())->toBeTrue();
+    expect(Auth::id())->toBe($user->id);
+});
+
+test('user cannot authenticate with invalid password', function () {
+    $user = User::factory()->create([
+        'email' => 'staf@sabira.test',
+        'password' => bcrypt('correct_password'),
+        'is_active' => true,
+    ]);
+
+    $response = $this->from('/login')->post('/login', [
+        'login' => 'staf@sabira.test',
+        'password' => 'wrong_password',
+    ]);
+
+    $response->assertRedirect('/login');
+    $response->assertSessionHasErrors('login');
+    expect(Auth::check())->toBeFalse();
+});
+
+test('inactive user cannot authenticate directly', function () {
+    $user = User::factory()->create([
+        'email' => 'inactive@sabira.test',
+        'password' => bcrypt('password123'),
+        'is_active' => false,
+    ]);
+
+    $response = $this->from('/login')->post('/login', [
+        'login' => 'inactive@sabira.test',
+        'password' => 'password123',
+    ]);
+
+    $response->assertRedirect('/login');
+    $response->assertSessionHasErrors('login');
+    expect(Auth::check())->toBeFalse();
 });

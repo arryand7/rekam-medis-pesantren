@@ -37,11 +37,14 @@ PHASE-4D-STABILIZATION-LOG.md & PHASE-4D-OPERATIONAL-UAT.md & PRODUCTION-MONITOR
 
 ```text
 PRODUCTION-AUTH-HOTFIX-ROLLOUT.md & PRODUCTION-AUTH-HOTFIX-VERIFICATION.md & PRODUCTION-AUTH-EXPOSURE-REVIEW.md & PRODUCTION-AUTH-RUNTIME-INCIDENT.md
+  -> app/Http/Controllers/Auth/GateOidcAuthController.php (login view, authenticate method, Gate SSO callback)
   -> app/Http/Controllers/Dashboard/DashboardController.php (role-aware index method)
   -> app/Providers/AppServiceProvider.php (typed Gate::before local permission hook)
-  -> routes/web.php (Route::middleware('auth') complete group & route-level Gate::authorize)
+  -> routes/web.php (Route::middleware('auth') complete group & route-level Gate::authorize & public /login)
+  -> resources/views/pages/auth/login.blade.php (direct credentials & Gate SSO login UI)
   -> tests/Feature/Auth/AuthenticationRuntimeAuditAndProtectionTest.php
 ```
+
 
 ## Phase 4C2 — Controlled Production Cutover, Canary Activation, Post-Go-Live Validation & Rollback Guard Mapping
 

@@ -57,8 +57,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/health', HealthController::class)->name('health');
 Route::get('/health/ready', [HealthController::class, 'ready'])->name('health.ready');
 
-// Gate SSO Authentication Routes (Public access points for authentication flow)
+// Gate SSO & Direct Authentication Routes (Public access points for authentication flow)
 Route::get('/login', [GateOidcAuthController::class, 'login'])->name('login');
+Route::post('/login', [GateOidcAuthController::class, 'authenticate'])->name('login.attempt');
 Route::get('/auth/gate/callback', [GateOidcAuthController::class, 'callback'])->name('auth.gate.callback');
 Route::get('/auth/gate/access-denied', [GateOidcAuthController::class, 'accessDenied'])->name('auth.gate.access_denied');
 Route::post('/logout', [GateOidcAuthController::class, 'logout'])->name('logout');

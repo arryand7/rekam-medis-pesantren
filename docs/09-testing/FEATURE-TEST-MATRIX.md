@@ -50,4 +50,4 @@ last_updated: 2026-08-09
 | Outbox Failure & Dead-Letter | ✓ | backoff policy | permission retry | dead-letter transition | ✓ |
 | Role Matrix & Privacy Isolation | ✓ | separation | policy 403 checks | no medical leakage | ✓ |
 | Production Cutover Canary & Integrity | ✓ | 6 steps canary | ✓ | 0 duplicates/negative | ✓ |
-| Production Auth Runtime & Middleware | ✓ | 18 tests suite | ✓ | Gate::before audit / role dispatch / logout CSRF | ✓ |
+| Production Auth Runtime & Middleware | ✓ | 23 tests suite | ✓ | Gate::before audit / role dispatch / direct credentials & logout CSRF | ✓ |

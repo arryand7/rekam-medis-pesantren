@@ -12,7 +12,17 @@ Semua perubahan penting proyek dicatat di file ini.
 
 ## [Unreleased]
 
+## [0.19.2] — 2026-08-11 (Direct Credentials Login & Hybrid SSO Activation)
+
+### Added
+
+- **Direct Credentials Authentication (`POST /login`)**: Menambahkan kapabilitas login langsung menggunakan email, username, NIK, atau NIS/NIP terdaftar dan kata sandi dengan verifikasi `Hash::check()` dan pencatatan audit log `local_login`.
+- **Hybrid Login UI (`resources/views/pages/auth/login.blade.php`)**: Memperbarui antarmuka login dengan form input email/username dan kata sandi (lengkap dengan toggle show/hide password), checkbox "Ingat Saya", dan tombol opsi "Masuk dengan SABIRA Gate SSO".
+- **Brute-force Rate Limiting**: Menerapkan rate limiting (5 percobaan/menit) pada autentikasi langsung untuk mencegah serangan password guessing.
+- **Automated Regression Suite (`AuthenticationRuntimeAuditAndProtectionTest.php`)**: Menambahkan skenario pengujian untuk login email, username, person NIS/NIP, pencegahan login akun non-aktif, serta penolakan password tidak sesuai (total 205 tests, 821 assertions, 100% Passed).
+
 ## [0.19.1] — 2026-08-10 (Phase 4D2 Independent Operational Evidence Verification)
+
 
 ### Verified
 
