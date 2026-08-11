@@ -64,13 +64,8 @@ class User extends Authenticatable
      */
     public function hasPermission(string $permissionName): bool
     {
-        /** @var Role $role */
-        foreach ($this->roles as $role) {
-            if ($role->permissions->contains('name', $permissionName)) {
-                return true;
-            }
-        }
-
-        return false;
+        return $this->roles()
+            ->whereHas('permissions', fn ($q) => $q->where('name', $permissionName))
+            ->exists();
     }
 }

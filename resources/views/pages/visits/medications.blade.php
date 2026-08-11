@@ -2,32 +2,12 @@
     <x-slot name="title">Pemberian Obat Santri — SABIRA POSKESTREN</x-slot>
 
     <div class="space-y-6">
-        <!-- Patient Banner & Active Allergy Alert -->
-        <div class="bg-[var(--surface)] p-6 rounded-2xl border border-[var(--border)] shadow-xs space-y-4">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <div class="flex items-start gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 text-[var(--primary)] flex items-center justify-center font-bold text-lg border border-[var(--primary)]/20 shrink-0">
-                        {{ strtoupper(substr($visit->patient->person->name, 0, 2)) }}
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <h1 class="text-xl font-bold text-[var(--foreground)] tracking-tight">{{ $visit->patient->person->name }}</h1>
-                            <span class="font-mono text-xs text-[var(--foreground-muted)]">({{ $visit->patient->patient_number }})</span>
-                        </div>
-                        <div class="flex flex-wrap items-center gap-3 text-xs text-[var(--foreground-muted)] mt-1 font-medium">
-                            <span>No. Kunjungan: <strong class="font-mono text-[var(--foreground)]">{{ $visit->visit_number }}</strong></span>
-                            <span>•</span>
-                            <span>Keluhan: <strong class="text-[var(--foreground)]">{{ $visit->chief_complaint }}</strong></span>
-                        </div>
-                    </div>
-                </div>
+        <!-- Patient Context Header Component -->
+        <x-patient-context-header :patient="$visit->patient" :visit="$visit" />
 
-                <div>
-                    <a href="{{ route('visits.show', $visit->id) }}" class="px-4 py-2 rounded-xl text-xs font-semibold bg-[var(--surface-muted)] text-[var(--foreground)] border border-[var(--border)] hover:bg-[var(--border)]">
-                        &larr; Kembali ke Detail Kunjungan
-                    </a>
-                </div>
-            </div>
+        <!-- Visit Stage Navigation Component -->
+        <x-visit-stage-nav :visit="$visit" current="medications" />
+
 
             <!-- Active Allergy Warning Banner -->
             @if($visit->patient->activeAllergies->count() > 0)

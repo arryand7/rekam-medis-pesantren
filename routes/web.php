@@ -80,9 +80,25 @@ Route::middleware('auth')->group(function () {
         return view('pages.people.index', compact('people'));
     })->name('people.index');
 
-    Route::get('/patients', function () {
+    Route::get('/patients', function (Request $request) {
         Gate::authorize('view-patients');
-        $patients = Patient::with('person')->latest()->paginate(15);
+
+        $query = Patient::with(['person', 'healthProfile', 'activeAllergies']);
+
+        if ($request->filled('search')) {
+            $search = trim($request->input('search'));
+            $query->where(function ($q) use ($search) {
+                $q->where('patient_number', 'like', "%{$search}%")
+                    ->orWhereHas('person', function ($pq) use ($search) {
+                        $pq->where('name', 'like', "%{$search}%")
+                            ->orWhere('nis_nip', 'like', "%{$search}%")
+                            ->orWhere('nik', 'like', "%{$search}%")
+                            ->orWhere('user_type', 'like', "%{$search}%");
+                    });
+            });
+        }
+
+        $patients = $query->latest()->paginate(15)->withQueryString();
 
         return view('pages.patients.index', compact('patients'));
     })->name('patients.index');
@@ -170,7 +186,27 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/visits/{id}', function (string $id) {
         Gate::authorize('view-medical-visits');
-        $visit = MedicalVisit::with(['patient.person', 'receivingOfficer', 'assignedOfficer', 'vitalSigns', 'latestAssessment', 'actions'])->findOrFail($id);
+        $visit = MedicalVisit::with([
+            'patient.person',
+            'patient.healthProfile',
+            'patient.activeAllergies',
+            'receivingOfficer',
+            'assignedOfficer',
+            'vitalSigns' => fn ($q) => $q->latest(),
+            'latestVitalSign',
+            'assessments' => fn ($q) => $q->latest(),
+            'latestAssessment',
+            'actions' => fn ($q) => $q->latest(),
+            'observationEpisodes.latestMonitoring',
+            'activeObservationEpisode',
+            'medicationOrders.medicine',
+            'medicationOrders.administrations',
+            'consultations' => fn ($q) => $q->latest(),
+            'referrals.partner',
+            'activeReferral.partner',
+            'discharge',
+            'operationalHandoffs',
+        ])->findOrFail($id);
 
         return view('pages.visits.show', compact('visit'));
     })->name('visits.show');

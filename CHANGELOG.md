@@ -15,10 +15,20 @@ Semua perubahan penting proyek dicatat di file ini.
 > Istilah *production* pada dokumen historis sebelum koreksi ini merujuk pada
 > *rehearsal / readiness validation*, bukan deployment server production fisik aktual.
 
-## [Unreleased]
+## [0.19.3] — 2026-08-11 (Phase 5A1 Evidence-Backed UX & Core Workflow Implementation)
 
+### Added
+
+- **Role-Aware Navigation & Header Auth (`resources/views/layouts/app.blade.php`)**: Menerapkan penyaringan visibilitas menu sidebar berbasis izin (`@can` / `@canany`) untuk modul Pelayanan Medis, Farmasi, Operasional Asrama, dan Administrasi Sistem. Menambahkan tampilan profil pengguna aktif dan tombol Logout dengan form POST CSRF aman di topbar.
+- **Patient Directory Search & Quick Actions (`resources/views/pages/patients/index.blade.php`, `routes/web.php`)**: Menambahkan bilah pencarian pasien multi-kriteria (nama, No. RM, NIK, NIS/NIP), preservasi query string pencarian pada paginasi, aksi cepat "Buka Profil" & "+ Kunjungan", serta tampilan empty state informatif saat hasil pencarian nihil.
+- **Reusable Patient Context Header Component (`resources/views/components/patient-context-header.blade.php`)**: Komponen identitas pasien terpadu dengan avatar inisial, nama lengkap, No. Rekam Medis, tipe warga, NIS/NIP, status kelayakan, dan banner peringatan merah kontras jika terdapat riwayat alergi aktif.
+- **Visit Stage Stepper Navigation Component (`resources/views/components/visit-stage-nav.blade.php`)**: Navigasi tahapan pelayanan klinis (Ringkasan, Tanda Vital & SOAP, Resep & Obat, Konsultasi, Rujukan, Kepulangan & Handoff) dengan indikator visual tahapan aktif.
+- **Unified Visit Workspace Overview (`resources/views/pages/visits/show.blade.php`)**: Workspace terpadu pemeriksaan medis dengan ringkasan status tanda vital, assessment klinis SOAP, instruksi obat, rekomendasi langkah berikutnya (*Next Action Recommendation Engine*), dan aksi cepat proses kepulangan / pembatalan.
+- **Visit Stage View Continuity (`resources/views/pages/visits/assessment.blade.php`, `resources/views/pages/visits/medications.blade.php`)**: Integrasi Patient Context Header dan Visit Stage Navigation pada layar pengkajian klinis SOAP dan manajemen instruksi resep/obat.
+- **Automated UX Feature Test Suite (`tests/Feature/Ui/Phase5A1CoreWorkflowUxTest.php`)**: Menambahkan 11 test case komprehensif yang menguji auth header, pemisahan menu sidebar antar peran, proteksi 403 rute langsung, pencarian pasien, peringatan alergi, dan komponen workspace kunjungan (216 tests, 874 assertions, 100% Passed).
 
 ## [0.19.2] — 2026-08-11 (Direct Credentials Login & Hybrid SSO Activation)
+
 
 ### Added
 

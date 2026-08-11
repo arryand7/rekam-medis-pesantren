@@ -66,6 +66,11 @@ class Medicine extends Model
         return (int) $this->batches()->where('status', 'active')->sum('current_quantity');
     }
 
+    public function getNameAttribute(): string
+    {
+        return $this->brand_name ?: ($this->generic_name ?? 'Obat');
+    }
+
     public function isLowStock(): bool
     {
         return $this->total_stock <= $this->minimum_stock;

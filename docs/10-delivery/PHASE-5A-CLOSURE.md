@@ -45,7 +45,15 @@ Laporan ini menandai penyelesaian resmi **Phase 5A: Documentation Truth Normaliz
 
 ---
 
-## 3. Status Klasifikasi Akhir
+## 3. Status Klasifikasi Akhir & Koreksi Phase 5A1
 
-### **STATUS: `PHASE-5A-COMPLETE`**
-Dokumentasi telah dinormalkan sesuai kenyataan pre-produksi, alur antarmuka pengguna kohesif dan bebas *dead end*, autentikasi hybrid berfungsi optimal, serta seluruh pengujian otomatis lulus hijau.
+### **STATUS HISTORIS PHASE 5A: `PHASE-5A-DOCS-AUDIT-COMPLETE`**
+Dokumentasi Phase 5A memetakan seluruh rute dan spesifikasi alur antarmuka pengguna. Namun, audit independen pada Phase 5A1 membuktikan bahwa commit `6a65330` adalah `DOCS-ONLY` tanpa perubahan kode runtime.
+
+### **STATUS IMPLEMENTASI PHASE 5A1: `PHASE-5A1-COMPLETE`**
+Phase 5A1 secara nyata mengimplementasikan kode runtime UI/UX:
+- Role-aware sidebar navigation dan user profile/logout form di `resources/views/layouts/app.blade.php`.
+- Pencarian multi-kriteria dan filter direktori pasien di `resources/views/pages/patients/index.blade.php` dan `routes/web.php`.
+- Komponen Patient Context Header dengan peringatan alergi di `resources/views/components/patient-context-header.blade.php`.
+- Unified Visit Workspace dan stepper navigasi tahapan kunjungan di `resources/views/pages/visits/show.blade.php`, `resources/views/components/visit-stage-nav.blade.php`, `resources/views/pages/visits/assessment.blade.php`, dan `resources/views/pages/visits/medications.blade.php`.
+- 11 pengujian otomatis baru di `tests/Feature/Ui/Phase5A1CoreWorkflowUxTest.php` (total 216 tests, 874 assertions, 100% PASS).

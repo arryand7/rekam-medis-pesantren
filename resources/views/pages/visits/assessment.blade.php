@@ -2,37 +2,12 @@
     <x-slot name="title">Workspace Pengkajian Klinis — SABIRA POSKESTREN</x-slot>
 
     <div class="space-y-6">
-        <!-- Patient & Visit Summary Banner -->
-        <div class="bg-[var(--surface)] p-6 rounded-2xl border border-[var(--border)] shadow-xs flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-600 dark:text-sky-400 flex items-center justify-center font-bold text-lg border border-sky-500/20 shrink-0">
-                    {{ strtoupper(substr($visit->patient->person->name, 0, 2)) }}
-                </div>
-                <div>
-                    <div class="flex items-center gap-2">
-                        <h1 class="text-xl font-bold text-[var(--foreground)] tracking-tight">{{ $visit->patient->person->name }}</h1>
-                        <span class="font-mono text-xs text-[var(--foreground-muted)]">({{ $visit->patient->patient_number }})</span>
-                    </div>
-                    <div class="flex flex-wrap items-center gap-3 text-xs text-[var(--foreground-muted)] mt-1 font-medium">
-                        <span>No. Kunjungan: <strong class="font-mono text-[var(--primary)]">{{ $visit->visit_number }}</strong></span>
-                        <span>•</span>
-                        <span>Waktu Kedatangan: <strong class="text-[var(--foreground)]">{{ $visit->arrived_at->format('H:i') }} WIB</strong></span>
-                        <span>•</span>
-                        <span>Status: 
-                            <span class="px-2 py-0.5 rounded text-[10px] font-semibold uppercase bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300">
-                                {{ str_replace('_', ' ', $visit->status) }}
-                            </span>
-                        </span>
-                    </div>
-                </div>
-            </div>
+        <!-- Patient Context Header Component -->
+        <x-patient-context-header :patient="$visit->patient" :visit="$visit" />
 
-            <div class="flex items-center gap-2">
-                <a href="{{ route('visits.show', $visit->id) }}" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-[var(--surface-muted)] text-[var(--foreground)] border border-[var(--border)] hover:bg-[var(--border)]">
-                    &larr; Detail Kunjungan
-                </a>
-            </div>
-        </div>
+        <!-- Visit Stage Navigation Component -->
+        <x-visit-stage-nav :visit="$visit" current="assessment" />
+
 
         <!-- Alert Active Allergy Warning -->
         @if($visit->patient->activeAllergies->count() > 0)
@@ -117,8 +92,8 @@
                                     </span>
                                 </div>
                                 <div class="text-[var(--foreground-muted)]">
-                                    Suhu: {{ $vs->temperature_c ? $vs->temperature_c.'°C' : '-' }} | 
-                                    TD: {{ $vs->systolic_bp && $vs->diastolic_bp ? $vs->systolic_bp.'/'.$vs->diastolic_bp : '-' }} | 
+                                    Suhu: {{ $vs->temperature_c ? $vs->temperature_c.'°C' : '-' }} |
+                                    TD: {{ $vs->systolic_bp && $vs->diastolic_bp ? $vs->systolic_bp.'/'.$vs->diastolic_bp : '-' }} |
                                     SpO2: {{ $vs->spo2_percent ? $vs->spo2_percent.'%' : '-' }}
                                 </div>
                             </div>

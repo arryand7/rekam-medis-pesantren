@@ -127,6 +127,16 @@ class MedicalVisit extends Model
         return $this->hasMany(ClinicalConsultation::class, 'medical_visit_id');
     }
 
+    public function referrals(): HasMany
+    {
+        return $this->hasMany(Referral::class, 'medical_visit_id');
+    }
+
+    public function activeReferral(): HasOne
+    {
+        return $this->hasOne(Referral::class, 'medical_visit_id')->whereNotIn('status', ['completed', 'cancelled', 'superseded', 'entered_in_error'])->latestOfMany();
+    }
+
     public function discharge(): HasOne
     {
         return $this->hasOne(VisitDischarge::class, 'medical_visit_id');
