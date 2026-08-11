@@ -10,7 +10,13 @@ last_updated: 2026-08-10
 
 Semua perubahan penting proyek dicatat di file ini.
 
+> **Environment Note**:
+> Sampai versi 0.19.2 aplikasi masih berada pada local development/pre-production.
+> Istilah *production* pada dokumen historis sebelum koreksi ini merujuk pada
+> *rehearsal / readiness validation*, bukan deployment server production fisik aktual.
+
 ## [Unreleased]
+
 
 ## [0.19.2] — 2026-08-11 (Direct Credentials Login & Hybrid SSO Activation)
 

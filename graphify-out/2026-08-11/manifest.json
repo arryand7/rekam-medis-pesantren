@@ -165,8 +165,8 @@
     "semantic_hash": ""
   },
   "routes/web.php": {
-    "mtime": 1786375690.5045362,
-    "ast_hash": "b677282b34d15b1d8d2c2b2ec5ff0a0a",
+    "mtime": 1786462255.793837,
+    "ast_hash": "5ce6a7b916d562abe6049e5ba5fc3649",
     "semantic_hash": ""
   },
   "tests/Feature/DashboardTest.php": {
@@ -280,8 +280,8 @@
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1786378027.5280776,
-    "ast_hash": "fcdf1af51818b17cc6457592ac8c9eed",
+    "mtime": 1786462385.8350775,
+    "ast_hash": "3cd0b4a9a241d3312e30872d331f0051",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -655,8 +655,8 @@
     "semantic_hash": ""
   },
   "docs/09-testing/FEATURE-TEST-MATRIX.md": {
-    "mtime": 1786375690.1693869,
-    "ast_hash": "0c98cad36ab92696c685e2923ecf1109",
+    "mtime": 1786462396.009521,
+    "ast_hash": "94430014c1524e41785e4e408ed63b1b",
     "semantic_hash": ""
   },
   "docs/09-testing/SECURITY-TESTS.md": {
@@ -765,8 +765,8 @@
     "semantic_hash": ""
   },
   "docs/12-graphify/DOCUMENT-CODE-MAPPING.md": {
-    "mtime": 1786461757.3617775,
-    "ast_hash": "d553363233ebccbc72a84c510db140bc",
+    "mtime": 1786462411.6365407,
+    "ast_hash": "55d2c34cb0dd3e1c28169139f6004055",
     "semantic_hash": ""
   },
   "docs/12-graphify/GRAPH-NAMING-CONVENTIONS.md": {
@@ -2420,8 +2420,8 @@
     "semantic_hash": ""
   },
   "app/Http/Controllers/Auth/GateOidcAuthController.php": {
-    "mtime": 1786375690.11626,
-    "ast_hash": "829aa5a69eb74b898a48c48960055d51",
+    "mtime": 1786462254.6156013,
+    "ast_hash": "9b770d7c3e79966afc1daa5418405e1a",
     "semantic_hash": ""
   },
   "app/Http/Controllers/Gate/GateReconciliationController.php": {
@@ -2530,8 +2530,8 @@
     "semantic_hash": ""
   },
   "resources/views/pages/auth/login.blade.php": {
-    "mtime": 1786375690.496455,
-    "ast_hash": "d7e011d925bc24614b4f42fa36a7a2dc",
+    "mtime": 1786462234.432684,
+    "ast_hash": "f645f42f59bb554a0f61bf69a14d6ab9",
     "semantic_hash": ""
   },
   "resources/views/pages/gate/dry-run-preview.blade.php": {
@@ -2775,8 +2775,8 @@
     "semantic_hash": ""
   },
   "tests/Feature/Auth/AuthenticationRuntimeAuditAndProtectionTest.php": {
-    "mtime": 1786375690.5055628,
-    "ast_hash": "b57b333710deec288d9a9afc96333c8f",
+    "mtime": 1786462254.8163965,
+    "ast_hash": "861e4d8b94d38eba755f216b60c62576",
     "semantic_hash": ""
   },
   "PROMPT-ANTIGRAVITY-CRITICAL-AUTH-RUNTIME-AUDIT-FIX.md": {
@@ -2865,8 +2865,8 @@
     "semantic_hash": ""
   },
   "docs/10-delivery/PHASE-4D2-EVIDENCE-REGISTER.md": {
-    "mtime": 1786461720.275219,
-    "ast_hash": "a92cced20dca858aff2ac2e483725da2",
+    "mtime": 1786461811.1666346,
+    "ast_hash": "e8b14376ddec12bc7e630f1a5c42eeaa",
     "semantic_hash": ""
   },
   "docs/10-delivery/PHASE-4D2-FINAL-CLOSURE.md": {
@@ -2875,8 +2875,8 @@
     "semantic_hash": ""
   },
   "docs/10-delivery/PHASE-4D2-STABILIZATION-EVIDENCE.md": {
-    "mtime": 1786461747.6838152,
-    "ast_hash": "3e05f751c2200aa5a71625730937bf32",
+    "mtime": 1786461824.2768786,
+    "ast_hash": "3d52d60b31329cdfaaea39b2d1946cd9",
     "semantic_hash": ""
   },
   "docs/10-delivery/PHASE-4D2-UAT-SIGNOFF.md": {

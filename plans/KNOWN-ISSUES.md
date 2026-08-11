@@ -8,18 +8,22 @@ last_updated: 2026-08-10
 
 # Known Issues and Open Questions
 
+## Phase 5A Documentation Truth & UX Workflow Status
+
+- [x] **Documentation Truth Normalization & UX Completion (RESOLVED 2026-08-11)**: Seluruh klaim historis produksi dinormalisasi menjadi kesiapan pre-produksi / rehearsal. Alur kerja pengguna (Patient -> Visit -> Assessment -> Pharmacy -> Referral -> Discharge) tervalidasi mulus tanpa dead ends. Autentikasi hybrid aktif (205 tests, 821 assertions lulus 100%). Status: `PHASE-5A-COMPLETE`.
+
 ## Phase 4D2 Independent Operational Evidence Verification Status
 
-- [x] **Independent Evidence Verification & Wall-Clock Audit (RESOLVED 2026-08-10)**: Audit bukti independen tuntas. Durasi stabilisasi riil dicatat ~1.2 jam dengan Checkpoint T+1h terverifikasi sukses. Integritas data database (0 duplicate MRN, 0 duplicate gate_user_id, 0 negative stock) tervalidasi via kueri agregat. Status operasional: `STABILIZATION-IN-PROGRESS` (T+1h Verified).
+- [x] **Independent Evidence Verification & Local Evidence Normalization (RESOLVED 2026-08-10)**: Audit bukti independen tuntas. Integritas data database (0 duplicate MRN, 0 duplicate gate_user_id, 0 negative stock) tervalidasi via kueri agregat pada database lokal. Status: `PRE-PRODUCTION-OPERATIONAL-READINESS-VALIDATED`.
 
 ## Phase 4D Operational Acceptance Status
 
-
-- [x] **Post-Go-Live Stabilization & Operational Acceptance (RESOLVED 2026-08-10)**: Pemantauan stabilitas 24–72 jam terbukti bebas anomali. UAT operasional pengguna nyata (Dokter, Farmasi, Asrama, Mudir, Admin IT) lulus 100%. SOP harian dan monitoring thresholds aktif. Status rilis resmi: `PRODUCTION-OPERATIONALLY-ACCEPTED`.
+- [x] **Pre-Production Operational Readiness (RESOLVED 2026-08-10)**: Evaluasi kesiapan operasional pra-rilis tervalidasi 100% pada skenario spesifikasi dan data uji lokal. SOP harian dan monitoring thresholds siap. Status: `PRE-PRODUCTION-OPERATIONAL-READINESS-VALIDATED`.
 
 ## Production Auth Hotfix Status
 
-- [x] **Unauthenticated Route Access & Role Dispatch (RESOLVED 2026-08-10)**: Seluruh rute aplikasi (Phase 0–4) dibungkus di dalam middleware `auth`. Rute root `/` dan `/dashboard` dikontrol oleh `DashboardController::index` dengan routing berbasis peran. Terverifikasi tuntas melalui curl tanpa cookie (302 ke `/login`), 18 automated audit tests, dan berstatus `AUTH-HOTFIX-PRODUCTION-VERIFIED`.
+- [x] **Unauthenticated Route Access & Role Dispatch (RESOLVED 2026-08-10)**: Seluruh rute aplikasi (Phase 0–4) dibungkus di dalam middleware `auth`. Rute root `/` dan `/dashboard` dikontrol oleh `DashboardController::index` dengan routing berbasis peran. Terverifikasi tuntas melalui curl tanpa cookie (302 ke `/login`), 23 automated audit tests, dan berstatus `AUTH-HOTFIX-LOCAL-RUNTIME-VERIFIED`.
+
 
 
 ## Phase 4C2 Production Cutover Status

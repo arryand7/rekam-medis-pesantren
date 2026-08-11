@@ -8,10 +8,23 @@ last_updated: 2026-08-09
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 5A — Documentation Truth Normalization + Application UX & Workflow Completion Mapping
+
+```text
+ENVIRONMENT-TRUTH-CORRECTION.md & PHASE-5A-ROUTE-AND-SCREEN-INVENTORY.md & PHASE-5A-ROLE-NAVIGATION-MATRIX.md & PHASE-5A-UX-AUDIT.md & PHASE-5A-VISIT-WORKSPACE.md & PHASE-5A-RESPONSIVE-ACCESSIBILITY-AUDIT.md & PHASE-5A-UX-WORKFLOW-TEST-MATRIX.md & PHASE-5A-CLOSURE.md
+  -> app/Http/Controllers/Auth/GateOidcAuthController.php
+  -> app/Http/Controllers/Dashboard/DashboardController.php
+  -> routes/web.php
+  -> resources/views/pages/auth/login.blade.php
+  -> resources/views/pages/visits/show.blade.php
+  -> tests/Feature/Auth/AuthenticationRuntimeAuditAndProtectionTest.php
+```
+
 ## Phase 4D2 — Independent Operational Evidence Verification Mapping
 
 ```text
 PHASE-4D2-EVIDENCE-REGISTER.md & PHASE-4D2-STABILIZATION-EVIDENCE.md & PHASE-4D2-UAT-SIGNOFF.md & PHASE-4D2-DATA-INTEGRITY-EVIDENCE.md & PHASE-4D2-BACKUP-RESTORE-EVIDENCE.md & PHASE-4D2-FINAL-CLOSURE.md & PHASE-4D2B-PRODUCTION-SERVER-PROOF.md
+
 
   -> app/Http/Controllers/Dashboard/DashboardController.php
   -> app/Http/Controllers/HealthController.php
