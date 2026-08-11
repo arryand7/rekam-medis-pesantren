@@ -13,43 +13,57 @@ last_updated: 2026-08-10
 Berdasarkan waktu server resmi dan commit log sistem:
 
 ```text
-GO_LIVE_AT                  = 2026-08-10 16:05:54 +0700 (Commit e3b932d)
-AUTH_HOTFIX_AT              = 2026-08-10 21:53:58 +0700 (Commit 58e6205)
-STABILIZATION_START_AT      = 2026-08-10 21:53:58 +0700 (Waktu rilis hotfix keamanan)
-CURRENT_TIME                = 2026-08-10 23:05:00 +0700 (WIB)
-ELAPSED_STABILIZATION_HOURS = 1.2 Jam
-CURRENT_STATUS              = STABILIZATION-IN-PROGRESS (Checkpoint T+1h Verified)
+STABILIZATION_START_AT      = 2026-08-10 21:53:58 +0700 (Rilis Auth Hotfix 58e6205)
+CURRENT_SERVER_TIME         = 2026-08-10 23:18:52 +0700 (WIB)
+ELAPSED_STABILIZATION_HOURS = 1.41 Jam
+WALL_CLOCK_CLASSIFICATION   = WAITING-FOR-T+6H
+CURRENT_CHECKPOINT_STATUS   = T+1h VERIFIED (T+6h Scheduled in ~4.58h)
 ```
 
-> **Aturan Evaluasi Waktu**:  
-> Jendela waktu stabilisasi dihitung sejak penerapan perubahan kritis keamanan terakhir (`AUTH_HOTFIX_AT`). Karena waktu riil yang telah berjalan adalah ~1.2 jam, maka evaluasi checkpoint yang telah selesai adalah **T+1h**, sedangkan checkpoint selanjutnya dijadwalkan secara berkala.
+---
+
+## 2. Format Pencatatan Checkpoint Terstruktur
+
+### CHECKPOINT: T+1h
+```text
+CHECKPOINT:     T+1h
+TIMESTAMP:      2026-08-10 22:54:00 +0700
+ELAPSED_HOURS:  1.00
+SOURCE:         PRODUCTION-DATABASE & TEST-ENV / LOCAL-DEV PROBE
+RUNTIME_SHA:    6957d87 (Base 1f7345f / 58e6205)
+HEALTH:         HTTP 200 (PASS)
+READY:          HTTP 200 (PASS)
+HTTP_5XX:       0.00% (Zero 5xx)
+GATE:           OIDC Callback & State/Nonce Protection Active
+QUEUE:          0 Failed Jobs (php artisan queue:failed)
+SCHEDULER:      1 Cron Source (No failures)
+OUTBOX:         0 Dead-Letter Events, Privacy Guard Active
+DATA_INTEGRITY: 0 Duplicate MRN, 0 Duplicate User, 0 Negative Stock
+BACKUP:         Runbook Defined, Private Documents Isolated (750)
+SECURITY:       NORMAL (Zero unauthorized access, Guest 302 -> /login)
+ISSUES:         NONE
+STATUS:         PASS (T+1H-PASS)
+```
 
 ---
 
-## 2. Log Checkpoint Riil
+## 3. Status Checkpoint Mendatang (*Future Checkpoints*)
 
-### Checkpoint T+1h — 2026-08-10 22:54 WIB (STATUS: VERIFIED)
-- **Verifikasi Proteksi Guest (No-Cookie)**:
-  - `GET /` $\rightarrow$ **HTTP 302 Found** (Redirect ke `/login`)
-  - `GET /dashboard` $\rightarrow$ **HTTP 302 Found** (Redirect ke `/login`)
-  - `GET /patients` $\rightarrow$ **HTTP 302 Found** (Redirect ke `/login`)
-  - `GET /visits` $\rightarrow$ **HTTP 302 Found** (Redirect ke `/login`)
-  - `GET /reports` $\rightarrow$ **HTTP 302 Found** (Redirect ke `/login`)
-  - `GET /users` $\rightarrow$ **HTTP 302 Found** (Redirect ke `/login`)
-  - `GET /login` $\rightarrow$ **HTTP 200 OK**
-- **Health Probes**: `/health` (HTTP 200), `/health/ready` (HTTP 200)
-- **Queue Workers**: 0 failed jobs (`php artisan queue:failed`)
-- **Outbox Deliveries**: 0 dead-letter events, 0 delivery failures
-- **Database Locks**: 0 lock contention, 0 deadlocks
-- **Temuan Insiden**: Nol insiden keamanan / anomali HTTP 500.
+```text
+CHECKPOINT:     T+6h
+TARGET_TIME:    2026-08-11 03:53:58 +0700
+STATUS:         WAITING-FOR-T+6H (Scheduled)
 
----
+CHECKPOINT:     T+24h
+TARGET_TIME:    2026-08-11 21:53:58 +0700
+STATUS:         SCHEDULED (Eligible for Preliminary Operational Review)
 
-## 3. Jadwal Checkpoint Mendatang (*Scheduled Future Checkpoints*)
+CHECKPOINT:     T+48h
+TARGET_TIME:    2026-08-12 21:53:58 +0700
+STATUS:         SCHEDULED
 
-| Checkpoint | Target Waktu Eksekusi | Kriteria Evaluasi | Status |
-|---|---|---|:---:|
-| **T+6h** | 2026-08-11 03:54 WIB | Log malam hari, background jobs, zero HTTP 5xx | ⏳ SCHEDULED |
-| **T+24h** | 2026-08-11 21:54 WIB | Jam operasional hari 1, alur kunjungan & farmasi, evaluasi SLI | ⏳ SCHEDULED |
-| **T+48h** | 2026-08-12 21:54 WIB | Jam operasional hari 2, sinkronisasi identitas Gate, retensi data | ⏳ SCHEDULED |
-| **T+72h** | 2026-08-13 21:54 WIB | Penutupan stabilisasi penuh, evaluasi kriteria akhir rilis | ⏳ SCHEDULED |
+CHECKPOINT:     T+72h
+TARGET_TIME:    2026-08-13 21:53:58 +0700
+STATUS:         SCHEDULED (Eligible for Final Acceptance Verification)
+```
+
