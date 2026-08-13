@@ -96,7 +96,7 @@ Tidak ada perubahan Policy atau Gate logic. Referral permissions ditambahkan ke 
 ## Known Issues & Follow-up
 
 - Dark mode visual verification di workspace Phase 5B (Observation, Referral, Discharge) belum di-screenshot karena browser quota habis saat session. Dapat dilakukan verifikasi manual via toggle di topbar.
-- UPDATE-SUMMARY.md di root perlu di-review apakah masih relevan atau dapat diarsipkan.
+- UPDATE-SUMMARY.md di root telah di-review dan diklasifikasikan DELETE-OBSOLETE (Phase 5B2). Dokumen ini adalah shadow copy dari v2 capability summary; seluruh canonical docs yang direferensikan sudah ada. Dihapus di commit Phase 5B2.
 
 ---
 

@@ -8,6 +8,7 @@
 /.env.backup
 /.env.production
 /.phpunit.cache
+.phpunit.result.cache
 /.task
 /storage/*.key
 /storage/framework/cache/data/*
@@ -20,3 +21,6 @@
 .vscode
 *.sublime-project
 *.sublime-workspace
+
+# Graphify cache — reproducible AST extraction cache, not tracked
+graphify-out/cache/

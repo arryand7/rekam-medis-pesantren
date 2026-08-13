@@ -129,3 +129,11 @@ Laporkan:
 4. Konsultasi jarak jauh tidak boleh menunda rujukan darurat.
 5. Pengiriman data harus melalui kanal yang disetujui, minimum necessary, dan diaudit.
 6. AI tidak boleh menghasilkan diagnosis, resep, atau keputusan klinis otomatis.
+
+## Aturan kebersihan repositori dan prompt AI
+
+1. Jangan meng-commit file instruksi/prompt eksekusi AI (`PROMPT-*.md`) ke dalam repositori.
+2. Jangan memperlakukan prompt AI sebagai dokumentasi kanonikal; transfer seluruh keputusan berharga ke `docs/`.
+3. Jangan meng-commit path absolut mesin lokal, kredensial, log runtime, cache, atau artefak rekaman browser.
+4. Cache Graphify AST tidak di-track dalam git (`graphify-out/cache/` di `.gitignore`) sesuai `docs/12-graphify/GRAPHIFY-VERSION-CONTROL-POLICY.md`.
+5. Bukti eksekusi localhost / Darwin adalah bukti pengembangan lokal (*rehearsal*), bukan bukti produksi riil.

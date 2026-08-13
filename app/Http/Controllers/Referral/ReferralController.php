@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Referral;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Referral\StoreReferralRequest;
+use App\Models\HealthcarePartner;
 use App\Models\MedicalVisit;
 use App\Models\Referral;
 use App\Services\ReferralService;
@@ -30,7 +31,9 @@ class ReferralController extends Controller
         $visit = MedicalVisit::findOrFail($visitId);
         $this->authorize('create', Referral::class);
 
-        return view('pages.referrals.create', compact('visit'));
+        $partners = HealthcarePartner::where('is_active', true)->orderBy('name')->get();
+
+        return view('pages.referrals.create', compact('visit', 'partners'));
     }
 
     public function store(StoreReferralRequest $request, string $visitId): RedirectResponse

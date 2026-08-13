@@ -18,7 +18,7 @@ Saat perintah `graphify . --mode deep` dijalankan pada repositori saat ini, Grap
 
 Graphify memerlukan API key (`GEMINI_API_KEY` atau `GOOGLE_API_KEY`) untuk melakukan ekstraksi tematik/semantik pada file dokumentasi non-kode dalam mode `--mode deep`. Karena variabel lingkungan API key belum dikonfigurasi pada environment terminal subprocess lokal, Graphify belum dapat menghasilkan visualisasi graph lengkap secara otomatis pada iterasi ini.
 
-Sesuai aturan `PROMPT-ANTIGRAVITY-PHASE-0.md` (Tahap B point 136), hasil graph **tidak boleh dikarang atau direkayasa**.
+Sesuai aturan tata kelola baseline Phase 0, hasil graph **tidak boleh dikarang atau direkayasa**.
 
 ## 2. Exact Command yang Dibutuhkan
 

@@ -8,6 +8,30 @@ last_updated: 2026-08-13
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 5B2 — Final Repository Hygiene, Bug Fix & Closure Mapping
+
+```text
+REPOSITORY-HYGIENE-POLICY.md & REPOSITORY-HYGIENE-AUDIT.md & PHASE-5B2-PROMPT-CLEANUP-AUDIT.md & PHASE-5B2-FINAL-VISUAL-SMOKE.md & PHASE-5B2-FINAL-CLOSURE.md & GRAPHIFY-VERSION-CONTROL-POLICY.md
+  -> app/Http/Controllers/Referral/ReferralController.php (create method $partners injection)
+  -> resources/views/pages/referrals/create.blade.php
+  -> tests/Feature/Referral/ReferralCreationTest.php
+  -> .gitignore
+  -> AGENTS.md
+  -> CHANGELOG.md
+  -> PROJECT-STATUS.md
+```
+
+## Phase 5B1 — Final Verification, Test Portability & Repository Hygiene Mapping
+
+```text
+PHASE-5B1-FINAL-CLOSURE.md & PHASE-5B1-VISUAL-VERIFICATION.md & TEST-DATABASE-PORTABILITY.md
+  -> app/Models/MedicineBatch.php (Carbon 3 isNearExpiry fix)
+  -> config/pharmacy.php
+  -> database/seeders/DatabaseSeeder.php
+  -> phpunit.xml
+  -> tests/Feature/Ui/Phase5BClinicalWorkflowContinuityTest.php
+```
+
 ## Phase 5B — Clinical Workflow Continuity & Clinical Workspace Polish Mapping
 
 ```text

@@ -15,6 +15,33 @@ Semua perubahan penting proyek dicatat di file ini.
 > Istilah *production* pada dokumen historis sebelum koreksi ini merujuk pada
 > *rehearsal / readiness validation*, bukan deployment server production fisik aktual.
 
+## [0.20.2] — 2026-08-13 (Phase 5B2 Final Repository Cleanup & Referral Bug Fix)
+
+### Added
+
+- **Graphify Version Control Policy (`docs/12-graphify/GRAPHIFY-VERSION-CONTROL-POLICY.md`)**: Kebijakan version control untuk `graphify-out/` — cache (147MB/10,698 files) di-untrack dari git, canonical outputs (graph.json, graph.html, GRAPH_REPORT.md, .graphify_labels.json, manifest.json, snapshots) tetap tracked. `graphify-out/cache/` ditambahkan ke `.gitignore`.
+- **Phase 5B2 Prompt Cleanup Audit (`docs/10-delivery/PHASE-5B2-PROMPT-CLEANUP-AUDIT.md`)**: Inventarisasi dan klasifikasi 31 prompt files — semua diklasifikasikan DELETE-TRANSIENT.
+- **Phase 5B2 Final Visual Smoke (`docs/05-ui/PHASE-5B2-FINAL-VISUAL-SMOKE.md`)**: Laporan verifikasi visual dark mode + responsive (375px, 768px, 1024px, 1440px) untuk semua modul Phase 5B.
+
+### Removed
+
+- **31 PROMPT-*.md files** (Phase 0 s.d. 5B2): Semua AI instruction prompt files dihapus dari root — transient, knowledge durable sudah tersimpan di canonical docs.
+- **UPDATE-SUMMARY.md**: Shadow copy dari v2 capability summary; seluruh dokumen yang direferensikan sudah ada di `docs/`.
+- **graphify-out/cache/** (10,698 files, 147MB): Dihapus dari git index dan ditambahkan ke `.gitignore`; 100% reproducible via `graphify update .`.
+
+### Fixed
+
+- **`ReferralController::create()` missing `$partners` variable** (`app/Http/Controllers/Referral/ReferralController.php`): Referral create view mengiterasi `$partners` tapi controller tidak meneruskannya ke view — menyebabkan `Undefined variable $partners` fatal error. Fix: query `HealthcarePartner::where('is_active', true)->orderBy('name')->get()` dan `compact('visit', 'partners')`. Ditemukan selama Phase 5B2 visual smoke verification.
+
+### Verified (Phase 5B2)
+
+- **Quality Gates All Pass**: 224 tests / 932 assertions (100%), Pint PASSED, PHPStan Level 5 PASSED (0 errors), Vite Build PASSED (8.45s).
+- **Dark mode visual verification**: Dashboard, Visit Overview, Observation, Consultation, Pharmacy — all PASS.
+- **Responsive matrix**: 375px, 768px, 1024px — all PASS (no horizontal overflow, correct breakpoints).
+- **Repository root clean**: Hanya file dokumentasi/konfigurasi canonical yang tersisa.
+- **Graphify canonical outputs**: 27 files tracked (dari 10,722 sebelumnya).
+- **No duplicate markdown files**: SHA-256 verified.
+
 ## [0.20.1] — 2026-08-13 (Phase 5B1 Final Verification, Test Portability & Repository Hygiene)
 
 ### Added

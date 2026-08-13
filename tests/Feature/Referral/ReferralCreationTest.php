@@ -1,8 +1,11 @@
 <?php
 
+use App\Models\HealthcarePartner;
 use App\Models\Patient;
+use App\Models\Permission;
 use App\Models\Person;
 use App\Models\Referral;
+use App\Models\Role;
 use App\Models\User;
 use App\Services\ClinicalAssessmentService;
 use App\Services\MedicalVisitService;
@@ -167,4 +170,34 @@ test('referral number is unique and uses ULID-based opaque suffix', function () 
     foreach ($numbers as $num) {
         expect($num)->toMatch('/^REF-\d{8}-[A-Z0-9]{8}$/');
     }
+});
+
+test('referral create page renders successfully with active healthcare partners passed to view', function () {
+    $person = Person::factory()->create();
+    $patient = Patient::factory()->create(['person_id' => $person->id, 'is_eligible' => true]);
+
+    $permission = Permission::firstOrCreate(['name' => 'create-referrals'], ['display_name' => 'Buat Rujukan']);
+    $role = Role::firstOrCreate(['name' => 'petugas_medis_test'], ['display_name' => 'Petugas Medis Test']);
+    $role->permissions()->syncWithoutDetaching([$permission->id]);
+
+    $officer = User::factory()->create();
+    $officer->roles()->syncWithoutDetaching([$role->id]);
+
+    $partner = HealthcarePartner::create([
+        'code' => 'RSUD-KOTA-TEST',
+        'name' => 'RSUD Kota Mitra Test',
+        'partner_type' => 'hospital',
+        'is_active' => true,
+    ]);
+
+    $visit = (new MedicalVisitService)->registerVisit([
+        'patient_id' => $patient->id,
+        'chief_complaint' => 'Evaluasi rujukan',
+    ], $officer);
+
+    $response = $this->actingAs($officer)->get(route('visits.referrals.create', $visit->id));
+
+    $response->assertOk();
+    $response->assertViewHas('partners');
+    $response->assertSee('RSUD Kota Mitra Test');
 });

@@ -8,10 +8,15 @@ last_updated: 2026-08-13
 
 # Known Issues and Open Questions
 
+## Phase 5B2 Repository Hygiene, Bug Fix & Final Closure Status
+
+- [x] **Dark Mode & Responsive Visual Smoke Matrix (RESOLVED 2026-08-14)**: Verifikasi visual dark mode dan multi-viewport (375px, 768px, 1024px, 1440px) pada seluruh 7 modul klinis Phase 5B tuntas dengan bukti tangkapan layar browser. Status: `PASS`.
+- [x] **Referral Create Undefined $partners Bug (RESOLVED 2026-08-14)**: Defect fatal error pada view pembuatan rujukan diperbaiki dengan injeksi faskes mitra aktif dan regression test. Status: `FIXED`.
+- [x] **Repository Hygiene & Prompt Cleanup (RESOLVED 2026-08-14)**: 32 file prompt AI transien dihapus (`PROMPT_FILES_RETAINED = 0`), Graphify cache di-untrack, `REPOSITORY-HYGIENE-POLICY.md` ditetapkan. Status: `PHASE-5B-FINAL-COMPLETE`.
+
 ## Phase 5B1 Final Verification & Repository Hygiene Status
 
 - [x] **Final Verification, Portability & Repository Hygiene (RESOLVED 2026-08-13)**: Seluruh verifikasi akhir Phase 5B tuntas. 224 tests / 932 assertions passed 100%. Referral permission `view-referrals` ditambahkan ke seeder. Carbon 3 diffInDays semantik diperbaiki. Pharmacy expiry policy dibuat configurable. Repository hygiene: .DS_Store dihapus, SHA-256 dedup check bersih. Status: `PHASE-5B-COMPLETE` (v0.20.1).
-- [ ] **Dark Mode Visual Verification (OPEN)**: Verifikasi visual dark mode di workspace Phase 5B (Observation, Referral, Discharge) belum diselesaikan secara screenshot karena browser quota exhausted. Dapat dilakukan manual via toggle Light/Dark di topbar.
 
 ## Phase 5B Clinical Workflow Continuity Status
 

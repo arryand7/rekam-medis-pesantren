@@ -3,7 +3,7 @@ id: DOC-REPOSITORY-HYGIENE-AUDIT
 title: "Repository Hygiene Audit — Phase 5B1"
 status: complete
 owner: "Antigravity AI / Ryand Arifriantoni"
-last_updated: 2026-08-13
+last_updated: 2026-08-13 (updated by Phase 5B2)
 ---
 
 # Repository Hygiene Audit — Phase 5B1
@@ -49,14 +49,14 @@ last_updated: 2026-08-13
 | PROMPT-CLAUDE-OPUS-RESUME-PHASE-4A.md | KEEP-CANONICAL | AI handoff historis |
 | PROMPT-CLAUDE-RESUME-PHASE-3B.md | KEEP-CANONICAL | AI handoff historis |
 
-**Keputusan**: Semua 30 PROMPT files dipertahankan sebagai referensi historis yang sah. Tidak ada yang perlu dihapus — file-file ini membentuk audit trail keputusan AI yang berharga.
+**Catatan**: Klasifikasi di Phase 5B1 menggunakan alasan generik `KEEP-CANONICAL` yang tidak spesifik. Pada Phase 5B2, seluruh 30 PROMPT files diklasifikasikan ulang sebagai **DELETE-TRANSIENT** dan dihapus — lihat `docs/10-delivery/PHASE-5B2-PROMPT-CLEANUP-AUDIT.md` untuk detail.
 
 ### Root-Level Non-PROMPT Markdown
 
-| File | Klasifikasi | Alasan |
-|------|-------------|--------|
-| README.md | KEEP-CANONICAL | Dokumentasi utama proyek |
-| UPDATE-SUMMARY.md | REVIEW-MANUALLY | Perlu diverifikasi relevansinya — kemungkinan shadow changelog |
+| File | Klasifikasi | Tindakan | Status |
+|------|-------------|----------|--------|
+| README.md | KEEP-CANONICAL | Dipertahankan | DONE |
+| UPDATE-SUMMARY.md | DELETE-OBSOLETE | Hapus — shadow dari canonical docs (v2 capability summary, semua dokumen yang direferensikan sudah ada) | DONE (Phase 5B2) |
 
 ### docs/ Canonical Docs
 
@@ -119,11 +119,11 @@ Tidak ada direktori `scratch/` di root workspace. File `scratch/seed_demo_p5b.ph
 
 ## Verdict
 
-**Status: REPOSITORY-HYGIENE-AUDIT-COMPLETE**
+**Status: REPOSITORY-HYGIENE-AUDIT-REVISED (Phase 5B2)**
 
 - Tidak ada file duplikat (SHA-256 verified)
 - .DS_Store dihapus dari working tree
 - .gitignore sudah mencakup DS_Store
-- graphify-out tracked in git (benar — graph adalah artefak repository)
-- Semua PROMPT files dipertahankan sebagai audit trail historis
-- Tidak ada file yang perlu dihapus
+- Semua 30 PROMPT files dihapus (Phase 5B2) — reklasifikasi dari KEEP-CANONICAL ke DELETE-TRANSIENT
+- UPDATE-SUMMARY.md dihapus (Phase 5B2) — DELETE-OBSOLETE
+- Graphify policy: lihat docs/12-graphify/GRAPHIFY-VERSION-CONTROL-POLICY.md
