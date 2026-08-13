@@ -2,40 +2,49 @@
     <x-slot name="title">Workspace Observasi — SABIRA POSKESTREN</x-slot>
 
     <div class="space-y-6">
-        <!-- Patient & Observation Header Banner -->
+        <!-- Patient Context Header -->
+        <x-patient-context-header :patient="$episode->medicalVisit->patient" :visit="$episode->medicalVisit" />
+
+        <!-- Visit Stage Stepper Navigation -->
+        <x-visit-stage-nav :visit="$episode->medicalVisit" current="observations" />
+
+        <!-- Observation Episode Details Banner -->
         <div class="bg-[var(--surface)] p-6 rounded-2xl border border-[var(--border)] shadow-xs flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div class="flex items-start gap-4">
                 <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold text-lg border border-purple-500/20 shrink-0">
-                    {{ strtoupper(substr($episode->medicalVisit->patient->person->name, 0, 2)) }}
+                    🛏️
                 </div>
                 <div>
                     <div class="flex items-center gap-2">
-                        <h1 class="text-xl font-bold text-[var(--foreground)] tracking-tight">{{ $episode->medicalVisit->patient->person->name }}</h1>
-                        <span class="font-mono text-xs text-[var(--foreground-muted)]">({{ $episode->medicalVisit->patient->patient_number }})</span>
+                        <h1 class="text-lg font-bold text-[var(--foreground)] tracking-tight">Episode Observasi Rawat Inap Poskestren</h1>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase font-mono {{ $episode->isActive() ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400' }}">
+                            {{ $episode->status }}
+                        </span>
                     </div>
                     <div class="flex flex-wrap items-center gap-3 text-xs text-[var(--foreground-muted)] mt-1 font-medium">
-                        <span>Lokasi: <strong class="text-[var(--foreground)]">{{ $episode->location_label }} ({{ $episode->bed_label ?? '-' }})</strong></span>
+                        <span>Lokasi Bed: <strong class="text-[var(--foreground)]">{{ $episode->location_label }} ({{ $episode->bed_label ?? '-' }})</strong></span>
                         <span>•</span>
                         <span>PJ Aktif: <strong class="text-[var(--primary)]">{{ $episode->responsibleOfficer->name ?? 'System' }}</strong></span>
                         <span>•</span>
-                        <span>Status: 
-                            <span class="px-2 py-0.5 rounded text-[10px] font-semibold uppercase bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">
-                                {{ $episode->status }}
-                            </span>
-                        </span>
+                        <span>Mulai: <strong class="text-[var(--foreground)]">{{ $episode->created_at?->format('d M Y, H:i') }} WIB</strong></span>
                     </div>
                 </div>
             </div>
 
             <div class="flex items-center gap-2" x-data="{ openHandover: false, openComplete: false }">
-                <button @click="openHandover = true" class="px-3 py-2 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20 hover:bg-amber-500/20">
-                    Handover Shift
-                </button>
                 @if($episode->isActive())
-                    <button @click="openComplete = true" class="px-3 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-700">
+                    <button @click="openHandover = true" class="px-3 py-2 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20 hover:bg-amber-500/20 transition-colors">
+                        Handover Shift
+                    </button>
+                    <button @click="openComplete = true" class="px-3 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">
                         Selesaikan Observasi
                     </button>
+                @else
+                    <span class="px-3 py-2 rounded-xl text-xs font-semibold bg-[var(--surface-muted)] text-[var(--foreground-muted)] border border-[var(--border)]">
+                        Observasi Selesai (Read-Only)
+                    </span>
                 @endif
+
 
                 <!-- Modal Handover Shift -->
                 <div x-show="openHandover" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs" x-cloak>
@@ -127,37 +136,46 @@
 
             <!-- Form Add Monitoring Record -->
             <div class="space-y-6">
-                <div class="bg-[var(--surface)] p-6 rounded-2xl border border-[var(--border)] shadow-xs space-y-4">
-                    <h2 class="text-sm font-bold uppercase tracking-wider text-[var(--foreground-muted)]">Tambah Lembar Monitoring Berkala</h2>
+                @if($episode->isActive())
+                    <div class="bg-[var(--surface)] p-6 rounded-2xl border border-[var(--border)] shadow-xs space-y-4">
+                        <h2 class="text-sm font-bold uppercase tracking-wider text-[var(--foreground-muted)]">Tambah Lembar Monitoring Berkala</h2>
 
-                    <form action="{{ route('observations.monitoring.store', $episode->id) }}" method="POST" class="space-y-3">
-                        @csrf
-                        <div>
-                            <label class="block text-xs font-medium text-[var(--foreground-muted)] mb-1">Ringkasan Kondisi Santri <span class="text-rose-500">*</span></label>
-                            <textarea name="condition_summary" required rows="2" placeholder="Catat keluhan saat ini, respon istirahat, dll..." class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)]"></textarea>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-medium text-[var(--foreground-muted)] mb-1">Perubahan Gejala</label>
-                            <input type="text" name="symptom_changes" placeholder="Contoh: Demam mulai turun setelah kompres..." class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)]">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-medium text-[var(--foreground-muted)] mb-1">Kondisi Umum</label>
-                            <select name="general_condition" class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)]">
-                                <option value="good">Baik / Stabil</option>
-                                <option value="moderate">Cukup / Perlu Dipantau</option>
-                                <option value="weak">Lemas / Membutuhkan Perhatian</option>
-                                <option value="critical">Kritis / Darurat</option>
-                            </select>
-                        </div>
+                        <form action="{{ route('observations.monitoring.store', $episode->id) }}" method="POST" class="space-y-3">
+                            @csrf
+                            <div>
+                                <label class="block text-xs font-medium text-[var(--foreground-muted)] mb-1">Ringkasan Kondisi Santri <span class="text-rose-500">*</span></label>
+                                <textarea name="condition_summary" required rows="2" placeholder="Catat keluhan saat ini, respon istirahat, dll..." class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)]"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-[var(--foreground-muted)] mb-1">Perubahan Gejala</label>
+                                <input type="text" name="symptom_changes" placeholder="Contoh: Demam mulai turun setelah kompres..." class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)]">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-[var(--foreground-muted)] mb-1">Kondisi Umum</label>
+                                <select name="general_condition" class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)]">
+                                    <option value="good">Baik / Stabil</option>
+                                    <option value="moderate">Cukup / Perlu Dipantau</option>
+                                    <option value="weak">Lemas / Membutuhkan Perhatian</option>
+                                    <option value="critical">Kritis / Darurat</option>
+                                </select>
+                            </div>
 
-                        <div class="pt-2 text-right">
-                            <button type="submit" class="px-4 py-2 rounded-xl text-xs font-bold bg-[var(--primary)] text-white hover:bg-[var(--primary-hover)]">
-                                Catat Monitoring Berkala
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                            <div class="pt-2 text-right">
+                                <button type="submit" class="px-4 py-2 rounded-xl text-xs font-bold bg-[var(--primary)] text-white hover:bg-[var(--primary-hover)] transition-colors">
+                                    Catat Monitoring Berkala
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                @else
+                    <div class="bg-[var(--surface)] p-6 rounded-2xl border border-[var(--border)] shadow-xs space-y-2 text-center">
+                        <div class="text-2xl">🔒</div>
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)]">Observasi Telah Ditutup</h3>
+                        <p class="text-xs text-[var(--foreground-muted)] leading-relaxed">Episode observasi ini berstatus <strong>{{ $episode->status }}</strong> dan terkunci. Seluruh catatan observasi bersifat arsip permanen rekam medis.</p>
+                    </div>
+                @endif
             </div>
+
 
             <!-- Timeline Monitoring Records & Handovers -->
             <div class="space-y-6 lg:col-span-2">

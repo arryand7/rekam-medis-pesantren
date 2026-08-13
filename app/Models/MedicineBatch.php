@@ -67,10 +67,12 @@ class MedicineBatch extends Model
         return $this->expiry_date instanceof CarbonInterface && $this->expiry_date->isPast();
     }
 
-    public function isNearExpiry(int $daysThreshold = 30): bool
+    public function isNearExpiry(?int $daysThreshold = null): bool
     {
+        $threshold = $daysThreshold ?? (int) config('pharmacy.expiry_warning_days', 30);
+
         return $this->expiry_date instanceof CarbonInterface
             && ! $this->isExpired()
-            && $this->expiry_date->diffInDays(now()) <= $daysThreshold;
+            && now()->diffInDays($this->expiry_date) <= $threshold;
     }
 }

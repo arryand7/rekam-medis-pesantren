@@ -3,12 +3,23 @@ id: DOC-KNOWN-ISSUES
 title: "Known Issues and Open Questions"
 status: active
 owner: "Ryand Arifriantoni"
-last_updated: 2026-08-10
+last_updated: 2026-08-13
 ---
 
 # Known Issues and Open Questions
 
+## Phase 5B1 Final Verification & Repository Hygiene Status
+
+- [x] **Final Verification, Portability & Repository Hygiene (RESOLVED 2026-08-13)**: Seluruh verifikasi akhir Phase 5B tuntas. 224 tests / 932 assertions passed 100%. Referral permission `view-referrals` ditambahkan ke seeder. Carbon 3 diffInDays semantik diperbaiki. Pharmacy expiry policy dibuat configurable. Repository hygiene: .DS_Store dihapus, SHA-256 dedup check bersih. Status: `PHASE-5B-COMPLETE` (v0.20.1).
+- [ ] **Dark Mode Visual Verification (OPEN)**: Verifikasi visual dark mode di workspace Phase 5B (Observation, Referral, Discharge) belum diselesaikan secara screenshot karena browser quota exhausted. Dapat dilakukan manual via toggle Light/Dark di topbar.
+
+## Phase 5B Clinical Workflow Continuity Status
+
+- [x] **Clinical Workflow Continuity & Workspace Polish (RESOLVED 2026-08-12)**: Seluruh alur kerja klinis lanjutan (Observasi, Tele-Konsultasi Eksternal, Rujukan RS, Kepulangan & Follow-Up, Resep Obat, dan Inventaris Farmasi) terintegrasi dengan Patient Context Header, Stage Nav, Next-Action Engine, serta terlindungi oleh guard authorization berbasis server. 223 automated tests lulus 100%. Status: `PHASE-5B-ACCEPTED`.
+
+
 ## Phase 5A Documentation Truth & UX Workflow Status
+
 
 - [x] **Documentation Truth Normalization & UX Completion (RESOLVED 2026-08-11)**: Seluruh klaim historis produksi dinormalisasi menjadi kesiapan pre-produksi / rehearsal. Alur kerja pengguna (Patient -> Visit -> Assessment -> Pharmacy -> Referral -> Discharge) tervalidasi mulus tanpa dead ends. Autentikasi hybrid aktif (205 tests, 821 assertions lulus 100%). Status: `PHASE-5A-COMPLETE`.
 

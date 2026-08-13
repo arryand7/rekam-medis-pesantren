@@ -3,7 +3,7 @@ id: DOC-CHANGELOG
 title: "Changelog"
 status: active
 owner: "Ryand Arifriantoni"
-last_updated: 2026-08-10
+last_updated: 2026-08-13
 ---
 
 # Changelog
@@ -15,7 +15,46 @@ Semua perubahan penting proyek dicatat di file ini.
 > Istilah *production* pada dokumen historis sebelum koreksi ini merujuk pada
 > *rehearsal / readiness validation*, bukan deployment server production fisik aktual.
 
+## [0.20.1] — 2026-08-13 (Phase 5B1 Final Verification, Test Portability & Repository Hygiene)
+
+### Added
+
+- **Configurable Pharmacy Expiry Warning (`config/pharmacy.php`)**: Kebijakan batas waktu peringatan kedaluwarsa obat kini dapat dikonfigurasi via environment variable `PHARMACY_EXPIRY_WARNING_DAYS` (default: 30 hari). Status klinis perlu dikonfirmasi dengan SOP Farmasi resmi.
+- **Phase 3B Referral Permissions in DatabaseSeeder (`database/seeders/DatabaseSeeder.php`)**: Menambahkan 13 permission Phase 3B Referral (`view-referrals`, `create-referrals`, `approve-referrals`, `prepare-referral-documents`, dll.) ke array permissions seeder. `User::firstOrCreate` dan `Person::firstOrCreate` pattern diterapkan untuk idempotency.
+- **Configurable Expiry Test (`tests/Feature/Ui/Phase5BClinicalWorkflowContinuityTest.php`)**: Menambahkan test case `it_respects_configurable_expiry_threshold` untuk memvalidasi integrasi antara `config('pharmacy.expiry_warning_days')` dan `MedicineBatch::isNearExpiry()`.
+- **Test Database Portability Documentation (`docs/09-testing/TEST-DATABASE-PORTABILITY.md`)**: Panduan lengkap cara menjalankan test suite portabel tanpa hardcoded socket path.
+- **Phase 5B1 Visual Verification Report (`docs/05-ui/PHASE-5B1-VISUAL-VERIFICATION.md`)**: Laporan verifikasi visual lengkap mencakup 7 workspace (Dashboard, Visit, Observation, Consultation, Referral desktop+mobile, Discharge, Pharmacy).
+- **Repository Hygiene Audit (`docs/10-delivery/REPOSITORY-HYGIENE-AUDIT.md`)**: Inventaris dan klasifikasi seluruh file markdown, SHA-256 dedup check, cleanup .DS_Store, dan audit graphify tracking.
+- **Phase 5B1 Final Closure (`docs/10-delivery/PHASE-5B1-FINAL-CLOSURE.md`)**: Dokumen penutupan Phase 5B1 dengan laporan lengkap semua stage dan quality gates.
+
+### Fixed
+
+- **MedicineBatch::isNearExpiry() Carbon 3 Compatibility (`app/Models/MedicineBatch.php`)**: Mengganti `$this->expiry_date->diffInDays(now())` dengan `now()->diffInDays($this->expiry_date)` untuk mengatasi perubahan semantik Carbon 3 yang mengembalikan nilai negatif pada pemanggilan balik.
+- **phpunit.xml Test DB Portability**: Menghapus path socket developer-spesifik dan port non-standar dari konfigurasi XML; dikembalikan ke `127.0.0.1:3306` standar.
+- **.DS_Store Cleanup**: Menghapus file `.DS_Store` dari root dan `docs/` yang terlanjur masuk ke working tree.
+- **Blade EOF Whitespace**: Menghapus trailing newline berlebih di `consultations/show.blade.php` dan `visits/show.blade.php`.
+
+### Verified (Phase 5B1)
+
+- **Quality Gates All Pass**: 224 tests / 932 assertions (100%), Pint PASSED, PHPStan Level 5 PASSED (0 errors), Vite Build PASSED, git diff --check PASSED.
+- **Referral Authorization Verified**: `fatimah.medis@sabira.test` berhasil mengakses `/referrals/{id}` setelah permission `view-referrals` ditambahkan via seeder.
+- **Discharge URL Verified**: Route `visits.discharge` (`/visits/{id}/discharge`) terbukti berfungsi benar untuk `VisitDischargeController::workspace()`.
+
+## [0.20.0] — 2026-08-12 (Phase 5B Clinical Workflow Continuity & Clinical Workspace Polish)
+
+### Added
+
+- **Clinical Navigation & Observation Integration (`resources/views/components/visit-stage-nav.blade.php`)**: Menambahkan tahapan Observasi Rawat Inap ke dalam bilah navigasi 5-stage dengan routing cerdas yang mendeteksi episode observasi aktif atau riwayat kunjungan.
+- **Observation Workspace Polish (`resources/views/pages/observations/show.blade.php`)**: Integrasi Patient Context Header dan Stage Nav, penambahan header banner detail kamar/bed dan petugas PJ, penerapan `isActive()` guard pada formulir pemantauan, serta penguncian otomatis menjadi Read-Only saat observasi selesai.
+- **Tele-Consultation Compliance (`resources/views/pages/consultations/show.blade.php`)**: Menampilkan daftar respon saran klinis dokter mitra eksternal (*external advice*) secara terpisah dari keputusan klinis lokal Poskestren (*local decision*), banner kepatuhan advisory disclaimer resmi, dan badge transport lokal simulasi.
+- **Referral 7-Stage Lifecycle Stepper (`resources/views/pages/referrals/show.blade.php`)**: Implementasi visual progress bar horizontal untuk tracking 7 tahapan rujukan (Disiapkan, Berangkat, Tiba di RS, Serah Terima IGD, Pelayanan RS, Kembali, Telaah Medis) beserta integrasi form pendamping dan nomor kontak RS tujuan.
+- **Discharge & Operational Handoff Continuity (`resources/views/pages/discharges/workspace.blade.php`)**: Checklist evaluasi kesiapan pulang terpadu, rencana kontrol lanjutan berkala (*follow-up plan*), dan pemisahan lembar handoff operasional untuk pembina asrama dengan prinsip *minimum necessary privacy*.
+- **Unified Cross-Module Status & Next Action Engine (`resources/views/pages/visits/show.blade.php`)**: Pembaruan menyeluruh overview kunjungan medis dengan 7 kartu status modul klinis (Vital Signs, SOAP, Observasi, Tele-Konsultasi, Rujukan RS, Resep Obat, Kepulangan) dan rekomendasi aksi berikutnya berbasis state riil.
+- **Pharmacy Batch Status & Expiry Warning (`resources/views/pages/pharmacy/inventory/index.blade.php`)**: Penanda visual dinamis masa simpan batch obat (kedaluwarsa merah menyala, hampir kedaluwarsa kuning $\le 30$ hari) dan integrasi tombol aksi penerimaan stok baru & penyesuaian stok opname.
+- **Phase 5B Feature Test Suite (`tests/Feature/Ui/Phase5BClinicalWorkflowContinuityTest.php`)**: 7 test case komprehensif menguji kontinuitas observasi, konsultasi, rujukan, kepulangan, overview multi-modul, dan inventaris farmasi (223 tests, 930 assertions, 100% green).
+
 ## [0.19.3] — 2026-08-11 (Phase 5A1 Evidence-Backed UX & Core Workflow Implementation)
+
 
 ### Added
 

@@ -110,6 +110,21 @@ class DatabaseSeeder extends Seeder
             'finalize-local-clinical-decisions' => 'Penetapan Keputusan Klinis Lokal',
             'download-clinical-consultation-documents' => 'Unduh Dokumen PDF Konsultasi',
             'view-clinical-consultation-transmissions' => 'Lihat Log Transmisi Konsultasi',
+
+            // Phase 3B Permissions (Referral)
+            'view-referrals' => 'Lihat Direktori & Timeline Rujukan',
+            'create-referrals' => 'Buat Rujukan Medis Baru',
+            'approve-referrals' => 'Persetujuan Medis Surat Rujukan',
+            'prepare-referral-documents' => 'Siapkan Dokumen Berkas Rujukan',
+            'arrange-referral-transport' => 'Atur Armada Transportasi Rujukan',
+            'assign-referral-companions' => 'Tugaskan Pendamping Rujukan',
+            'record-referral-departure' => 'Catat Keberangkatan Rujukan',
+            'record-referral-handover' => 'Catat Serah Terima Klinis Faskes',
+            'record-destination-status' => 'Catat Status Pelayanan Faskes Tujuan',
+            'record-referral-returns' => 'Catat Kepulangan Pasien Rujukan',
+            'review-referral-returns' => 'Telaah Medis Kepulangan Rujukan',
+            'cancel-referrals' => 'Batalkan Rujukan Medis',
+            'download-referral-documents' => 'Unduh Surat & Berkas Rujukan',
         ];
 
         $createdPermissions = [];
@@ -226,28 +241,34 @@ class DatabaseSeeder extends Seeder
             'notes' => 'Kambuh bila dingin ekstrem',
         ]);
 
-        $adminUser = User::factory()->create([
-            'person_id' => $adminPerson->id,
-            'name' => $adminPerson->name,
-            'email' => 'admin@poskestren.sabira.test',
-            'password' => bcrypt('password'),
-            'is_active' => true,
-        ]);
-        $adminUser->roles()->attach($adminRole->id);
+        $adminUser = User::firstOrCreate(
+            ['email' => 'admin@poskestren.sabira.test'],
+            [
+                'person_id' => $adminPerson->id,
+                'name' => $adminPerson->name,
+                'password' => bcrypt('password'),
+                'is_active' => true,
+            ]
+        );
+        $adminUser->roles()->syncWithoutDetaching([$adminRole->id]);
 
         // Create Doctor/Nurse User
-        $doctorPerson = Person::factory()->create([
-            'name' => 'dr. Fatimah Medis',
-            'user_type' => 'petugas_kesehatan',
-            'email' => 'fatimah.medis@sabira.test',
-        ]);
-        $doctorUser = User::factory()->create([
-            'person_id' => $doctorPerson->id,
-            'name' => $doctorPerson->name,
-            'email' => 'fatimah.medis@sabira.test',
-            'password' => bcrypt('password'),
-            'is_active' => true,
-        ]);
-        $doctorUser->roles()->attach($medicalRole->id);
+        $doctorPerson = Person::firstOrCreate(
+            ['email' => 'fatimah.medis@sabira.test'],
+            [
+                'name' => 'dr. Fatimah Medis',
+                'user_type' => 'petugas_kesehatan',
+            ]
+        );
+        $doctorUser = User::firstOrCreate(
+            ['email' => 'fatimah.medis@sabira.test'],
+            [
+                'person_id' => $doctorPerson->id,
+                'name' => $doctorPerson->name,
+                'password' => bcrypt('password'),
+                'is_active' => true,
+            ]
+        );
+        $doctorUser->roles()->syncWithoutDetaching([$medicalRole->id]);
     }
 }

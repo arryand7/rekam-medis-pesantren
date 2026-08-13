@@ -2,35 +2,74 @@
     <x-slot name="title">Rujukan {{ $referral->referral_number }} — SABIRA POSKESTREN</x-slot>
 
     <div class="space-y-6">
+        @if($referral->medicalVisit && $referral->medicalVisit->patient)
+            <!-- Patient Context Header -->
+            <x-patient-context-header :patient="$referral->medicalVisit->patient" :visit="$referral->medicalVisit" />
+
+            <!-- Visit Stage Stepper Navigation -->
+            <x-visit-stage-nav :visit="$referral->medicalVisit" current="referrals" />
+        @endif
+
+        <!-- Referral Lifecycle Progress Stepper -->
+        @php
+            $refStages = [
+                ['key' => 'prepared', 'label' => '1. Disiapkan', 'done' => in_array($referral->status, ['prepared', 'in_transit', 'arrived', 'handover_completed', 'accepted', 'completed', 'return_recorded', 'return_reviewed'])],
+                ['key' => 'in_transit', 'label' => '2. Berangkat', 'done' => in_array($referral->status, ['in_transit', 'arrived', 'handover_completed', 'accepted', 'completed', 'return_recorded', 'return_reviewed'])],
+                ['key' => 'arrived', 'label' => '3. Tiba di Faskes', 'done' => in_array($referral->status, ['arrived', 'handover_completed', 'accepted', 'completed', 'return_recorded', 'return_reviewed'])],
+                ['key' => 'handover', 'label' => '4. Serah Terima', 'done' => in_array($referral->status, ['handover_completed', 'accepted', 'completed', 'return_recorded', 'return_reviewed'])],
+                ['key' => 'accepted', 'label' => '5. Diterima Faskes', 'done' => in_array($referral->status, ['accepted', 'completed', 'return_recorded', 'return_reviewed'])],
+                ['key' => 'returned', 'label' => '6. Kembali', 'done' => in_array($referral->status, ['return_recorded', 'return_reviewed', 'completed'])],
+                ['key' => 'reviewed', 'label' => '7. Review Selesai', 'done' => in_array($referral->status, ['return_reviewed', 'completed'])],
+            ];
+        @endphp
+        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 shadow-xs overflow-x-auto">
+            <div class="flex items-center gap-2 min-w-max text-xs font-semibold">
+                @foreach($refStages as $rs)
+                    <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl {{ $rs['done'] ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300' : 'bg-[var(--surface-muted)] text-[var(--foreground-muted)]' }}">
+                        <span>{{ $rs['done'] ? '✓' : '○' }}</span>
+                        <span>{{ $rs['label'] }}</span>
+                    </div>
+                    @if(!$loop->last)
+                        <span class="text-slate-300 dark:text-slate-700">&rarr;</span>
+                    @endif
+                @endforeach
+            </div>
+        </div>
+
         <!-- Header -->
-        <div class="flex items-start justify-between">
+        <div class="flex items-start justify-between bg-[var(--surface)] p-6 rounded-2xl border border-[var(--border)] shadow-xs">
             <div>
-                <a href="{{ route('referrals.index') }}" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">← Daftar Rujukan</a>
-                <div class="mt-2 flex items-center gap-3">
-                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white font-mono">{{ $referral->referral_number }}</h1>
+                <div class="flex items-center gap-3">
+                    <h1 class="text-xl font-bold text-[var(--foreground)] font-mono">{{ $referral->referral_number }}</h1>
                     @if($referral->urgency === 'emergency')
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300 animate-pulse">
-                            ⚠ DARURAT
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300 animate-pulse">
+                            ⚠ DARURAT (EMERGENCY)
                         </span>
                     @elseif($referral->urgency === 'urgent')
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300">
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300">
                             URGENT
                         </span>
                     @else
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300">
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">
                             Rutin
                         </span>
                     @endif
-                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase">
                         {{ ucfirst(str_replace('_', ' ', $referral->status)) }}
                     </span>
                 </div>
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    Pasien: <span class="font-semibold text-gray-700 dark:text-gray-300">{{ $referral->medicalVisit?->patient?->person?->name }}</span> |
-                    Tujuan: <span class="font-semibold text-gray-700 dark:text-gray-300">{{ $referral->partner?->name }}</span>
+                <p class="mt-1 text-xs text-[var(--foreground-muted)]">
+                    Tujuan: <strong class="text-[var(--foreground)]">{{ $referral->partner?->name }}</strong>
                 </p>
             </div>
+
+            @if($referral->medical_visit_id)
+                <a href="{{ route('visits.show', $referral->medical_visit_id) }}" class="px-4 py-2 rounded-xl text-xs font-semibold bg-[var(--surface-muted)] text-[var(--foreground)] border border-[var(--border)] hover:bg-[var(--surface)] transition-colors">
+                    &larr; Workspace Kunjungan
+                </a>
+            @endif
         </div>
+
 
         @if(session('success'))
             <div class="rounded-md bg-green-50 dark:bg-green-900/20 p-4 border border-green-200 dark:border-green-700">

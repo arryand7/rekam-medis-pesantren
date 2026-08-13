@@ -2,25 +2,31 @@
     <x-slot name="title">Workspace Kepulangan & Penutupan Kunjungan {{ $visit->visit_number }} — SABIRA POSKESTREN</x-slot>
 
     <div class="space-y-6">
+        <!-- Patient Context Header -->
+        <x-patient-context-header :patient="$visit->patient" :visit="$visit" />
+
+        <!-- Visit Stage Stepper Navigation -->
+        <x-visit-stage-nav :visit="$visit" current="discharge" />
+
         <!-- Header -->
-        <div class="flex items-start justify-between">
+        <div class="flex items-start justify-between bg-[var(--surface)] p-6 rounded-2xl border border-[var(--border)] shadow-xs">
             <div>
-                <a href="{{ route('visits.show', $visit->id) }}" class="text-sm text-sky-600 dark:text-sky-400 hover:underline">← Detail Kunjungan</a>
-                <div class="mt-2 flex items-center gap-3">
-                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Kepulangan Klinis & Penutupan Kunjungan</h1>
-                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-sky-100 text-sky-800 dark:bg-sky-900/40 dark:text-sky-300">
+                <div class="flex items-center gap-3">
+                    <h1 class="text-xl font-bold text-[var(--foreground)]">Kepulangan Klinis & Penutupan Kunjungan</h1>
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300">
                         {{ $visit->visit_number }}
                     </span>
-                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 uppercase">
                         {{ ucfirst(str_replace('_', ' ', $visit->status)) }}
                     </span>
                 </div>
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    Pasien: <span class="font-semibold text-gray-700 dark:text-gray-300">{{ $visit->patient?->person?->full_name }}</span> ({{ $visit->patient?->patient_number }}) |
-                    Keluhan: <span class="text-gray-700 dark:text-gray-300">{{ $visit->chief_complaint }}</span>
-                </p>
             </div>
+
+            <a href="{{ route('visits.show', $visit->id) }}" class="px-4 py-2 rounded-xl text-xs font-semibold bg-[var(--surface-muted)] text-[var(--foreground)] border border-[var(--border)] hover:bg-[var(--surface)] transition-colors">
+                &larr; Workspace Kunjungan
+            </a>
         </div>
+
 
         @if(session('status'))
             <div class="rounded-xl bg-green-50 dark:bg-green-900/20 p-4 border border-green-200 dark:border-green-800 text-sm text-green-700 dark:text-green-300">

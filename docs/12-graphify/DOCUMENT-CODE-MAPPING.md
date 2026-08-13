@@ -3,12 +3,29 @@ id: DOC-DOC-CODE-MAP
 title: "Pemetaan Dokumen ke Kode"
 status: active
 owner: "Ryand Arifriantoni"
-last_updated: 2026-08-09
+last_updated: 2026-08-13
 ---
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 5B — Clinical Workflow Continuity & Clinical Workspace Polish Mapping
+
+```text
+PHASE-5B-BEFORE-IMPLEMENTATION-AUDIT.md & PHASE-5B-ROLE-ACTION-MATRIX.md & PHASE-5B-OBSERVATION-WORKSPACE.md & PHASE-5B-CONSULTATION-WORKSPACE.md & PHASE-5B-REFERRAL-WORKSPACE.md & PHASE-5B-DISCHARGE-FOLLOWUP-WORKSPACE.md & PHASE-5B-PHARMACY-UX.md & PHASE-5B-TEST-MATRIX.md & PHASE-5B-CLOSURE.md
+  -> resources/views/components/visit-stage-nav.blade.php
+  -> resources/views/components/patient-context-header.blade.php
+  -> resources/views/pages/visits/show.blade.php
+  -> resources/views/pages/observations/show.blade.php
+  -> resources/views/pages/consultations/show.blade.php
+  -> resources/views/pages/referrals/show.blade.php
+  -> resources/views/pages/discharges/workspace.blade.php
+  -> resources/views/pages/pharmacy/inventory/index.blade.php
+  -> routes/web.php
+  -> tests/Feature/Ui/Phase5BClinicalWorkflowContinuityTest.php
+```
+
 ## Phase 5A — Documentation Truth Normalization + Application UX & Workflow Completion Mapping
+
 
 ```text
 ENVIRONMENT-TRUTH-CORRECTION.md & PHASE-5A-ROUTE-AND-SCREEN-INVENTORY.md & PHASE-5A-ROLE-NAVIGATION-MATRIX.md & PHASE-5A-UX-AUDIT.md & PHASE-5A-VISIT-WORKSPACE.md & PHASE-5A-RESPONSIVE-ACCESSIBILITY-AUDIT.md & PHASE-5A-UX-WORKFLOW-TEST-MATRIX.md & PHASE-5A-CLOSURE.md
@@ -431,4 +448,30 @@ ADR-006 (Person Patient Separation) & PERSON-PATIENT-IDENTITY.md
   -> tests/Feature/Authorization/PolicyAccessTest.php
   -> tests/Feature/GateSync/DryRunSyncTest.php
   -> tests/Feature/Audit/AuditLogTest.php
+```
+
+## Phase 5B1 — Final Verification, Test Portability & Repository Hygiene
+
+```
+docs/05-ui/PHASE-5B1-VISUAL-VERIFICATION.md
+  -> resources/views/pages/observations/show.blade.php
+  -> resources/views/pages/consultations/show.blade.php
+  -> resources/views/pages/referrals/show.blade.php
+  -> resources/views/pages/discharges/workspace.blade.php
+  -> resources/views/pages/visits/show.blade.php
+  -> resources/views/pages/pharmacy/inventory/index.blade.php
+  -> database/seeders/DatabaseSeeder.php (Phase 3B referral permissions)
+
+docs/09-testing/TEST-DATABASE-PORTABILITY.md
+  -> phpunit.xml (portable config, no hardcoded socket)
+
+docs/10-delivery/REPOSITORY-HYGIENE-AUDIT.md
+  -> .gitignore (.DS_Store coverage verified)
+  -> graphify-out/ (tracking status verified)
+
+docs/10-delivery/PHASE-5B1-FINAL-CLOSURE.md
+  -> config/pharmacy.php
+  -> app/Models/MedicineBatch.php (Carbon 3 diffInDays fix)
+  -> database/seeders/DatabaseSeeder.php
+  -> tests/Feature/Ui/Phase5BClinicalWorkflowContinuityTest.php
 ```

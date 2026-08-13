@@ -1,0 +1,3057 @@
+{
+  "app/Http/Controllers/Controller.php": {
+    "mtime": 1786006614.5448384,
+    "ast_hash": "27901d57a11cae63eb649a00dba8a400",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/HealthController.php": {
+    "mtime": 1786375690.1182728,
+    "ast_hash": "f8cec6e16b1a5aba985afac5bd137c1b",
+    "semantic_hash": ""
+  },
+  "app/Models/User.php": {
+    "mtime": 1786465171.0936608,
+    "ast_hash": "92fc25543636f1cde24538d7161ff090",
+    "semantic_hash": ""
+  },
+  "app/Providers/AppServiceProvider.php": {
+    "mtime": 1786375690.1239803,
+    "ast_hash": "f8080533dbbb5c0e36266a6fbf6a6b3f",
+    "semantic_hash": ""
+  },
+  "app/View/Components/AppLayout.php": {
+    "mtime": 1785915803.9478436,
+    "ast_hash": "b9778de9551cc2b9f166fe7e6629b9a5",
+    "semantic_hash": ""
+  },
+  "artisan": {
+    "mtime": 1785915506.3877544,
+    "ast_hash": "e66bb13691f6184c762c196427d8e685",
+    "semantic_hash": ""
+  },
+  "bootstrap/app.php": {
+    "mtime": 1785915506.3341851,
+    "ast_hash": "1af409508a89bf168e42816535a9503b",
+    "semantic_hash": ""
+  },
+  "bootstrap/providers.php": {
+    "mtime": 1785915506.3414977,
+    "ast_hash": "888c810b5a4720916f07aa05dd2c2dd3",
+    "semantic_hash": ""
+  },
+  "composer.json": {
+    "mtime": 1785915564.3291192,
+    "ast_hash": "92db30ef665c83f712a2b5c8f454b236",
+    "semantic_hash": ""
+  },
+  "config/app.php": {
+    "mtime": 1785915567.4698563,
+    "ast_hash": "468649a1a1021fb037b0f313ae67aad8",
+    "semantic_hash": ""
+  },
+  "config/auth.php": {
+    "mtime": 1785915506.3428438,
+    "ast_hash": "26354511ab860b301f2a3554bc388b91",
+    "semantic_hash": ""
+  },
+  "config/cache.php": {
+    "mtime": 1785915506.3475263,
+    "ast_hash": "399c7a3b4bca7e3cb9b622828682ab56",
+    "semantic_hash": ""
+  },
+  "config/database.php": {
+    "mtime": 1785915506.3468347,
+    "ast_hash": "594a01554ab7583541a8fb05a69f935f",
+    "semantic_hash": ""
+  },
+  "config/filesystems.php": {
+    "mtime": 1786257288.2972817,
+    "ast_hash": "b4e4bf9300a094ac959fa8a05a552f8a",
+    "semantic_hash": ""
+  },
+  "config/logging.php": {
+    "mtime": 1785915506.3506956,
+    "ast_hash": "d8255a5c07d3da72c7c9363f0c44bddd",
+    "semantic_hash": ""
+  },
+  "config/mail.php": {
+    "mtime": 1785915506.3449726,
+    "ast_hash": "18601a927b48d38337ba2077426a7d60",
+    "semantic_hash": ""
+  },
+  "config/queue.php": {
+    "mtime": 1785915506.349147,
+    "ast_hash": "f98ce92e7bf51db1fabaf8a30e12fc5a",
+    "semantic_hash": ""
+  },
+  "config/services.php": {
+    "mtime": 1785915506.346034,
+    "ast_hash": "534a1b7af7009c373ea4ebfa18823d57",
+    "semantic_hash": ""
+  },
+  "config/session.php": {
+    "mtime": 1785915506.3483212,
+    "ast_hash": "5ea7169252ec3cc7fad471f5cd0d7678",
+    "semantic_hash": ""
+  },
+  "database/factories/UserFactory.php": {
+    "mtime": 1785915506.3636296,
+    "ast_hash": "1c9f381f9c2bc3027971a3bfdbe99164",
+    "semantic_hash": ""
+  },
+  "database/migrations/0001_01_01_000000_create_users_table.php": {
+    "mtime": 1785917115.9113748,
+    "ast_hash": "b37e4b656e5ac6426610298b251fd928",
+    "semantic_hash": ""
+  },
+  "database/migrations/0001_01_01_000001_create_cache_table.php": {
+    "mtime": 1785915506.3601913,
+    "ast_hash": "6952fb360e8d8b84e6f47573e4459d48",
+    "semantic_hash": ""
+  },
+  "database/migrations/0001_01_01_000002_create_jobs_table.php": {
+    "mtime": 1785915506.3607767,
+    "ast_hash": "b0603b9fa0a27473971da76bb0c42ee1",
+    "semantic_hash": ""
+  },
+  "database/seeders/DatabaseSeeder.php": {
+    "mtime": 1785922479.8794985,
+    "ast_hash": "5646cd13a2b5f09290b4c0cad0e54bd9",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1785915506.390329,
+    "ast_hash": "0cdafb1ed5ed16e0ad8d871d33e3eafc",
+    "semantic_hash": ""
+  },
+  "public/index.php": {
+    "mtime": 1785915506.3650572,
+    "ast_hash": "d8eda274115af5fd2aaa8230af329ef7",
+    "semantic_hash": ""
+  },
+  "resources/js/app.js": {
+    "mtime": 1785915755.1925042,
+    "ast_hash": "645c0e7f84cb9ec41446e16a7a413bf7",
+    "semantic_hash": ""
+  },
+  "resources/js/theme-switcher.js": {
+    "mtime": 1785915749.759724,
+    "ast_hash": "78cb622d5c4491718b89eb70a8eb7ef1",
+    "semantic_hash": ""
+  },
+  "resources/views/components/theme-switcher.blade.php": {
+    "mtime": 1785915761.7471616,
+    "ast_hash": "a6f8470a30db1026fc71d944aaf4bc6f",
+    "semantic_hash": ""
+  },
+  "resources/views/dashboard.blade.php": {
+    "mtime": 1785915775.5973947,
+    "ast_hash": "85b2bc6298df2738907173572174f254",
+    "semantic_hash": ""
+  },
+  "resources/views/layouts/app.blade.php": {
+    "mtime": 1786465197.5252316,
+    "ast_hash": "df918c1f97e030488cb1afb993650363",
+    "semantic_hash": ""
+  },
+  "resources/views/welcome.blade.php": {
+    "mtime": 1785915506.3717427,
+    "ast_hash": "1a03818ea91deb4f3989c6c994e5867c",
+    "semantic_hash": ""
+  },
+  "routes/console.php": {
+    "mtime": 1785915506.3727362,
+    "ast_hash": "3c6ce2e6d16444282b24a9aa63885563",
+    "semantic_hash": ""
+  },
+  "routes/web.php": {
+    "mtime": 1786552411.485862,
+    "ast_hash": "eea0eac0e754d91dfb2b71465e6a3523",
+    "semantic_hash": ""
+  },
+  "tests/Feature/DashboardTest.php": {
+    "mtime": 1786375690.5069242,
+    "ast_hash": "04284ae4d1297b45810e809eaa9b2943",
+    "semantic_hash": ""
+  },
+  "tests/Feature/ExampleTest.php": {
+    "mtime": 1786375690.5075092,
+    "ast_hash": "8e6c8da7eaeacb9dc76a71d092b0b9df",
+    "semantic_hash": ""
+  },
+  "tests/Feature/HealthCheckTest.php": {
+    "mtime": 1786375690.5095565,
+    "ast_hash": "9ba4abdb3c070a99f1f55bc3106c450b",
+    "semantic_hash": ""
+  },
+  "tests/Feature/ThemePreferenceTest.php": {
+    "mtime": 1786375690.517271,
+    "ast_hash": "2acd70816b177a941af9aab3b8cf4ce0",
+    "semantic_hash": ""
+  },
+  "tests/Pest.php": {
+    "mtime": 1785917308.3247957,
+    "ast_hash": "87407a81a6669f1ac555691dd2ea38ca",
+    "semantic_hash": ""
+  },
+  "tests/TestCase.php": {
+    "mtime": 1785915506.3872962,
+    "ast_hash": "7e567dc27e68d5b57bae16af07f68907",
+    "semantic_hash": ""
+  },
+  "tests/Unit/ExampleTest.php": {
+    "mtime": 1785915506.3857632,
+    "ast_hash": "3f679e9508c834f0ad95943455fcd836",
+    "semantic_hash": ""
+  },
+  "vite.config.js": {
+    "mtime": 1785915506.3912199,
+    "ast_hash": "8ef22d264079dab94f6d36526b0cb1bc",
+    "semantic_hash": ""
+  },
+  ".agents/rules/graphify.md": {
+    "mtime": 1785901577.2603884,
+    "ast_hash": "f1e53ecc9194573d3c28fc116c743a2e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/graphify/SKILL.md": {
+    "mtime": 1785901577.2592192,
+    "ast_hash": "dfb0a6554c4af62df6effc61c6c7d245",
+    "semantic_hash": ""
+  },
+  ".agents/skills/graphify/references/add-watch.md": {
+    "mtime": 1785248776.401851,
+    "ast_hash": "d59d027fe449f06aa03905a01184e779",
+    "semantic_hash": ""
+  },
+  ".agents/skills/graphify/references/exports.md": {
+    "mtime": 1785248776.4022222,
+    "ast_hash": "9da2a2152e60a22f07f05fed5158f287",
+    "semantic_hash": ""
+  },
+  ".agents/skills/graphify/references/extraction-spec.md": {
+    "mtime": 1785248776.5031104,
+    "ast_hash": "42fef56a01698118f7fd722acdadea34",
+    "semantic_hash": ""
+  },
+  ".agents/skills/graphify/references/github-and-merge.md": {
+    "mtime": 1785248776.5037181,
+    "ast_hash": "cde13df085e4c492aeb7ba298a996d0d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/graphify/references/hooks.md": {
+    "mtime": 1785248776.5041268,
+    "ast_hash": "3f545db6ce646650bb9de588f5512a27",
+    "semantic_hash": ""
+  },
+  ".agents/skills/graphify/references/query.md": {
+    "mtime": 1785248776.5052114,
+    "ast_hash": "3c46f8ad006874260614ed8657d02307",
+    "semantic_hash": ""
+  },
+  ".agents/skills/graphify/references/transcribe.md": {
+    "mtime": 1785248776.5056005,
+    "ast_hash": "67b6a5fa6c0974e18f60db9f8932fbd8",
+    "semantic_hash": ""
+  },
+  ".agents/skills/graphify/references/update.md": {
+    "mtime": 1785248776.5062695,
+    "ast_hash": "9378bd03d56baaf78bd738ab3848f142",
+    "semantic_hash": ""
+  },
+  ".agents/workflows/graphify.md": {
+    "mtime": 1785901577.2607894,
+    "ast_hash": "0bc020d491fca99550c1ea3de0a5f862",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "0a88bc12e753c4aee207717c598cca2e",
+    "semantic_hash": ""
+  },
+  "AI-FIRST-RUN-PROMPT.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "b148cae711c9b88d1ca5e75d3a768fb2",
+    "semantic_hash": ""
+  },
+  "BOOTSTRAP-CHECKLIST.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "cb3fda322a94253c19c6e61ccd2535d8",
+    "semantic_hash": ""
+  },
+  "CHANGELOG.md": {
+    "mtime": 1786552389.1304364,
+    "ast_hash": "0f53ed747c50e0786f55bcb2a69a3ecb",
+    "semantic_hash": ""
+  },
+  "CONTRIBUTING.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "60501246b482e5b9b2de702277dc65dd",
+    "semantic_hash": ""
+  },
+  "FILE-MANIFEST.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "4024df4c67541b87e07ca02ace0954a4",
+    "semantic_hash": ""
+  },
+  "PROJECT-STATUS.md": {
+    "mtime": 1786552380.5811164,
+    "ast_hash": "bce60486951efb5046550adca2719afe",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-0.md": {
+    "mtime": 1786259023.249352,
+    "ast_hash": "f2ecc05652973d1760311fa0cc0997f1",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "3cdc2ab67ec9a93b5a990e1fa4e01a45",
+    "semantic_hash": ""
+  },
+  "UPDATE-SUMMARY.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "82f10b4d73f16c46f8c0a473f4a1b1b4",
+    "semantic_hash": ""
+  },
+  "docs/00-project/GLOSSARY.md": {
+    "mtime": 1786257552.983358,
+    "ast_hash": "c34073c5e6b9c31fd258d5ab468ca795",
+    "semantic_hash": ""
+  },
+  "docs/00-project/MVP-SCOPE.md": {
+    "mtime": 1786257558.0679245,
+    "ast_hash": "2c806bbe0944ee914792d6f373f5a203",
+    "semantic_hash": ""
+  },
+  "docs/00-project/PROJECT-BRIEF.md": {
+    "mtime": 1786257570.572287,
+    "ast_hash": "83819a626ba77a6003b6fa1093a9d9ad",
+    "semantic_hash": ""
+  },
+  "docs/00-project/PROJECT-SCOPE.md": {
+    "mtime": 1786257575.7702127,
+    "ast_hash": "a79adf8c22074182029b09c31dc4e600",
+    "semantic_hash": ""
+  },
+  "docs/00-project/STAKEHOLDERS.md": {
+    "mtime": 1786257582.598374,
+    "ast_hash": "612d19305c32a45eae69545c2edf7440",
+    "semantic_hash": ""
+  },
+  "docs/01-domain/BUSINESS-RULES.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "573665cc42a71c7bc4ea94218c71ffb4",
+    "semantic_hash": ""
+  },
+  "docs/01-domain/MEDICAL-TERMINOLOGY.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "6382f17106f8791c18344584f395cd5c",
+    "semantic_hash": ""
+  },
+  "docs/01-domain/OPERATIONAL-CONTEXT.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "e79081bba9cd6c587b1357ff813117ad",
+    "semantic_hash": ""
+  },
+  "docs/01-domain/PATIENT-JOURNEY.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "1fac0159f6dde04224b9ef70787f9d88",
+    "semantic_hash": ""
+  },
+  "docs/01-domain/PERSON-PATIENT-IDENTITY.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "93bd494cf6c4236433fedbbd4d1e795c",
+    "semantic_hash": ""
+  },
+  "docs/01-domain/ROLES-AND-RESPONSIBILITIES.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "7a5b1888c1df6c23a76a0179caf58c06",
+    "semantic_hash": ""
+  },
+  "docs/01-domain/VISIT-STATUS-LIFECYCLE.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "e484c7d9f1120c41cc0e33cfcbf49628",
+    "semantic_hash": ""
+  },
+  "docs/02-workflows/DISCHARGE-AND-RETURN.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "79038e15f63b3525711e358d1fb2bc38",
+    "semantic_hash": ""
+  },
+  "docs/02-workflows/EMERGENCY-HANDLING.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "e5fe7fd668c3352b8d2e041e8ecb39eb",
+    "semantic_hash": ""
+  },
+  "docs/02-workflows/GATE-USER-SYNC.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "7f995866f40143d8d4de8cefcc96fc92",
+    "semantic_hash": ""
+  },
+  "docs/02-workflows/HOSPITAL-REFERRAL.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "500138aeb7c95201aa688956cadce5c0",
+    "semantic_hash": ""
+  },
+  "docs/02-workflows/INITIAL-ASSESSMENT.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "66f452f53bc4e5e91e0e1bb13099fdc8",
+    "semantic_hash": ""
+  },
+  "docs/02-workflows/MEDICATION-ADMINISTRATION.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "4d1cd7bdb3e425736b71b0c67f3aa81e",
+    "semantic_hash": ""
+  },
+  "docs/02-workflows/OBSERVATION-AND-CARE.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "454f5a930638b38a245f906ae8859180",
+    "semantic_hash": ""
+  },
+  "docs/02-workflows/POSKESTREN-ADMISSION.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "55e4d967a51053e28c667700b5520ccd",
+    "semantic_hash": ""
+  },
+  "docs/02-workflows/REMOTE-CLINICAL-CONSULTATION.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "64cdd7314000cec264cc397d3b5056ed",
+    "semantic_hash": ""
+  },
+  "docs/02-workflows/REPORTING-SICK-STUDENT.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "823069955a22a94a7fa77a110c29c174",
+    "semantic_hash": ""
+  },
+  "docs/02-workflows/RETURN-FROM-REFERRAL.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "a6b359f808d2d9fbb260bcccf65a0d8e",
+    "semantic_hash": ""
+  },
+  "docs/03-requirements/ACCEPTANCE-CRITERIA.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "fb61a981173454fb11d17c07d373aaf9",
+    "semantic_hash": ""
+  },
+  "docs/03-requirements/FUNCTIONAL-REQUIREMENTS.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "84cce775d93ad815a7e763048f3669c6",
+    "semantic_hash": ""
+  },
+  "docs/03-requirements/NON-FUNCTIONAL-REQUIREMENTS.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "37e008503c6f94c21ea1a04a5c07fe64",
+    "semantic_hash": ""
+  },
+  "docs/03-requirements/TRACEABILITY-MATRIX.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "1f63432d1bbf864b8ec4381d5b1e90cc",
+    "semantic_hash": ""
+  },
+  "docs/03-requirements/USE-CASES.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "b79591afea4c849c51f9d94293fece83",
+    "semantic_hash": ""
+  },
+  "docs/03-requirements/USER-STORIES.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "b411db432f2277d978715a668e2afda4",
+    "semantic_hash": ""
+  },
+  "docs/04-architecture/APPLICATION-LAYERS.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "ad8aad28f755dd24b2db553e209bf5b3",
+    "semantic_hash": ""
+  },
+  "docs/04-architecture/DATA-FLOW.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "1a9d3256d63669b8fd4a4130b46cba4a",
+    "semantic_hash": ""
+  },
+  "docs/04-architecture/DIRECTORY-CONVENTIONS.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "fad0a36b0d59d25d0e6fe8c5fec9a7c3",
+    "semantic_hash": ""
+  },
+  "docs/04-architecture/INTEGRATIONS.md": {
+    "mtime": 1786375690.139862,
+    "ast_hash": "7022acd9aa61d8e0c7cd979ea9ab741f",
+    "semantic_hash": ""
+  },
+  "docs/04-architecture/MODULE-BOUNDARIES.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "984e2312eeb00dc1fd67b8d9bbd6e1c0",
+    "semantic_hash": ""
+  },
+  "docs/04-architecture/SYSTEM-ARCHITECTURE.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "43af5793c73b541249e2c484a739e139",
+    "semantic_hash": ""
+  },
+  "docs/04-architecture/TECH-STACK.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "46be114b76b7be077d7d8fc438b2ced2",
+    "semantic_hash": ""
+  },
+  "docs/05-data/DATA-DICTIONARY.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "69f57eeb39ec4164e3896ebedc245a63",
+    "semantic_hash": ""
+  },
+  "docs/05-data/DATA-RETENTION.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "f0af2392bc3d599cf63b0da004326742",
+    "semantic_hash": ""
+  },
+  "docs/05-data/DATABASE-CONVENTIONS.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "d6e2112878842cc9cf7bf9d1b302670d",
+    "semantic_hash": ""
+  },
+  "docs/05-data/DOMAIN-MODEL.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "a96f7daa185c0af83191e4127f28b77f",
+    "semantic_hash": ""
+  },
+  "docs/05-data/ENTITY-RELATIONSHIPS.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "98913354ae0510d8a3d183e6dadf3dbf",
+    "semantic_hash": ""
+  },
+  "docs/05-data/IDENTITY-AND-PATIENT-MODEL.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "18cb1a8691a63b3c9639b0efd6ef4fa8",
+    "semantic_hash": ""
+  },
+  "docs/05-data/MEDICAL-RECORD-VERSIONING.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "3f22735623b4c9b848598e58623472f3",
+    "semantic_hash": ""
+  },
+  "docs/05-data/STATE-MACHINES.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "5f5d4d5eb6565ab10617b3cd87ec947f",
+    "semantic_hash": ""
+  },
+  "docs/06-ui-ux/ACCESSIBILITY.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "6d98d693bfd1c28549e319ed34fdc1c0",
+    "semantic_hash": ""
+  },
+  "docs/06-ui-ux/DESIGN-SYSTEM.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "1eb3de5289f3ed63af60f69e1e53e223",
+    "semantic_hash": ""
+  },
+  "docs/06-ui-ux/FORM-STANDARDS.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "e9fdd7be22dee1d44caf3743561f4644",
+    "semantic_hash": ""
+  },
+  "docs/06-ui-ux/LIGHT-DARK-THEME.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "0796ffa2306086dee79b8f64de659206",
+    "semantic_hash": ""
+  },
+  "docs/06-ui-ux/NAVIGATION-MAP.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "239da9145d46826234c514ad817a2f9f",
+    "semantic_hash": ""
+  },
+  "docs/06-ui-ux/SCREEN-INVENTORY.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "52f59d25dee458e1dc94fcd633d03b48",
+    "semantic_hash": ""
+  },
+  "docs/06-ui-ux/TABLE-STANDARDS.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "c8ac937911522b06490bca4009ba1bac",
+    "semantic_hash": ""
+  },
+  "docs/06-ui-ux/UI-UX-CONCEPT.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "ce919e638ec7333829040284c5bd6581",
+    "semantic_hash": ""
+  },
+  "docs/07-security/ACCESS-CONTROL-MATRIX.md": {
+    "mtime": 1786375690.1419685,
+    "ast_hash": "1a0cc601f2f2f5b1dcea9075d290980d",
+    "semantic_hash": ""
+  },
+  "docs/07-security/AUDIT-LOG.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "aa8503fc907f6d7f8c236b9126168c53",
+    "semantic_hash": ""
+  },
+  "docs/07-security/BACKUP-AND-RECOVERY.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "ad047dd4d8321f88766bf13f8be9b568",
+    "semantic_hash": ""
+  },
+  "docs/07-security/GATE-SYNC-SECURITY.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "47010e41ec944dbdd90f44a0c4518cd5",
+    "semantic_hash": ""
+  },
+  "docs/07-security/MEDICAL-DATA-PRIVACY.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "1f674a6b1dab06089379a8125204b2f6",
+    "semantic_hash": ""
+  },
+  "docs/07-security/REMOTE-CONSULTATION-GOVERNANCE.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "9dc993a3ed1b188615924e06a5c786f0",
+    "semantic_hash": ""
+  },
+  "docs/07-security/SECURITY-REQUIREMENTS.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "8963cf5b9dd8fefd8945bf45243e99bb",
+    "semantic_hash": ""
+  },
+  "docs/07-security/SESSION-SECURITY.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "aa112422bf1bc8d2c0047e0b44316717",
+    "semantic_hash": ""
+  },
+  "docs/07-security/THREAT-MODEL.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "5c952588aac1d96e9b9a3f9823291c9a",
+    "semantic_hash": ""
+  },
+  "docs/08-api/API-AUTHENTICATION.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "ed9901981df3e16f903990daae1a5d5a",
+    "semantic_hash": ""
+  },
+  "docs/08-api/API-CONVENTIONS.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "669e0b9c7e50536850c67b28cb543f12",
+    "semantic_hash": ""
+  },
+  "docs/08-api/API-ENDPOINTS.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "a548cc0e48b703b8bbfa4d0034df3a49",
+    "semantic_hash": ""
+  },
+  "docs/08-api/ERROR-RESPONSES.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "1167f9dad53f2f71c98c9dc1ec38bf9c",
+    "semantic_hash": ""
+  },
+  "docs/08-api/GATE-USER-SYNC-CONTRACT.md": {
+    "mtime": 1786375690.1675541,
+    "ast_hash": "e55cf88b43481278b812572e512b8d8d",
+    "semantic_hash": ""
+  },
+  "docs/08-api/INTEGRATION-CONTRACTS.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "e88c58302e729ff723b553378e7f8364",
+    "semantic_hash": ""
+  },
+  "docs/09-testing/BUSINESS-SCENARIOS.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "2d87f19c449bead5762a00fb5a487c2e",
+    "semantic_hash": ""
+  },
+  "docs/09-testing/FEATURE-TEST-MATRIX.md": {
+    "mtime": 1786462489.5363712,
+    "ast_hash": "98f7255e2671da331cdc71e01711b494",
+    "semantic_hash": ""
+  },
+  "docs/09-testing/SECURITY-TESTS.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "4972de172ec90f9783c389058805ec20",
+    "semantic_hash": ""
+  },
+  "docs/09-testing/TEST-STRATEGY.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "f1ebfef14a94f0c51e10c5108c188899",
+    "semantic_hash": ""
+  },
+  "docs/09-testing/UAT-CHECKLIST.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "e1475126ccb94c2c9eec381c0d3507ad",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/DEFINITION-OF-DONE.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "9c791dba197340d06914c1e6d0cad0d5",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/DEPLOYMENT.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "f7254b56e0a9b9d2c260977147ec2c16",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/ENVIRONMENT-PREFLIGHT.md": {
+    "mtime": 1785915391.2695384,
+    "ast_hash": "2767c27ec1234fa7c1ea454a2e6e899f",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/GRAPHIFY-BASELINE-REVIEW.md": {
+    "mtime": 1785915403.689657,
+    "ast_hash": "9dfa2c21c1481848174ddca5b119c693",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/IMPLEMENTATION-PLAN.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "6f59c4dd1b08185caad52d9731ca7818",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/OPERATIONS.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "1d2fc47de4af36e1d46482899fdd7a8a",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/READINESS-REVIEW.md": {
+    "mtime": 1786463538.2746034,
+    "ast_hash": "9530caf18a8af3f46c28d26d0f53e3ab",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/RELEASE-CHECKLIST.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "b930ce8ad520762d1954079539f577dc",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/ROADMAP.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "fb4b83d44d466028951c3fb1c714928a",
+    "semantic_hash": ""
+  },
+  "docs/11-decisions/ADR-001-LARAVEL-LIVEWIRE.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "2a78973b00fef85bd80899642d5236c4",
+    "semantic_hash": ""
+  },
+  "docs/11-decisions/ADR-002-MODULAR-MONOLITH.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "230c0f264ab3e979b72e4449112f8741",
+    "semantic_hash": ""
+  },
+  "docs/11-decisions/ADR-003-GATE-SSO.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "52045f26736bd13c2940d6a765c57dc2",
+    "semantic_hash": ""
+  },
+  "docs/11-decisions/ADR-004-MEDICAL-AUDIT-LOG.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "c0c25f0d54f167b79f72f16565df4d10",
+    "semantic_hash": ""
+  },
+  "docs/11-decisions/ADR-005-THEME-STRATEGY.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "93afc942ba29703ed5c5233a6d2a027b",
+    "semantic_hash": ""
+  },
+  "docs/11-decisions/ADR-006-PERSON-PATIENT-SEPARATION.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "ecf7784ec94ec9d64113dfd66c8993a8",
+    "semantic_hash": ""
+  },
+  "docs/11-decisions/ADR-007-REMOTE-CLINICAL-CONSULTATION.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "3d016091522acda32dce8e61afd90a5e",
+    "semantic_hash": ""
+  },
+  "docs/11-decisions/README.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "eac6eb8bf4f4e6e760bdfb4eeb42f5b9",
+    "semantic_hash": ""
+  },
+  "docs/12-graphify/AI-HANDOFF.md": {
+    "mtime": 1786257399.3104877,
+    "ast_hash": "1fd233f00602eb2ece454dba855596f3",
+    "semantic_hash": ""
+  },
+  "docs/12-graphify/DOCUMENT-CODE-MAPPING.md": {
+    "mtime": 1786552404.8316386,
+    "ast_hash": "afb39789e5b3086321b02277ba1ef8e6",
+    "semantic_hash": ""
+  },
+  "docs/12-graphify/GRAPH-NAMING-CONVENTIONS.md": {
+    "mtime": 1786257458.186073,
+    "ast_hash": "31cccbd588f4678ca273a52832f72011",
+    "semantic_hash": ""
+  },
+  "docs/12-graphify/GRAPH-VALIDATION-QUESTIONS.md": {
+    "mtime": 1786257437.6383684,
+    "ast_hash": "f6f64d97af33fad26ce80ebac89352d4",
+    "semantic_hash": ""
+  },
+  "docs/12-graphify/GRAPHIFY-GUIDE.md": {
+    "mtime": 1786257430.144523,
+    "ast_hash": "8de71c33532482609754e06cb3d57e9f",
+    "semantic_hash": ""
+  },
+  "docs/12-graphify/GRAPHIFY-INSTALLATION.md": {
+    "mtime": 1786257428.734882,
+    "ast_hash": "312ca8a14f619fe5f4224f58c6639353",
+    "semantic_hash": ""
+  },
+  "docs/README.md": {
+    "mtime": 1786257377.4312325,
+    "ast_hash": "0494a0e6d2a25bfca03dec35e9d60c3b",
+    "semantic_hash": ""
+  },
+  "plans/CURRENT-SPRINT.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "a7a47c62f0cd4341e2730cc1372525b2",
+    "semantic_hash": ""
+  },
+  "plans/IMPLEMENTATION-BACKLOG.md": {
+    "mtime": 1785875920.0,
+    "ast_hash": "5b3f258ca901267a34857564277bd5c4",
+    "semantic_hash": ""
+  },
+  "plans/KNOWN-ISSUES.md": {
+    "mtime": 1786552397.1323106,
+    "ast_hash": "d93f8fe535ec21ed5fa7f61dcceb8ced",
+    "semantic_hash": ""
+  },
+  "public/robots.txt": {
+    "mtime": 1785915506.3658075,
+    "ast_hash": "b6216d61c03e6ce0c9aea6ca7808f7ca",
+    "semantic_hash": ""
+  },
+  "app/Contracts/ClinicalConsultationTransportContract.php": {
+    "mtime": 1785922454.5572271,
+    "ast_hash": "d13be1ccd2d39d6946bc279b81f2755b",
+    "semantic_hash": ""
+  },
+  "app/Contracts/GateClientContract.php": {
+    "mtime": 1785917302.572139,
+    "ast_hash": "8706940de09aa155bdf98fe3222af849",
+    "semantic_hash": ""
+  },
+  "app/DTOs/GateUserDTO.php": {
+    "mtime": 1785917196.12725,
+    "ast_hash": "40965fb183d600b64a8248b3a5592710",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Referral/ReferralCompanionController.php": {
+    "mtime": 1786006284.995709,
+    "ast_hash": "fd0be57bcf2c21e600bf022d3bab07d7",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Referral/ReferralController.php": {
+    "mtime": 1786006269.0068426,
+    "ast_hash": "07d6f4643ed6fa4d9688af4d1c677a8b",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Referral/ReferralDepartureController.php": {
+    "mtime": 1786006291.4270072,
+    "ast_hash": "145e30ccd8185ab285bf71f861a8524c",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Referral/ReferralDocumentController.php": {
+    "mtime": 1786006672.5359192,
+    "ast_hash": "b7daac55e74f8aaba4845f1dacaea747",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Referral/ReferralHandoverController.php": {
+    "mtime": 1786006297.8189785,
+    "ast_hash": "cde8301622a2e7f11d4b4c9229a5f0a7",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Referral/ReferralReturnController.php": {
+    "mtime": 1786006310.6997144,
+    "ast_hash": "250e4ee6b6e34541db0ab50d50550bfc",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Referral/ReferralReturnReviewController.php": {
+    "mtime": 1786006318.1745207,
+    "ast_hash": "d7e57b19ed11cdcde2a81e0340b2092e",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Referral/ReferralStatusController.php": {
+    "mtime": 1786006304.5936353,
+    "ast_hash": "45d6261e2b431371d8110540907320f9",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Referral/ReferralTransportController.php": {
+    "mtime": 1786006278.4711175,
+    "ast_hash": "a51fe689e75c20e13c723f7a25333a6e",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Referral/StoreReferralCompanionRequest.php": {
+    "mtime": 1786006187.1914227,
+    "ast_hash": "d597fd570115f0f3659dd66283e9e3e6",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Referral/StoreReferralRequest.php": {
+    "mtime": 1786006170.087142,
+    "ast_hash": "1396864c9a878e72a381eef95dabddbe",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Referral/StoreReferralReturnRequest.php": {
+    "mtime": 1786006204.7013776,
+    "ast_hash": "5b3e2acabe2db1892a5e91334438cc33",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Referral/StoreReferralReturnReviewRequest.php": {
+    "mtime": 1786006213.5640593,
+    "ast_hash": "489e2d78e53ec47c190a84126a717d7a",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Referral/StoreReferralStatusEventRequest.php": {
+    "mtime": 1786006195.4974573,
+    "ast_hash": "407f48f206aadb8352ed7f4c593df893",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Referral/StoreReferralTransportRequest.php": {
+    "mtime": 1786006178.825881,
+    "ast_hash": "2bf8b2348a7014471373e7f81050b437",
+    "semantic_hash": ""
+  },
+  "app/Models/AuditLog.php": {
+    "mtime": 1785917187.4658887,
+    "ast_hash": "dd96ef53ba01db849ac7fb15a03fef29",
+    "semantic_hash": ""
+  },
+  "app/Models/ClinicalAction.php": {
+    "mtime": 1785918596.428044,
+    "ast_hash": "284cb0d37d38ce16b2356e89d55a2320",
+    "semantic_hash": ""
+  },
+  "app/Models/ClinicalAssessment.php": {
+    "mtime": 1785918593.6505153,
+    "ast_hash": "7b6b9011ab4ed1f57aa814149e60f55c",
+    "semantic_hash": ""
+  },
+  "app/Models/ClinicalConsultation.php": {
+    "mtime": 1785922432.7380147,
+    "ast_hash": "0644f41d40c6de0e09bcf85affc38742",
+    "semantic_hash": ""
+  },
+  "app/Models/ClinicalConsultationTransmission.php": {
+    "mtime": 1785922439.6214466,
+    "ast_hash": "73d77af6350b768362a70cb7362731ed",
+    "semantic_hash": ""
+  },
+  "app/Models/ClinicalConsultationVersion.php": {
+    "mtime": 1785922435.861927,
+    "ast_hash": "768e6b05d12626a3d06d42f09b63bf33",
+    "semantic_hash": ""
+  },
+  "app/Models/ConsultationLocalDecision.php": {
+    "mtime": 1785922446.9179516,
+    "ast_hash": "511723947fb205a5db335029bd3cc410",
+    "semantic_hash": ""
+  },
+  "app/Models/ExternalClinicalAdvice.php": {
+    "mtime": 1785922534.7324324,
+    "ast_hash": "bd711388195b1e302d1b089019782a13",
+    "semantic_hash": ""
+  },
+  "app/Models/HealthcarePartner.php": {
+    "mtime": 1785922425.2028506,
+    "ast_hash": "c7e82422d4a766fe47a8ae438144b7b9",
+    "semantic_hash": ""
+  },
+  "app/Models/HealthcarePartnerContact.php": {
+    "mtime": 1785922427.984865,
+    "ast_hash": "8753150a927dae2b25cbd421b632241d",
+    "semantic_hash": ""
+  },
+  "app/Models/MedicalVisit.php": {
+    "mtime": 1786464389.040234,
+    "ast_hash": "9b870f096ef2f3e353ff52420bc89beb",
+    "semantic_hash": ""
+  },
+  "app/Models/MedicationAdministration.php": {
+    "mtime": 1785921512.62175,
+    "ast_hash": "978dd88b5d3c448fa08487d94bc19266",
+    "semantic_hash": ""
+  },
+  "app/Models/MedicationOrder.php": {
+    "mtime": 1785921504.0656025,
+    "ast_hash": "c8e69b0e42c3e9496e4bacf4963bd6db",
+    "semantic_hash": ""
+  },
+  "app/Models/MedicationSafetyAcknowledgement.php": {
+    "mtime": 1785921507.2041662,
+    "ast_hash": "c8c6ec5deba9276549f96c6dc7cde3e5",
+    "semantic_hash": ""
+  },
+  "app/Models/Medicine.php": {
+    "mtime": 1786465171.1147218,
+    "ast_hash": "50581cb09095902aeade862a68636ce3",
+    "semantic_hash": ""
+  },
+  "app/Models/MedicineBatch.php": {
+    "mtime": 1785920668.2876613,
+    "ast_hash": "515fd828f036973733a70a0dba9085ec",
+    "semantic_hash": ""
+  },
+  "app/Models/ObservationEpisode.php": {
+    "mtime": 1785919152.8951447,
+    "ast_hash": "67cbd6c25c76866669278a781967c07f",
+    "semantic_hash": ""
+  },
+  "app/Models/ObservationHandover.php": {
+    "mtime": 1785919056.2551682,
+    "ast_hash": "1e0a35413b89f7387b91553fd94e5428",
+    "semantic_hash": ""
+  },
+  "app/Models/ObservationRecord.php": {
+    "mtime": 1785919052.2816591,
+    "ast_hash": "d82802499b9f01c9bb2aadda410994f1",
+    "semantic_hash": ""
+  },
+  "app/Models/Patient.php": {
+    "mtime": 1786375690.1217802,
+    "ast_hash": "2af252ba19d46a5205846eba8db1876e",
+    "semantic_hash": ""
+  },
+  "app/Models/PatientAllergy.php": {
+    "mtime": 1785918664.1596808,
+    "ast_hash": "5354903ab425fe57895d8b865a429550",
+    "semantic_hash": ""
+  },
+  "app/Models/PatientEmergencyContact.php": {
+    "mtime": 1785917938.304416,
+    "ast_hash": "f60c2719c4811a8ee61f60b403e899b5",
+    "semantic_hash": ""
+  },
+  "app/Models/PatientHealthProfile.php": {
+    "mtime": 1785917925.877594,
+    "ast_hash": "13a903df44872f2f879a14d33a45ac01",
+    "semantic_hash": ""
+  },
+  "app/Models/PatientMedicalCondition.php": {
+    "mtime": 1785917933.7307127,
+    "ast_hash": "27b9aab91200547f0dab8789820dec45",
+    "semantic_hash": ""
+  },
+  "app/Models/Permission.php": {
+    "mtime": 1785917158.090029,
+    "ast_hash": "9c03e601aec0f672acb86084474a60e0",
+    "semantic_hash": ""
+  },
+  "app/Models/Person.php": {
+    "mtime": 1786257670.9598322,
+    "ast_hash": "34db596adae067ed375a643e25527a44",
+    "semantic_hash": ""
+  },
+  "app/Models/Referral.php": {
+    "mtime": 1786257818.616347,
+    "ast_hash": "c558c7aaeb5f5c927c6297c28f6fec8d",
+    "semantic_hash": ""
+  },
+  "app/Models/ReferralCompanion.php": {
+    "mtime": 1785924220.683143,
+    "ast_hash": "7e40f4ed0c4e096ae06d8087b3ca21eb",
+    "semantic_hash": ""
+  },
+  "app/Models/ReferralHandover.php": {
+    "mtime": 1785924783.4569254,
+    "ast_hash": "930d775549b28010dd19341bdec8b1fd",
+    "semantic_hash": ""
+  },
+  "app/Models/ReferralReturn.php": {
+    "mtime": 1786257818.7115767,
+    "ast_hash": "eea70f4ce7228513aaf1a43d8bb60c35",
+    "semantic_hash": ""
+  },
+  "app/Models/ReferralReturnReview.php": {
+    "mtime": 1785924250.0142975,
+    "ast_hash": "47c61a23c836d7ad62a71ff83de31a28",
+    "semantic_hash": ""
+  },
+  "app/Models/ReferralStatusEvent.php": {
+    "mtime": 1785924274.0980432,
+    "ast_hash": "513604aeacaa90cfe0c64839e5a19e46",
+    "semantic_hash": ""
+  },
+  "app/Models/ReferralTransport.php": {
+    "mtime": 1785924212.2978828,
+    "ast_hash": "e832e629500783aaca0ddf59945bd983",
+    "semantic_hash": ""
+  },
+  "app/Models/ReferralVersion.php": {
+    "mtime": 1786006840.1216917,
+    "ast_hash": "980b3461bef319156b8599ca11ab3587",
+    "semantic_hash": ""
+  },
+  "app/Models/Role.php": {
+    "mtime": 1785917154.411451,
+    "ast_hash": "c2660080497549f8baff1165d474e901",
+    "semantic_hash": ""
+  },
+  "app/Models/StockLocation.php": {
+    "mtime": 1785920665.407074,
+    "ast_hash": "8b7f9ce1fbf12661290191230a02359a",
+    "semantic_hash": ""
+  },
+  "app/Models/StockMovement.php": {
+    "mtime": 1785920671.6294885,
+    "ast_hash": "619cc850c709afc0a5155a3ce54e0a3e",
+    "semantic_hash": ""
+  },
+  "app/Models/VitalSign.php": {
+    "mtime": 1785918571.2670305,
+    "ast_hash": "b944ee9ace6375403ad7edf113ac8dd1",
+    "semantic_hash": ""
+  },
+  "app/Policies/AuditLogPolicy.php": {
+    "mtime": 1785917178.4357417,
+    "ast_hash": "bac04cbffe852e49a9866197a1923375",
+    "semantic_hash": ""
+  },
+  "app/Policies/ClinicalActionPolicy.php": {
+    "mtime": 1785918613.8843062,
+    "ast_hash": "641efed6bf00c8a5441ad0d49bbdebdf",
+    "semantic_hash": ""
+  },
+  "app/Policies/ClinicalAssessmentPolicy.php": {
+    "mtime": 1785918610.2659698,
+    "ast_hash": "bc17526ec221f6539c396b06aabe98fc",
+    "semantic_hash": ""
+  },
+  "app/Policies/ClinicalConsultationPolicy.php": {
+    "mtime": 1785922473.0996492,
+    "ast_hash": "a9f85d7abacbf37165a1bc5985dd0cdc",
+    "semantic_hash": ""
+  },
+  "app/Policies/GateSyncPolicy.php": {
+    "mtime": 1786375690.123446,
+    "ast_hash": "f5a103d3c11fe1566b29fc6ee0b06aa7",
+    "semantic_hash": ""
+  },
+  "app/Policies/HealthcarePartnerPolicy.php": {
+    "mtime": 1785922469.3983111,
+    "ast_hash": "f88921fa516a29a57db777fb355329a2",
+    "semantic_hash": ""
+  },
+  "app/Policies/MedicalVisitPolicy.php": {
+    "mtime": 1785917969.1632855,
+    "ast_hash": "cd35b454f498436f2aa4dd727d5d0bae",
+    "semantic_hash": ""
+  },
+  "app/Policies/MedicationAdministrationPolicy.php": {
+    "mtime": 1785921532.7247267,
+    "ast_hash": "83d3624f818f8ae9caa88b5236ab8b0e",
+    "semantic_hash": ""
+  },
+  "app/Policies/MedicationOrderPolicy.php": {
+    "mtime": 1785921528.8283606,
+    "ast_hash": "df739ba4acb372dee7e3f52d382cc044",
+    "semantic_hash": ""
+  },
+  "app/Policies/MedicineBatchPolicy.php": {
+    "mtime": 1785920685.8501637,
+    "ast_hash": "768bb10a5646bf46e5a05079d95b180a",
+    "semantic_hash": ""
+  },
+  "app/Policies/MedicinePolicy.php": {
+    "mtime": 1785920682.0281224,
+    "ast_hash": "9887dbaeb9c7f0b166c3347b9033a6ef",
+    "semantic_hash": ""
+  },
+  "app/Policies/ObservationEpisodePolicy.php": {
+    "mtime": 1785919071.4444318,
+    "ast_hash": "c75f5ea18e59076617298c5c0e64223a",
+    "semantic_hash": ""
+  },
+  "app/Policies/ObservationHandoverPolicy.php": {
+    "mtime": 1785919078.9351196,
+    "ast_hash": "7826a87abcc68bf69e838f804d4e9152",
+    "semantic_hash": ""
+  },
+  "app/Policies/ObservationRecordPolicy.php": {
+    "mtime": 1785919075.2652996,
+    "ast_hash": "cc9f5591f5c09f7de45910766e68a84a",
+    "semantic_hash": ""
+  },
+  "app/Policies/PatientAllergyPolicy.php": {
+    "mtime": 1785917949.592643,
+    "ast_hash": "1b750eed0faa2be219ce34032e31345a",
+    "semantic_hash": ""
+  },
+  "app/Policies/PatientHealthProfilePolicy.php": {
+    "mtime": 1785917945.8401685,
+    "ast_hash": "2e2565dfe016ad36d96c8b0f15a893f8",
+    "semantic_hash": ""
+  },
+  "app/Policies/PatientPolicy.php": {
+    "mtime": 1785917171.044266,
+    "ast_hash": "bfc9e70ec1cdadb2437f8fe6bcde8e19",
+    "semantic_hash": ""
+  },
+  "app/Policies/PersonPolicy.php": {
+    "mtime": 1785917166.4833617,
+    "ast_hash": "f93df268902dcbb1142a3f9ce8496044",
+    "semantic_hash": ""
+  },
+  "app/Policies/ReferralPolicy.php": {
+    "mtime": 1786006592.012554,
+    "ast_hash": "6d67576338c2f92a87863c41c9676955",
+    "semantic_hash": ""
+  },
+  "app/Policies/StockLocationPolicy.php": {
+    "mtime": 1785920693.1282673,
+    "ast_hash": "43063665e428005d1fe100ba1dc5b6cf",
+    "semantic_hash": ""
+  },
+  "app/Policies/StockMovementPolicy.php": {
+    "mtime": 1785920689.5107093,
+    "ast_hash": "9a6c941b22198a5ef64fccaddd0a2b91",
+    "semantic_hash": ""
+  },
+  "app/Policies/UserPolicy.php": {
+    "mtime": 1785917162.6000848,
+    "ast_hash": "6b3d27eb6492c0244d7dab311be71acf",
+    "semantic_hash": ""
+  },
+  "app/Policies/VitalSignPolicy.php": {
+    "mtime": 1785918580.053048,
+    "ast_hash": "cc5b86b4ff0dfa9c3dce1ffe8b98e0fa",
+    "semantic_hash": ""
+  },
+  "app/Services/AuditLogService.php": {
+    "mtime": 1785917426.382669,
+    "ast_hash": "d83ff4eea922d993d753eb12bfc6d9b1",
+    "semantic_hash": ""
+  },
+  "app/Services/ClinicalAssessmentService.php": {
+    "mtime": 1785918668.925084,
+    "ast_hash": "8e70771788b2b2656eb43c7b6ec753b6",
+    "semantic_hash": ""
+  },
+  "app/Services/ClinicalConsultationService.php": {
+    "mtime": 1785922563.916791,
+    "ast_hash": "728d0b71b7e15a772c04ea0fe154cc55",
+    "semantic_hash": ""
+  },
+  "app/Services/Gate/FakeGateClientService.php": {
+    "mtime": 1785917389.7776349,
+    "ast_hash": "d451bb5a45eae5f4c2c23ac6a94c9fad",
+    "semantic_hash": ""
+  },
+  "app/Services/Gate/GateSyncDryRunService.php": {
+    "mtime": 1785917213.7195246,
+    "ast_hash": "514df775b20073cca3e349fa8aa279bd",
+    "semantic_hash": ""
+  },
+  "app/Services/MedicalVisitService.php": {
+    "mtime": 1785918105.2565398,
+    "ast_hash": "53169da68f8afe4bed8339418077e742",
+    "semantic_hash": ""
+  },
+  "app/Services/MedicationService.php": {
+    "mtime": 1785921590.8952484,
+    "ast_hash": "381c154269e12237aa9f49fa11aabbeb",
+    "semantic_hash": ""
+  },
+  "app/Services/ObservationService.php": {
+    "mtime": 1785919066.6057875,
+    "ast_hash": "28f40b31a7a46834d7490cf232cd6bba",
+    "semantic_hash": ""
+  },
+  "app/Services/PharmacyService.php": {
+    "mtime": 1785920779.1715136,
+    "ast_hash": "960082c73428b56232817be9a9aaf6fa",
+    "semantic_hash": ""
+  },
+  "app/Services/ReferralDocumentService.php": {
+    "mtime": 1786006832.5241466,
+    "ast_hash": "f6b6b386166f72e4810e8994d32bee20",
+    "semantic_hash": ""
+  },
+  "app/Services/ReferralService.php": {
+    "mtime": 1785924921.1430755,
+    "ast_hash": "2271606cccb6245fe13ddd11bfb2e922",
+    "semantic_hash": ""
+  },
+  "app/Services/Transport/FakeClinicalConsultationTransport.php": {
+    "mtime": 1785922458.523543,
+    "ast_hash": "945a920c7c9cd5713556ee8d22b2d639",
+    "semantic_hash": ""
+  },
+  "app/Services/VitalSignService.php": {
+    "mtime": 1785918576.2813516,
+    "ast_hash": "35f2a264b5dfc67fd60b4e911fdd9f57",
+    "semantic_hash": ""
+  },
+  "database/factories/PatientFactory.php": {
+    "mtime": 1785918023.9369617,
+    "ast_hash": "ff294d0a2d70019c1868ad08861b14a5",
+    "semantic_hash": ""
+  },
+  "database/factories/PersonFactory.php": {
+    "mtime": 1785917389.6790311,
+    "ast_hash": "081eeb1800d4bad1604e805307ad69f4",
+    "semantic_hash": ""
+  },
+  "database/migrations/0000_01_01_000000_create_people_table.php": {
+    "mtime": 1785917120.1722863,
+    "ast_hash": "2278c46209321b3929ae46f1845181ce",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_000300_create_patients_table.php": {
+    "mtime": 1785917921.460951,
+    "ast_hash": "29bbae5d08690841416e02d18c9f68ff",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_000400_create_roles_and_permissions_tables.php": {
+    "mtime": 1785917150.9465303,
+    "ast_hash": "7b363d9fc0997acc7ab9c49e53714cbb",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_000500_create_audit_logs_table.php": {
+    "mtime": 1785917183.493874,
+    "ast_hash": "e1d77a838d30b6824878c4341bc5dcbc",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_000600_create_patient_health_profiles_table.php": {
+    "mtime": 1785917904.9367843,
+    "ast_hash": "493d6c45a0c903fe0bc7e8ac5d22be89",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_000700_create_patient_allergies_table.php": {
+    "mtime": 1785917908.832608,
+    "ast_hash": "bcd4aac0db2dc91c5b356d8ef874ea25",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_000800_create_patient_medical_conditions_table.php": {
+    "mtime": 1785917912.6658304,
+    "ast_hash": "061853721588ac09e831785df6889928",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_000900_create_patient_emergency_contacts_table.php": {
+    "mtime": 1785917916.8681266,
+    "ast_hash": "979766c72e8f269b9b7e6be76061180e",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_001100_create_medical_visits_table.php": {
+    "mtime": 1785917955.2371182,
+    "ast_hash": "1fdc976457396f5c69b8c6f5a6cab904",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_001200_refactor_patient_allergies_split_status_fields.php": {
+    "mtime": 1785918557.880432,
+    "ast_hash": "fa4c8ac674295e296f1557288c5d2484",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_001300_create_vital_signs_table.php": {
+    "mtime": 1785918566.6026146,
+    "ast_hash": "583912021d54b2a8dc66d3fc11801b21",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_001400_create_clinical_assessments_table.php": {
+    "mtime": 1785918584.787234,
+    "ast_hash": "761e3792d28acf2edf8ca196f79a905c",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_001500_create_clinical_actions_table.php": {
+    "mtime": 1785918589.1079519,
+    "ast_hash": "07414ff0124fc60d5f4ce495f986406e",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_001600_create_observation_episodes_table.php": {
+    "mtime": 1785919036.8215969,
+    "ast_hash": "8c82e0145477df29462844a79ecfa44e",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_001700_create_observation_records_table.php": {
+    "mtime": 1785919040.8020568,
+    "ast_hash": "14d8bb91b5332e41380e2da9bbeece74",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_001800_create_observation_handovers_table.php": {
+    "mtime": 1785919044.803212,
+    "ast_hash": "7ee6783357d448d04b29522fd2a26e05",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_001900_create_medicines_table.php": {
+    "mtime": 1785920647.0599594,
+    "ast_hash": "2b7911a4c356f9fa19e5fee14d897776",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_002000_create_stock_locations_table.php": {
+    "mtime": 1785920650.7958322,
+    "ast_hash": "2044cf57b2acae8a72eda731daa3a805",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_002100_create_medicine_batches_table.php": {
+    "mtime": 1785920654.9281209,
+    "ast_hash": "581e07d39a66a2aaf0103b56f34da796",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_002200_create_stock_movements_table.php": {
+    "mtime": 1785920659.052587,
+    "ast_hash": "6bef05b24f4c5dd3baf9e015adad7347",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_002300_create_medication_orders_table.php": {
+    "mtime": 1785921491.391995,
+    "ast_hash": "93fb02fac5321aabaf1b1a2f822e5df5",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_002400_create_medication_safety_acknowledgements_table.php": {
+    "mtime": 1785921495.895968,
+    "ast_hash": "c7ac4cc0fba9e3a2e70723ea86a02f91",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_002500_create_medication_administrations_table.php": {
+    "mtime": 1785921500.0652602,
+    "ast_hash": "bd41b6ed65a1600d8a7cd0146cea2a45",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_002600_create_healthcare_partners_table.php": {
+    "mtime": 1785922394.30709,
+    "ast_hash": "f02a80ccb4cd5c0ddf82c685b36b2f34",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_002700_create_healthcare_partner_contacts_table.php": {
+    "mtime": 1785922401.3574371,
+    "ast_hash": "a33d8060fb3370249097675fabfedc10",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_002800_create_clinical_consultations_table.php": {
+    "mtime": 1785922405.7166336,
+    "ast_hash": "93ed35874fdad3d60ea2e012c06c839f",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_002900_create_clinical_consultation_versions_table.php": {
+    "mtime": 1786254637.8542995,
+    "ast_hash": "331d3655f0818a56a9702e947370dbe2",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_003000_create_clinical_consultation_transmissions_table.php": {
+    "mtime": 1786254713.0802264,
+    "ast_hash": "001ffdcb74a2eeb82ee5133c879de2fd",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_003100_create_external_clinical_advices_table.php": {
+    "mtime": 1785922417.4973118,
+    "ast_hash": "331740aedab3e862df99f8d21f8129eb",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_003200_create_consultation_local_decisions_table.php": {
+    "mtime": 1785922421.4371924,
+    "ast_hash": "995aaf390c006a59c980b341a8df5211",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_003300_create_referrals_table.php": {
+    "mtime": 1785923245.9252775,
+    "ast_hash": "ec2aa0ec913733c245e09e68e7306121",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_003400_create_referral_versions_table.php": {
+    "mtime": 1786254645.8571277,
+    "ast_hash": "7be9d19b65e4276e4548ff37d51ac473",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_003500_create_referral_transports_table.php": {
+    "mtime": 1785923256.9765854,
+    "ast_hash": "f9f728faf61686827602884d444b67d6",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_003600_create_referral_companions_table.php": {
+    "mtime": 1785923260.8756611,
+    "ast_hash": "9df9a9951c40769cd944c3249403b035",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_003700_create_referral_handovers_table.php": {
+    "mtime": 1785923265.2039535,
+    "ast_hash": "b55e40e558160da7abd9f6faf56be940",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_003800_create_referral_returns_table.php": {
+    "mtime": 1785923269.5388408,
+    "ast_hash": "c58ea843acc7f1d15981576c7503f0bd",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_003900_create_referral_return_reviews_table.php": {
+    "mtime": 1785923274.015143,
+    "ast_hash": "88cfdd0e977597fac2ce5cf1f773989c",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_004000_create_referral_status_events_table.php": {
+    "mtime": 1785924261.5385253,
+    "ast_hash": "16ffa11478fc6fae5fbce6b64e4d7347",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/audit-logs/index.blade.php": {
+    "mtime": 1785917248.5192456,
+    "ast_hash": "b9fcffafb93796f0bead1add9c40ddbc",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/consultations/create.blade.php": {
+    "mtime": 1785922495.1311228,
+    "ast_hash": "061e31a6e698087a9f0af70421b6a72f",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/consultations/index.blade.php": {
+    "mtime": 1785922489.446728,
+    "ast_hash": "a4a83bc0e264cf474035dc5ff3364fd9",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/consultations/show.blade.php": {
+    "mtime": 1786552203.1930895,
+    "ast_hash": "eb497a96b711c3b65669162021110a9e",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/gate-sync/conflicts.blade.php": {
+    "mtime": 1785917243.7544408,
+    "ast_hash": "c3dbd2efe88f155c16f52b6c7f6d9766",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/gate-sync/preview.blade.php": {
+    "mtime": 1785917238.6237211,
+    "ast_hash": "41865386b030c2413192fa35d393f0fb",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/healthcare-partners/index.blade.php": {
+    "mtime": 1785922484.695206,
+    "ast_hash": "9d6a1904bc32d0d6ec8a0dd658b5e2a6",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/observations/index.blade.php": {
+    "mtime": 1785919089.795815,
+    "ast_hash": "e11f087080e6e5b8df8f13f2bf16d899",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/observations/show.blade.php": {
+    "mtime": 1786467318.7621489,
+    "ast_hash": "1119621c77f43534e3c35034f3c72fe5",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/patients/index.blade.php": {
+    "mtime": 1786465197.5261598,
+    "ast_hash": "49e7042c46dc325d5738b88217e51027",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/patients/show.blade.php": {
+    "mtime": 1786465197.527153,
+    "ast_hash": "29bd87b87c40a6434c34d5affd349d18",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/people/index.blade.php": {
+    "mtime": 1785917217.8494895,
+    "ast_hash": "95c16534c02fce157cc21a384b41f173",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/pharmacy/adjustments/create.blade.php": {
+    "mtime": 1785920719.424022,
+    "ast_hash": "082a5d919a27eddb4e48c17764c1a443",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/pharmacy/inventory/index.blade.php": {
+    "mtime": 1785920710.0392418,
+    "ast_hash": "adbae37559976f6dc7d668660968406f",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/pharmacy/medicines/index.blade.php": {
+    "mtime": 1785920705.1824582,
+    "ast_hash": "ec8fb5eef49ae182d0bcee13c6946d19",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/pharmacy/receipt/create.blade.php": {
+    "mtime": 1785920714.8734317,
+    "ast_hash": "2707f92f99b383c25087537d7439c5ca",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/referrals/create.blade.php": {
+    "mtime": 1785924523.8231254,
+    "ast_hash": "f21c39e9210c3005ca707f0e3e5ffdd6",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/referrals/index.blade.php": {
+    "mtime": 1785924486.3186376,
+    "ast_hash": "3fcb9af8dc4b4b05d28a761233b51885",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/referrals/show.blade.php": {
+    "mtime": 1786467373.801807,
+    "ast_hash": "6f4095830d8f059634b79acb3d95227c",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/roles/index.blade.php": {
+    "mtime": 1785917232.2492843,
+    "ast_hash": "87e9f91c926ebbd4d8936de38b0ec760",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/users/index.blade.php": {
+    "mtime": 1785917227.40142,
+    "ast_hash": "2f53683b58ae5dd4bba84fa1c2319a29",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/visits/assessment.blade.php": {
+    "mtime": 1786465197.5297244,
+    "ast_hash": "a37cf9ce868852a682ae9364a358b81a",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/visits/create.blade.php": {
+    "mtime": 1785917991.743313,
+    "ast_hash": "89bc5ec4631a78023b32c64681915c67",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/visits/index.blade.php": {
+    "mtime": 1785917986.7772243,
+    "ast_hash": "ad81820470425c127cfa23b223d0233b",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/visits/medications.blade.php": {
+    "mtime": 1786465197.5309494,
+    "ast_hash": "08c0e9a39cde566ed071e29575a5119b",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/visits/show.blade.php": {
+    "mtime": 1786551209.0166676,
+    "ast_hash": "0a954d96bf61596aacba68d6a99976d2",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Audit/AuditLogTest.php": {
+    "mtime": 1785917296.5938466,
+    "ast_hash": "dcad818add6103b45ad62c80ce5dfcd6",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Authorization/PolicyAccessTest.php": {
+    "mtime": 1785917389.809728,
+    "ast_hash": "eaa47e294146bbfa15b8b7391652c650",
+    "semantic_hash": ""
+  },
+  "tests/Feature/ClinicalAction/ClinicalActionTest.php": {
+    "mtime": 1785918652.453913,
+    "ast_hash": "b5ddb8bcd91840081c53dcc20a75fb57",
+    "semantic_hash": ""
+  },
+  "tests/Feature/ClinicalAssessment/ClinicalAssessmentTest.php": {
+    "mtime": 1785918652.5045052,
+    "ast_hash": "e97a151f05f31c8db09c9637bfc46d8d",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Consultation/ClinicalConsultationTest.php": {
+    "mtime": 1785922518.1515684,
+    "ast_hash": "ab5b9789b8e18369ace31c7b35791578",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Consultation/ConsultationTransmissionTest.php": {
+    "mtime": 1785922521.973651,
+    "ast_hash": "8614a33405b2b567aa5a60be8d6dcd1c",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Consultation/ExternalAdviceAndLocalDecisionTest.php": {
+    "mtime": 1785922528.5506475,
+    "ast_hash": "52d37b2c4f9356ffe1435e6b7c2d98e4",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Consultation/HealthcarePartnerTest.php": {
+    "mtime": 1785922514.0213008,
+    "ast_hash": "9bc7bb57c83cb87fc5ac5ef4e753680a",
+    "semantic_hash": ""
+  },
+  "tests/Feature/GateSync/DryRunSyncTest.php": {
+    "mtime": 1785917389.7981262,
+    "ast_hash": "8c9ac7a1d0e293ff3b08a3ad8f56d4ef",
+    "semantic_hash": ""
+  },
+  "tests/Feature/HealthProfile/PatientHealthProfileTest.php": {
+    "mtime": 1785918068.023946,
+    "ast_hash": "c8b9ca4f2d7c7d888a0a878a6a735ad0",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Identity/PersonUserPatientTest.php": {
+    "mtime": 1785917284.8458807,
+    "ast_hash": "7a357a8924657775f1911101daf45c89",
+    "semantic_hash": ""
+  },
+  "tests/Feature/MedicalVisit/MedicalVisitIntakeTest.php": {
+    "mtime": 1785918068.0570292,
+    "ast_hash": "15bdfe4566bb81d6779952602181269a",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Medication/MedicationAdministrationTest.php": {
+    "mtime": 1785921563.957145,
+    "ast_hash": "6d7ef16a68913f8388ecd8ae03d081ff",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Medication/MedicationOrderTest.php": {
+    "mtime": 1785921580.6694844,
+    "ast_hash": "0f86b57fe4ba81c2b943de1f99d7b9fd",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Medication/MedicationReversalTest.php": {
+    "mtime": 1785921573.6244266,
+    "ast_hash": "f38ba497274286c8e06c92bc89bcbe0a",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Medication/MedicationStatusTest.php": {
+    "mtime": 1785921568.1862361,
+    "ast_hash": "b328a29b66a19a942444b1c1bb2b970f",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Observation/ObservationEpisodeTest.php": {
+    "mtime": 1785919136.5571568,
+    "ast_hash": "ce453c5466c6f0427d379a00ed96f0d7",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Observation/ObservationHandoverTest.php": {
+    "mtime": 1785919124.6691642,
+    "ast_hash": "2c2abe5baf1cc86c3d3825e8b3360f9a",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Observation/ObservationMonitoringTest.php": {
+    "mtime": 1785919120.5319252,
+    "ast_hash": "5859f24c3240c437897766f0c0ae206e",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Observation/ObservationOutcomeTest.php": {
+    "mtime": 1785919129.3594155,
+    "ast_hash": "6bebf435c5fd5baea9d3519ad72e28cb",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Pharmacy/MedicineMasterTest.php": {
+    "mtime": 1785920786.0566638,
+    "ast_hash": "910a9a751086a570a8b38708b767c38f",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Pharmacy/StockAdjustmentTest.php": {
+    "mtime": 1785920786.072422,
+    "ast_hash": "87b4fdddde3b61a5939d439af15e4133",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Pharmacy/StockReceiptTest.php": {
+    "mtime": 1785920786.0819252,
+    "ast_hash": "83b6b43b9e818a3bdcc8bb6352cd4dfd",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Pharmacy/StockReversalTest.php": {
+    "mtime": 1785920786.0466878,
+    "ast_hash": "3e8f74ad0d4ad32aadfc5f8b57e1ff7d",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Referral/ReferralAuthorizationTest.php": {
+    "mtime": 1786255516.982664,
+    "ast_hash": "f13fc42395c2822e36689bd6cc8aa5fe",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Referral/ReferralCreationTest.php": {
+    "mtime": 1785924783.764708,
+    "ast_hash": "c2b2456e69824a21092d04220e131d60",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Referral/ReferralDocumentTest.php": {
+    "mtime": 1786006672.7816644,
+    "ast_hash": "6c2f6ffd6495776a033f267e19ef9139",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Referral/ReferralHandoffTest.php": {
+    "mtime": 1785924719.7618046,
+    "ast_hash": "9c7639b243c120d07b19913711302cd2",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Referral/ReferralLogisticsTest.php": {
+    "mtime": 1785924783.6821547,
+    "ast_hash": "2333aadce98c8e4adcee7d91e91de50e",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Referral/ReferralMariaDBConcurrencyTest.php": {
+    "mtime": 1786255517.0781603,
+    "ast_hash": "ddf49754e02f65f19564fea54e0548ff",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Referral/ReferralReturnTest.php": {
+    "mtime": 1785924783.7191913,
+    "ast_hash": "d8622019dd64681f57b7197e0eb6fa02",
+    "semantic_hash": ""
+  },
+  "tests/Feature/VitalSign/VitalSignTest.php": {
+    "mtime": 1785918652.4780054,
+    "ast_hash": "0022f08ab244cc1d3003273e05e1b38d",
+    "semantic_hash": ""
+  },
+  "tests/scripts/concurrency-referral-test.sh": {
+    "mtime": 1786255170.5043774,
+    "ast_hash": "e2d781bfbcf848044ca2c6e4c91c4a28",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-1.md": {
+    "mtime": 1786259023.2498367,
+    "ast_hash": "a3f1ca347090a6010d712143aa97fafc",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-2A.md": {
+    "mtime": 1786259023.251108,
+    "ast_hash": "1f7d272cf873390113008ba1e4a9ba01",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-2B.md": {
+    "mtime": 1786259023.2518923,
+    "ast_hash": "3b7b75de7bdb913473c3a895cd6aec43",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-2C.md": {
+    "mtime": 1786259023.252439,
+    "ast_hash": "fbae59ee7f59b0d308d575c5b14ddde1",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-2D1.md": {
+    "mtime": 1786259023.2529845,
+    "ast_hash": "5269238ef3ea46f5d2dd0e9a4f275394",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-2D2.md": {
+    "mtime": 1786259023.253931,
+    "ast_hash": "3d3e9743748cd0d4d1eb2579b092e0fe",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-3A.md": {
+    "mtime": 1786259023.2549212,
+    "ast_hash": "e40b807350a31380b2a0ccab441a6d13",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-3B-FINAL-VALIDATION.md": {
+    "mtime": 1786259023.2556558,
+    "ast_hash": "dfd8ddf90187eeddbc5d8973a590a1b2",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-3B-HARDENING.md": {
+    "mtime": 1786259023.2560806,
+    "ast_hash": "d1bd573cf88a106579dc833abf79c06f",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-3B.md": {
+    "mtime": 1786259023.256572,
+    "ast_hash": "da1b7c59ba47e4bc267841c95226410a",
+    "semantic_hash": ""
+  },
+  "PROMPT-CLAUDE-RESUME-PHASE-3B.md": {
+    "mtime": 1786259023.257719,
+    "ast_hash": "79e5a4ce6393f825c41b26e40036c15d",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-0-CLOSURE.md": {
+    "mtime": 1785917104.955467,
+    "ast_hash": "5b32391a07e96213772bf25b2fbc42cb",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-1-CLOSURE.md": {
+    "mtime": 1785917897.7816627,
+    "ast_hash": "ad8d072bc438e4b83986f982eafef183",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-2A-CLOSURE.md": {
+    "mtime": 1785918553.7268946,
+    "ast_hash": "5bf0501347affea10cfe88dc83a67056",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-2B-CLOSURE.md": {
+    "mtime": 1785919031.930764,
+    "ast_hash": "e698026d6fd63ba017c514fa3e3ae738",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-2C-CLOSURE.md": {
+    "mtime": 1785920640.7461352,
+    "ast_hash": "0ea90097084d102707b53906f50ff281",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-2D1-CLOSURE.md": {
+    "mtime": 1785921484.9982579,
+    "ast_hash": "20b1806c85c445a1e9ee61165f5ba09c",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-2D2-CLOSURE.md": {
+    "mtime": 1785922389.1989968,
+    "ast_hash": "86537a4e0219708835c6dff04e6a9e8a",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-3A-CLOSURE.md": {
+    "mtime": 1785923239.957218,
+    "ast_hash": "0284cc72b38d9293f7c4d99d3698413b",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-3B-CLOSURE.md": {
+    "mtime": 1786256214.549886,
+    "ast_hash": "d5fc6c4f5cfc132d2b181b9388096e41",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-3B-RESUME-STATE.md": {
+    "mtime": 1785924958.149474,
+    "ast_hash": "5101939000966a7f5de8121e4d1510bd",
+    "semantic_hash": ""
+  },
+  "app/Actions/Discharge/EvaluateVisitDischargeReadinessAction.php": {
+    "mtime": 1786258035.98349,
+    "ast_hash": "780aebf493480999f8a47ab56da7fd21",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Discharge/ActivityRestrictionController.php": {
+    "mtime": 1786257441.7568343,
+    "ast_hash": "0ec804f2c5c35d2f7fa07d2996e0d864",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Discharge/ClinicalOperationalHandoffController.php": {
+    "mtime": 1786257446.4976366,
+    "ast_hash": "e5d491b17739b2e8f7df466b0480c230",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Discharge/VisitDischargeController.php": {
+    "mtime": 1786257430.3966155,
+    "ast_hash": "2b170843c836acef39edf9e428f3fbc6",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Discharge/VisitDischargeDocumentController.php": {
+    "mtime": 1786257452.2571235,
+    "ast_hash": "a730a67f2f29788becf77c072516d047",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Discharge/VisitFollowUpPlanController.php": {
+    "mtime": 1786257436.1464772,
+    "ast_hash": "99805f29aa82004adcaf20a20028e576",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Discharge/AcknowledgeOperationalHandoffRequest.php": {
+    "mtime": 1786257422.4792259,
+    "ast_hash": "e36fc36f4339bdfb2517a7af8f5438a0",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Discharge/AmendVisitDischargeRequest.php": {
+    "mtime": 1786257398.933345,
+    "ast_hash": "2b0bc19ec2b01aff7635d2d332ff492b",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Discharge/FinalizeVisitDischargeRequest.php": {
+    "mtime": 1786257393.5383315,
+    "ast_hash": "d7231722367cdf77d91f70a02226b765",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Discharge/StoreActivityRestrictionRequest.php": {
+    "mtime": 1786257408.9145992,
+    "ast_hash": "b1133c9cbbf9f765c7c6b498b2f09c66",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Discharge/StoreFollowUpPlanRequest.php": {
+    "mtime": 1786257403.7518432,
+    "ast_hash": "88044c925f8e3fc28a758cec4768ee51",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Discharge/StoreOperationalHandoffRequest.php": {
+    "mtime": 1786257415.5565088,
+    "ast_hash": "c31bbb0fe997bfb87f5d35f8076fa346",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Discharge/StoreVisitDischargeRequest.php": {
+    "mtime": 1786257388.6827204,
+    "ast_hash": "4b423be0ea86b1c8a47e956a5919cdbc",
+    "semantic_hash": ""
+  },
+  "app/Models/ActivityRestriction.php": {
+    "mtime": 1786257311.8389115,
+    "ast_hash": "0a6d65da33cbebaa200a12b51d2a5031",
+    "semantic_hash": ""
+  },
+  "app/Models/ClinicalOperationalHandoff.php": {
+    "mtime": 1786257317.7780643,
+    "ast_hash": "21f7405d02f30726a11c942340906ca5",
+    "semantic_hash": ""
+  },
+  "app/Models/VisitDischarge.php": {
+    "mtime": 1786258035.859044,
+    "ast_hash": "028f973e9bba1a1f17f7db34250140c7",
+    "semantic_hash": ""
+  },
+  "app/Models/VisitDischargeVersion.php": {
+    "mtime": 1786257299.788884,
+    "ast_hash": "a0f66a7a34160a37982e5c88f2dbabc2",
+    "semantic_hash": ""
+  },
+  "app/Models/VisitFollowUpPlan.php": {
+    "mtime": 1786257305.6536858,
+    "ast_hash": "bcf13e52b968c11c272fdb8cbee4a8b2",
+    "semantic_hash": ""
+  },
+  "app/Policies/ActivityRestrictionPolicy.php": {
+    "mtime": 1786257377.3125658,
+    "ast_hash": "70217ee797086f8043179cd071b50a97",
+    "semantic_hash": ""
+  },
+  "app/Policies/ClinicalOperationalHandoffPolicy.php": {
+    "mtime": 1786375690.1224635,
+    "ast_hash": "1350e00bc3d12dca9e7066db570be4ef",
+    "semantic_hash": ""
+  },
+  "app/Policies/VisitDischargePolicy.php": {
+    "mtime": 1786257367.3780262,
+    "ast_hash": "f68fa2690bfeb1b9c5d1ac36c51174e5",
+    "semantic_hash": ""
+  },
+  "app/Policies/VisitFollowUpPlanPolicy.php": {
+    "mtime": 1786257372.2344708,
+    "ast_hash": "87473befb75886ac2edf514463135cad",
+    "semantic_hash": ""
+  },
+  "app/Services/VisitDischargeDocumentService.php": {
+    "mtime": 1786257852.3557308,
+    "ast_hash": "87631f5790f21476ffc195868d8041f6",
+    "semantic_hash": ""
+  },
+  "app/Services/VisitDischargeService.php": {
+    "mtime": 1786258036.4181032,
+    "ast_hash": "c6aba8a50ebdb22ab70acca3f2eb8ec9",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_004100_create_visit_discharges_table.php": {
+    "mtime": 1786257250.5878954,
+    "ast_hash": "4b75c90067a47b7e9e2c2b5e7dcb0eac",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_004200_create_visit_discharge_versions_table.php": {
+    "mtime": 1786257256.0174189,
+    "ast_hash": "d3dc33c840b6e64b235208711d3ffcff",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_004300_create_visit_follow_up_plans_table.php": {
+    "mtime": 1786257261.4293504,
+    "ast_hash": "295d676ab2eb32bfae9bb3e75047d01d",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_004400_create_activity_restrictions_table.php": {
+    "mtime": 1786257525.2032843,
+    "ast_hash": "0fb1b16a779d7333c8fd6e9cfefba54c",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_004500_create_clinical_operational_handoffs_table.php": {
+    "mtime": 1786257532.6144722,
+    "ast_hash": "8c625307082dd07f261da173e109eb65",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_004600_add_phase_3c1_permissions.php": {
+    "mtime": 1786257280.0000951,
+    "ast_hash": "dc5c085b13a73fcb12e4484a44f916ea",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/discharges/follow-ups.blade.php": {
+    "mtime": 1786257510.316418,
+    "ast_hash": "2a31207e28b7f7e8c449fec3036bb5e1",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/discharges/handoffs.blade.php": {
+    "mtime": 1786257503.4384418,
+    "ast_hash": "4561841ca0a897ce462f02b1124206e5",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/discharges/index.blade.php": {
+    "mtime": 1786257488.297739,
+    "ast_hash": "39d2007382f655f02c8dff3f23bdf5d6",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/discharges/show.blade.php": {
+    "mtime": 1786257497.3281496,
+    "ast_hash": "15b50eb4ebf52f72a8f5459b10d03f8c",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/discharges/workspace.blade.php": {
+    "mtime": 1786467389.4800134,
+    "ast_hash": "f66f848d7b8df006d85b856d64e4304f",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Discharge/ActivityRestrictionTest.php": {
+    "mtime": 1786257618.516364,
+    "ast_hash": "055b58966206e3b2c98603fd49368db0",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Discharge/ClinicalOperationalHandoffTest.php": {
+    "mtime": 1786257696.175445,
+    "ast_hash": "2a30bfb3b9419ed119be3983d4b67788",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Discharge/VisitDischargeAuthorizationTest.php": {
+    "mtime": 1786257819.7012103,
+    "ast_hash": "417f2900951c167cc932df47486e8060",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Discharge/VisitDischargeCreationAndFinalizationTest.php": {
+    "mtime": 1786257819.6051304,
+    "ast_hash": "d67d67a02ab70ded6da6a18ecde33a4a",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Discharge/VisitDischargeDocumentTest.php": {
+    "mtime": 1786257819.5016637,
+    "ast_hash": "4fe726f4158c485dbb386852280f75ef",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Discharge/VisitDischargeReadinessTest.php": {
+    "mtime": 1786257819.776445,
+    "ast_hash": "5d5b8f38af147ad7ad4627a93e4109a5",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Discharge/VisitFollowUpPlanTest.php": {
+    "mtime": 1786257612.849837,
+    "ast_hash": "43dc1ea66e07d186c19058b85526faae",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-3C1.md": {
+    "mtime": 1786259023.257306,
+    "ast_hash": "91caf57d35b2d774fbe3ccde592edde8",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-3B-FINAL-CLOSURE.md": {
+    "mtime": 1786258114.1750982,
+    "ast_hash": "0188c2f71bd70cea5c23087ba00ded59",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-3B-MARIADB-CONCURRENCY-REPORT.md": {
+    "mtime": 1786256242.4168751,
+    "ast_hash": "fec7ef365eb2c6574c8a9c4142ddb1e0",
+    "semantic_hash": ""
+  },
+  "app/Contracts/Integration/AttendanceIntegrationContract.php": {
+    "mtime": 1786259111.944153,
+    "ast_hash": "d4840314af0ef85bb81ecce3093f99aa",
+    "semantic_hash": ""
+  },
+  "app/DTOs/Integration/AttendanceHealthDispositionDTO.php": {
+    "mtime": 1786259117.9748926,
+    "ast_hash": "78994c41e92b59376c499fc17de4dc9a",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Dashboard/DashboardController.php": {
+    "mtime": 1786375690.116918,
+    "ast_hash": "6d202c58db0c416c5604affa0c4b4a2d",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Integration/AttendanceIntegrationController.php": {
+    "mtime": 1786259239.1084943,
+    "ast_hash": "1759b6a8ec935e2c694ff7ab88efa21a",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Integration/IntegrationOutboxController.php": {
+    "mtime": 1786259232.893047,
+    "ast_hash": "6a6ca4c8507842e991832c42dd5b08c1",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Notification/OperationalNotificationController.php": {
+    "mtime": 1786259243.6249585,
+    "ast_hash": "55507eeeb025f0442809b61f177d68f5",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Notification/UserNotificationController.php": {
+    "mtime": 1786259248.830743,
+    "ast_hash": "c2eca11d3f456d4e9e3d10bcafc74fca",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Reporting/HealthReportController.php": {
+    "mtime": 1786259858.954663,
+    "ast_hash": "f3b0c9058fe7d0c24552aa238d80b4cb",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Integration/ResolveIdentityConflictRequest.php": {
+    "mtime": 1786259780.7579062,
+    "ast_hash": "38c2eefd16539b4a56dbd84cb0463863",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Integration/RetryOutboxEventRequest.php": {
+    "mtime": 1786259213.1964853,
+    "ast_hash": "9a5fb812f8e84fd0bc67791b740da3d8",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Notification/AcknowledgeOperationalNotificationRequest.php": {
+    "mtime": 1786259780.735845,
+    "ast_hash": "ac65fa6514c5539168125c6f89c520af",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Reporting/QueryReportRequest.php": {
+    "mtime": 1786259780.7168875,
+    "ast_hash": "0da5abcec82076afb0128b2c69c4678a",
+    "semantic_hash": ""
+  },
+  "app/Models/IntegrationDeliveryAttempt.php": {
+    "mtime": 1786259097.1599607,
+    "ast_hash": "2833b6ea8252bf5b5f7d49194fefac68",
+    "semantic_hash": ""
+  },
+  "app/Models/IntegrationIdentityConflict.php": {
+    "mtime": 1786259102.4650238,
+    "ast_hash": "b3848f0581460e2b39bf2dd0028aff03",
+    "semantic_hash": ""
+  },
+  "app/Models/IntegrationOutboxEvent.php": {
+    "mtime": 1786259086.9920216,
+    "ast_hash": "0fe3dd56c2a185dc091443d04562c4a9",
+    "semantic_hash": ""
+  },
+  "app/Models/OperationalNotification.php": {
+    "mtime": 1786259092.2545297,
+    "ast_hash": "25e27bb35604f6e3921a8b583771bdec",
+    "semantic_hash": ""
+  },
+  "app/Models/UserNotification.php": {
+    "mtime": 1786259107.2530098,
+    "ast_hash": "f5cfc6f6f48f98dc53b8f65efe4ce900",
+    "semantic_hash": ""
+  },
+  "app/Policies/DashboardPolicy.php": {
+    "mtime": 1786259204.2867818,
+    "ast_hash": "e6747914a815b3a056452741c37e9707",
+    "semantic_hash": ""
+  },
+  "app/Policies/IntegrationIdentityConflictPolicy.php": {
+    "mtime": 1786259199.2854745,
+    "ast_hash": "6f4c0e34ee80e0d6ba01a442c7e3035a",
+    "semantic_hash": ""
+  },
+  "app/Policies/IntegrationOutboxPolicy.php": {
+    "mtime": 1786259189.6515484,
+    "ast_hash": "7b7fba72fa49c0d4126f402f88206436",
+    "semantic_hash": ""
+  },
+  "app/Policies/OperationalNotificationPolicy.php": {
+    "mtime": 1786259194.6583548,
+    "ast_hash": "7512988ecfba526019cebe1bceae7069",
+    "semantic_hash": ""
+  },
+  "app/Policies/ReportPolicy.php": {
+    "mtime": 1786259208.7968025,
+    "ast_hash": "afebd563f30f46bbb69b62c84a478d75",
+    "semantic_hash": ""
+  },
+  "app/Services/Dashboard/ClinicalDashboardService.php": {
+    "mtime": 1786259781.1132634,
+    "ast_hash": "60cc878b35120f24a11e85b56fec6841",
+    "semantic_hash": ""
+  },
+  "app/Services/Dashboard/ManagementDashboardService.php": {
+    "mtime": 1786259781.146605,
+    "ast_hash": "adfad67b469b6815c3069e36cc1e2869",
+    "semantic_hash": ""
+  },
+  "app/Services/Dashboard/OperationalDashboardService.php": {
+    "mtime": 1786259821.7722168,
+    "ast_hash": "7b912a7f4737f7a1553f67086e499a22",
+    "semantic_hash": ""
+  },
+  "app/Services/Integration/AttendanceDispositionPayloadBuilder.php": {
+    "mtime": 1786259831.1416726,
+    "ast_hash": "fe23b3cfd08892ee26dfce127ab897e9",
+    "semantic_hash": ""
+  },
+  "app/Services/Integration/FakeAttendanceIntegration.php": {
+    "mtime": 1786259131.182983,
+    "ast_hash": "930cb283054a41423439303e4aeb1680",
+    "semantic_hash": ""
+  },
+  "app/Services/IntegrationOutboxService.php": {
+    "mtime": 1786259781.3427746,
+    "ast_hash": "64e3ad6beb25c5f024372a7294f0ef7f",
+    "semantic_hash": ""
+  },
+  "app/Services/OperationalNotificationService.php": {
+    "mtime": 1786259886.0697122,
+    "ast_hash": "53b7b22c1e00bc3c7d62e692ee2f138d",
+    "semantic_hash": ""
+  },
+  "app/Services/Reporting/HealthReportService.php": {
+    "mtime": 1786259859.049539,
+    "ast_hash": "ff0e0f646211cef202bfc5e4f37aa3a3",
+    "semantic_hash": ""
+  },
+  "app/Services/UserNotificationService.php": {
+    "mtime": 1786259781.085138,
+    "ast_hash": "c11d29a1c607f1242b0cc07ce137de15",
+    "semantic_hash": ""
+  },
+  "config/integration.php": {
+    "mtime": 1786375690.1327868,
+    "ast_hash": "8ab064b22215b2d685d6b1797f7d8348",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_004700_create_integration_outbox_events_table.php": {
+    "mtime": 1786259040.6107771,
+    "ast_hash": "6db49157ffaf8b2b231c3150a8d303ae",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_004800_create_operational_notifications_table.php": {
+    "mtime": 1786259045.9802926,
+    "ast_hash": "80d34296cf1b5a74de1793e24b1e1cd7",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_004900_create_integration_delivery_attempts_table.php": {
+    "mtime": 1786259051.1918774,
+    "ast_hash": "a3843786ea871c8b3c0f6b696eafdea4",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_005000_create_integration_identity_conflicts_table.php": {
+    "mtime": 1786259056.1748786,
+    "ast_hash": "87f1bf58629b0b462d860dc9367de2af",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_005100_create_user_notifications_table.php": {
+    "mtime": 1786259060.9114897,
+    "ast_hash": "c427bf759a486be225fba722cf8ea0a0",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_005200_add_phase_3c2_permissions.php": {
+    "mtime": 1786259067.5938227,
+    "ast_hash": "14be49ddae6d963bb7c0ec66803dd7f1",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/dashboards/clinical.blade.php": {
+    "mtime": 1786259562.9120133,
+    "ast_hash": "11b633ef11cf382dfed3898cc630b9f2",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/dashboards/management.blade.php": {
+    "mtime": 1786259572.4351423,
+    "ast_hash": "648c101efa2d513437dccc38f5b710ed",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/dashboards/operational.blade.php": {
+    "mtime": 1786259580.9032922,
+    "ast_hash": "adb4aeff5705c3e1bc4f113b25d8505b",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/integration/attendance.blade.php": {
+    "mtime": 1786259623.711554,
+    "ast_hash": "83a3cae4f432c45f49d333067569bd24",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/integration/conflicts.blade.php": {
+    "mtime": 1786259633.1999893,
+    "ast_hash": "e59b096650d924d1ebacf594fc0366a7",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/integration/outbox-detail.blade.php": {
+    "mtime": 1786259615.2453237,
+    "ast_hash": "4687857f5a13ada15eac0cb30a1e6a9e",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/integration/outbox.blade.php": {
+    "mtime": 1786259606.596135,
+    "ast_hash": "e2fcba41b3b9ba4795d2f82f0e229e5b",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/notifications/operational.blade.php": {
+    "mtime": 1786259589.5740573,
+    "ast_hash": "148a48ffe591716915fc9a0558a4252f",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/notifications/user-inbox.blade.php": {
+    "mtime": 1786259597.9800613,
+    "ast_hash": "185065c66225b85d4f4973b59471b248",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/reports/index.blade.php": {
+    "mtime": 1786259553.053084,
+    "ast_hash": "69d8a94080ccfab1e7bf458d178fff72",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/reports/show.blade.php": {
+    "mtime": 1786259813.4258587,
+    "ast_hash": "9623d079aff201fa77f2701f15367dcf",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Dashboard/DashboardAuthorizationAndPrivacyTest.php": {
+    "mtime": 1786259781.6538863,
+    "ast_hash": "054eec539ef943cd07ee95cdf41813e1",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Integration/AttendanceIntegrationContractTest.php": {
+    "mtime": 1786259781.6219373,
+    "ast_hash": "96a5ce533d61969a5e10a3165f820e9c",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Integration/IntegrationMariaDBConcurrencyTest.php": {
+    "mtime": 1786259384.4578586,
+    "ast_hash": "0dd4fca5a8ac7306d28aabd6479e51d6",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Integration/IntegrationOutboxTest.php": {
+    "mtime": 1786259781.5782325,
+    "ast_hash": "29c12fd02248131ec0986a12b1367810",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Integration/PrivacyPayloadProfileTest.php": {
+    "mtime": 1786259781.4998627,
+    "ast_hash": "8a8e58bc5429ce1cfa96fad27d2e16de",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Notification/OperationalNotificationTest.php": {
+    "mtime": 1786259781.4353614,
+    "ast_hash": "805293f0af5884c5f6ea30b0f9724419",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Notification/UserNotificationTest.php": {
+    "mtime": 1786259396.4882195,
+    "ast_hash": "46e83939b0a67362212153115c7d75e3",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Reporting/HealthReportTest.php": {
+    "mtime": 1786259781.3829021,
+    "ast_hash": "f2f754c476d8f00acb961dce654b2dfe",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-3C2.md": {
+    "mtime": 1786258707.6535943,
+    "ast_hash": "712842438f8de93ce002aa0ecd3d708a",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-3C1-CLOSURE.md": {
+    "mtime": 1786257943.3963182,
+    "ast_hash": "4384d24febb950297c5e6b77fbfe1fc0",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-3C1-FINAL-CLOSURE.md": {
+    "mtime": 1786259035.3981304,
+    "ast_hash": "3c2718a47c889ea6f65758df2275f5a4",
+    "semantic_hash": ""
+  },
+  "app/Contracts/GateOidcClientContract.php": {
+    "mtime": 1786375690.1142688,
+    "ast_hash": "c0140c53914a873106b1d412d30f46f1",
+    "semantic_hash": ""
+  },
+  "app/DTOs/GateApplicationEntitlementDTO.php": {
+    "mtime": 1786375690.1147807,
+    "ast_hash": "478f22830e1816a152a20796181c720e",
+    "semantic_hash": ""
+  },
+  "app/DTOs/GateOidcTokenResponseDTO.php": {
+    "mtime": 1786375690.1151261,
+    "ast_hash": "d8ab91431244aa67fecf8209e5f4b527",
+    "semantic_hash": ""
+  },
+  "app/DTOs/GateUserInfoDTO.php": {
+    "mtime": 1786375690.1154912,
+    "ast_hash": "2e2a40f8ebb4bd735f29ce4ecaf982d1",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Auth/GateOidcAuthController.php": {
+    "mtime": 1786462254.6156013,
+    "ast_hash": "9b770d7c3e79966afc1daa5418405e1a",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Gate/GateReconciliationController.php": {
+    "mtime": 1786375690.1173985,
+    "ast_hash": "d1186fa56012ef9ba7f0dea0d559870a",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Gate/GateSyncController.php": {
+    "mtime": 1786375690.1177232,
+    "ast_hash": "b8214d07f360a37ade2d7d4915bba935",
+    "semantic_hash": ""
+  },
+  "app/Http/Middleware/EnforceGateApplicationEntitlement.php": {
+    "mtime": 1786375690.118732,
+    "ast_hash": "0395f060002f4fdf7e44c8f539261fc8",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Gate/ApplyGateSyncRequest.php": {
+    "mtime": 1786375690.1192436,
+    "ast_hash": "10b35acbfe18218897e385a2ddde507f",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Gate/ApproveIdentityMappingRequest.php": {
+    "mtime": 1786375690.1204357,
+    "ast_hash": "38546544dc0a8f2ab7de0881d4a3ab3f",
+    "semantic_hash": ""
+  },
+  "app/Models/GateIdentityMapping.php": {
+    "mtime": 1786375690.120976,
+    "ast_hash": "4af8cbe3904bbda3fe95e16632e4ef71",
+    "semantic_hash": ""
+  },
+  "app/Models/GateSyncRun.php": {
+    "mtime": 1786375690.1212716,
+    "ast_hash": "76eb4f5e8ca3c6a49f9905863e2b324d",
+    "semantic_hash": ""
+  },
+  "app/Policies/GateMappingPolicy.php": {
+    "mtime": 1786375690.1228716,
+    "ast_hash": "d1d80fd1ac51a4c713bad2db7d68ce8e",
+    "semantic_hash": ""
+  },
+  "app/Services/Gate/FakeGateOidcClient.php": {
+    "mtime": 1786375690.124503,
+    "ast_hash": "e6b61b4cb727cda3faad4980e0a9ccc3",
+    "semantic_hash": ""
+  },
+  "app/Services/Gate/GateAuthenticationService.php": {
+    "mtime": 1786375690.1248891,
+    "ast_hash": "c591b0e3d902fb640b3459ac0b8e9d41",
+    "semantic_hash": ""
+  },
+  "app/Services/Gate/GateIdentityReconciliationService.php": {
+    "mtime": 1786375690.1252065,
+    "ast_hash": "3d62714ca717e6525480030990a4fae3",
+    "semantic_hash": ""
+  },
+  "app/Services/Gate/GateSyncApplyService.php": {
+    "mtime": 1786375690.126049,
+    "ast_hash": "daf00b8774fdf38af7c81346ceec585e",
+    "semantic_hash": ""
+  },
+  "app/Services/Gate/HttpGateClient.php": {
+    "mtime": 1786375690.1272352,
+    "ast_hash": "7af1c26d7916d48bbf2ae663f8a3e9b7",
+    "semantic_hash": ""
+  },
+  "app/Services/Gate/HttpGateOidcClient.php": {
+    "mtime": 1786375690.1298728,
+    "ast_hash": "c06a080aa7f8405ef30c1a2278ab3778",
+    "semantic_hash": ""
+  },
+  "app/View/Components/GuestLayout.php": {
+    "mtime": 1786375690.1307817,
+    "ast_hash": "aefcd0a8c6a6a8b4d88313ff2998fbb5",
+    "semantic_hash": ""
+  },
+  "config/gate.php": {
+    "mtime": 1786375690.1311135,
+    "ast_hash": "1c1e3c159727facdfc02414c54422652",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_005300_create_gate_identity_mappings_table.php": {
+    "mtime": 1786375690.1344798,
+    "ast_hash": "da68b62d8f50f504a4f327d1d4e2516e",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_005400_create_gate_sync_runs_table.php": {
+    "mtime": 1786375690.134994,
+    "ast_hash": "48799b26147c519c1218ab1419696dfc",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_05_005500_add_phase_4a_permissions.php": {
+    "mtime": 1786375690.1371853,
+    "ast_hash": "649fcf6cf32f7be43d328101584edb32",
+    "semantic_hash": ""
+  },
+  "resources/views/layouts/guest.blade.php": {
+    "mtime": 1786375690.4777546,
+    "ast_hash": "daf5fa5371e2a25a9deaeb43b31eef47",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/auth/access-denied.blade.php": {
+    "mtime": 1786375690.4930375,
+    "ast_hash": "850bfab628edc420d0f4fd5f1fc30a40",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/auth/login.blade.php": {
+    "mtime": 1786465729.116815,
+    "ast_hash": "7661e3129c83c5872fd62153d50c01b4",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/gate/dry-run-preview.blade.php": {
+    "mtime": 1786375690.5004873,
+    "ast_hash": "96203d0d9eff593049a4c7e1e5df4caf",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/gate/reconciliation.blade.php": {
+    "mtime": 1786375690.5014975,
+    "ast_hash": "c20138ee9221ce85b10e8facea802fc5",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/gate/run-detail.blade.php": {
+    "mtime": 1786375690.5019867,
+    "ast_hash": "6686af572f36a57f71918fb580620aad",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/gate/sync.blade.php": {
+    "mtime": 1786375690.503788,
+    "ast_hash": "2da7838a62b61e75b2bdfbc63d62ce27",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Auth/GateApplicationEntitlementTest.php": {
+    "mtime": 1786375690.505981,
+    "ast_hash": "1126b970c7a5d0b50b6bec58ac5eb1bd",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Auth/GateSsoAuthenticationTest.php": {
+    "mtime": 1786375690.5064318,
+    "ast_hash": "0b0c9a7ff9a7f4bee052e5108737b07b",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Gate/GateIdentityProjectionTest.php": {
+    "mtime": 1786375690.5080247,
+    "ast_hash": "3ffbec9900488be1ede7461604e1ba22",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Gate/GateMariaDBSyncConcurrencyTest.php": {
+    "mtime": 1786375690.5083687,
+    "ast_hash": "91f8765efee01f7a48c55d03ee1bae25",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Gate/GateReconciliationTest.php": {
+    "mtime": 1786375690.508694,
+    "ast_hash": "cbebcdea9dbe2c9e7a6731108e069c6d",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Gate/GateSyncApplyTest.php": {
+    "mtime": 1786375690.5090134,
+    "ast_hash": "67ce2536d51f67b40716d640d2d8ab99",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-4A.md": {
+    "mtime": 1786375690.1087923,
+    "ast_hash": "dfb22c3ecc1b79b826b2f91dd2f49531",
+    "semantic_hash": ""
+  },
+  "PROMPT-CLAUDE-OPUS-RESUME-PHASE-4A.md": {
+    "mtime": 1786375690.1136835,
+    "ast_hash": "06d9b43b4a1b2725bce8a59cb29a23bf",
+    "semantic_hash": ""
+  },
+  "docs/02-workflows/GATE-LOGIN-AND-ACCESS.md": {
+    "mtime": 1786375690.137701,
+    "ast_hash": "6035d6af859fc7873f5d75cd542a3f34",
+    "semantic_hash": ""
+  },
+  "docs/07-security/GATE-SSO-SECURITY.md": {
+    "mtime": 1786375690.1482587,
+    "ast_hash": "eee88d6afda402e71b3616cdf567e107",
+    "semantic_hash": ""
+  },
+  "docs/07-security/OPERATIONAL-DATA-SHARING.md": {
+    "mtime": 1786375690.1543477,
+    "ast_hash": "06d1dfe984801c3b5dac13a1d18b7899",
+    "semantic_hash": ""
+  },
+  "docs/08-api/ATTENDANCE-INTEGRATION-CONTRACT.md": {
+    "mtime": 1786375690.1609704,
+    "ast_hash": "4b155cb6246394cb4f5d0a9c7396c8d0",
+    "semantic_hash": ""
+  },
+  "docs/08-api/GATE-OIDC-CONTRACT.md": {
+    "mtime": 1786375690.1619012,
+    "ast_hash": "39f7d10505b1484090ce0d2206a305f6",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-3C2-CLOSURE.md": {
+    "mtime": 1786259952.0735316,
+    "ast_hash": "1f9a719aaa6b62e73a7fe1948d73c2ad",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-3C2-FINAL-CLOSURE.md": {
+    "mtime": 1786375690.1706467,
+    "ast_hash": "62f816eb43b0b9eaa551ca84842dcdfa",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4A-AUTH-PREFLIGHT.md": {
+    "mtime": 1786375690.1712053,
+    "ast_hash": "771a21f4a3a6b1bc9a464c3c5fbcc077",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4A-CLOSURE.md": {
+    "mtime": 1786375690.1719785,
+    "ast_hash": "3ef2a888df20f1fe334eddfcde5471ff",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4A-RESUME-STATE.md": {
+    "mtime": 1786375690.1732452,
+    "ast_hash": "76b5053096f2d0e647f8332f4e460191",
+    "semantic_hash": ""
+  },
+  "app/Services/Integration/HttpAttendanceSandboxIntegration.php": {
+    "mtime": 1786375690.130452,
+    "ast_hash": "1c1fc48aeeb3bf888bd5b69d830eaee8",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Integration/AttendanceSandboxIntegrationTest.php": {
+    "mtime": 1786375690.5100737,
+    "ast_hash": "8647b8b6ad2d21ed8696cba4b1ce2a75",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Integration/IntegrationOutboxFailureAndRetryTest.php": {
+    "mtime": 1786375690.514454,
+    "ast_hash": "0a7433aba9a35a635aad310d5063d7ce",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Patient/PatientNumberCollisionHardeningTest.php": {
+    "mtime": 1786375690.515562,
+    "ast_hash": "cc613783a5e80621da2c7a23a5fe5a2d",
+    "semantic_hash": ""
+  },
+  "tests/Feature/UAT/Phase4BEndToEndUatTest.php": {
+    "mtime": 1786375690.5181441,
+    "ast_hash": "61681b3580f263a15a0866547f6ea827",
+    "semantic_hash": ""
+  },
+  "tests/Feature/UAT/Phase4BRoleMatrixPrivacyUatTest.php": {
+    "mtime": 1786375690.5186396,
+    "ast_hash": "71ea8d164bf719ffe25be45e16a8d6c5",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-4B.md": {
+    "mtime": 1786375690.1101356,
+    "ast_hash": "5e0a19ac26ef6e7179bc1ad85347e118",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4A-FINAL-CLOSURE.md": {
+    "mtime": 1786375690.1722767,
+    "ast_hash": "76c6189df489713d587433161299833c",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4B-CLOSURE.md": {
+    "mtime": 1786375690.1739647,
+    "ast_hash": "a07c18194421625bb7235c8ded64d5eb",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4B-GATE-SSO-UAT.md": {
+    "mtime": 1786375690.1783676,
+    "ast_hash": "99136d8fa772f84800046f4058cabd5f",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4B-STAGING-PREFLIGHT.md": {
+    "mtime": 1786375690.1802783,
+    "ast_hash": "58457cf26b7e97b5e908c60b23c313c7",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4B-UAT-EVIDENCE.md": {
+    "mtime": 1786375690.180675,
+    "ast_hash": "76d59d9c4360854a773dfd5e44cba882",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-4C.md": {
+    "mtime": 1786375690.1108692,
+    "ast_hash": "9bb719b3555e91a5e2f78e6c1aad261e",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/INCIDENT-ROLLBACK-RUNBOOK.md": {
+    "mtime": 1786375690.1697874,
+    "ast_hash": "f5cd41a12a9fa152a6f5fbdec49133f6",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4B-FINAL-CLOSURE.md": {
+    "mtime": 1786375690.1752207,
+    "ast_hash": "2205289f25c979062f3de9673e7c7f1f",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4C-BACKUP-AND-ROLLBACK.md": {
+    "mtime": 1786375690.180968,
+    "ast_hash": "6bdd109f87d4e8f93d4cff9e2025962f",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4C-CLOSURE.md": {
+    "mtime": 1786375690.1812263,
+    "ast_hash": "c9903cf7b7e135af74bb7e8a7e8dfb1e",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4C-DEPLOYMENT-RUNBOOK.md": {
+    "mtime": 1786375690.1817029,
+    "ast_hash": "db01b9b87b70ae54a327d33bd551cada",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4C-PRODUCTION-PREFLIGHT.md": {
+    "mtime": 1786375690.1819718,
+    "ast_hash": "d37d8d373ce318315eb97c199e7228ca",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4C-PRODUCTION-UAT.md": {
+    "mtime": 1786375690.1823595,
+    "ast_hash": "1c1269a0bcc61e769142abfda9e92223",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PRODUCTION-GO-LIVE-CHECKLIST.md": {
+    "mtime": 1786375690.2001383,
+    "ast_hash": "f8a181dfffd05122de23c7f9b2f34ece",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-4C2-CUTOVER.md": {
+    "mtime": 1786375690.1118004,
+    "ast_hash": "c7a03936f19d31fbb3e410dede88fe98",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4C2-CUTOVER-EXECUTION.md": {
+    "mtime": 1786375690.183588,
+    "ast_hash": "d445b8c52fefe9253ac3f792899f8941",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4C2-FINAL-STATUS.md": {
+    "mtime": 1786375690.1842632,
+    "ast_hash": "79717a3768bc29e8d9e2e2f3e7dde61b",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4C2-POST-CUTOVER-UAT.md": {
+    "mtime": 1786375690.1847064,
+    "ast_hash": "469264c158d83d7e19834dce588e17f0",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Production/Phase4C2ProductionCutoverTest.php": {
+    "mtime": 1786375690.5166857,
+    "ast_hash": "04437108311ca4b89b8f0d2cf6e1a23b",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Auth/AuthenticationRuntimeAuditAndProtectionTest.php": {
+    "mtime": 1786462254.8163965,
+    "ast_hash": "861e4d8b94d38eba755f216b60c62576",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-CRITICAL-AUTH-RUNTIME-AUDIT-FIX.md": {
+    "mtime": 1786375690.1078768,
+    "ast_hash": "7fac9a81425f0df91ffaa7212f092f61",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PRODUCTION-AUTH-RUNTIME-INCIDENT.md": {
+    "mtime": 1786375690.1977677,
+    "ast_hash": "cacd0413843c6fa8b6cc80ca9903c117",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PRODUCTION-AUTH-RUNTIME-VERIFICATION.md": {
+    "mtime": 1786375690.1997697,
+    "ast_hash": "b708f103f2c867cb23990a6b25952273",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PRODUCTION-AUTH-HOTFIX-ROLLOUT.md": {
+    "mtime": 1786375690.113143,
+    "ast_hash": "3b49bc9ea88c8af2c8cf096ed3accb54",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PRODUCTION-AUTH-EXPOSURE-REVIEW.md": {
+    "mtime": 1786375690.1924865,
+    "ast_hash": "10a84d727d0adac16e54e921923e055c",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PRODUCTION-AUTH-HOTFIX-ROLLOUT.md": {
+    "mtime": 1786375690.1969817,
+    "ast_hash": "f5eeaadf6301b626703ae166ee5c0496",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PRODUCTION-AUTH-HOTFIX-VERIFICATION.md": {
+    "mtime": 1786375690.1974633,
+    "ast_hash": "e5e53bdb6a45a1df4d281f37203e2e01",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-4D.md": {
+    "mtime": 1786375690.1123888,
+    "ast_hash": "3df016566eefbb66e1cdc34e71595f17",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4D-CLOSURE.md": {
+    "mtime": 1786378035.1112664,
+    "ast_hash": "097b3bc1a64524f8c2c3e1f2ab0e0e12",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4D-OPERATIONAL-ACCEPTANCE.md": {
+    "mtime": 1786375690.1881487,
+    "ast_hash": "a4ce0d93ee510941d5c68fa6c0c02c9b",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4D-OPERATIONAL-UAT.md": {
+    "mtime": 1786375690.1884735,
+    "ast_hash": "1c742562fffcdcb15d1d0c6b718ec276",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4D-STABILIZATION-LOG.md": {
+    "mtime": 1786375690.1887538,
+    "ast_hash": "edec04dec7ab5c3069d9f88efb6d31dd",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/POSKESTREN-DAILY-OPERATIONS-SOP.md": {
+    "mtime": 1786375690.1889985,
+    "ast_hash": "badf4901cdeb88ed9c3b5ebf1631f2e0",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PRODUCTION-MONITORING-BASELINE.md": {
+    "mtime": 1786375690.201609,
+    "ast_hash": "7499c932d41dafebdbfa2e5187c2b036",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-4D2-EVIDENCE-VERIFICATION.md": {
+    "mtime": 1786377545.9702,
+    "ast_hash": "6cba02f0f63905b76772fdb52d5b2a40",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4D2-BACKUP-RESTORE-EVIDENCE.md": {
+    "mtime": 1786377994.5885558,
+    "ast_hash": "0bd1e847158463510b8dc5b2973126f8",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4D2-DATA-INTEGRITY-EVIDENCE.md": {
+    "mtime": 1786377988.513616,
+    "ast_hash": "140154888dd203552640b6843ebd838b",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4D2-EVIDENCE-REGISTER.md": {
+    "mtime": 1786461811.1666346,
+    "ast_hash": "e8b14376ddec12bc7e630f1a5c42eeaa",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4D2-FINAL-CLOSURE.md": {
+    "mtime": 1786378002.5880814,
+    "ast_hash": "bc9eefb0e38f452871a067fc91f89e3b",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4D2-STABILIZATION-EVIDENCE.md": {
+    "mtime": 1786461824.2768786,
+    "ast_hash": "3d52d60b31329cdfaaea39b2d1946cd9",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4D2-UAT-SIGNOFF.md": {
+    "mtime": 1786377980.4809487,
+    "ast_hash": "dc6ee42986a2b72c062db55810ea8438",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-4D2B-PRODUCTION-EVIDENCE-CHECKPOINTS.md": {
+    "mtime": 1786378668.3805227,
+    "ast_hash": "ad1c55f0a2380a6b71a4a43bdb8c1554",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-4D2C-T6H-ACTUAL-PRODUCTION.md": {
+    "mtime": 1786461626.0156138,
+    "ast_hash": "eefab8fee741b4ac078b2eff6ffbb46d",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-4D2B-PRODUCTION-SERVER-PROOF.md": {
+    "mtime": 1786461705.2166982,
+    "ast_hash": "337637c05eea1b6dfe564331d0644884",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-5A-UX-WORKFLOW.md": {
+    "mtime": 1786463272.1101565,
+    "ast_hash": "39d39a23ab70873f1a75642a0cee4f40",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5A-RESPONSIVE-ACCESSIBILITY-AUDIT.md": {
+    "mtime": 1786463488.8694134,
+    "ast_hash": "343d1d86e0443eb3ccd61a9a56b91a95",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5A-ROLE-NAVIGATION-MATRIX.md": {
+    "mtime": 1786463457.5864294,
+    "ast_hash": "0985399502a093fcf80088cb1ef56259",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5A-ROUTE-AND-SCREEN-INVENTORY.md": {
+    "mtime": 1786463447.976911,
+    "ast_hash": "7a9f9dcdd29edbc510f88f86fbae5aa7",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5A-UX-AUDIT.md": {
+    "mtime": 1786463469.8775122,
+    "ast_hash": "11ea75003b84076566bab25e45b8d52f",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5A-VISIT-WORKSPACE.md": {
+    "mtime": 1786463479.7016532,
+    "ast_hash": "72ee349e1a5fd84e3bf11ef0cf160e67",
+    "semantic_hash": ""
+  },
+  "docs/09-testing/PHASE-5A-UX-WORKFLOW-TEST-MATRIX.md": {
+    "mtime": 1786463496.7465274,
+    "ast_hash": "73c9055d1290a8278714fb966accb6c4",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/ENVIRONMENT-TRUTH-CORRECTION.md": {
+    "mtime": 1786463401.6674953,
+    "ast_hash": "5207eda78c7062ab82e4d9748ce7dafe",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-5A-CLOSURE.md": {
+    "mtime": 1786465354.7663186,
+    "ast_hash": "871c08c422db08deb631fbda6d09894f",
+    "semantic_hash": ""
+  },
+  "resources/views/components/patient-context-header.blade.php": {
+    "mtime": 1786465197.5316617,
+    "ast_hash": "bdb8ae53ebb92ca99c23be8fd8b4b45b",
+    "semantic_hash": ""
+  },
+  "resources/views/components/visit-stage-nav.blade.php": {
+    "mtime": 1786467276.2504854,
+    "ast_hash": "11282257f45a6af20edcc846d76739b5",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Ui/Phase5A1CoreWorkflowUxTest.php": {
+    "mtime": 1786465171.20073,
+    "ast_hash": "4b0f24317dd615b624a6b0e707357a08",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-5A1-EVIDENCE-BACKED-UX-IMPLEMENTATION.md": {
+    "mtime": 1786463887.9245305,
+    "ast_hash": "042bc4e8666794b1a2316e389ae6be60",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5A1-BEFORE-IMPLEMENTATION-AUDIT.md": {
+    "mtime": 1786465233.0028627,
+    "ast_hash": "bafb5c60c8f3d4c01f0cb31d11ce3a7f",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5A1-IMPLEMENTATION-EVIDENCE-REGISTER.md": {
+    "mtime": 1786465243.688782,
+    "ast_hash": "45870841cc9388fe24529a744dd43358",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5A1-MANUAL-UI-VERIFICATION.md": {
+    "mtime": 1786465254.4473944,
+    "ast_hash": "193cc2e0400bfbf8470582254c4b56eb",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-5A2-VISUAL-DIFF-ACCEPTANCE.md": {
+    "mtime": 1786465562.9459684,
+    "ast_hash": "7712c4f08854847d078b04cf1e53dfcb",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5A2-DIFF-HYGIENE-AUDIT.md": {
+    "mtime": 1786466343.2445357,
+    "ast_hash": "b7c50999cf4f023a1c0472c2da4f5cee",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5A2-VISUAL-VERIFICATION.md": {
+    "mtime": 1786466168.5459442,
+    "ast_hash": "236258e3e138cc6cad60a4da4b0119fc",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-5A2-FINAL-ACCEPTANCE.md": {
+    "mtime": 1786466179.5944328,
+    "ast_hash": "30d2d9c2505991c95ffd264d5aad7c05",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Ui/Phase5BClinicalWorkflowContinuityTest.php": {
+    "mtime": 1786552230.6655731,
+    "ast_hash": "5854416ab9b61e6e483283cc5073260c",
+    "semantic_hash": ""
+  },
+  "PROMPT-ANTIGRAVITY-PHASE-5B-CLINICAL-WORKFLOW-CONTINUITY.md": {
+    "mtime": 1786466960.2072735,
+    "ast_hash": "bf5f32d2961b1be9fdcd9a45ab3ca984",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5B-BEFORE-IMPLEMENTATION-AUDIT.md": {
+    "mtime": 1786467257.8535814,
+    "ast_hash": "5e8fa57d8a58ea06c5f905c99c808566",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5B-CONSULTATION-WORKSPACE.md": {
+    "mtime": 1786552329.5409966,
+    "ast_hash": "fcf84180083edb28db69b72d25983ee8",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5B-DISCHARGE-FOLLOWUP-WORKSPACE.md": {
+    "mtime": 1786552344.974592,
+    "ast_hash": "9036845c3ce51a4f773cfe4885a9ac19",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5B-OBSERVATION-WORKSPACE.md": {
+    "mtime": 1786552321.1729207,
+    "ast_hash": "59807e0f25877c963ceb3b340d64124d",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5B-PHARMACY-UX.md": {
+    "mtime": 1786552352.460195,
+    "ast_hash": "0ad8d892343c2ed432702af044660d74",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5B-REFERRAL-WORKSPACE.md": {
+    "mtime": 1786552337.1042264,
+    "ast_hash": "f4749706c6e82c798713e25f62ad7b97",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5B-ROLE-ACTION-MATRIX.md": {
+    "mtime": 1786552312.629424,
+    "ast_hash": "815e5a52907ad73bea46687a7aec3227",
+    "semantic_hash": ""
+  },
+  "docs/09-testing/PHASE-5B-TEST-MATRIX.md": {
+    "mtime": 1786552360.8799093,
+    "ast_hash": "da75899645c617b3a2d02dbc72b3f672",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-5B-CLOSURE.md": {
+    "mtime": 1786552369.2849262,
+    "ast_hash": "f054e1f66947ed18d6c0a3928c690f22",
+    "semantic_hash": ""
+  }
+}

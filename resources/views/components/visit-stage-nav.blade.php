@@ -3,10 +3,23 @@
 @php
     $hasVitals = $visit->vitalSigns->count() > 0 || $visit->latestVitalSign !== null;
     $hasAssessment = $visit->latestAssessment !== null || $visit->assessments->count() > 0;
+    $hasObservation = ($visit->activeObservationEpisode !== null) || ($visit->observationEpisodes->count() > 0);
     $hasMedication = $visit->medicationOrders->count() > 0;
     $hasConsultation = $visit->consultations->count() > 0;
     $hasReferral = ($visit->referrals->count() > 0) || ($visit->activeReferral !== null);
     $hasDischarge = $visit->discharge !== null || $visit->discharges->count() > 0;
+
+    $obsRoute = $visit->activeObservationEpisode
+        ? route('observations.show', $visit->activeObservationEpisode->id)
+        : ($visit->observationEpisodes->first() ? route('observations.show', $visit->observationEpisodes->first()->id) : route('observations.index'));
+
+    $consultRoute = $visit->consultations->first()
+        ? route('consultations.show', $visit->consultations->first()->id)
+        : route('visits.consultations.create', $visit->id);
+
+    $refRoute = $visit->activeReferral
+        ? route('referrals.show', $visit->activeReferral->id)
+        : ($visit->referrals->first() ? route('referrals.show', $visit->referrals->first()->id) : route('visits.referrals.create', $visit->id));
 
     $stages = [
         [
@@ -24,6 +37,13 @@
             'icon' => 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
         ],
         [
+            'id' => 'observations',
+            'name' => 'Ruang Observasi',
+            'route' => $obsRoute,
+            'completed' => $hasObservation,
+            'icon' => 'M15 12a3 3 0 11-6 0 3 3 0 016 0zM2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z',
+        ],
+        [
             'id' => 'medications',
             'name' => 'Resep & Obat',
             'route' => route('visits.medications.index', $visit->id),
@@ -33,14 +53,14 @@
         [
             'id' => 'consultations',
             'name' => 'Tele-Konsultasi',
-            'route' => route('visits.consultations.create', $visit->id),
+            'route' => $consultRoute,
             'completed' => $hasConsultation,
             'icon' => 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z',
         ],
         [
             'id' => 'referrals',
             'name' => 'Rujukan RS / Faskes',
-            'route' => route('visits.referrals.create', $visit->id),
+            'route' => $refRoute,
             'completed' => $hasReferral,
             'icon' => 'M13 5l7 7-7 7M5 5l7 7-7 7',
         ],
@@ -53,6 +73,7 @@
         ],
     ];
 @endphp
+
 
 <div class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-2 sm:p-3 shadow-xs mb-6 overflow-x-auto no-print">
     <nav class="flex items-center gap-2 min-w-max" aria-label="Tahapan Pelayanan Kunjungan">
