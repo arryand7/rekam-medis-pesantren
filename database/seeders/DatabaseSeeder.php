@@ -125,6 +125,14 @@ class DatabaseSeeder extends Seeder
             'review-referral-returns' => 'Telaah Medis Kepulangan Rujukan',
             'cancel-referrals' => 'Batalkan Rujukan Medis',
             'download-referral-documents' => 'Unduh Surat & Berkas Rujukan',
+
+            // Phase 5C Dashboard & Reporting Permissions
+            'view-clinical-dashboard' => 'Lihat Dashboard Klinis Poskestren',
+            'view-operational-dashboard' => 'Lihat Dashboard Operasional Asrama',
+            'view-management-dashboard' => 'Lihat Dashboard Manajemen Eksekutif',
+            'view-pharmacy-dashboard' => 'Lihat Dashboard Farmasi & Obat',
+            'view-health-reports' => 'Lihat Laporan Kesehatan & Sensus',
+            'export-health-reports' => 'Ekspor Laporan Kesehatan (CSV)',
         ];
 
         $createdPermissions = [];

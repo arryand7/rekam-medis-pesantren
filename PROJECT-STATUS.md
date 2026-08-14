@@ -3,26 +3,26 @@ id: DOC-PROJECT-STATUS
 title: "Status Proyek"
 status: active
 owner: "Ryand Arifriantoni"
-last_updated: 2026-08-13
+last_updated: 2026-08-14
 ---
 
 # Status Proyek
 
 ## Fase saat ini
 
-**Phase 5B2 Complete — Repository Hygiene Finalization, Referral Bug Fix, Complete Visual Smoke & Final Closure** (Status: `PHASE-5B-FINAL-COMPLETE` / v0.20.2)
+**Phase 5C Complete — Role-Aware Dashboards, Actionable Work Queues, Operational Reports & Streaming Export** (Status: `PHASE-5C-FINAL-COMPLETE` / v0.21.0)
 
-## Perubahan & Temuan di Phase 5B2
+## Perubahan & Temuan di Phase 5C
 
-- [x] **Pembersihan Prompt AI Transien (100%)**: 32 berkas `PROMPT-*.md` dihapus dari working tree dan git index (`PROMPT_FILES_RETAINED = 0`). Seluruh keputusan berharga diekstraksi ke `docs/`.
-- [x] **Penetapan Kebijakan Kebersihan Repositori (`docs/10-delivery/REPOSITORY-HYGIENE-POLICY.md`)**: Dokumen aturan kanonikal permanen tata kelola berkas git, aturan AI prompt, dan pemetaan dokumentasi.
-- [x] **Aturan AI Hygiene di `AGENTS.md`**: Menambahkan klausul permanen larangan commit file prompt transien dan penegakan kebersihan repositori.
-- [x] **Graphify Version Control Policy (`docs/12-graphify/GRAPHIFY-VERSION-CONTROL-POLICY.md`)**: Klasifikasi `KEEP-PARTIAL` — cache AST (147MB, 10.698 file) di-ignore, 27 output kanonikal & snapshots tetap di-track.
-- [x] **Eliminasi Berkas Obsolete**: `UPDATE-SUMMARY.md` dihapus (shadow copy dari canonical docs v2).
-- [x] **Perbaikan Defect Referral Create (`app/Http/Controllers/Referral/ReferralController.php`)**: Memperbaiki fatal error `Undefined variable $partners` dengan menginjeksi koleksi faskes mitra aktif ke view.
-- [x] **Verifikasi Visual End-to-End**: Browser automation smoke test pada seluruh viewport (375px, 768px, 1024px, 1440px) dan dark mode untuk semua modul Phase 5B (`docs/05-ui/PHASE-5B2-FINAL-VISUAL-SMOKE.md`).
-- [x] **Verifikasi Privasi Peran Operasional & Admin Teknis**: Pembuktian visual di browser bahwa pengasuh asrama (`musyrif@sabira.test`) hanya melihat data operasional minimum (tanpa diagnosis, SOAP, obat, vital signs) dan akses klinis langsung diblokir dengan 403 Forbidden. Admin sistem (`admin@poskestren.sabira.test`) terisolasi dari menu klinis.
-- [x] **Automated Regression Suite**: Penambahan test case referral create view (`tests/Feature/Referral/ReferralCreationTest.php`), total test meningkat menjadi 225 tests / 936 assertions (100% PASS).
+- [x] **Dedicated Query Layer**: Implementasi query agregasi dan statistik terpisah (`app/Queries/Dashboard/ClinicalDashboardQuery.php`, `OperationalDashboardQuery.php`, `PharmacyDashboardQuery.php`, `ManagementDashboardQuery.php`).
+- [x] **Dashboard Klinis & 5 Work Queues**: Kokpit klinis interaktif dengan 6 metrik KPI dan 5 antrean kerja (*Waiting Assessment, Active Observation, Consultations Advice Pending, Referral Follow-Up, Due Follow-Ups*).
+- [x] **Dashboard Farmasi & FEFO Watchdog**: Pemantauan masa kedaluwarsa batch (&le; 30 hari), batch habis, obat stok menipis, dan cuplikan 15 mutasi buku besar farmasi (*append-only*).
+- [x] **Dashboard Operasional Asrama & Guru (Privacy-Preserving)**: Tampilan pembatasan aktivitas fisik/olahraga santri dan anjuran istirahat sesuai prinsip *Minimum Necessary* (tanpa diagnosis/SOAP).
+- [x] **Dashboard Manajemen Eksekutif**: Filter toolbar rentang tanggal (*Presets + Custom Range*), perbandingan periode sebelumnya (*Zero-division safe*), visualisasi tren volume kunjungan aksesibel, dan jaminan privasi statistik agregat.
+- [x] **Pusat Laporan & Streaming Ekspor CSV**: 6 modul laporan sensus dengan paginasi, filter rentang tanggal, strip KPI ringkasan, dan response streaming ekspor CSV berstandar Excel UTF-8 BOM lengkap dengan audit metadata header.
+- [x] **Otorisasi & Keamanan**: Penegakan policy gate server-side (`viewPharmacy`, `viewManagement`, `exportHealthReports`), audit logging pada aksi ekspor data medis, serta pengujian authorization matrix.
+- [x] **Verifikasi Visual Multi-Viewport & Dark Mode**: Bukti visual tangkapan layar Desktop (1280x800), Mobile (390x844), serta tema Light & Dark untuk seluruh modul dashboard dan laporan.
+- [x] **Zero Regression Automated Test Suite**: Penambahan 8 feature test baru (`tests/Feature/Ui/Phase5CDashboardReportingTest.php`), total test suite meningkat menjadi **233 tests / 976 assertions (100% PASS)**.
 
 ## Kemajuan Phase
 
@@ -36,7 +36,7 @@ last_updated: 2026-08-13
 - [x] **Phase 3A — External Clinical Consultation and Healthcare Partner Integration**: Selesai.
 - [x] **Phase 3B — Actual Referral Execution, Transportation, Clinical Handover & Hardening**: Selesai & Tervalidasi di MariaDB.
 - [x] **Phase 3C1 — Visit Discharge, Follow-up, Return-to-Activity, and Operational Handoff**: Selesai & Tervalidasi.
-- [x] **Phase 3C2 — Operational Outbox, Role-Aware Dashboards & Reporting Foundation**: Selesai & Tervalidasi (Fase 3 Lengkap).
+- [x] **Phase 3C2 — Operational Outbox, Role-Aware Dashboards & Reporting Foundation**: Selesai & Tervalidasi.
 - [x] **Phase 4A — Real Gate SSO, Secure Sync Apply, Application Entitlement & Identity Hardening**: Selesai & Tervalidasi.
 - [x] **Phase 4B — Staging Integration, End-to-End UAT, Gate SSO Activation & Attendance Sandbox**: Selesai & Tervalidasi.
 - [x] **Phase 4C — Deployment Hardening, Controlled Cutover, Rollback & Go-Live Validation**: Selesai (Rehearsal Pre-Production Validated).
@@ -48,12 +48,13 @@ last_updated: 2026-08-13
 - [x] **Phase 5B — Clinical Workflow Continuity & Clinical Workspace Polish**: Selesai (`PHASE-5B-ACCEPTED`, v0.20.0 Baseline).
 - [x] **Phase 5B1 — Final Verification, Test Portability, Browser Acceptance & Repository Hygiene**: Selesai (`PHASE-5B-COMPLETE`, v0.20.1).
 - [x] **Phase 5B2 — Repository Hygiene Finalization, Bug Fix & Final Closure**: Selesai (`PHASE-5B-FINAL-COMPLETE`, v0.20.2).
+- [x] **Phase 5C — Role-Aware Dashboards, Actionable Work Queues, Operational Reports & Streaming Export**: Selesai (`PHASE-5C-FINAL-COMPLETE`, v0.21.0).
 
 ## Current Environment & Readiness State
 
 ```text
 Application Development:          ACTIVE
-Current Functional Version:       0.20.2 (Phase 5B2 Final Closure & Repository Hygiene Acceptance)
+Current Functional Version:       0.21.0 (Phase 5C Dashboards, Work Queues & Operational Reports Complete)
 Environment:                      LOCAL-DEVELOPMENT (macOS Developer Workstation)
 Deployment Status:                NOT_DEPLOYED (Belum pernah dideploy ke server fisik)
 Production Host Status:           NOT_STARTED
@@ -67,11 +68,9 @@ Attendance Sandbox Validation:    LOCAL_SIMULATION_VALIDATED
 
 - Tanggal: 2026-08-14
 - Database: MariaDB 10.4.28 (`poskestren_sabira`, InnoDB, REPEATABLE-READ)
-- Test Suite: 225 tests, 936 assertions (100% Passed, 0 Skipped, 0 Failed)
+- Test Suite: 233 tests, 976 assertions (100% Passed, 0 Skipped, 0 Failed)
 - Code Formatter: Pint Passed
-- Static Analysis: PHPStan Level 5 Passed (0 errors)
-- Frontend: Vite Build Passed (8.45s)
+- Static Analysis: PHPStan Passed (0 errors)
+- Frontend: Vite Build Passed (877ms)
 - git diff --check: PASSED
-- Status Rilis: LOCAL DEVELOPMENT — PHASE-5B-FINAL-COMPLETE
-
-
+- Status Rilis: LOCAL DEVELOPMENT — PHASE-5C-FINAL-COMPLETE

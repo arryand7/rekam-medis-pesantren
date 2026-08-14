@@ -15,6 +15,36 @@ Semua perubahan penting proyek dicatat di file ini.
 > Istilah *production* pada dokumen historis sebelum koreksi ini merujuk pada
 > *rehearsal / readiness validation*, bukan deployment server production fisik aktual.
 
+## [0.21.0] — 2026-08-14 (Phase 5C Role-Aware Dashboards, Actionable Work Queues & Operational Reports)
+
+### Added
+
+- **Dedicated Dashboard Query Layer (`app/Queries/Dashboard/`)**:
+  - `ClinicalDashboardQuery.php`: Mengagregasi metrik klinis harian dan 5 antrean kerja (*Waiting Assessment, Active Observations, Consultations Advice Pending Decision, Referral Follow-Up, Due Follow-Ups*).
+  - `OperationalDashboardQuery.php`: Menyajikan data pembatasan aktivitas fisik/santri dan serah terima instruksi perawatan dengan prinsip *Minimum Necessary*.
+  - `PharmacyDashboardQuery.php`: Memantau status batch FEFO, near-expiry (&le; 30 hari), batch habis, stok obat menipis, dan riwayat buku besar mutasi.
+  - `ManagementDashboardQuery.php`: Menyajikan agregat statistik eksekutif, perbandingan proporsional periode sebelumnya (*Zero-division safe*), dan tren volume layanan poskestren.
+- **Role-Aware Dashboards & Blade Views (`resources/views/pages/dashboards/`)**:
+  - `dashboards/clinical.blade.php`: Kokpit klinis tenaga medis dengan 5 antrean kerja dan tombol aksi langsung.
+  - `dashboards/operational.blade.php`: Dashboard pengasuh asrama dan guru yang aman privasi.
+  - `dashboards/pharmacy.blade.php`: Dashboard farmasi dan inventaris obat FEFO.
+  - `dashboards/management.blade.php`: Dashboard manajerial dengan visualisasi tren grafik batang aksesibel.
+- **Pusat Laporan & Streaming Ekspor CSV (`app/Services/Reporting/HealthReportService.php`, `app/Http/Controllers/Reporting/HealthReportController.php`)**:
+  - 6 modul laporan sensus (*visit_census, observation_census, referral_census, discharge_followup, pharmacy_stock, integration_delivery*).
+  - Streaming ekspor CSV (`exportCsv`) dengan Excel UTF-8 BOM (`\xEF\xBB\xBF`), header metadata audit, pemrosesan bertahap (*chunked*), dan pencatatan audit log server-side.
+- **Feature Test Suite (`tests/Feature/Ui/Phase5CDashboardReportingTest.php`)**:
+  - 8 test case komprehensif menguji rendering dashboard, validasi privasi, keamanan zero-division, paginasi laporan sensus, streaming CSV, dan proteksi otorisasi.
+- **Dokumentasi Phase 5C**:
+  - `docs/05-ui/PHASE-5C-DASHBOARDS-AND-REPORTING-GUIDE.md`: Panduan UI & arsitektur dashboard dan laporan.
+  - `docs/09-testing/PHASE-5C-VERIFICATION-REPORT.md`: Laporan verifikasi pengujian dan visual.
+  - `docs/10-delivery/PHASE-5C-FINAL-CLOSURE.md`: Penutupan resmi dan matriks penelusuran Phase 5C.
+
+### Verified (Phase 5C)
+
+- **Automated Test Suite**: 233 tests / 976 assertions (100% Passed, zero regressions across all Phase 1 - 5B modules).
+- **Quality Gates**: Pint Code Formatter Passed, PHPStan Static Analysis Passed (0 errors), Vite Build Passed (877ms).
+- **Multi-Viewport & Theme Acceptance**: Desktop (1280x800), Mobile (390x844), Light & Dark mode visual verification passed.
+
 ## [0.20.2] — 2026-08-13 (Phase 5B2 Final Repository Cleanup & Referral Bug Fix)
 
 ### Added

@@ -8,6 +8,7 @@ use App\Services\AuditLogService;
 use App\Services\Reporting\HealthReportService;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class HealthReportController extends Controller
 {
@@ -26,7 +27,7 @@ class HealthReportController extends Controller
     {
         $this->authorize('view-health-reports');
 
-        $reportType = $request->input('report_type');
+        $reportType = (string) $request->input('report_type', 'visit_census');
         $filters = $request->validated();
         $perPage = (int) ($request->input('per_page', 20));
 
@@ -38,6 +39,8 @@ class HealthReportController extends Controller
             'integration_delivery' => $this->reportService->getIntegrationDeliveryReport($filters, $perPage),
             default => $this->reportService->getVisitCensus($filters, $perPage),
         };
+
+        $summary = $this->reportService->getReportSummary($reportType, $filters);
 
         $actor = $request->user();
         $actorName = $actor !== null ? $actor->name : 'Sistem';
@@ -52,6 +55,29 @@ class HealthReportController extends Controller
             reason: 'Laporan kesehatan '.$reportType.' dilihat oleh '.$actorName
         );
 
-        return view('pages.reports.show', compact('reportType', 'data', 'filters'));
+        return view('pages.reports.show', compact('reportType', 'data', 'summary', 'filters'));
+    }
+
+    public function export(Request $request): StreamedResponse
+    {
+        $this->authorize('export-health-reports');
+
+        $reportType = (string) $request->input('report_type', 'visit_census');
+        $filters = $request->all();
+
+        $actor = $request->user();
+        $actorName = $actor !== null ? $actor->name : 'Sistem';
+
+        // Audit report export
+        AuditLogService::log(
+            action: 'health_report.exported',
+            subjectType: 'HealthReport',
+            subjectId: null,
+            before: null,
+            after: ['report_type' => $reportType, 'filters' => $filters],
+            reason: 'Laporan kesehatan '.$reportType.' diekspor ke CSV oleh '.$actorName
+        );
+
+        return $this->reportService->exportCsv($reportType, $filters, $actor);
     }
 }

@@ -265,8 +265,8 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1785875920.0,
-    "ast_hash": "0a88bc12e753c4aee207717c598cca2e",
+    "mtime": 1786641307.487339,
+    "ast_hash": "1a8de5ea0c444a4259f094a8f0c7654a",
     "semantic_hash": ""
   },
   "AI-FIRST-RUN-PROMPT.md": {
@@ -280,8 +280,8 @@
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1786610110.598729,
-    "ast_hash": "cc75a6d11f57bdf93b3fb36965fb25d2",
+    "mtime": 1786637879.415796,
+    "ast_hash": "4e62e6241f0837d2787726f8fe2ba869",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -295,23 +295,13 @@
     "semantic_hash": ""
   },
   "PROJECT-STATUS.md": {
-    "mtime": 1786610204.4960241,
-    "ast_hash": "dead8589d1b3c5f96db55f6b08ba020a",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-0.md": {
-    "mtime": 1786259023.249352,
-    "ast_hash": "f2ecc05652973d1760311fa0cc0997f1",
+    "mtime": 1786641419.7329068,
+    "ast_hash": "6bd466052e45e817bdc94fa160ce4ce0",
     "semantic_hash": ""
   },
   "README.md": {
     "mtime": 1785875920.0,
     "ast_hash": "3cdc2ab67ec9a93b5a990e1fa4e01a45",
-    "semantic_hash": ""
-  },
-  "UPDATE-SUMMARY.md": {
-    "mtime": 1785875920.0,
-    "ast_hash": "82f10b4d73f16c46f8c0a473f4a1b1b4",
     "semantic_hash": ""
   },
   "docs/00-project/GLOSSARY.md": {
@@ -690,8 +680,8 @@
     "semantic_hash": ""
   },
   "docs/10-delivery/GRAPHIFY-BASELINE-REVIEW.md": {
-    "mtime": 1785915403.689657,
-    "ast_hash": "9dfa2c21c1481848174ddca5b119c693",
+    "mtime": 1786641375.2558906,
+    "ast_hash": "a03a1a4f19d3d8e6997f3fe527e02370",
     "semantic_hash": ""
   },
   "docs/10-delivery/IMPLEMENTATION-PLAN.md": {
@@ -765,8 +755,8 @@
     "semantic_hash": ""
   },
   "docs/12-graphify/DOCUMENT-CODE-MAPPING.md": {
-    "mtime": 1786610291.6752586,
-    "ast_hash": "41f509cc617c6da8a5c30e8a78dcbb04",
+    "mtime": 1786641431.532438,
+    "ast_hash": "4c14c4ba1390cac58676ffe9cb89e5ea",
     "semantic_hash": ""
   },
   "docs/12-graphify/GRAPH-NAMING-CONVENTIONS.md": {
@@ -805,8 +795,8 @@
     "semantic_hash": ""
   },
   "plans/KNOWN-ISSUES.md": {
-    "mtime": 1786610226.1745574,
-    "ast_hash": "daad58b155819509b05c60ca835fe543",
+    "mtime": 1786641440.471664,
+    "ast_hash": "7c50d5319a2d0efe45f2a2bc3936f390",
     "semantic_hash": ""
   },
   "public/robots.txt": {
@@ -835,8 +825,8 @@
     "semantic_hash": ""
   },
   "app/Http/Controllers/Referral/ReferralController.php": {
-    "mtime": 1786006269.0068426,
-    "ast_hash": "07d6f4643ed6fa4d9688af4d1c677a8b",
+    "mtime": 1786637561.8725405,
+    "ast_hash": "ce91814b04cdf3a67809f96b3ffc6bca",
     "semantic_hash": ""
   },
   "app/Http/Controllers/Referral/ReferralDepartureController.php": {
@@ -1730,8 +1720,8 @@
     "semantic_hash": ""
   },
   "tests/Feature/Referral/ReferralCreationTest.php": {
-    "mtime": 1785924783.764708,
-    "ast_hash": "c2b2456e69824a21092d04220e131d60",
+    "mtime": 1786641346.6567376,
+    "ast_hash": "0f0e1997687c10d9e4e2ccf83124a217",
     "semantic_hash": ""
   },
   "tests/Feature/Referral/ReferralDocumentTest.php": {
@@ -1767,61 +1757,6 @@
   "tests/scripts/concurrency-referral-test.sh": {
     "mtime": 1786255170.5043774,
     "ast_hash": "e2d781bfbcf848044ca2c6e4c91c4a28",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-1.md": {
-    "mtime": 1786259023.2498367,
-    "ast_hash": "a3f1ca347090a6010d712143aa97fafc",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-2A.md": {
-    "mtime": 1786259023.251108,
-    "ast_hash": "1f7d272cf873390113008ba1e4a9ba01",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-2B.md": {
-    "mtime": 1786259023.2518923,
-    "ast_hash": "3b7b75de7bdb913473c3a895cd6aec43",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-2C.md": {
-    "mtime": 1786259023.252439,
-    "ast_hash": "fbae59ee7f59b0d308d575c5b14ddde1",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-2D1.md": {
-    "mtime": 1786259023.2529845,
-    "ast_hash": "5269238ef3ea46f5d2dd0e9a4f275394",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-2D2.md": {
-    "mtime": 1786259023.253931,
-    "ast_hash": "3d3e9743748cd0d4d1eb2579b092e0fe",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-3A.md": {
-    "mtime": 1786259023.2549212,
-    "ast_hash": "e40b807350a31380b2a0ccab441a6d13",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-3B-FINAL-VALIDATION.md": {
-    "mtime": 1786259023.2556558,
-    "ast_hash": "dfd8ddf90187eeddbc5d8973a590a1b2",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-3B-HARDENING.md": {
-    "mtime": 1786259023.2560806,
-    "ast_hash": "d1bd573cf88a106579dc833abf79c06f",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-3B.md": {
-    "mtime": 1786259023.256572,
-    "ast_hash": "da1b7c59ba47e4bc267841c95226410a",
-    "semantic_hash": ""
-  },
-  "PROMPT-CLAUDE-RESUME-PHASE-3B.md": {
-    "mtime": 1786259023.257719,
-    "ast_hash": "79e5a4ce6393f825c41b26e40036c15d",
     "semantic_hash": ""
   },
   "docs/10-delivery/PHASE-0-CLOSURE.md": {
@@ -2082,11 +2017,6 @@
   "tests/Feature/Discharge/VisitFollowUpPlanTest.php": {
     "mtime": 1786257612.849837,
     "ast_hash": "43dc1ea66e07d186c19058b85526faae",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-3C1.md": {
-    "mtime": 1786259023.257306,
-    "ast_hash": "91caf57d35b2d774fbe3ccde592edde8",
     "semantic_hash": ""
   },
   "docs/10-delivery/PHASE-3B-FINAL-CLOSURE.md": {
@@ -2384,11 +2314,6 @@
     "ast_hash": "f2f754c476d8f00acb961dce654b2dfe",
     "semantic_hash": ""
   },
-  "PROMPT-ANTIGRAVITY-PHASE-3C2.md": {
-    "mtime": 1786258707.6535943,
-    "ast_hash": "712842438f8de93ce002aa0ecd3d708a",
-    "semantic_hash": ""
-  },
   "docs/10-delivery/PHASE-3C1-CLOSURE.md": {
     "mtime": 1786257943.3963182,
     "ast_hash": "4384d24febb950297c5e6b77fbfe1fc0",
@@ -2584,16 +2509,6 @@
     "ast_hash": "67ce2536d51f67b40716d640d2d8ab99",
     "semantic_hash": ""
   },
-  "PROMPT-ANTIGRAVITY-PHASE-4A.md": {
-    "mtime": 1786375690.1087923,
-    "ast_hash": "dfb22c3ecc1b79b826b2f91dd2f49531",
-    "semantic_hash": ""
-  },
-  "PROMPT-CLAUDE-OPUS-RESUME-PHASE-4A.md": {
-    "mtime": 1786375690.1136835,
-    "ast_hash": "06d9b43b4a1b2725bce8a59cb29a23bf",
-    "semantic_hash": ""
-  },
   "docs/02-workflows/GATE-LOGIN-AND-ACCESS.md": {
     "mtime": 1786375690.137701,
     "ast_hash": "6035d6af859fc7873f5d75cd542a3f34",
@@ -2674,11 +2589,6 @@
     "ast_hash": "71ea8d164bf719ffe25be45e16a8d6c5",
     "semantic_hash": ""
   },
-  "PROMPT-ANTIGRAVITY-PHASE-4B.md": {
-    "mtime": 1786375690.1101356,
-    "ast_hash": "5e0a19ac26ef6e7179bc1ad85347e118",
-    "semantic_hash": ""
-  },
   "docs/10-delivery/PHASE-4A-FINAL-CLOSURE.md": {
     "mtime": 1786375690.1722767,
     "ast_hash": "76c6189df489713d587433161299833c",
@@ -2702,11 +2612,6 @@
   "docs/10-delivery/PHASE-4B-UAT-EVIDENCE.md": {
     "mtime": 1786375690.180675,
     "ast_hash": "76d59d9c4360854a773dfd5e44cba882",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-4C.md": {
-    "mtime": 1786375690.1108692,
-    "ast_hash": "9bb719b3555e91a5e2f78e6c1aad261e",
     "semantic_hash": ""
   },
   "docs/10-delivery/INCIDENT-ROLLBACK-RUNBOOK.md": {
@@ -2749,11 +2654,6 @@
     "ast_hash": "f8a181dfffd05122de23c7f9b2f34ece",
     "semantic_hash": ""
   },
-  "PROMPT-ANTIGRAVITY-PHASE-4C2-CUTOVER.md": {
-    "mtime": 1786375690.1118004,
-    "ast_hash": "c7a03936f19d31fbb3e410dede88fe98",
-    "semantic_hash": ""
-  },
   "docs/10-delivery/PHASE-4C2-CUTOVER-EXECUTION.md": {
     "mtime": 1786375690.183588,
     "ast_hash": "d445b8c52fefe9253ac3f792899f8941",
@@ -2779,11 +2679,6 @@
     "ast_hash": "861e4d8b94d38eba755f216b60c62576",
     "semantic_hash": ""
   },
-  "PROMPT-ANTIGRAVITY-CRITICAL-AUTH-RUNTIME-AUDIT-FIX.md": {
-    "mtime": 1786375690.1078768,
-    "ast_hash": "7fac9a81425f0df91ffaa7212f092f61",
-    "semantic_hash": ""
-  },
   "docs/10-delivery/PRODUCTION-AUTH-RUNTIME-INCIDENT.md": {
     "mtime": 1786375690.1977677,
     "ast_hash": "cacd0413843c6fa8b6cc80ca9903c117",
@@ -2792,11 +2687,6 @@
   "docs/10-delivery/PRODUCTION-AUTH-RUNTIME-VERIFICATION.md": {
     "mtime": 1786375690.1997697,
     "ast_hash": "b708f103f2c867cb23990a6b25952273",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PRODUCTION-AUTH-HOTFIX-ROLLOUT.md": {
-    "mtime": 1786375690.113143,
-    "ast_hash": "3b49bc9ea88c8af2c8cf096ed3accb54",
     "semantic_hash": ""
   },
   "docs/10-delivery/PRODUCTION-AUTH-EXPOSURE-REVIEW.md": {
@@ -2812,11 +2702,6 @@
   "docs/10-delivery/PRODUCTION-AUTH-HOTFIX-VERIFICATION.md": {
     "mtime": 1786375690.1974633,
     "ast_hash": "e5e53bdb6a45a1df4d281f37203e2e01",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-4D.md": {
-    "mtime": 1786375690.1123888,
-    "ast_hash": "3df016566eefbb66e1cdc34e71595f17",
     "semantic_hash": ""
   },
   "docs/10-delivery/PHASE-4D-CLOSURE.md": {
@@ -2849,11 +2734,6 @@
     "ast_hash": "7499c932d41dafebdbfa2e5187c2b036",
     "semantic_hash": ""
   },
-  "PROMPT-ANTIGRAVITY-PHASE-4D2-EVIDENCE-VERIFICATION.md": {
-    "mtime": 1786377545.9702,
-    "ast_hash": "6cba02f0f63905b76772fdb52d5b2a40",
-    "semantic_hash": ""
-  },
   "docs/10-delivery/PHASE-4D2-BACKUP-RESTORE-EVIDENCE.md": {
     "mtime": 1786377994.5885558,
     "ast_hash": "0bd1e847158463510b8dc5b2973126f8",
@@ -2884,24 +2764,9 @@
     "ast_hash": "dc6ee42986a2b72c062db55810ea8438",
     "semantic_hash": ""
   },
-  "PROMPT-ANTIGRAVITY-PHASE-4D2B-PRODUCTION-EVIDENCE-CHECKPOINTS.md": {
-    "mtime": 1786378668.3805227,
-    "ast_hash": "ad1c55f0a2380a6b71a4a43bdb8c1554",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-4D2C-T6H-ACTUAL-PRODUCTION.md": {
-    "mtime": 1786461626.0156138,
-    "ast_hash": "eefab8fee741b4ac078b2eff6ffbb46d",
-    "semantic_hash": ""
-  },
   "docs/10-delivery/PHASE-4D2B-PRODUCTION-SERVER-PROOF.md": {
     "mtime": 1786461705.2166982,
     "ast_hash": "337637c05eea1b6dfe564331d0644884",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-5A-UX-WORKFLOW.md": {
-    "mtime": 1786463272.1101565,
-    "ast_hash": "39d39a23ab70873f1a75642a0cee4f40",
     "semantic_hash": ""
   },
   "docs/05-ui/PHASE-5A-RESPONSIVE-ACCESSIBILITY-AUDIT.md": {
@@ -2959,11 +2824,6 @@
     "ast_hash": "4b0f24317dd615b624a6b0e707357a08",
     "semantic_hash": ""
   },
-  "PROMPT-ANTIGRAVITY-PHASE-5A1-EVIDENCE-BACKED-UX-IMPLEMENTATION.md": {
-    "mtime": 1786463887.9245305,
-    "ast_hash": "042bc4e8666794b1a2316e389ae6be60",
-    "semantic_hash": ""
-  },
   "docs/05-ui/PHASE-5A1-BEFORE-IMPLEMENTATION-AUDIT.md": {
     "mtime": 1786465233.0028627,
     "ast_hash": "bafb5c60c8f3d4c01f0cb31d11ce3a7f",
@@ -2977,11 +2837,6 @@
   "docs/05-ui/PHASE-5A1-MANUAL-UI-VERIFICATION.md": {
     "mtime": 1786465254.4473944,
     "ast_hash": "193cc2e0400bfbf8470582254c4b56eb",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-5A2-VISUAL-DIFF-ACCEPTANCE.md": {
-    "mtime": 1786465562.9459684,
-    "ast_hash": "7712c4f08854847d078b04cf1e53dfcb",
     "semantic_hash": ""
   },
   "docs/05-ui/PHASE-5A2-DIFF-HYGIENE-AUDIT.md": {
@@ -3002,11 +2857,6 @@
   "tests/Feature/Ui/Phase5BClinicalWorkflowContinuityTest.php": {
     "mtime": 1786609867.0521142,
     "ast_hash": "0222b605b1c75ec717f3e35ae829d645",
-    "semantic_hash": ""
-  },
-  "PROMPT-ANTIGRAVITY-PHASE-5B-CLINICAL-WORKFLOW-CONTINUITY.md": {
-    "mtime": 1786466960.2072735,
-    "ast_hash": "bf5f32d2961b1be9fdcd9a45ab3ca984",
     "semantic_hash": ""
   },
   "docs/05-ui/PHASE-5B-BEFORE-IMPLEMENTATION-AUDIT.md": {
@@ -3059,11 +2909,6 @@
     "ast_hash": "6bad06f62b76dc6e67b8343f201292e5",
     "semantic_hash": ""
   },
-  "PROMPT-ANTIGRAVITY-PHASE-5B1-FINAL-VERIFICATION-REPOSITORY-HYGIENE.md": {
-    "mtime": 1786597779.9733126,
-    "ast_hash": "3313087c6cf9a2e54817b6ccd5a2343a",
-    "semantic_hash": ""
-  },
   "docs/05-ui/PHASE-5B1-VISUAL-VERIFICATION.md": {
     "mtime": 1786610003.7384534,
     "ast_hash": "87a135c8a51bac6e3093924136c49f99",
@@ -3075,13 +2920,38 @@
     "semantic_hash": ""
   },
   "docs/10-delivery/PHASE-5B1-FINAL-CLOSURE.md": {
-    "mtime": 1786610078.2798944,
-    "ast_hash": "818a06145765758f1cfc221342a4e3e6",
+    "mtime": 1786636074.313068,
+    "ast_hash": "f2252c0e0c0f524b26da91b246da3cb2",
     "semantic_hash": ""
   },
   "docs/10-delivery/REPOSITORY-HYGIENE-AUDIT.md": {
-    "mtime": 1786610041.718803,
-    "ast_hash": "9415c7bed2778b098e19fe7d6e030775",
+    "mtime": 1786636063.7155223,
+    "ast_hash": "c9d7ea10d381ef8020a7a70c7a649998",
+    "semantic_hash": ""
+  },
+  "docs/05-ui/PHASE-5B2-FINAL-VISUAL-SMOKE.md": {
+    "mtime": 1786641365.34367,
+    "ast_hash": "9eab142e9e02fd1f4cc33ced06945202",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-5B2-FINAL-CLOSURE.md": {
+    "mtime": 1786641403.2073746,
+    "ast_hash": "eaa1e5e37184668e6cb74d04af641e9b",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-5B2-PROMPT-CLEANUP-AUDIT.md": {
+    "mtime": 1786641393.102574,
+    "ast_hash": "1203885ee6b1ec14bfda61ea37ac4f06",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/REPOSITORY-HYGIENE-POLICY.md": {
+    "mtime": 1786641296.026693,
+    "ast_hash": "16560bb58ae172004b96ba2c53d22131",
+    "semantic_hash": ""
+  },
+  "docs/12-graphify/GRAPHIFY-VERSION-CONTROL-POLICY.md": {
+    "mtime": 1786636124.8052566,
+    "ast_hash": "a8fbf4634839364ca195f5613f1e9530",
     "semantic_hash": ""
   }
 }

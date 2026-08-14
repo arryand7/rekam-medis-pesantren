@@ -163,10 +163,18 @@
                 @endcanany
 
                 {{-- Farmasi Section --}}
-                @canany(['manage-medicines', 'view-pharmacy-inventory'])
+                @canany(['manage-medicines', 'view-pharmacy-inventory', 'view-pharmacy-dashboard'])
                     <div class="pt-3 border-t border-[var(--border)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--foreground-muted)]">
                         Farmasi & Obat
                     </div>
+
+                    @canany(['view-pharmacy-dashboard', 'view-pharmacy-inventory'])
+                        <a href="{{ route('dashboards.pharmacy') }}"
+                           class="flex items-center gap-3 px-3 py-2 text-xs font-medium rounded-xl transition-colors {{ request()->routeIs('dashboards.pharmacy') ? 'bg-[var(--primary)] text-white' : 'text-[var(--foreground-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]' }}">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                            <span>Dashboard Farmasi</span>
+                        </a>
+                    @endcanany
 
                     @can('manage-medicines')
                         <a href="{{ route('pharmacy.medicines.index') }}"
@@ -208,18 +216,28 @@
                     @endcan
                 @endcanany
 
-                {{-- Laporan Section --}}
-                @can('view-reports')
+                {{-- Laporan & Eksekutif Section --}}
+                @canany(['view-reports', 'view-health-reports', 'view-management-dashboard'])
                     <div class="pt-3 border-t border-[var(--border)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--foreground-muted)]">
-                        Laporan & Statistik
+                        Laporan & Manajemen
                     </div>
 
-                    <a href="{{ route('reports.index') }}"
-                       class="flex items-center gap-3 px-3 py-2 text-xs font-medium rounded-xl transition-colors {{ request()->routeIs('reports.*') ? 'bg-[var(--primary)] text-white' : 'text-[var(--foreground-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]' }}">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
-                        <span>Laporan Kesehatan</span>
-                    </a>
-                @endcan
+                    @can('view-management-dashboard')
+                        <a href="{{ route('dashboards.management') }}"
+                           class="flex items-center gap-3 px-3 py-2 text-xs font-medium rounded-xl transition-colors {{ request()->routeIs('dashboards.management') ? 'bg-[var(--primary)] text-white' : 'text-[var(--foreground-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]' }}">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>
+                            <span>Dashboard Manajemen</span>
+                        </a>
+                    @endcan
+
+                    @canany(['view-reports', 'view-health-reports'])
+                        <a href="{{ route('reports.index') }}"
+                           class="flex items-center gap-3 px-3 py-2 text-xs font-medium rounded-xl transition-colors {{ request()->routeIs('reports.*') ? 'bg-[var(--primary)] text-white' : 'text-[var(--foreground-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]' }}">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                            <span>Laporan Kesehatan</span>
+                        </a>
+                    @endcanany
+                @endcanany
 
                 {{-- Administrasi Sistem Section --}}
                 @canany(['manage-users', 'manage-roles', 'view-people', 'manage-gate-sync', 'view-audit-log', 'manage-healthcare-partners'])

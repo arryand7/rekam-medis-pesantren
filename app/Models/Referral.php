@@ -76,6 +76,11 @@ class Referral extends Model
         return $this->belongsTo(HealthcarePartner::class, 'healthcare_partner_id');
     }
 
+    public function healthcarePartner(): BelongsTo
+    {
+        return $this->belongsTo(HealthcarePartner::class, 'healthcare_partner_id');
+    }
+
     public function recipientContact(): BelongsTo
     {
         return $this->belongsTo(HealthcarePartnerContact::class, 'recipient_contact_id');

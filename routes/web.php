@@ -790,14 +790,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/notifications/inbox/{id}/read', [UserNotificationController::class, 'markAsRead'])->name('notifications.inbox.read');
     Route::post('/notifications/inbox/read-all', [UserNotificationController::class, 'markAllAsRead'])->name('notifications.inbox.read-all');
 
-    // Phase 3C2 Role-aware Dashboards
+    // Phase 3C2 & 5C Role-aware Dashboards
     Route::get('/dashboards/clinical', [DashboardController::class, 'clinical'])->name('dashboards.clinical');
+    Route::get('/dashboards/pharmacy', [DashboardController::class, 'pharmacy'])->name('dashboards.pharmacy');
     Route::get('/dashboards/management', [DashboardController::class, 'management'])->name('dashboards.management');
     Route::get('/dashboards/operational', [DashboardController::class, 'operational'])->name('dashboards.operational');
 
-    // Phase 3C2 Health Reports Foundation
+    // Phase 3C2 & 5C Health Reports & Secure Export
     Route::get('/reports', [HealthReportController::class, 'index'])->name('reports.index');
     Route::get('/reports/view', [HealthReportController::class, 'show'])->name('reports.show');
+    Route::get('/reports/export', [HealthReportController::class, 'export'])->name('reports.export');
 
     // Phase 4A Gate User Synchronization & Reconciliation
     Route::prefix('gate')->name('gate.')->group(function () {

@@ -20,4 +20,9 @@ class DashboardPolicy
     {
         return $user->hasPermission('view-operational-dashboard');
     }
+
+    public function viewPharmacy(User $user): bool
+    {
+        return $user->hasPermission('view-pharmacy-dashboard') || $user->hasPermission('view-pharmacy-inventory');
+    }
 }
