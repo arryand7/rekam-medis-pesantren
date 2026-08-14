@@ -62,13 +62,22 @@ class HealthReportController extends Controller
     {
         $this->authorize('export-health-reports');
 
-        $reportType = (string) $request->input('report_type', 'visit_census');
-        $filters = $request->all();
+        $validated = $request->validate([
+            'report_type' => ['required', 'string', 'in:'.implode(',', HealthReportService::SUPPORTED_REPORT_TYPES)],
+            'start_date' => ['nullable', 'date'],
+            'end_date' => ['nullable', 'date', 'after_or_equal:start_date'],
+            'status' => ['nullable', 'string', 'max:50'],
+            'search' => ['nullable', 'string', 'max:100'],
+            'destination' => ['nullable', 'string', 'max:50'],
+        ]);
+
+        $reportType = (string) $validated['report_type'];
+        $filters = $validated;
 
         $actor = $request->user();
         $actorName = $actor !== null ? $actor->name : 'Sistem';
 
-        // Audit report export
+        // Audit report export (capturing non-sensitive metadata only)
         AuditLogService::log(
             action: 'health_report.exported',
             subjectType: 'HealthReport',

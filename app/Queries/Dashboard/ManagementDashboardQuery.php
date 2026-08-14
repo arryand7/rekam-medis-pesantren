@@ -50,7 +50,8 @@ class ManagementDashboardQuery
             ->where('status', 'completed')
             ->count();
 
-        $followUpCompletionRate = $totalFollowUps > 0 ? round(($completedFollowUps / $totalFollowUps) * 100, 1) : 100.0;
+        $hasFollowUpData = $totalFollowUps > 0;
+        $followUpCompletionRate = $hasFollowUpData ? round(($completedFollowUps / $totalFollowUps) * 100, 1) : null;
 
         $pharmacyMovements = StockMovement::whereBetween('created_at', [$start, $end])->count();
 
@@ -64,6 +65,9 @@ class ManagementDashboardQuery
 
         // Daily trend data points for chart
         $dailyTrends = $this->computeDailyTrends($start, $end);
+
+        $warningDays = (int) config('pharmacy.expiry_warning_days', 30);
+        $nearExpiryThreshold = now()->addDays($warningDays)->toDateString();
 
         return [
             'period' => [
@@ -82,13 +86,20 @@ class ManagementDashboardQuery
             'referrals_comparison' => $this->calculateComparison($totalReferrals, $prevReferrals),
             'total_discharges' => $totalDischarges,
             'follow_up_completion_rate' => $followUpCompletionRate,
+            'follow_up_metrics' => [
+                'rate' => $followUpCompletionRate,
+                'rate_label' => $hasFollowUpData ? $followUpCompletionRate.'%' : 'Belum ada data',
+                'has_data' => $hasFollowUpData,
+                'total' => $totalFollowUps,
+                'completed' => $completedFollowUps,
+            ],
             'total_follow_ups' => $totalFollowUps,
             'completed_follow_ups' => $completedFollowUps,
             'pharmacy_movements' => $pharmacyMovements,
             'daily_trends' => $dailyTrends,
             'batch_health' => [
                 'active' => MedicineBatch::where('expiry_date', '>', now())->where('current_quantity', '>', 0)->count(),
-                'near_expiry' => MedicineBatch::whereBetween('expiry_date', [now()->toDateString(), now()->addDays(30)->toDateString()])->where('current_quantity', '>', 0)->count(),
+                'near_expiry' => MedicineBatch::whereBetween('expiry_date', [now()->toDateString(), $nearExpiryThreshold])->where('current_quantity', '>', 0)->count(),
                 'expired' => MedicineBatch::where('expiry_date', '<', now()->toDateString())->where('current_quantity', '>', 0)->count(),
                 'depleted' => MedicineBatch::where('current_quantity', '<=', 0)->count(),
             ],
@@ -96,18 +107,39 @@ class ManagementDashboardQuery
     }
 
     /**
-     * Compute daily series for accessible trend visualization.
+     * Compute daily series for accessible trend visualization with constant grouped SQL queries.
      *
      * @return Collection<int, array<string, mixed>>
      */
     protected function computeDailyTrends(Carbon $start, Carbon $end): Collection
     {
         $trends = collect();
-        $cursor = $start->copy()->startOfDay();
+        $startDay = $start->copy()->startOfDay();
         $endDay = $end->copy()->endOfDay();
+
+        // 3 Constant Grouped Queries across the entire range (avoiding O(N) queries in loop)
+        /** @var Collection<string, int> $visitsByDate */
+        $visitsByDate = MedicalVisit::selectRaw('DATE(created_at) as date_val, COUNT(*) as total')
+            ->whereBetween('created_at', [$startDay, $endDay])
+            ->where('status', '!=', 'cancelled')
+            ->groupBy('date_val')
+            ->pluck('total', 'date_val');
+
+        /** @var Collection<string, int> $obsByDate */
+        $obsByDate = ObservationEpisode::selectRaw('DATE(created_at) as date_val, COUNT(*) as total')
+            ->whereBetween('created_at', [$startDay, $endDay])
+            ->groupBy('date_val')
+            ->pluck('total', 'date_val');
+
+        /** @var Collection<string, int> $refsByDate */
+        $refsByDate = Referral::selectRaw('DATE(created_at) as date_val, COUNT(*) as total')
+            ->whereBetween('created_at', [$startDay, $endDay])
+            ->groupBy('date_val')
+            ->pluck('total', 'date_val');
 
         // Limit data points to maximum 31 days to keep visualization lightweight and legible
         $stepDays = $start->diffInDays($end) > 31 ? (int) ceil($start->diffInDays($end) / 30) : 1;
+        $cursor = $startDay->copy();
 
         while ($cursor->lte($endDay)) {
             $bucketStart = $cursor->copy();
@@ -116,12 +148,19 @@ class ManagementDashboardQuery
                 $bucketEnd = $endDay->copy();
             }
 
-            $visitCount = MedicalVisit::whereBetween('created_at', [$bucketStart, $bucketEnd])
-                ->where('status', '!=', 'cancelled')
-                ->count();
+            // Aggregate from in-memory keyed maps
+            $visitCount = 0;
+            $obsCount = 0;
+            $refCount = 0;
 
-            $obsCount = ObservationEpisode::whereBetween('created_at', [$bucketStart, $bucketEnd])->count();
-            $refCount = Referral::whereBetween('created_at', [$bucketStart, $bucketEnd])->count();
+            $stepCursor = $bucketStart->copy();
+            while ($stepCursor->lte($bucketEnd)) {
+                $dateKey = $stepCursor->toDateString();
+                $visitCount += (int) ($visitsByDate[$dateKey] ?? 0);
+                $obsCount += (int) ($obsByDate[$dateKey] ?? 0);
+                $refCount += (int) ($refsByDate[$dateKey] ?? 0);
+                $stepCursor->addDay();
+            }
 
             $trends->push([
                 'label' => $stepDays === 1 ? $bucketStart->format('d M') : $bucketStart->format('d M').' - '.$bucketEnd->format('d M'),

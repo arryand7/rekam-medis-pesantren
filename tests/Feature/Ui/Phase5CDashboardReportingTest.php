@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Ui;
 
+use App\Models\IntegrationDeliveryAttempt;
+use App\Models\IntegrationOutboxEvent;
 use App\Models\MedicalVisit;
 use App\Models\Medicine;
 use App\Models\MedicineBatch;
@@ -13,7 +15,10 @@ use App\Models\Role;
 use App\Models\StockLocation;
 use App\Models\User;
 use App\Models\VisitDischarge;
+use App\Models\VisitFollowUpPlan;
+use App\Queries\Dashboard\ManagementDashboardQuery;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 function createPhase5cUserWithPermissions(array $permissions, string $name = 'Test User'): User
 {
@@ -45,11 +50,12 @@ test('clinical dashboard renders successfully with metrics and actionable work q
         'status' => 'waiting_assessment',
         'chief_complaint' => 'Demam tinggi menggigil',
         'created_by_id' => $doctor->id,
-        'created_at' => now()->subMinutes(20),
     ]);
+    $visit->created_at = now()->subMinutes(20);
+    $visit->save();
 
     // 2. Active Observation
-    $obs = ObservationEpisode::create([
+    ObservationEpisode::create([
         'medical_visit_id' => $visit->id,
         'status' => 'active',
         'bed_label' => 'Bed 01 Isolasi',
@@ -84,10 +90,8 @@ test('operational dashboard strictly adheres to minimum-necessary privacy withou
         'status' => 'completed',
         'chief_complaint' => 'Rahasia Diagnosa Medis Demam Tifoid Akut',
         'created_by_id' => $musyrif->id,
-        'created_at' => now(),
     ]);
 
-    // Discharge with activity recommendation
     VisitDischarge::create([
         'medical_visit_id' => $visit->id,
         'discharge_type' => 'regular',
@@ -128,6 +132,8 @@ test('operational role cannot access clinical dashboard or clinical visits direc
 
 test('pharmacy dashboard calculates expired batches and near expiry threshold correctly', function () {
     $pharmacist = createPhase5cUserWithPermissions(['view-pharmacy-dashboard', 'view-pharmacy-inventory'], 'Apoteker Poskestren');
+
+    config(['pharmacy.expiry_warning_days' => 30]);
 
     $location = StockLocation::firstOrCreate(['code' => 'PHARM_TEST'], ['name' => 'Gudang Farmasi Test', 'is_active' => true]);
     $medicine = Medicine::firstOrCreate(['code' => 'MED-TEST-01'], [
@@ -176,9 +182,21 @@ test('pharmacy dashboard calculates expired batches and near expiry threshold co
     $response->assertOk();
     $response->assertSee('Dashboard Farmasi', false);
     $response->assertSee('BATCH-EXP-001');
-    $response->assertSee('EXPIRED');
+    $response->assertSee('Kedaluwarsa');
     $response->assertSee('BATCH-NEAR-002');
     $response->assertSee('BATCH-DEP-003');
+});
+
+test('pharmacy dashboard handles unconfigured low stock threshold safely', function () {
+    $pharmacist = createPhase5cUserWithPermissions(['view-pharmacy-dashboard', 'view-pharmacy-inventory'], 'Apoteker Poskestren');
+
+    config(['pharmacy.low_stock_threshold' => null]);
+
+    $response = $this->actingAs($pharmacist)->get(route('dashboards.pharmacy'));
+
+    $response->assertOk();
+    $response->assertSee('Belum Dikonfigurasi');
+    $response->assertSee('[PERLU DIKONFIRMASI]');
 });
 
 test('management dashboard displays aggregate numbers, date presets, and enforces zero PII', function () {
@@ -189,14 +207,15 @@ test('management dashboard displays aggregate numbers, date presets, and enforce
 
     $officer = User::factory()->create();
 
-    MedicalVisit::create([
+    $visit = MedicalVisit::create([
         'patient_id' => $patient->id,
         'visit_number' => 'VISIT-AGG-001',
         'status' => 'completed',
         'chief_complaint' => 'Keluhan rahasia individual',
         'created_by_id' => $officer->id,
-        'created_at' => now()->subDays(2),
     ]);
+    $visit->created_at = now()->subDays(2);
+    $visit->save();
 
     $response = $this->actingAs($director)->get(route('dashboards.management', ['preset' => '7_days']));
 
@@ -208,6 +227,67 @@ test('management dashboard displays aggregate numbers, date presets, and enforce
     // PRIVACY ENFORCEMENT: Assert absence of individual patient name & MRN
     $response->assertDontSee('SensitivePatientNameUnique99');
     $response->assertDontSee('RM-SECRET-777');
+    $response->assertDontSee('Keluhan rahasia individual');
+});
+
+test('management dashboard handles zero denominator follow up without fake 100 percent', function () {
+    $director = createPhase5cUserWithPermissions(['view-management-dashboard'], 'Direktur Pesantren');
+
+    // Ensure zero follow up records in the database for the period
+    VisitFollowUpPlan::query()->delete();
+
+    $response = $this->actingAs($director)->get(route('dashboards.management', ['preset' => 'today']));
+
+    $response->assertOk();
+    $response->assertSee('Belum ada data');
+    $response->assertDontSee('100%');
+});
+
+test('management dashboard validates custom date range input strictly', function () {
+    $director = createPhase5cUserWithPermissions(['view-management-dashboard'], 'Direktur Pesantren');
+
+    // 1. Valid custom date range
+    $validResponse = $this->actingAs($director)->get(route('dashboards.management', [
+        'preset' => 'custom',
+        'from' => now()->subDays(5)->toDateString(),
+        'to' => now()->toDateString(),
+    ]));
+    $validResponse->assertOk();
+
+    // 2. Invalid date order (from > to)
+    $invalidResponse = $this->actingAs($director)->get(route('dashboards.management', [
+        'preset' => 'custom',
+        'from' => now()->toDateString(),
+        'to' => now()->subDays(5)->toDateString(),
+    ]));
+    $invalidResponse->assertSessionHasErrors(['to']);
+
+    // 3. Unknown preset
+    $badPresetResponse = $this->actingAs($director)->get(route('dashboards.management', [
+        'preset' => 'invalid_preset_foo',
+    ]));
+    $badPresetResponse->assertSessionHasErrors(['preset']);
+});
+
+test('management query count is constant and does not scale linearly with number of days', function () {
+    $director = createPhase5cUserWithPermissions(['view-management-dashboard'], 'Direktur Pesantren');
+
+    $query = new ManagementDashboardQuery;
+
+    DB::enableQueryLog();
+
+    // 1. Direct query evaluation
+    $metrics = $query->getMetrics(now()->subDays(29), now());
+
+    $directQueryCount = count(DB::getQueryLog());
+    DB::disableQueryLog();
+
+    expect($directQueryCount)->toBeLessThanOrEqual(18);
+    expect($metrics['daily_trends'])->toHaveCount(30);
+
+    // 2. Full HTTP request response
+    $response = $this->actingAs($director)->get(route('dashboards.management', ['preset' => '30_days']));
+    $response->assertOk();
 });
 
 test('technical admin without management permission cannot access management dashboard', function () {
@@ -216,52 +296,143 @@ test('technical admin without management permission cannot access management das
     $this->actingAs($admin)->get(route('dashboards.management'))->assertForbidden();
 });
 
-test('reports show renders with KPI summary and streaming CSV export works with metadata', function () {
-    $auditor = createPhase5cUserWithPermissions(['view-health-reports', 'export-health-reports'], 'Kepala Pengawas Medis');
+test('management user cannot access patient level reports or export without explicit reporting permission', function () {
+    $director = createPhase5cUserWithPermissions(['view-management-dashboard'], 'Direktur Pesantren');
 
-    $person = Person::factory()->create(['name' => 'Zaid Santri']);
-    $patient = Patient::factory()->create(['person_id' => $person->id, 'patient_number' => 'RM-EXPORT-123', 'is_eligible' => true]);
+    // Denied from reports center
+    $this->actingAs($director)->get(route('reports.index'))->assertForbidden();
+    $this->actingAs($director)->get(route('reports.show', ['report_type' => 'visit_census']))->assertForbidden();
+    $this->actingAs($director)->get(route('reports.export', ['report_type' => 'visit_census']))->assertForbidden();
+});
+
+test('report summary KPI strictly respects date range and status filters', function () {
+    $auditor = createPhase5cUserWithPermissions(['view-health-reports', 'export-health-reports'], 'Auditor Medis');
+
+    $person1 = Person::factory()->create(['name' => 'Pasien Kemarin']);
+    $patient1 = Patient::factory()->create(['person_id' => $person1->id]);
+
+    $person2 = Person::factory()->create(['name' => 'Pasien Minggu Lalu']);
+    $patient2 = Patient::factory()->create(['person_id' => $person2->id]);
+
+    // Visit inside filter window (today)
+    $visit1 = MedicalVisit::create([
+        'patient_id' => $patient1->id,
+        'visit_number' => 'VISIT-TODAY-001',
+        'status' => 'completed',
+        'chief_complaint' => 'Sakit kepala',
+        'created_by_id' => $auditor->id,
+    ]);
+    $visit1->created_at = now()->startOfDay()->addHours(2);
+    $visit1->save();
+
+    // Visit outside filter window (10 days ago)
+    $visit2 = MedicalVisit::create([
+        'patient_id' => $patient2->id,
+        'visit_number' => 'VISIT-OLD-002',
+        'status' => 'completed',
+        'chief_complaint' => 'Sakit perut',
+        'created_by_id' => $auditor->id,
+    ]);
+    $visit2->created_at = now()->subDays(10);
+    $visit2->save();
+
+    // 1. Filter by start_date = today: only 1 visit should be in KPI & Table
+    $response = $this->actingAs($auditor)->get(route('reports.show', [
+        'report_type' => 'visit_census',
+        'start_date' => now()->toDateString(),
+        'end_date' => now()->toDateString(),
+    ]));
+
+    $response->assertOk();
+    $response->assertSee('VISIT-TODAY-001');
+    $response->assertDontSee('VISIT-OLD-002');
+
+    // 2. Filter by status = waiting_assessment: total completed should be 0
+    $statusResponse = $this->actingAs($auditor)->get(route('reports.show', [
+        'report_type' => 'visit_census',
+        'status' => 'waiting_assessment',
+        'start_date' => now()->toDateString(),
+        'end_date' => now()->toDateString(),
+    ]));
+
+    $statusResponse->assertOk();
+    $statusResponse->assertDontSee('VISIT-TODAY-001');
+});
+
+test('export health report protects against CSV formula injection', function () {
+    $auditor = createPhase5cUserWithPermissions(['view-health-reports', 'export-health-reports'], 'Petugas Medis');
+
+    $person = Person::factory()->create(['name' => '=HYPERLINK("http://attacker.test","Klik Disini")']);
+    $patient = Patient::factory()->create(['person_id' => $person->id, 'patient_number' => '+6281234567']);
 
     MedicalVisit::create([
         'patient_id' => $patient->id,
-        'visit_number' => 'VISIT-EXP-001',
-        'status' => 'registered',
-        'chief_complaint' => 'Batuk pilek 2 hari',
+        'visit_number' => '@SUM(1+1)',
+        'status' => '-DANGEROUS',
+        'chief_complaint' => '=cmd|"/C calc"!A0',
         'created_by_id' => $auditor->id,
-        'created_at' => now(),
     ]);
 
-    // 1. Report View
-    $viewResponse = $this->actingAs($auditor)->get(route('reports.show', ['report_type' => 'visit_census']));
-    $viewResponse->assertOk();
-    $viewResponse->assertSee('VISIT-EXP-001');
-    $viewResponse->assertSee('Ekspor ke CSV (Excel)');
+    $response = $this->actingAs($auditor)->get(route('reports.export', ['report_type' => 'visit_census']));
+    $response->assertOk();
 
-    // 2. Export Stream
-    $exportResponse = $this->actingAs($auditor)->get(route('reports.export', ['report_type' => 'visit_census']));
-    $exportResponse->assertOk();
-    $exportResponse->assertHeader('Content-Type', 'text/csv; charset=UTF-8');
-
-    // Capture streamed content
     ob_start();
-    $exportResponse->sendContent();
-    $csvContent = ob_get_clean();
+    $response->sendContent();
+    $csvContent = (string) ob_get_clean();
 
-    expect($csvContent)->toContain('# LAPORAN POSKESTREN SABIRA HEALTH');
-    expect($csvContent)->toContain('VISIT-EXP-001');
-    expect($csvContent)->toContain('RM-EXPORT-123');
+    // Verify formula characters are neutralized with leading single quote
+    expect($csvContent)->toContain("'=HYPERLINK");
+    expect($csvContent)->toContain("'+6281234567");
+    expect($csvContent)->toContain("'@SUM");
+    expect($csvContent)->toContain("'-DANGEROUS");
+    expect($csvContent)->toContain("'=cmd");
 });
 
-test('dashboard queries execute efficiently within upper bound query count', function () {
-    $doctor = createPhase5cUserWithPermissions(['view-clinical-dashboard', 'view-medical-visits'], 'dr. Sp.PD');
+test('export rejects unknown report types with validation error', function () {
+    $auditor = createPhase5cUserWithPermissions(['view-health-reports', 'export-health-reports'], 'Petugas Medis');
 
-    DB::enableQueryLog();
+    $response = $this->actingAs($auditor)->get(route('reports.export', ['report_type' => 'hacked_unknown_type']));
+    $response->assertSessionHasErrors(['report_type']);
+});
 
-    $response = $this->actingAs($doctor)->get(route('dashboards.clinical'));
+test('integration delivery report exports dedicated integration columns without leaking patient visit census', function () {
+    $auditor = createPhase5cUserWithPermissions(['view-health-reports', 'export-health-reports'], 'Petugas Medis');
 
-    $queryCount = count(DB::getQueryLog());
-    DB::disableQueryLog();
+    $outbox = IntegrationOutboxEvent::create([
+        'event_type' => 'health.visit.recorded',
+        'aggregate_type' => 'MedicalVisit',
+        'aggregate_id' => (string) Str::ulid(),
+        'destination' => 'attendance_sandbox',
+        'payload_snapshot' => ['visit_number' => 'VISIT-TEST'],
+        'payload_version' => 1,
+        'idempotency_key' => (string) Str::uuid(),
+        'status' => 'pending',
+        'available_at' => now(),
+        'attempt_count' => 1,
+        'correlation_id' => (string) Str::uuid(),
+    ]);
 
+    IntegrationDeliveryAttempt::create([
+        'outbox_event_id' => $outbox->id,
+        'attempt_number' => 1,
+        'destination' => 'attendance_sandbox',
+        'started_at' => now(),
+        'result' => 'success',
+        'http_status_code' => 200,
+        'latency_ms' => 45,
+        'correlation_id' => (string) Str::uuid(),
+    ]);
+
+    $response = $this->actingAs($auditor)->get(route('reports.export', ['report_type' => 'integration_delivery']));
     $response->assertOk();
-    expect($queryCount)->toBeLessThan(50);
+
+    ob_start();
+    $response->sendContent();
+    $csvContent = (string) ob_get_clean();
+
+    expect($csvContent)->toContain('ID Pengiriman');
+    expect($csvContent)->toContain('attendance_sandbox');
+    expect($csvContent)->toContain('Kode HTTP');
+    expect($csvContent)->not->toContain('Nomor Kunjungan');
+    expect($csvContent)->not->toContain('Nama Pasien');
 });

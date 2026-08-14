@@ -24,6 +24,20 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 class HealthReportService
 {
     /**
+     * Whitelist of explicitly supported report types.
+     *
+     * @var array<int, string>
+     */
+    public const SUPPORTED_REPORT_TYPES = [
+        'visit_census',
+        'observation_census',
+        'referral_census',
+        'discharge_followup',
+        'pharmacy_stock',
+        'integration_delivery',
+    ];
+
+    /**
      * Get paginated visit census report.
      *
      * @param  array<string, mixed>  $filters
@@ -139,14 +153,14 @@ class HealthReportService
         $this->applyDateFilters($query, $filters);
 
         if (! empty($filters['status'])) {
-            $query->where('status', $filters['status']);
+            $query->where('result', $filters['status']);
         }
 
         return $query->paginate($perPage);
     }
 
     /**
-     * Get summary KPI strip for a specific report type and filters.
+     * Get summary KPI strip for a specific report type applying the EXACT SAME filters as the table.
      *
      * @param  array<string, mixed>  $filters
      * @return array<string, mixed>
@@ -157,6 +171,9 @@ class HealthReportService
             case 'visit_census':
                 $query = MedicalVisit::query();
                 $this->applyDateFilters($query, $filters);
+                if (! empty($filters['status'])) {
+                    $query->where('status', $filters['status']);
+                }
 
                 return [
                     'total_visits' => (clone $query)->count(),
@@ -167,6 +184,9 @@ class HealthReportService
             case 'observation_census':
                 $query = ObservationEpisode::query();
                 $this->applyDateFilters($query, $filters);
+                if (! empty($filters['status'])) {
+                    $query->where('status', $filters['status']);
+                }
 
                 return [
                     'total_episodes' => (clone $query)->count(),
@@ -177,6 +197,9 @@ class HealthReportService
             case 'referral_census':
                 $query = Referral::query();
                 $this->applyDateFilters($query, $filters);
+                if (! empty($filters['status'])) {
+                    $query->where('status', $filters['status']);
+                }
 
                 return [
                     'total_referrals' => (clone $query)->count(),
@@ -187,6 +210,9 @@ class HealthReportService
             case 'discharge_followup':
                 $query = VisitDischarge::query();
                 $this->applyDateFilters($query, $filters);
+                if (! empty($filters['status'])) {
+                    $query->where('status', $filters['status']);
+                }
 
                 return [
                     'total_discharges' => (clone $query)->count(),
@@ -195,23 +221,41 @@ class HealthReportService
                 ];
 
             case 'pharmacy_stock':
+                $query = MedicineBatch::query();
+                if (! empty($filters['status'])) {
+                    $query->where('status', $filters['status']);
+                }
+                if (! empty($filters['search'])) {
+                    $search = $filters['search'];
+                    $query->where(function ($q) use ($search) {
+                        $q->where('batch_number', 'like', "%{$search}%")
+                            ->orWhereHas('medicine', function ($mq) use ($search) {
+                                $mq->where('brand_name', 'like', "%{$search}%")
+                                    ->orWhere('generic_name', 'like', "%{$search}%");
+                            });
+                    });
+                }
+
                 $warningDays = (int) config('pharmacy.expiry_warning_days', 30);
                 $threshold = now()->addDays($warningDays)->toDateString();
 
                 return [
-                    'total_batches' => MedicineBatch::count(),
-                    'depleted_batches' => MedicineBatch::where('current_quantity', '<=', 0)->count(),
-                    'near_expiry_batches' => MedicineBatch::where('expiry_date', '<=', $threshold)->where('current_quantity', '>', 0)->count(),
+                    'total_batches' => (clone $query)->count(),
+                    'depleted_batches' => (clone $query)->where('current_quantity', '<=', 0)->count(),
+                    'near_expiry_batches' => (clone $query)->where('expiry_date', '<=', $threshold)->where('current_quantity', '>', 0)->count(),
                 ];
 
             case 'integration_delivery':
                 $query = IntegrationDeliveryAttempt::query();
                 $this->applyDateFilters($query, $filters);
+                if (! empty($filters['status'])) {
+                    $query->where('result', $filters['status']);
+                }
 
                 return [
                     'total_deliveries' => (clone $query)->count(),
-                    'successful_deliveries' => (clone $query)->where('status', 'delivered')->count(),
-                    'failed_deliveries' => (clone $query)->whereIn('status', ['failed', 'dead_letter'])->count(),
+                    'successful_deliveries' => (clone $query)->where('result', 'success')->count(),
+                    'failed_deliveries' => (clone $query)->whereIn('result', ['failed', 'dead_letter', 'retry_exhausted'])->count(),
                 ];
 
             default:
@@ -220,12 +264,16 @@ class HealthReportService
     }
 
     /**
-     * Stream CSV export directly to HTTP response with UTF-8 BOM, audit metadata header, and chunking.
+     * Stream CSV export directly to HTTP response with UTF-8 BOM, formula sanitization, audit metadata header, and chunking.
      *
      * @param  array<string, mixed>  $filters
      */
     public function exportCsv(string $reportType, array $filters = [], ?User $user = null): StreamedResponse
     {
+        if (! in_array($reportType, self::SUPPORTED_REPORT_TYPES, true)) {
+            abort(422, 'Tipe laporan tidak valid');
+        }
+
         $sanitizedType = preg_replace('/[^a-zA-Z0-9_-]/', '_', $reportType) ?: 'report';
         $filename = 'poskestren_'.$sanitizedType.'_'.now()->format('Ymd_His').'.csv';
 
@@ -247,14 +295,17 @@ class HealthReportService
             fwrite($handle, "\xEF\xBB\xBF");
 
             // Write metadata header comment block
-            fputcsv($handle, ['# LAPORAN POSKESTREN SABIRA HEALTH']);
-            fputcsv($handle, ['# Tipe Laporan', ucwords(str_replace('_', ' ', $reportType))]);
-            fputcsv($handle, ['# Diekspor Pada', now()->format('d/m/Y H:i:s')]);
-            fputcsv($handle, ['# Petugas Pengekspor', $user ? $user->name : 'Sistem']);
+            $this->writeCsvRow($handle, ['# LAPORAN POSKESTREN SABIRA HEALTH']);
+            $this->writeCsvRow($handle, ['# Tipe Laporan', ucwords(str_replace('_', ' ', $reportType))]);
+            $this->writeCsvRow($handle, ['# Diekspor Pada', now()->format('d/m/Y H:i:s')]);
+            $this->writeCsvRow($handle, ['# Petugas Pengekspor', $user ? $user->name : 'Sistem']);
             if (! empty($filters['start_date']) || ! empty($filters['end_date'])) {
-                fputcsv($handle, ['# Filter Rentang', ($filters['start_date'] ?? 'Awal').' s/d '.($filters['end_date'] ?? 'Akhir')]);
+                $this->writeCsvRow($handle, ['# Filter Rentang', ($filters['start_date'] ?? 'Awal').' s/d '.($filters['end_date'] ?? 'Akhir')]);
             }
-            fputcsv($handle, []); // Empty line separator
+            if (! empty($filters['status'])) {
+                $this->writeCsvRow($handle, ['# Filter Status', $filters['status']]);
+            }
+            $this->writeCsvRow($handle, []); // Empty line separator
 
             switch ($reportType) {
                 case 'visit_census':
@@ -272,8 +323,11 @@ class HealthReportService
                 case 'pharmacy_stock':
                     $this->streamPharmacyStockReport($handle, $filters);
                     break;
+                case 'integration_delivery':
+                    $this->streamIntegrationDeliveryReport($handle, $filters);
+                    break;
                 default:
-                    fputcsv($handle, ['Error', 'Tipe laporan tidak valid']);
+                    $this->writeCsvRow($handle, ['Error', 'Tipe laporan tidak valid']);
             }
 
             fclose($handle);
@@ -286,10 +340,13 @@ class HealthReportService
      */
     protected function streamVisitCensus($handle, array $filters): void
     {
-        fputcsv($handle, ['Nomor Kunjungan', 'Tanggal', 'Nama Pasien', 'No. RM', 'Keluhan Utama', 'Status', 'Petugas Penerima']);
+        $this->writeCsvRow($handle, ['Nomor Kunjungan', 'Tanggal', 'Nama Pasien', 'No. RM', 'Keluhan Utama', 'Status', 'Petugas Penerima']);
 
         $query = MedicalVisit::with(['patient.person', 'receivingOfficer'])->latest('created_at');
         $this->applyDateFilters($query, $filters);
+        if (! empty($filters['status'])) {
+            $query->where('status', $filters['status']);
+        }
 
         $query->chunk(100, function ($visits) use ($handle) {
             foreach ($visits as $visit) {
@@ -300,7 +357,7 @@ class HealthReportService
                 /** @var User|null $officer */
                 $officer = $visit->receivingOfficer;
 
-                fputcsv($handle, [
+                $this->writeCsvRow($handle, [
                     $visit->visit_number,
                     $visit->created_at ? $visit->created_at->format('d/m/Y H:i') : '-',
                     $person ? $person->name : 'Santri/Warga',
@@ -319,10 +376,13 @@ class HealthReportService
      */
     protected function streamObservationCensus($handle, array $filters): void
     {
-        fputcsv($handle, ['Nomor Kunjungan', 'Nama Pasien', 'Tempat Tidur', 'Alasan Observasi', 'Waktu Masuk', 'Waktu Keluar', 'Status', 'Petugas Jaga']);
+        $this->writeCsvRow($handle, ['Nomor Kunjungan', 'Nama Pasien', 'Tempat Tidur', 'Alasan Observasi', 'Waktu Masuk', 'Waktu Keluar', 'Status', 'Petugas Jaga']);
 
         $query = ObservationEpisode::with(['medicalVisit.patient.person', 'responsibleOfficer'])->latest('created_at');
         $this->applyDateFilters($query, $filters);
+        if (! empty($filters['status'])) {
+            $query->where('status', $filters['status']);
+        }
 
         $query->chunk(100, function ($episodes) use ($handle) {
             foreach ($episodes as $ep) {
@@ -335,7 +395,7 @@ class HealthReportService
                 /** @var User|null $officer */
                 $officer = $ep->responsibleOfficer;
 
-                fputcsv($handle, [
+                $this->writeCsvRow($handle, [
                     $visit ? $visit->visit_number : '-',
                     $person ? $person->name : 'Santri/Warga',
                     $ep->bed_label ?? 'Ruang Observasi',
@@ -355,10 +415,13 @@ class HealthReportService
      */
     protected function streamReferralCensus($handle, array $filters): void
     {
-        fputcsv($handle, ['No. Rujukan', 'No. Kunjungan', 'Nama Pasien', 'Faskes Tujuan', 'Urgensi', 'Alasan Rujukan', 'Waktu Berangkat', 'Status']);
+        $this->writeCsvRow($handle, ['No. Rujukan', 'No. Kunjungan', 'Nama Pasien', 'Faskes Tujuan', 'Urgensi', 'Alasan Rujukan', 'Waktu Berangkat', 'Status']);
 
         $query = Referral::with(['medicalVisit.patient.person', 'healthcarePartner'])->latest('created_at');
         $this->applyDateFilters($query, $filters);
+        if (! empty($filters['status'])) {
+            $query->where('status', $filters['status']);
+        }
 
         $query->chunk(100, function ($referrals) use ($handle) {
             foreach ($referrals as $ref) {
@@ -371,7 +434,7 @@ class HealthReportService
                 /** @var HealthcarePartner|null $partner */
                 $partner = $ref->healthcarePartner;
 
-                fputcsv($handle, [
+                $this->writeCsvRow($handle, [
                     $ref->referral_number,
                     $visit ? $visit->visit_number : '-',
                     $person ? $person->name : 'Santri/Warga',
@@ -391,10 +454,13 @@ class HealthReportService
      */
     protected function streamDischargeReport($handle, array $filters): void
     {
-        fputcsv($handle, ['No. Kunjungan', 'Nama Pasien', 'Tipe Kepulangan', 'Tujuan', 'Anjuran Aktivitas', 'Perlu Kontrol', 'Tanggal Kontrol', 'Status']);
+        $this->writeCsvRow($handle, ['No. Kunjungan', 'Nama Pasien', 'Tipe Kepulangan', 'Tujuan', 'Anjuran Aktivitas', 'Perlu Kontrol', 'Tanggal Kontrol', 'Status']);
 
         $query = VisitDischarge::with(['medicalVisit.patient.person'])->latest('created_at');
         $this->applyDateFilters($query, $filters);
+        if (! empty($filters['status'])) {
+            $query->where('status', $filters['status']);
+        }
 
         $query->chunk(100, function ($discharges) use ($handle) {
             foreach ($discharges as $disc) {
@@ -405,7 +471,7 @@ class HealthReportService
                 /** @var Person|null $person */
                 $person = $patient?->person;
 
-                fputcsv($handle, [
+                $this->writeCsvRow($handle, [
                     $visit ? $visit->visit_number : '-',
                     $person ? $person->name : 'Santri/Warga',
                     $disc->discharge_type,
@@ -425,9 +491,22 @@ class HealthReportService
      */
     protected function streamPharmacyStockReport($handle, array $filters): void
     {
-        fputcsv($handle, ['Nama Obat', 'Kode', 'Nomor Batch', 'Lokasi', 'Sisa Stok', 'Tanggal Kedaluwarsa', 'Status Kedaluwarsa']);
+        $this->writeCsvRow($handle, ['Nama Obat', 'Kode', 'Nomor Batch', 'Lokasi', 'Sisa Stok', 'Tanggal Kedaluwarsa', 'Status Kedaluwarsa']);
 
         $query = MedicineBatch::with(['medicine', 'location'])->orderBy('expiry_date');
+        if (! empty($filters['status'])) {
+            $query->where('status', $filters['status']);
+        }
+        if (! empty($filters['search'])) {
+            $search = $filters['search'];
+            $query->where(function ($q) use ($search) {
+                $q->where('batch_number', 'like', "%{$search}%")
+                    ->orWhereHas('medicine', function ($mq) use ($search) {
+                        $mq->where('brand_name', 'like', "%{$search}%")
+                            ->orWhere('generic_name', 'like', "%{$search}%");
+                    });
+            });
+        }
 
         $query->chunk(100, function ($batches) use ($handle) {
             foreach ($batches as $batch) {
@@ -437,7 +516,7 @@ class HealthReportService
                 /** @var StockLocation|null $location */
                 $location = $batch->location;
 
-                fputcsv($handle, [
+                $this->writeCsvRow($handle, [
                     $medicine ? ($medicine->brand_name ?? $medicine->generic_name) : 'Obat',
                     $medicine ? ($medicine->code ?? '-') : '-',
                     $batch->batch_number,
@@ -448,6 +527,66 @@ class HealthReportService
                 ]);
             }
         });
+    }
+
+    /**
+     * @param  resource  $handle
+     * @param  array<string, mixed>  $filters
+     */
+    protected function streamIntegrationDeliveryReport($handle, array $filters): void
+    {
+        $this->writeCsvRow($handle, ['ID Pengiriman', 'Event ID', 'Destinasi / Modul', 'Percobaan Ke', 'Hasil / Status', 'Kode HTTP', 'Latensi (ms)', 'Error', 'Waktu Mulai']);
+
+        $query = IntegrationDeliveryAttempt::latest('created_at');
+        $this->applyDateFilters($query, $filters);
+        if (! empty($filters['status'])) {
+            $query->where('result', $filters['status']);
+        }
+
+        $query->chunk(100, function ($attempts) use ($handle) {
+            foreach ($attempts as $att) {
+                $this->writeCsvRow($handle, [
+                    $att->id,
+                    $att->outbox_event_id,
+                    $att->destination,
+                    $att->attempt_number,
+                    $att->result,
+                    $att->http_status_code ?? '-',
+                    $att->latency_ms ?? '-',
+                    $att->sanitized_error ?? '-',
+                    $att->started_at->format('d/m/Y H:i:s'),
+                ]);
+            }
+        });
+    }
+
+    /**
+     * Sanitize individual CSV cell to prevent formula injection (=, +, -, @, \t, \r).
+     */
+    protected function sanitizeCsvValue(mixed $value): mixed
+    {
+        if (! is_string($value)) {
+            return $value;
+        }
+
+        // If string starts with formula triggers, prepend single quote to neutralize
+        if (preg_match('/^[\=\+\-\@\t\r]/', $value)) {
+            return "'".$value;
+        }
+
+        return $value;
+    }
+
+    /**
+     * Write sanitized array as CSV line.
+     *
+     * @param  resource  $handle
+     * @param  array<int, mixed>  $row
+     */
+    protected function writeCsvRow($handle, array $row): void
+    {
+        $sanitized = array_map([$this, 'sanitizeCsvValue'], $row);
+        fputcsv($handle, $sanitized);
     }
 
     /**

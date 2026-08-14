@@ -124,42 +124,30 @@ class DashboardController extends Controller
     {
         $this->authorize('view-management-dashboard');
 
-        $preset = $request->input('preset', '30_days');
-        $fromInput = $request->input('from');
-        $toInput = $request->input('to');
+        $validated = $request->validate([
+            'preset' => 'nullable|string|in:today,7_days,30_days,this_month,custom',
+            'from' => 'nullable|required_if:preset,custom|date',
+            'to' => 'nullable|required_if:preset,custom|date|after_or_equal:from',
+        ]);
+
+        $preset = $validated['preset'] ?? '30_days';
+        $fromInput = $validated['from'] ?? null;
+        $toInput = $validated['to'] ?? null;
 
         // Resolve date range from preset or custom input
         [$startDate, $endDate] = match ($preset) {
             'today' => [now()->startOfDay(), now()->endOfDay()],
             '7_days' => [now()->subDays(6)->startOfDay(), now()->endOfDay()],
             'this_month' => [now()->startOfMonth()->startOfDay(), now()->endOfMonth()->endOfDay()],
-            'custom' => $this->parseCustomDateRange($fromInput, $toInput),
+            'custom' => [
+                Carbon::parse($fromInput)->startOfDay(),
+                Carbon::parse($toInput)->endOfDay(),
+            ],
             default => [now()->subDays(29)->startOfDay(), now()->endOfDay()],
         };
 
         $metrics = $this->managementQuery->getMetrics($startDate, $endDate);
 
         return view('pages.dashboards.management', compact('metrics', 'preset', 'fromInput', 'toInput'));
-    }
-
-    /**
-     * @return array{0: Carbon, 1: Carbon}
-     */
-    protected function parseCustomDateRange(?string $from, ?string $to): array
-    {
-        try {
-            $startDate = $from ? Carbon::parse($from)->startOfDay() : now()->subDays(29)->startOfDay();
-            $endDate = $to ? Carbon::parse($to)->endOfDay() : now()->endOfDay();
-
-            if ($startDate->gt($endDate)) {
-                $temp = $startDate;
-                $startDate = $endDate->copy()->startOfDay();
-                $endDate = $temp->copy()->endOfDay();
-            }
-
-            return [$startDate, $endDate];
-        } catch (\Throwable) {
-            return [now()->subDays(29)->startOfDay(), now()->endOfDay()];
-        }
     }
 }

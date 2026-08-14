@@ -25,7 +25,9 @@ class PharmacyDashboardQuery
         $endOfDay = $targetDate->copy()->endOfDay();
         $warningDays = (int) config('pharmacy.expiry_warning_days', 30);
         $nearExpiryThreshold = $targetDate->copy()->addDays($warningDays)->toDateString();
-        $lowStockThreshold = (int) config('pharmacy.low_stock_threshold', 10);
+        $rawLowStock = config('pharmacy.low_stock_threshold');
+        $lowStockConfigured = $rawLowStock !== null;
+        $lowStockThreshold = $lowStockConfigured ? (int) $rawLowStock : null;
 
         $expiredCount = MedicineBatch::where('expiry_date', '<', $today)
             ->where('current_quantity', '>', 0)
@@ -38,11 +40,15 @@ class PharmacyDashboardQuery
 
         $depletedCount = MedicineBatch::where('current_quantity', '<=', 0)->count();
 
-        $lowStockMedicinesCount = Medicine::where('is_active', true)
-            ->whereHas('batches', function ($query) use ($lowStockThreshold) {
-                $query->where('current_quantity', '<=', $lowStockThreshold);
-            })
-            ->count();
+        $lowStockMedicinesCount = null;
+        if ($lowStockConfigured && $lowStockThreshold !== null) {
+            $thresholdVal = $lowStockThreshold;
+            $lowStockMedicinesCount = Medicine::where('is_active', true)
+                ->whereHas('batches', function ($query) use ($thresholdVal) {
+                    $query->where('current_quantity', '<=', $thresholdVal);
+                })
+                ->count();
+        }
 
         $movementsToday = StockMovement::whereBetween('created_at', [$startOfDay, $endOfDay])->count();
 
@@ -59,6 +65,7 @@ class PharmacyDashboardQuery
             'near_expiry_batches' => $nearExpiryCount,
             'depleted_batches' => $depletedCount,
             'low_stock_medicines' => $lowStockMedicinesCount,
+            'low_stock_configured' => $lowStockConfigured,
             'movements_today' => $movementsToday,
             'dispenses_today' => $dispensesToday,
             'adjustments_today' => $adjustmentsToday,

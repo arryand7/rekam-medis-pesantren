@@ -49,8 +49,13 @@
 
             <div class="p-4 bg-[var(--surface)] rounded-2xl border border-[var(--border)] shadow-xs">
                 <span class="text-xs font-semibold uppercase tracking-wider text-[var(--foreground-muted)]">Stok Obat Menipis</span>
-                <div class="text-2xl font-extrabold text-orange-600 dark:text-orange-400 mt-1.5">{{ $metrics['low_stock_medicines'] }}</div>
-                <div class="text-[11px] text-[var(--foreground-muted)] mt-0.5">&le; {{ $metrics['low_stock_threshold'] }} unit total</div>
+                @if($metrics['low_stock_configured'])
+                    <div class="text-2xl font-extrabold text-orange-600 dark:text-orange-400 mt-1.5">{{ $metrics['low_stock_medicines'] }}</div>
+                    <div class="text-[11px] text-[var(--foreground-muted)] mt-0.5">&le; {{ $metrics['low_stock_threshold'] }} unit total</div>
+                @else
+                    <div class="text-sm font-semibold text-[var(--foreground-muted)] mt-2 italic">Belum Dikonfigurasi</div>
+                    <div class="text-[10px] text-[var(--foreground-muted)] mt-0.5">[PERLU DIKONFIRMASI]</div>
+                @endif
             </div>
 
             <div class="p-4 bg-[var(--surface)] rounded-2xl border border-[var(--border)] shadow-xs">

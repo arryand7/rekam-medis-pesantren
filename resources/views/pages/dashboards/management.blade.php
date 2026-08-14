@@ -101,10 +101,20 @@
             <div class="p-5 bg-[var(--surface)] rounded-2xl border border-[var(--border)] shadow-xs flex flex-col justify-between">
                 <div>
                     <span class="text-xs font-semibold uppercase tracking-wider text-[var(--foreground-muted)]">Kepatuhan Kontrol / Follow-Up</span>
-                    <div class="text-3xl font-extrabold text-emerald-600 dark:text-emerald-400 mt-2">{{ $metrics['follow_up_completion_rate'] }}%</div>
+                    <div class="text-3xl font-extrabold text-emerald-600 dark:text-emerald-400 mt-2">
+                        @if($metrics['follow_up_metrics']['has_data'])
+                            {{ $metrics['follow_up_metrics']['rate'] }}%
+                        @else
+                            <span class="text-lg font-semibold text-[var(--foreground-muted)]">Belum ada data</span>
+                        @endif
+                    </div>
                 </div>
                 <div class="mt-3 pt-3 border-t border-[var(--border)] text-xs text-[var(--foreground-muted)]">
-                    {{ $metrics['completed_follow_ups'] }} dari {{ $metrics['total_follow_ups'] }} jadwal selesai
+                    @if($metrics['follow_up_metrics']['has_data'])
+                        {{ $metrics['follow_up_metrics']['completed'] }} dari {{ $metrics['follow_up_metrics']['total'] }} jadwal selesai
+                    @else
+                        Tidak ada jadwal kontrol pada periode ini
+                    @endif
                 </div>
             </div>
 

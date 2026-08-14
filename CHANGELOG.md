@@ -15,6 +15,25 @@ Semua perubahan penting proyek dicatat di file ini.
 > Istilah *production* pada dokumen historis sebelum koreksi ini merujuk pada
 > *rehearsal / readiness validation*, bukan deployment server production fisik aktual.
 
+## [0.21.1] — 2026-08-14 (Phase 5C1 Reporting Correctness, Privacy Boundaries & Performance Closure)
+
+### Fixed
+
+- **Report KPI Filter Consistency (`app/Services/Reporting/HealthReportService.php`)**: `HealthReportService::getReportSummary()` kini menerapkan seluruh parameter filter (`start_date`, `end_date`, `status`, `search`) secara identik dengan query tabel laporan sehingga jumlah KPI konsisten 100% dengan data tabel.
+- **Follow-up Zero Denominator Safe (`app/Queries/Dashboard/ManagementDashboardQuery.php`, `resources/views/pages/dashboards/management.blade.php`)**: Menangani kasus nol jadwal kontrol dengan mengembalikan `null` dan merender `Belum ada data` (menghapus misleading `100%`).
+- **Pharmacy Expiry & Low-Stock Unification (`config/pharmacy.php`, `app/Queries/Dashboard/PharmacyDashboardQuery.php`, `resources/views/pages/dashboards/pharmacy.blade.php`)**: Seluruh acuan jendela kedaluwarsa merujuk tunggal ke `config('pharmacy.expiry_warning_days')`, dan ambang batas stok menipis didukung secara konfiguratif via `config('pharmacy.low_stock_threshold')` (status unconfigured ditangani anggun).
+- **Report Export Whitelist & Routing (`app/Http/Controllers/Reporting/HealthReportController.php`, `app/Services/Reporting/HealthReportService.php`)**: Menegakkan whitelist tipe laporan ketat, menolak tipe ilegal dengan HTTP 422, dan menambahkan `streamIntegrationDeliveryReport()` untuk ekspor teknis delivery outbox.
+- **CSV Formula Injection Protection (`app/Services/Reporting/HealthReportService.php`)**: Seluruh sel teks CSV yang diawali formula spreadsheet (`=`, `+`, `-`, `@`, `\t`, `\r`) disanitasi secara otomatis dengan prepending `'`.
+- **Management Trend Query Performance (`app/Queries/Dashboard/ManagementDashboardQuery.php`)**: Mengonversi agregasi tren harian dari loop hari O(N) menjadi 3 query agregat statis `DATE(created_at)` konstan (&le; 18 queries).
+- **Date Range Input Validation (`app/Http/Controllers/Dashboard/DashboardController.php`)**: Menambahkan validasi ketat untuk input rentang tanggal (`preset`, `from`, `to`, `after_or_equal:from`).
+
+### Verified (Phase 5C1)
+
+- **Comprehensive Automated Test Suite**: 240 tests / 1003 assertions (100% Passed, zero regressions).
+- **Targeted Feature Tests**: 15 test cases pada `tests/Feature/Ui/Phase5CDashboardReportingTest.php` lulus sempurna.
+- **Quality Gates**: Pint Passed, PHPStan Passed (0 errors), Vite Build Passed (566ms).
+- **Visual Smoke & Themes**: Verifikasi render pada 375px, 768px, 1024px, 1440px serta tema Light/Dark/System.
+
 ## [0.21.0] — 2026-08-14 (Phase 5C Role-Aware Dashboards, Actionable Work Queues & Operational Reports)
 
 ### Added

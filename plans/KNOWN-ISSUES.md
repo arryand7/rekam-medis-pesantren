@@ -8,6 +8,15 @@ last_updated: 2026-08-13
 
 # Known Issues and Open Questions
 
+## Phase 5C1 Reporting Correctness, Privacy & Performance Status
+
+- [x] **Report Summary KPI Filter Consistency (RESOLVED 2026-08-14)**: `getReportSummary()` menyelaraskan seluruh parameter filter dengan query tabel laporan.
+- [x] **Follow-up Zero Denominator Safe (RESOLVED 2026-08-14)**: Menangani kasus pembagi nol pada jadwal kontrol dengan mengembalikan `null` / `Belum ada data`.
+- [x] **Pharmacy Threshold Unification (RESOLVED 2026-08-14)**: Satukan acuan kedaluwarsa ke `config('pharmacy.expiry_warning_days')` dan low-stock threshold ke `config('pharmacy.low_stock_threshold')`.
+- [x] **Report Export Whitelist & Integration CSV (RESOLVED 2026-08-14)**: Tipe laporan ilegal ditolak dengan 422 dan modul integrasi memiliki handler streaming CSV mandiri.
+- [x] **CSV Formula Injection Sanitization (RESOLVED 2026-08-14)**: Seluruh sel teks diawali `=, +, -, @, \t, \r` diprefix `'`.
+- [x] **Management Trend Grouped Aggregates (RESOLVED 2026-08-14)**: Mengonversi query loop harian menjadi 3 kueri grup SQL statis konstan.
+
 ## Phase 5B2 Repository Hygiene, Bug Fix & Final Closure Status
 
 - [x] **Dark Mode & Responsive Visual Smoke Matrix (RESOLVED 2026-08-14)**: Verifikasi visual dark mode dan multi-viewport (375px, 768px, 1024px, 1440px) pada seluruh 7 modul klinis Phase 5B tuntas dengan bukti tangkapan layar browser. Status: `PASS`.

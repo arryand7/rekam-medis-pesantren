@@ -8,6 +8,27 @@ last_updated: 2026-08-13
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 5C1 — Reporting Correctness, Privacy Boundaries, Query Performance & Visual Closure Mapping
+
+```text
+PHASE-5C1-CORRECTION-AUDIT.md & PHASE-5C1-FINAL-CLOSURE.md & PHASE-5C1-VISUAL-VERIFICATION.md & PHASE-5C1-TEST-MATRIX.md & PHASE-5C-METRIC-DEFINITIONS.md & PHASE-5C-DASHBOARD-STATE-MAPPING.md
+  -> app/Queries/Dashboard/ClinicalDashboardQuery.php
+  -> app/Queries/Dashboard/OperationalDashboardQuery.php
+  -> app/Queries/Dashboard/PharmacyDashboardQuery.php
+  -> app/Queries/Dashboard/ManagementDashboardQuery.php
+  -> app/Services/Reporting/HealthReportService.php
+  -> app/Http/Controllers/Dashboard/DashboardController.php
+  -> app/Http/Controllers/Reporting/HealthReportController.php
+  -> config/pharmacy.php
+  -> resources/views/pages/dashboards/clinical.blade.php
+  -> resources/views/pages/dashboards/management.blade.php
+  -> resources/views/pages/dashboards/pharmacy.blade.php
+  -> resources/views/pages/dashboards/operational.blade.php
+  -> resources/views/pages/reports/index.blade.php
+  -> resources/views/pages/reports/show.blade.php
+  -> tests/Feature/Ui/Phase5CDashboardReportingTest.php
+```
+
 ## Phase 5B2 — Final Repository Hygiene, Bug Fix & Closure Mapping
 
 ```text
