@@ -98,10 +98,10 @@ class ManagementDashboardQuery
             'pharmacy_movements' => $pharmacyMovements,
             'daily_trends' => $dailyTrends,
             'batch_health' => [
-                'active' => MedicineBatch::where('expiry_date', '>', now())->where('current_quantity', '>', 0)->count(),
-                'near_expiry' => MedicineBatch::whereBetween('expiry_date', [now()->toDateString(), $nearExpiryThreshold])->where('current_quantity', '>', 0)->count(),
-                'expired' => MedicineBatch::where('expiry_date', '<', now()->toDateString())->where('current_quantity', '>', 0)->count(),
-                'depleted' => MedicineBatch::where('current_quantity', '<=', 0)->count(),
+                'active' => MedicineBatch::normal($warningDays)->count(),
+                'near_expiry' => MedicineBatch::nearExpiry($warningDays)->count(),
+                'expired' => MedicineBatch::expired()->count(),
+                'depleted' => MedicineBatch::depleted()->count(),
             ],
         ];
     }

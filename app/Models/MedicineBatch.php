@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\CarbonInterface;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -64,15 +65,63 @@ class MedicineBatch extends Model
 
     public function isExpired(): bool
     {
-        return $this->expiry_date instanceof CarbonInterface && $this->expiry_date->isPast();
+        return $this->expiry_date instanceof CarbonInterface && $this->expiry_date->lt(now()->startOfDay());
     }
 
     public function isNearExpiry(?int $daysThreshold = null): bool
     {
         $threshold = $daysThreshold ?? (int) config('pharmacy.expiry_warning_days', 30);
 
-        return $this->expiry_date instanceof CarbonInterface
-            && ! $this->isExpired()
-            && now()->diffInDays($this->expiry_date) <= $threshold;
+        if (! ($this->expiry_date instanceof CarbonInterface)) {
+            return false;
+        }
+
+        $today = now()->startOfDay();
+        $limit = now()->addDays($threshold)->endOfDay();
+
+        return $this->expiry_date->gte($today) && $this->expiry_date->lte($limit);
+    }
+
+    /**
+     * @param  Builder<MedicineBatch>  $query
+     * @return Builder<MedicineBatch>
+     */
+    public function scopeExpired($query)
+    {
+        return $query->where('expiry_date', '<', now()->toDateString())
+            ->where('current_quantity', '>', 0);
+    }
+
+    /**
+     * @param  Builder<MedicineBatch>  $query
+     * @return Builder<MedicineBatch>
+     */
+    public function scopeNearExpiry($query, ?int $daysThreshold = null)
+    {
+        $threshold = now()->addDays($daysThreshold ?? (int) config('pharmacy.expiry_warning_days', 30))->toDateString();
+
+        return $query->whereBetween('expiry_date', [now()->toDateString(), $threshold])
+            ->where('current_quantity', '>', 0);
+    }
+
+    /**
+     * @param  Builder<MedicineBatch>  $query
+     * @return Builder<MedicineBatch>
+     */
+    public function scopeNormal($query, ?int $daysThreshold = null)
+    {
+        $threshold = now()->addDays($daysThreshold ?? (int) config('pharmacy.expiry_warning_days', 30))->toDateString();
+
+        return $query->where('expiry_date', '>', $threshold)
+            ->where('current_quantity', '>', 0);
+    }
+
+    /**
+     * @param  Builder<MedicineBatch>  $query
+     * @return Builder<MedicineBatch>
+     */
+    public function scopeDepleted($query)
+    {
+        return $query->where('current_quantity', '<=', 0);
     }
 }

@@ -238,11 +238,13 @@ class HealthReportService
 
                 $warningDays = (int) config('pharmacy.expiry_warning_days', 30);
                 $threshold = now()->addDays($warningDays)->toDateString();
+                $today = now()->toDateString();
 
                 return [
                     'total_batches' => (clone $query)->count(),
                     'depleted_batches' => (clone $query)->where('current_quantity', '<=', 0)->count(),
-                    'near_expiry_batches' => (clone $query)->where('expiry_date', '<=', $threshold)->where('current_quantity', '>', 0)->count(),
+                    'near_expiry_batches' => (clone $query)->whereBetween('expiry_date', [$today, $threshold])->where('current_quantity', '>', 0)->count(),
+                    'expired_batches' => (clone $query)->where('expiry_date', '<', $today)->where('current_quantity', '>', 0)->count(),
                 ];
 
             case 'integration_delivery':
@@ -296,14 +298,20 @@ class HealthReportService
 
             // Write metadata header comment block
             $this->writeCsvRow($handle, ['# LAPORAN POSKESTREN SABIRA HEALTH']);
-            $this->writeCsvRow($handle, ['# Tipe Laporan', ucwords(str_replace('_', ' ', $reportType))]);
+            $reportTitle = $reportType === 'pharmacy_stock'
+                ? 'Snapshot Stok Farmasi Saat Ini'
+                : ucwords(str_replace('_', ' ', $reportType));
+            $this->writeCsvRow($handle, ['# Tipe Laporan', $reportTitle]);
             $this->writeCsvRow($handle, ['# Diekspor Pada', now()->format('d/m/Y H:i:s')]);
             $this->writeCsvRow($handle, ['# Petugas Pengekspor', $user ? $user->name : 'Sistem']);
-            if (! empty($filters['start_date']) || ! empty($filters['end_date'])) {
+            if ($reportType !== 'pharmacy_stock' && (! empty($filters['start_date']) || ! empty($filters['end_date']))) {
                 $this->writeCsvRow($handle, ['# Filter Rentang', ($filters['start_date'] ?? 'Awal').' s/d '.($filters['end_date'] ?? 'Akhir')]);
             }
             if (! empty($filters['status'])) {
                 $this->writeCsvRow($handle, ['# Filter Status', $filters['status']]);
+            }
+            if (! empty($filters['search'])) {
+                $this->writeCsvRow($handle, ['# Filter Pencarian', $filters['search']]);
             }
             $this->writeCsvRow($handle, []); // Empty line separator
 
@@ -510,7 +518,12 @@ class HealthReportService
 
         $query->chunk(100, function ($batches) use ($handle) {
             foreach ($batches as $batch) {
-                $isExpired = $batch->expiry_date ? $batch->expiry_date->isPast() : false;
+                $statusLabel = $batch->isExpired()
+                    ? 'Kedaluwarsa'
+                    : ($batch->current_quantity <= 0
+                        ? 'Habis'
+                        : ($batch->isNearExpiry() ? 'Hampir Kedaluwarsa' : 'Aktif'));
+
                 /** @var Medicine|null $medicine */
                 $medicine = $batch->medicine;
                 /** @var StockLocation|null $location */
@@ -523,7 +536,7 @@ class HealthReportService
                     $location ? $location->name : 'Apotek Utama',
                     $batch->current_quantity,
                     $batch->expiry_date ? $batch->expiry_date->format('d/m/Y') : '-',
-                    $isExpired ? 'Kedaluwarsa' : 'Aktif',
+                    $statusLabel,
                 ]);
             }
         });

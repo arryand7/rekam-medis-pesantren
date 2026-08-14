@@ -29,16 +29,9 @@ class PharmacyDashboardQuery
         $lowStockConfigured = $rawLowStock !== null;
         $lowStockThreshold = $lowStockConfigured ? (int) $rawLowStock : null;
 
-        $expiredCount = MedicineBatch::where('expiry_date', '<', $today)
-            ->where('current_quantity', '>', 0)
-            ->count();
-
-        $nearExpiryCount = MedicineBatch::where('expiry_date', '>=', $today)
-            ->where('expiry_date', '<=', $nearExpiryThreshold)
-            ->where('current_quantity', '>', 0)
-            ->count();
-
-        $depletedCount = MedicineBatch::where('current_quantity', '<=', 0)->count();
+        $expiredCount = MedicineBatch::expired()->count();
+        $nearExpiryCount = MedicineBatch::nearExpiry($warningDays)->count();
+        $depletedCount = MedicineBatch::depleted()->count();
 
         $lowStockMedicinesCount = null;
         if ($lowStockConfigured && $lowStockThreshold !== null) {
@@ -89,8 +82,8 @@ class PharmacyDashboardQuery
             ->limit($limit)
             ->get()
             ->map(function (MedicineBatch $batch): array {
-                $isExpired = $batch->expiry_date ? $batch->expiry_date->isPast() : false;
-                $daysRemaining = $batch->expiry_date ? (int) now()->diffInDays($batch->expiry_date, false) : 0;
+                $isExpired = $batch->isExpired();
+                $daysRemaining = $batch->expiry_date ? (int) now()->startOfDay()->diffInDays($batch->expiry_date, false) : 0;
                 /** @var Medicine|null $medicine */
                 $medicine = $batch->medicine;
                 /** @var StockLocation|null $location */

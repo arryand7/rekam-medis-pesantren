@@ -8,6 +8,19 @@ last_updated: 2026-08-13
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 5C2 — Pharmacy Reporting Semantics & Final Micro-Closure Mapping
+
+```text
+PHASE-5C2-MICRO-CORRECTION-AUDIT.md & PHASE-5C2-FINAL-CLOSURE.md & PHASE-5C2-TEST-MATRIX.md & PHASE-5C-METRIC-DEFINITIONS.md
+  -> app/Models/MedicineBatch.php (scopes: expired, nearExpiry, normal, depleted)
+  -> app/Queries/Dashboard/PharmacyDashboardQuery.php
+  -> app/Queries/Dashboard/ManagementDashboardQuery.php
+  -> app/Services/Reporting/HealthReportService.php
+  -> app/Http/Requests/Reporting/QueryReportRequest.php
+  -> resources/views/pages/reports/show.blade.php
+  -> tests/Feature/Ui/Phase5C2PharmacyReportingClosureTest.php
+```
+
 ## Phase 5C1 — Reporting Correctness, Privacy Boundaries, Query Performance & Visual Closure Mapping
 
 ```text

@@ -22,6 +22,7 @@ class QueryReportRequest extends FormRequest
             'start_date' => ['nullable', 'date'],
             'end_date' => ['nullable', 'date', 'after_or_equal:start_date'],
             'status' => ['nullable', 'string', 'max:50'],
+            'search' => ['nullable', 'string', 'max:100'],
             'destination' => ['nullable', 'string', 'max:50'],
             'is_low_stock' => ['nullable', 'boolean'],
             'per_page' => ['nullable', 'integer', 'min:5', 'max:100'],

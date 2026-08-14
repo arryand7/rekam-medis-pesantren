@@ -10,19 +10,17 @@ last_updated: 2026-08-14
 
 ## Fase saat ini
 
-**Phase 5C1 Complete — Reporting Correctness, Privacy Boundaries, Query Performance & Visual Closure** (Status: `PHASE-5C-FINAL-COMPLETE` / v0.21.1)
+**Phase 5C2 Complete — Pharmacy Reporting Semantics & Final Micro-Closure** (Status: `PHASE-5C-FINAL-COMPLETE` / v0.21.2)
 
-## Perubahan & Temuan di Phase 5C1
+## Perubahan & Temuan di Phase 5C2
 
-- [x] **Keselarasan Filter KPI Laporan**: `HealthReportService::getReportSummary()` menerapkan seluruh parameter filter (`start_date`, `end_date`, `status`, `search`) secara identik dengan query tabel laporan.
-- [x] **Zero Denominator Safe**: Metrik kepatuhan follow-up pada Dashboard Manajemen merender `null` / `Belum ada data` ketika tidak ada jadwal kontrol (bebas dari misleading 100%).
-- [x] **Unifikasi Konfigurasi Kedaluwarsa & Ambang Batas Fleksibel**: Pemantauan batch near-expiry disatukan ke `config('pharmacy.expiry_warning_days')` dan ambang batas stok menipis didukung secara konfiguratif via `config('pharmacy.low_stock_threshold')` (status unconfigured ditangani anggun).
-- [x] **Whitelist & Routing Ekspor Sensus**: Ekspor laporan memvalidasi whitelist tipe laporan secara ketat (`SUPPORTED_REPORT_TYPES`), menolak tipe tak dikenal dengan HTTP 422, dan mengimplementasikan streaming khusus `streamIntegrationDeliveryReport()`.
-- [x] **Proteksi CSV Formula Injection**: Seluruh sel teks CSV yang diawali formula spreadsheet (`=`, `+`, `-`, `@`, `\t`, `\r`) disanitasi secara otomatis dengan prepending `'`.
-- [x] **Optimasi Performa Query Tren**: Agregasi SQL harian grup konstan (`DATE(created_at)`) mengurangi kompleksitas dari loop harian menjadi 3 query agregat statis (&le; 18 queries).
-- [x] **Validasi Rentang Tanggal**: Validasi form input tanggal pada Dashboard Manajemen (`preset`, `from`, `to`, `after_or_equal:from`).
-- [x] **Penegakan Batasan Privasi**: Pembuktian bahwa peran manajemen eksekutif tidak dapat mengakses ataupun mengekspor laporan klinis berlevel identitas pasien tanpa izin eksplisit.
-- [x] **Automated Regression Suite**: Penambahan 7 test case komprehensif pada `tests/Feature/Ui/Phase5CDashboardReportingTest.php`, total test suite meningkat menjadi **240 tests / 1003 assertions (100% PASS)**.
+- [x] **Eliminasi Double-Counting Kedaluwarsa Farmasi**: Kategori batch obat `expired` (`expiry_date < today AND qty > 0`), `near_expiry` (`today <= expiry_date <= threshold AND qty > 0`), `normal` (`expiry_date > threshold AND qty > 0`), dan `depleted` (`qty <= 0`) dijamin 100% saling lepas (*mutually exclusive*).
+- [x] **Shared Model Scopes**: Penambahan scope `expired()`, `nearExpiry()`, `normal()`, dan `depleted()` pada `MedicineBatch` sebagai sumber kebenaran tunggal (*Single Source of Truth*).
+- [x] **Dashboard Manajemen Batch Health**: 4 kategori status batch pada Dashboard Manajemen konsisten secara matematis (jumlah keempat bucket tepat sama dengan total batch aktif).
+- [x] **Semantik Snapshot Laporan Stok Farmasi**: Laporan `pharmacy_stock` secara eksplisit ditetapkan sebagai *Current Inventory Snapshot*. Input tanggal (`start_date`/`end_date`) disembunyikan dan digantikan dengan input pencarian kata kunci obat/batch.
+- [x] **Metadata Ekspor CSV Snapshot**: Metadata CSV menyajikan judul `"Snapshot Stok Farmasi Saat Ini"` dan tidak lagi memuat baris rentang tanggal semu.
+- [x] **Status Kolom Akurat**: Kolom status pada tabel dan file ekspor CSV menyajikan status riil (`Kedaluwarsa`, `Hampir Kedaluwarsa`, `Aktif`, `Habis`).
+- [x] **Automated Regression Suite**: Penambahan 4 test case komprehensif pada `tests/Feature/Ui/Phase5C2PharmacyReportingClosureTest.php`, total test suite meningkat menjadi **244 tests / 1043 assertions (100% PASS)**.
 
 ## Kemajuan Phase
 
@@ -50,12 +48,13 @@ last_updated: 2026-08-14
 - [x] **Phase 5B2 — Repository Hygiene Finalization, Bug Fix & Final Closure**: Selesai (`PHASE-5B-FINAL-COMPLETE`, v0.20.2).
 - [x] **Phase 5C — Role-Aware Dashboards, Actionable Work Queues, Operational Reports & Streaming Export**: Selesai (`PHASE-5C-FINAL-COMPLETE`, v0.21.0).
 - [x] **Phase 5C1 — Reporting Correctness, Privacy Boundaries, Query Performance & Visual Closure**: Selesai (`PHASE-5C-FINAL-COMPLETE`, v0.21.1).
+- [x] **Phase 5C2 — Pharmacy Reporting Semantics & Final Micro-Closure**: Selesai (`PHASE-5C-FINAL-COMPLETE`, v0.21.2).
 
 ## Current Environment & Readiness State
 
 ```text
 Application Development:          ACTIVE
-Current Functional Version:       0.21.1 (Phase 5C1 Correctness, Performance, Privacy & Visual Closure Complete)
+Current Functional Version:       0.21.2 (Phase 5C2 Pharmacy Reporting Semantics & Final Micro-Closure Complete)
 Environment:                      LOCAL-DEVELOPMENT (macOS Developer Workstation)
 Deployment Status:                NOT_DEPLOYED (Belum pernah dideploy ke server fisik)
 Production Host Status:           NOT_STARTED
@@ -69,9 +68,9 @@ Attendance Sandbox Validation:    LOCAL_SIMULATION_VALIDATED
 
 - Tanggal: 2026-08-14
 - Database: MariaDB 10.4.28 (`poskestren_sabira`, InnoDB, REPEATABLE-READ)
-- Test Suite: 240 tests, 1003 assertions (100% Passed, 0 Skipped, 0 Failed)
+- Test Suite: 244 tests, 1043 assertions (100% Passed, 0 Skipped, 0 Failed)
 - Code Formatter: Pint Passed
 - Static Analysis: PHPStan Passed (0 errors)
-- Frontend: Vite Build Passed (566ms)
+- Frontend: Vite Build Passed (651ms)
 - git diff --check: PASSED
-- Status Rilis: LOCAL DEVELOPMENT — PHASE-5C-FINAL-COMPLETE (v0.21.1)
+- Status Rilis: LOCAL DEVELOPMENT — PHASE-5C-FINAL-COMPLETE (v0.21.2)

@@ -8,6 +8,13 @@ last_updated: 2026-08-13
 
 # Known Issues and Open Questions
 
+## Phase 5C2 Pharmacy Reporting Semantics & Micro-Closure Status
+
+- [x] **Pharmacy Expiry Mutual Exclusivity (RESOLVED 2026-08-14)**: Eliminasi double-counting kategori batch kedaluwarsa via model scopes `MedicineBatch::scopeExpired()`, `scopeNearExpiry()`, `scopeNormal()`, dan `scopeDepleted()`.
+- [x] **Management Dashboard Batch Health Alignment (RESOLVED 2026-08-14)**: Keempat kategori status batch farmasi saling lepas secara matematis.
+- [x] **Pharmacy Stock Current Snapshot Semantics (RESOLVED 2026-08-14)**: Penegasan `pharmacy_stock` sebagai snapshot inventaris real-time, penyembunyian date pickers dari form UI, dan penggantian dengan input pencarian kata kunci obat/batch.
+- [x] **Snapshot CSV Export Metadata (RESOLVED 2026-08-14)**: Penetapan judul ekspor `"Snapshot Stok Farmasi Saat Ini"` dan peniadaan filter rentang tanggal semu.
+
 ## Phase 5C1 Reporting Correctness, Privacy & Performance Status
 
 - [x] **Report Summary KPI Filter Consistency (RESOLVED 2026-08-14)**: `getReportSummary()` menyelaraskan seluruh parameter filter dengan query tabel laporan.

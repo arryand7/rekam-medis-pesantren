@@ -280,8 +280,8 @@
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1786675840.0276,
-    "ast_hash": "491fb6935871d414bbaa79d35c2b5921",
+    "mtime": 1786710442.562847,
+    "ast_hash": "1eb79bb9d8a83a794d0f023a01d54d1e",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -295,8 +295,8 @@
     "semantic_hash": ""
   },
   "PROJECT-STATUS.md": {
-    "mtime": 1786675824.4281144,
-    "ast_hash": "8faef3ea8078854f9f9d01da4dd36d5a",
+    "mtime": 1786710432.412538,
+    "ast_hash": "44c3ab7f66e99d503ed13424780810ee",
     "semantic_hash": ""
   },
   "README.md": {
@@ -755,8 +755,8 @@
     "semantic_hash": ""
   },
   "docs/12-graphify/DOCUMENT-CODE-MAPPING.md": {
-    "mtime": 1786675852.4211338,
-    "ast_hash": "f92e9bb5630d98d85f00fe8c7e078835",
+    "mtime": 1786710464.7958736,
+    "ast_hash": "9afd096fe69e9cd0c4058a9ffbccca07",
     "semantic_hash": ""
   },
   "docs/12-graphify/GRAPH-NAMING-CONVENTIONS.md": {
@@ -795,8 +795,8 @@
     "semantic_hash": ""
   },
   "plans/KNOWN-ISSUES.md": {
-    "mtime": 1786675863.4449146,
-    "ast_hash": "598c63368f005ed53d2505bd1281efec",
+    "mtime": 1786710454.4741685,
+    "ast_hash": "4bc49821cf16a14560b1562dc8043128",
     "semantic_hash": ""
   },
   "public/robots.txt": {
@@ -970,8 +970,8 @@
     "semantic_hash": ""
   },
   "app/Models/MedicineBatch.php": {
-    "mtime": 1786609866.5969503,
-    "ast_hash": "337c2d00b1739c1868f361bb851916b5",
+    "mtime": 1786709896.8039281,
+    "ast_hash": "a6cbee2c9f731c38483d75149af61e9f",
     "semantic_hash": ""
   },
   "app/Models/ObservationEpisode.php": {
@@ -2085,8 +2085,8 @@
     "semantic_hash": ""
   },
   "app/Http/Requests/Reporting/QueryReportRequest.php": {
-    "mtime": 1786259780.7168875,
-    "ast_hash": "0da5abcec82076afb0128b2c69c4678a",
+    "mtime": 1786709826.598411,
+    "ast_hash": "27dd5b7a6d6e91a11c3a5f0d66ab33d0",
     "semantic_hash": ""
   },
   "app/Models/IntegrationDeliveryAttempt.php": {
@@ -2175,8 +2175,8 @@
     "semantic_hash": ""
   },
   "app/Services/Reporting/HealthReportService.php": {
-    "mtime": 1786675490.2173142,
-    "ast_hash": "db3c9de6b2bb6d9e2f165ca52a365552",
+    "mtime": 1786709818.7162533,
+    "ast_hash": "e66178af2b4af7f1a13cb5234243a023",
     "semantic_hash": ""
   },
   "app/Services/UserNotificationService.php": {
@@ -2270,8 +2270,8 @@
     "semantic_hash": ""
   },
   "resources/views/pages/reports/show.blade.php": {
-    "mtime": 1786672783.5526347,
-    "ast_hash": "19665a25d12d3040a9f247a066941a6f",
+    "mtime": 1786709845.491182,
+    "ast_hash": "7fffa09e841e0b470f56b87d024755f4",
     "semantic_hash": ""
   },
   "tests/Feature/Dashboard/DashboardAuthorizationAndPrivacyTest.php": {
@@ -2960,8 +2960,8 @@
     "semantic_hash": ""
   },
   "app/Queries/Dashboard/ManagementDashboardQuery.php": {
-    "mtime": 1786675260.9220922,
-    "ast_hash": "11f9c1fabe198ee78560dc4c02066511",
+    "mtime": 1786709795.0253015,
+    "ast_hash": "c272b6b1697170d8a3b4da1053b70a49",
     "semantic_hash": ""
   },
   "app/Queries/Dashboard/OperationalDashboardQuery.php": {
@@ -2970,8 +2970,8 @@
     "semantic_hash": ""
   },
   "app/Queries/Dashboard/PharmacyDashboardQuery.php": {
-    "mtime": 1786675243.7593448,
-    "ast_hash": "a0b64505cdb84ff9586088eb2db0eb2b",
+    "mtime": 1786709786.9425838,
+    "ast_hash": "1c64d252942fad3c995d4ebd0aa6b316",
     "semantic_hash": ""
   },
   "resources/views/pages/dashboards/pharmacy.blade.php": {
@@ -3000,8 +3000,8 @@
     "semantic_hash": ""
   },
   "docs/09-testing/PHASE-5C-METRIC-DEFINITIONS.md": {
-    "mtime": 1786675774.1219215,
-    "ast_hash": "4edc725c98e9e8b683fe1acd24ecdefe",
+    "mtime": 1786710421.1998336,
+    "ast_hash": "253895646ceba89501b55d9d295286eb",
     "semantic_hash": ""
   },
   "docs/09-testing/PHASE-5C-TEST-MATRIX.md": {
@@ -3037,6 +3037,26 @@
   "docs/10-delivery/PHASE-5C1-FINAL-CLOSURE.md": {
     "mtime": 1786675810.9337156,
     "ast_hash": "531ad2ccd1b6ebe5edd1ab35656c250b",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Ui/Phase5C2PharmacyReportingClosureTest.php": {
+    "mtime": 1786709855.3303752,
+    "ast_hash": "a49854e15010469bed5d53f0e42e89c8",
+    "semantic_hash": ""
+  },
+  "docs/09-testing/PHASE-5C2-TEST-MATRIX.md": {
+    "mtime": 1786710403.76442,
+    "ast_hash": "a4db34c7514c4350c3b100a71c67874d",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-5C2-FINAL-CLOSURE.md": {
+    "mtime": 1786710410.5852804,
+    "ast_hash": "5f04609c73dea7c76a46650f29b2230c",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/PHASE-5C2-MICRO-CORRECTION-AUDIT.md": {
+    "mtime": 1786710396.4423866,
+    "ast_hash": "44a1ef80f0d4229710056a8d744d9671",
     "semantic_hash": ""
   }
 }

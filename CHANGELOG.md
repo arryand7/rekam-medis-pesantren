@@ -15,6 +15,24 @@ Semua perubahan penting proyek dicatat di file ini.
 > Istilah *production* pada dokumen historis sebelum koreksi ini merujuk pada
 > *rehearsal / readiness validation*, bukan deployment server production fisik aktual.
 
+## [0.21.2] — 2026-08-14 (Phase 5C2 Pharmacy Reporting Semantics & Final Micro-Closure)
+
+### Fixed
+
+- **Pharmacy Expiry Mutual Exclusivity (`app/Models/MedicineBatch.php`, `app/Queries/Dashboard/PharmacyDashboardQuery.php`, `app/Services/Reporting/HealthReportService.php`)**: Mengeliminasi double-counting kategori kedaluwarsa. Kategori `expired` (`expiry_date < today AND qty > 0`), `near_expiry` (`today <= expiry_date <= threshold AND qty > 0`), `normal` (`expiry_date > threshold AND qty > 0`), dan `depleted` (`qty <= 0`) kini dijamin 100% saling lepas (*mutually exclusive*).
+- **Shared Model Scopes (`app/Models/MedicineBatch.php`)**: Menambahkan model scopes `scopeExpired()`, `scopeNearExpiry()`, `scopeNormal()`, dan `scopeDepleted()` sebagai Single Source of Truth bagi seluruh query dashboard dan reporting.
+- **Management Batch Health Buckets (`app/Queries/Dashboard/ManagementDashboardQuery.php`)**: Menyelaraskan status kesehatan stok obat pada Dashboard Manajemen sehingga jumlah keempat kategori batch tepat sama dengan total seluruh batch aktif di database.
+- **Pharmacy Stock Snapshot Semantics (`resources/views/pages/reports/show.blade.php`, `app/Services/Reporting/HealthReportService.php`)**: Laporan stok farmasi secara tegas didefinisikan sebagai *Current Inventory Snapshot*. Input tanggal (`start_date`/`end_date`) yang diabaikan backend disembunyikan dan digantikan dengan input pencarian kata kunci (`search`).
+- **Snapshot CSV Export Metadata (`app/Services/Reporting/HealthReportService.php`)**: Metadata ekspor CSV stok farmasi menetapkan judul `"Snapshot Stok Farmasi Saat Ini"` dan tidak lagi mencantumkan baris rentang tanggal semu.
+- **Accurate Table Status Column (`resources/views/pages/reports/show.blade.php`, `app/Services/Reporting/HealthReportService.php`)**: Kolom status pada tabel dan file ekspor CSV menyajikan status riil batch (`Kedaluwarsa`, `Hampir Kedaluwarsa`, `Aktif`, `Habis`).
+
+### Verified (Phase 5C2)
+
+- **Targeted Regression Tests (`tests/Feature/Ui/Phase5C2PharmacyReportingClosureTest.php`)**: 4 skenario uji baru memvalidasi dataset Batch A/B/C/D, mutual exclusivity, snapshot UI, keyword search, dan metadata ekspor CSV.
+- **Comprehensive Automated Test Suite**: 244 tests / 1043 assertions (100% Passed, zero regressions).
+- **Quality Gates**: Pint Passed, PHPStan Passed (0 errors), Vite Build Passed (651ms).
+- **Visual Smoke & Themes**: Verifikasi render pada 375px, 1440px serta tema Light/Dark mode.
+
 ## [0.21.1] — 2026-08-14 (Phase 5C1 Reporting Correctness, Privacy Boundaries & Performance Closure)
 
 ### Fixed
