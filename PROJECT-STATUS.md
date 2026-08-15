@@ -10,7 +10,16 @@ last_updated: 2026-08-15
 
 ## Fase saat ini
 
-**Phase 5D Complete — Pre-Staging Acceptance & Deployment Readiness** (Status: `PHASE-5D-PRE-STAGING-READY-WITH-MANUAL-ITEMS` / v0.23.0)
+**Phase 5D Light Mode Contrast Hotfix Complete** (Status: `LIGHT-MODE-CONTRAST-HOTFIX-COMPLETE` / v0.23.1)
+
+## Light Mode Contrast Hotfix
+
+- [x] Hierarki semantic token light/dark untuk secondary, muted, tertiary, placeholder, disabled, surface subtle dan soft border.
+- [x] Shared primitive untuk card, form, banner, badge, filter, table, dan chart labels.
+- [x] Halaman prioritas `/referrals`, `/visits/create`, dan `/dashboards/management` serta pola terkait referral diperbaiki tanpa perubahan flow bisnis/backend.
+- [x] Kontrak rasio kontras normal text minimum 4.5:1 diuji otomatis.
+- [x] Production asset build dan targeted regression suite lulus.
+- [ ] Browser visual smoke perlu diulang pada lingkungan yang menyediakan in-app browser; sesi hotfix ini hanya menyediakan inspeksi source/render contract.
 
 ## Perubahan & Temuan di Phase 5D
 
@@ -65,7 +74,7 @@ last_updated: 2026-08-15
 
 ```text
 Application Development:          ACTIVE
-Current Functional Version:       0.23.0 (Phase 5D Pre-Staging Acceptance Complete with Manual Staging Items)
+Current Functional Version:       0.23.1 (Phase 5D Light Mode Contrast Hotfix)
 Environment:                      LOCAL-DEVELOPMENT (macOS Developer Workstation)
 Deployment Status:                NOT_DEPLOYED (Belum pernah dideploy ke server fisik)
 Production Host Status:           NOT_STARTED
@@ -79,9 +88,9 @@ Attendance Sandbox Validation:    LOCAL_SIMULATION_VALIDATED
 
 - Tanggal: 2026-08-15
 - Database: MariaDB 10.4.28 (`poskestren_sabira`, InnoDB, REPEATABLE-READ)
-- Test Suite: 277 tests, 1218 assertions (100% Passed, 0 Skipped, 0 Failed)
+- Test Suite: 279 tests, 1268 assertions (100% Passed, 0 Skipped, 0 Failed)
 - Code Formatter: Pint Passed
 - Static Analysis: PHPStan Passed (0 errors)
 - Frontend: Vite Build Passed
 - git diff --check: PASSED
-- Status Rilis: LOCAL PRE-STAGING — PHASE-5D-PRE-STAGING-READY-WITH-MANUAL-ITEMS (v0.23.0); no staging/production deployment
+- Status Rilis: LOCAL PRE-STAGING — LIGHT-MODE-CONTRAST-HOTFIX-COMPLETE (v0.23.1); visual browser smoke tetap perlu diulang pada staging, no staging/production deployment

@@ -280,8 +280,8 @@
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1786764594.7937763,
-    "ast_hash": "b8f5c1e5a6ae38c36f7c5797f829eafc",
+    "mtime": 1786764886.3201067,
+    "ast_hash": "2c1c03643f4dd5ec55201e001882079d",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -295,8 +295,8 @@
     "semantic_hash": ""
   },
   "PROJECT-STATUS.md": {
-    "mtime": 1786764594.7113469,
-    "ast_hash": "b2944d5def36a3688fd275a474a876d4",
+    "mtime": 1786764886.2150378,
+    "ast_hash": "e81ff5feef1680758849cced921ff2eb",
     "semantic_hash": ""
   },
   "README.md": {
@@ -3070,8 +3070,8 @@
     "semantic_hash": ""
   },
   "app/Http/Controllers/Admin/UserController.php": {
-    "mtime": 1786763395.681158,
-    "ast_hash": "069a25e54d39e47f1b5a99f662711281",
+    "mtime": 1786764777.5381541,
+    "ast_hash": "e5071dd1010730b8a4a4354de787b8fc",
     "semantic_hash": ""
   },
   "app/Http/Requests/Admin/StoreRoleRequest.php": {
@@ -3080,13 +3080,13 @@
     "semantic_hash": ""
   },
   "app/Http/Requests/Admin/UpdateRoleRequest.php": {
-    "mtime": 1786763395.5154724,
-    "ast_hash": "3f024f31325370f0812a6b473fe01f0f",
+    "mtime": 1786764756.5548236,
+    "ast_hash": "cf890516da09598af65bcfed6a9c45c5",
     "semantic_hash": ""
   },
   "app/Http/Requests/Admin/UpdateUserDirectPermissionsRequest.php": {
-    "mtime": 1786715239.1640391,
-    "ast_hash": "54ea5aed4f5fbaf81a512ba44f3f8b38",
+    "mtime": 1786764756.6329305,
+    "ast_hash": "88ead71e0821b6440ac19dbca69c511f",
     "semantic_hash": ""
   },
   "app/Http/Requests/Admin/UpdateUserRolesRequest.php": {
@@ -3145,8 +3145,8 @@
     "semantic_hash": ""
   },
   "tests/Feature/Security/RbacPrivilegeEscalationTest.php": {
-    "mtime": 1786763395.763504,
-    "ast_hash": "86adc81fe9c61834acb336376b85c8dc",
+    "mtime": 1786764800.7206466,
+    "ast_hash": "f604634bc5a73f2e7c7767b83ae2270f",
     "semantic_hash": ""
   },
   "tests/Feature/Ui/RbacMenuVisibilityTest.php": {
@@ -3195,8 +3195,8 @@
     "semantic_hash": ""
   },
   "docs/07-security/RBAC-DEFAULT-ROLE-MATRIX.md": {
-    "mtime": 1786764242.6586895,
-    "ast_hash": "3c78dd3951c1e53e406a7016ae0b8c83",
+    "mtime": 1786764936.3572607,
+    "ast_hash": "3e8b4a87b4fe0064ecb94c8e5e39f438",
     "semantic_hash": ""
   },
   "docs/07-security/RBAC-PERMISSION-CATALOG.md": {
@@ -3215,13 +3215,13 @@
     "semantic_hash": ""
   },
   "docs/09-testing/PHASE-5D-TEST-MATRIX.md": {
-    "mtime": 1786764594.8749483,
-    "ast_hash": "2cf395671fc9261a8546191c86d35915",
+    "mtime": 1786764886.4437404,
+    "ast_hash": "2a309d14287d906cf87f4fe593cc83ed",
     "semantic_hash": ""
   },
   "docs/09-testing/PHASE-5D0-RBAC-TEST-MATRIX.md": {
-    "mtime": 1786764242.9003031,
-    "ast_hash": "74129dc1294c836abc10681131d917df",
+    "mtime": 1786764886.5331209,
+    "ast_hash": "c2253130ecb63868961e1e9f1c57598f",
     "semantic_hash": ""
   },
   "docs/10-delivery/BACKUP-RESTORE-RUNBOOK.md": {
@@ -3250,18 +3250,18 @@
     "semantic_hash": ""
   },
   "docs/10-delivery/PHASE-5D-FINAL-CLOSURE.md": {
-    "mtime": 1786764595.0385907,
-    "ast_hash": "543f70d7c5d6aac9236e8cfc52ed151b",
+    "mtime": 1786764886.6957078,
+    "ast_hash": "fd1a0451046d21d2c2b1e174cceaa06e",
     "semantic_hash": ""
   },
   "docs/10-delivery/PHASE-5D-LOCAL-ACCEPTANCE-RESULT.md": {
-    "mtime": 1786764594.9571724,
-    "ast_hash": "fcbb4fdb88e268d4107fb59ba3e0a214",
+    "mtime": 1786764886.6149147,
+    "ast_hash": "11665757e422b533f0a1636d88b935b1",
     "semantic_hash": ""
   },
   "docs/10-delivery/PHASE-5D-MIGRATION-REHEARSAL.md": {
-    "mtime": 1786764099.3272235,
-    "ast_hash": "cdb65124f31ce2106c6b18d7ee606d8c",
+    "mtime": 1786764716.653431,
+    "ast_hash": "26b25a47542cd369412be34dae3b1746",
     "semantic_hash": ""
   },
   "docs/10-delivery/PHASE-5D-PRE-STAGING-AUDIT.md": {

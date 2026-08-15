@@ -22,7 +22,7 @@
       "_origin": "ast",
       "id": "app_actions_discharge_evaluatevisitdischargereadinessaction_evaluatevisitdischargereadinessaction",
       "community": 2,
-      "community_name": "VisitDischarge",
+      "community_name": "VisitDischargeService",
       "norm_label": "evaluatevisitdischargereadinessaction"
     },
     {
@@ -33,7 +33,7 @@
       "_origin": "ast",
       "id": "app_actions_discharge_evaluatevisitdischargereadinessaction_evaluatevisitdischargereadinessaction_execute",
       "community": 2,
-      "community_name": "VisitDischarge",
+      "community_name": "VisitDischargeService",
       "norm_label": ".execute()"
     },
     {
@@ -43,8 +43,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_console_commands_processintegrationoutbox",
-      "community": 186,
-      "community_name": "ProcessIntegrationOutbox.php",
+      "community": 56,
+      "community_name": "IntegrationOutboxService",
       "norm_label": "processintegrationoutbox.php"
     },
     {
@@ -54,8 +54,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "app_console_commands_processintegrationoutbox_processintegrationoutbox",
-      "community": 186,
-      "community_name": "ProcessIntegrationOutbox.php",
+      "community": 56,
+      "community_name": "IntegrationOutboxService",
       "norm_label": "processintegrationoutbox"
     },
     {
@@ -65,8 +65,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_console_commands_processintegrationoutbox_processintegrationoutbox_handle",
-      "community": 186,
-      "community_name": "ProcessIntegrationOutbox.php",
+      "community": 56,
+      "community_name": "IntegrationOutboxService",
       "norm_label": ".handle()"
     },
     {
@@ -98,7 +98,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_contracts_gateclientcontract",
-      "community": 64,
+      "community": 99,
       "community_name": "GateClientContract.php",
       "norm_label": "gateclientcontract.php"
     },
@@ -109,7 +109,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_contracts_gateclientcontract_fetchusers",
-      "community": 64,
+      "community": 99,
       "community_name": "GateClientContract.php",
       "norm_label": "fetchusers()"
     },
@@ -121,7 +121,7 @@
       "_origin": "ast",
       "id": "app_contracts_gateclientcontract_fetchuserbyid",
       "community": 99,
-      "community_name": "GateUserDTO",
+      "community_name": "GateClientContract.php",
       "norm_label": "fetchuserbyid()"
     },
     {
@@ -131,7 +131,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "app_contracts_gateclientcontract_ping",
-      "community": 64,
+      "community": 99,
       "community_name": "GateClientContract.php",
       "norm_label": "ping()"
     },
@@ -186,8 +186,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "app_contracts_gateoidcclientcontract_fetchapplicationentitlement",
-      "community": 270,
-      "community_name": "GateOidcClientContract.php",
+      "community": 58,
+      "community_name": "GateApplicationEntitlementDTO",
       "norm_label": "fetchapplicationentitlement()"
     },
     {
@@ -285,8 +285,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "app_dtos_gateapplicationentitlementdto_gateapplicationentitlementdto",
-      "community": 270,
-      "community_name": "GateOidcClientContract.php",
+      "community": 58,
+      "community_name": "GateApplicationEntitlementDTO",
       "norm_label": "gateapplicationentitlementdto"
     },
     {
@@ -296,8 +296,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "app_dtos_gateapplicationentitlementdto_gateapplicationentitlementdto_construct",
-      "community": 270,
-      "community_name": "GateOidcClientContract.php",
+      "community": 58,
+      "community_name": "GateApplicationEntitlementDTO",
       "norm_label": ".__construct()"
     },
     {
@@ -307,8 +307,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "app_dtos_gateapplicationentitlementdto_gateapplicationentitlementdto_isallowed",
-      "community": 270,
-      "community_name": "GateOidcClientContract.php",
+      "community": 58,
+      "community_name": "GateApplicationEntitlementDTO",
       "norm_label": ".isallowed()"
     },
     {
@@ -318,8 +318,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "app_dtos_gateapplicationentitlementdto_gateapplicationentitlementdto_fromarray",
-      "community": 270,
-      "community_name": "GateOidcClientContract.php",
+      "community": 58,
+      "community_name": "GateApplicationEntitlementDTO",
       "norm_label": ".fromarray()"
     },
     {
@@ -329,8 +329,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "app_dtos_gateapplicationentitlementdto_php_self",
-      "community": 270,
-      "community_name": "GateOidcClientContract.php",
+      "community": 58,
+      "community_name": "GateApplicationEntitlementDTO",
       "norm_label": "self"
     },
     {
@@ -340,8 +340,8 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "app_dtos_gateapplicationentitlementdto_gateapplicationentitlementdto_toarray",
-      "community": 270,
-      "community_name": "GateOidcClientContract.php",
+      "community": 58,
+      "community_name": "GateApplicationEntitlementDTO",
       "norm_label": ".toarray()"
     },
     {
@@ -406,8 +406,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_dtos_gateuserdto",
-      "community": 99,
-      "community_name": "GateUserDTO",
+      "community": 64,
+      "community_name": "GateSyncApplyService",
       "norm_label": "gateuserdto.php"
     },
     {
@@ -418,7 +418,7 @@
       "_origin": "ast",
       "id": "app_dtos_gateuserdto_gateuserdto",
       "community": 99,
-      "community_name": "GateUserDTO",
+      "community_name": "GateClientContract.php",
       "norm_label": "gateuserdto"
     },
     {
@@ -429,7 +429,7 @@
       "_origin": "ast",
       "id": "app_dtos_gateuserdto_gateuserdto_construct",
       "community": 99,
-      "community_name": "GateUserDTO",
+      "community_name": "GateClientContract.php",
       "norm_label": ".__construct()"
     },
     {
@@ -440,7 +440,7 @@
       "_origin": "ast",
       "id": "app_dtos_gateuserdto_gateuserdto_fromarray",
       "community": 99,
-      "community_name": "GateUserDTO",
+      "community_name": "GateClientContract.php",
       "norm_label": ".fromarray()"
     },
     {
@@ -451,7 +451,7 @@
       "_origin": "ast",
       "id": "app_dtos_gateuserdto_php_self",
       "community": 99,
-      "community_name": "GateUserDTO",
+      "community_name": "GateClientContract.php",
       "norm_label": "self"
     },
     {
@@ -462,7 +462,7 @@
       "_origin": "ast",
       "id": "app_dtos_gateuserdto_gateuserdto_toarray",
       "community": 99,
-      "community_name": "GateUserDTO",
+      "community_name": "GateClientContract.php",
       "norm_label": ".toarray()"
     },
     {
@@ -572,7 +572,7 @@
       "_origin": "ast",
       "id": "app_dtos_integration_attendancehealthdispositiondto_php_carbon",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": "carbon"
     },
     {
@@ -703,8 +703,8 @@
       "source_location": "L107",
       "_origin": "ast",
       "id": "app_http_controllers_admin_rolecontroller_rolecontroller_update",
-      "community": 215,
-      "community_name": ".update",
+      "community": 18,
+      "community_name": "Role",
       "norm_label": ".update()"
     },
     {
@@ -736,8 +736,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "app_http_controllers_admin_usercontroller_usercontroller",
-      "community": 25,
-      "community_name": "UserController",
+      "community": 17,
+      "community_name": "Illuminate\\Http\\RedirectResponse",
       "norm_label": "usercontroller"
     },
     {
@@ -747,8 +747,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "app_http_controllers_admin_usercontroller_usercontroller_index",
-      "community": 25,
-      "community_name": "UserController",
+      "community": 17,
+      "community_name": "Illuminate\\Http\\RedirectResponse",
       "norm_label": ".index()"
     },
     {
@@ -769,30 +769,30 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "app_http_controllers_admin_usercontroller_usercontroller_updateroles",
-      "community": 25,
-      "community_name": "UserController",
+      "community": 17,
+      "community_name": "Illuminate\\Http\\RedirectResponse",
       "norm_label": ".updateroles()"
     },
     {
       "label": ".updateDirectPermissions()",
       "file_type": "code",
       "source_file": "app/Http/Controllers/Admin/UserController.php",
-      "source_location": "L109",
+      "source_location": "L130",
       "_origin": "ast",
       "id": "app_http_controllers_admin_usercontroller_usercontroller_updatedirectpermissions",
       "community": 25,
-      "community_name": "UserController",
+      "community_name": ".updateDirectPermissions",
       "norm_label": ".updatedirectpermissions()"
     },
     {
       "label": ".toggleStatus()",
       "file_type": "code",
       "source_file": "app/Http/Controllers/Admin/UserController.php",
-      "source_location": "L144",
+      "source_location": "L165",
       "_origin": "ast",
       "id": "app_http_controllers_admin_usercontroller_usercontroller_togglestatus",
-      "community": 25,
-      "community_name": "UserController",
+      "community": 17,
+      "community_name": "Illuminate\\Http\\RedirectResponse",
       "norm_label": ".togglestatus()"
     },
     {
@@ -868,8 +868,8 @@
       "source_location": "L135",
       "_origin": "ast",
       "id": "app_http_controllers_auth_gateoidcauthcontroller_gateoidcauthcontroller_accessdenied",
-      "community": 17,
-      "community_name": "Illuminate\\Http\\RedirectResponse",
+      "community": 163,
+      "community_name": "Illuminate\\View\\View",
       "norm_label": ".accessdenied()"
     },
     {
@@ -913,7 +913,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_dashboard_dashboardcontroller",
       "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community_name": "Illuminate\\View\\View",
       "norm_label": "dashboardcontroller.php"
     },
     {
@@ -924,7 +924,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_dashboard_dashboardcontroller_dashboardcontroller",
       "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community_name": "Illuminate\\View\\View",
       "norm_label": "dashboardcontroller"
     },
     {
@@ -946,7 +946,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_dashboard_dashboardcontroller_dashboardcontroller_index",
       "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community_name": "Illuminate\\View\\View",
       "norm_label": ".index()"
     },
     {
@@ -957,7 +957,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_dashboard_dashboardcontroller_dashboardcontroller_clinical",
       "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community_name": "Illuminate\\View\\View",
       "norm_label": ".clinical()"
     },
     {
@@ -968,7 +968,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_dashboard_dashboardcontroller_dashboardcontroller_operational",
       "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community_name": "Illuminate\\View\\View",
       "norm_label": ".operational()"
     },
     {
@@ -979,7 +979,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_dashboard_dashboardcontroller_dashboardcontroller_pharmacy",
       "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community_name": "Illuminate\\View\\View",
       "norm_label": ".pharmacy()"
     },
     {
@@ -990,7 +990,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_dashboard_dashboardcontroller_dashboardcontroller_management",
       "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community_name": "Illuminate\\View\\View",
       "norm_label": ".management()"
     },
     {
@@ -1023,7 +1023,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_discharge_activityrestrictioncontroller_activityrestrictioncontroller_construct",
       "community": 2,
-      "community_name": "VisitDischarge",
+      "community_name": "VisitDischargeService",
       "norm_label": ".__construct()"
     },
     {
@@ -1055,8 +1055,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_http_controllers_discharge_clinicaloperationalhandoffcontroller",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 6,
+      "community_name": "ClinicalOperationalHandoffController.php",
       "norm_label": "clinicaloperationalhandoffcontroller.php"
     },
     {
@@ -1066,8 +1066,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "app_http_controllers_discharge_clinicaloperationalhandoffcontroller_clinicaloperationalhandoffcontroller",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 6,
+      "community_name": "ClinicalOperationalHandoffController.php",
       "norm_label": "clinicaloperationalhandoffcontroller"
     },
     {
@@ -1078,7 +1078,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_discharge_clinicaloperationalhandoffcontroller_clinicaloperationalhandoffcontroller_construct",
       "community": 2,
-      "community_name": "VisitDischarge",
+      "community_name": "VisitDischargeService",
       "norm_label": ".__construct()"
     },
     {
@@ -1088,8 +1088,8 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "app_http_controllers_discharge_clinicaloperationalhandoffcontroller_clinicaloperationalhandoffcontroller_index",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 6,
+      "community_name": "ClinicalOperationalHandoffController.php",
       "norm_label": ".index()"
     },
     {
@@ -1099,8 +1099,8 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "app_http_controllers_discharge_clinicaloperationalhandoffcontroller_clinicaloperationalhandoffcontroller_store",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 6,
+      "community_name": "ClinicalOperationalHandoffController.php",
       "norm_label": ".store()"
     },
     {
@@ -1110,8 +1110,8 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "app_http_controllers_discharge_clinicaloperationalhandoffcontroller_clinicaloperationalhandoffcontroller_acknowledge",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 6,
+      "community_name": "ClinicalOperationalHandoffController.php",
       "norm_label": ".acknowledge()"
     },
     {
@@ -1121,8 +1121,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_http_controllers_discharge_visitdischargecontroller",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": "visitdischargecontroller.php"
     },
     {
@@ -1132,8 +1132,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "app_http_controllers_discharge_visitdischargecontroller_visitdischargecontroller",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": "visitdischargecontroller"
     },
     {
@@ -1144,7 +1144,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_discharge_visitdischargecontroller_visitdischargecontroller_construct",
       "community": 2,
-      "community_name": "VisitDischarge",
+      "community_name": "VisitDischargeService",
       "norm_label": ".__construct()"
     },
     {
@@ -1154,8 +1154,8 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "app_http_controllers_discharge_visitdischargecontroller_visitdischargecontroller_index",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": ".index()"
     },
     {
@@ -1165,8 +1165,8 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "app_http_controllers_discharge_visitdischargecontroller_visitdischargecontroller_workspace",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": ".workspace()"
     },
     {
@@ -1176,8 +1176,8 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "app_http_controllers_discharge_visitdischargecontroller_visitdischargecontroller_store",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": ".store()"
     },
     {
@@ -1187,8 +1187,8 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "app_http_controllers_discharge_visitdischargecontroller_visitdischargecontroller_show",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": ".show()"
     },
     {
@@ -1198,8 +1198,8 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "app_http_controllers_discharge_visitdischargecontroller_visitdischargecontroller_finalize",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": ".finalize()"
     },
     {
@@ -1209,8 +1209,8 @@
       "source_location": "L126",
       "_origin": "ast",
       "id": "app_http_controllers_discharge_visitdischargecontroller_visitdischargecontroller_amend",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": ".amend()"
     },
     {
@@ -1275,8 +1275,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_http_controllers_discharge_visitfollowupplancontroller",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": "visitfollowupplancontroller.php"
     },
     {
@@ -1298,7 +1298,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_discharge_visitfollowupplancontroller_visitfollowupplancontroller_construct",
       "community": 2,
-      "community_name": "VisitDischarge",
+      "community_name": "VisitDischargeService",
       "norm_label": ".__construct()"
     },
     {
@@ -1375,7 +1375,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_gate_gatereconciliationcontroller_gatereconciliationcontroller_construct",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".__construct()"
     },
     {
@@ -1385,8 +1385,8 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "app_http_controllers_gate_gatereconciliationcontroller_gatereconciliationcontroller_index",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 17,
+      "community_name": "Illuminate\\Http\\RedirectResponse",
       "norm_label": ".index()"
     },
     {
@@ -1396,8 +1396,8 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "app_http_controllers_gate_gatereconciliationcontroller_gatereconciliationcontroller_approvemapping",
-      "community": 17,
-      "community_name": "Illuminate\\Http\\RedirectResponse",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": ".approvemapping()"
     },
     {
@@ -1430,7 +1430,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_gate_gatesynccontroller_gatesynccontroller",
       "community": 64,
-      "community_name": "GateClientContract.php",
+      "community_name": "GateSyncApplyService",
       "norm_label": "gatesynccontroller"
     },
     {
@@ -1441,7 +1441,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_gate_gatesynccontroller_gatesynccontroller_construct",
       "community": 64,
-      "community_name": "GateClientContract.php",
+      "community_name": "GateSyncApplyService",
       "norm_label": ".__construct()"
     },
     {
@@ -1452,7 +1452,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_gate_gatesynccontroller_gatesynccontroller_index",
       "community": 64,
-      "community_name": "GateClientContract.php",
+      "community_name": "GateSyncApplyService",
       "norm_label": ".index()"
     },
     {
@@ -1463,7 +1463,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_gate_gatesynccontroller_gatesynccontroller_dryrun",
       "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community_name": "Illuminate\\View\\View",
       "norm_label": ".dryrun()"
     },
     {
@@ -1485,7 +1485,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_gate_gatesynccontroller_gatesynccontroller_showrun",
       "community": 64,
-      "community_name": "GateClientContract.php",
+      "community_name": "GateSyncApplyService",
       "norm_label": ".showrun()"
     },
     {
@@ -1539,8 +1539,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_http_controllers_integration_attendanceintegrationcontroller",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 29,
+      "community_name": "AttendanceIntegrationController.php",
       "norm_label": "attendanceintegrationcontroller.php"
     },
     {
@@ -1550,8 +1550,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_http_controllers_integration_attendanceintegrationcontroller_attendanceintegrationcontroller",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 29,
+      "community_name": "AttendanceIntegrationController.php",
       "norm_label": "attendanceintegrationcontroller"
     },
     {
@@ -1572,8 +1572,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "app_http_controllers_integration_attendanceintegrationcontroller_attendanceintegrationcontroller_status",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 29,
+      "community_name": "AttendanceIntegrationController.php",
       "norm_label": ".status()"
     },
     {
@@ -1583,8 +1583,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "app_http_controllers_integration_attendanceintegrationcontroller_attendanceintegrationcontroller_conflicts",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 29,
+      "community_name": "AttendanceIntegrationController.php",
       "norm_label": ".conflicts()"
     },
     {
@@ -1594,8 +1594,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "app_http_controllers_integration_attendanceintegrationcontroller_attendanceintegrationcontroller_resolveconflict",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 29,
+      "community_name": "AttendanceIntegrationController.php",
       "norm_label": ".resolveconflict()"
     },
     {
@@ -1638,8 +1638,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "app_http_controllers_integration_integrationoutboxcontroller_integrationoutboxcontroller_index",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 38,
+      "community_name": "IntegrationOutboxController.php",
       "norm_label": ".index()"
     },
     {
@@ -1671,8 +1671,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_http_controllers_notification_operationalnotificationcontroller",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 17,
+      "community_name": "Illuminate\\Http\\RedirectResponse",
       "norm_label": "operationalnotificationcontroller.php"
     },
     {
@@ -1682,8 +1682,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "app_http_controllers_notification_operationalnotificationcontroller_operationalnotificationcontroller",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 17,
+      "community_name": "Illuminate\\Http\\RedirectResponse",
       "norm_label": "operationalnotificationcontroller"
     },
     {
@@ -1704,8 +1704,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "app_http_controllers_notification_operationalnotificationcontroller_operationalnotificationcontroller_index",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 17,
+      "community_name": "Illuminate\\Http\\RedirectResponse",
       "norm_label": ".index()"
     },
     {
@@ -1715,8 +1715,8 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "app_http_controllers_notification_operationalnotificationcontroller_operationalnotificationcontroller_acknowledge",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 17,
+      "community_name": "Illuminate\\Http\\RedirectResponse",
       "norm_label": ".acknowledge()"
     },
     {
@@ -1759,8 +1759,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "app_http_controllers_notification_usernotificationcontroller_usernotificationcontroller_index",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 160,
+      "community_name": "UserNotification",
       "norm_label": ".index()"
     },
     {
@@ -1792,8 +1792,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_http_controllers_referral_referralcompanioncontroller",
-      "community": 17,
-      "community_name": "Illuminate\\Http\\RedirectResponse",
+      "community": 59,
+      "community_name": "ReferralCompanionController.php",
       "norm_label": "referralcompanioncontroller.php"
     },
     {
@@ -1803,8 +1803,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "app_http_controllers_referral_referralcompanioncontroller_referralcompanioncontroller",
-      "community": 17,
-      "community_name": "Illuminate\\Http\\RedirectResponse",
+      "community": 59,
+      "community_name": "ReferralCompanionController.php",
       "norm_label": "referralcompanioncontroller"
     },
     {
@@ -1814,8 +1814,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "app_http_controllers_referral_referralcompanioncontroller_referralcompanioncontroller_construct",
-      "community": 17,
-      "community_name": "Illuminate\\Http\\RedirectResponse",
+      "community": 59,
+      "community_name": "ReferralCompanionController.php",
       "norm_label": ".__construct()"
     },
     {
@@ -1825,8 +1825,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "app_http_controllers_referral_referralcompanioncontroller_referralcompanioncontroller_store",
-      "community": 17,
-      "community_name": "Illuminate\\Http\\RedirectResponse",
+      "community": 59,
+      "community_name": "ReferralCompanionController.php",
       "norm_label": ".store()"
     },
     {
@@ -1836,8 +1836,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_http_controllers_referral_referralcontroller",
-      "community": 6,
-      "community_name": "ReferralController.php",
+      "community": 163,
+      "community_name": "Illuminate\\View\\View",
       "norm_label": "referralcontroller.php"
     },
     {
@@ -1847,8 +1847,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_http_controllers_referral_referralcontroller_referralcontroller",
-      "community": 6,
-      "community_name": "ReferralController.php",
+      "community": 163,
+      "community_name": "Illuminate\\View\\View",
       "norm_label": "referralcontroller"
     },
     {
@@ -1858,8 +1858,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "app_http_controllers_referral_referralcontroller_referralcontroller_construct",
-      "community": 6,
-      "community_name": "ReferralController.php",
+      "community": 163,
+      "community_name": "Illuminate\\View\\View",
       "norm_label": ".__construct()"
     },
     {
@@ -1869,8 +1869,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "app_http_controllers_referral_referralcontroller_referralcontroller_index",
-      "community": 6,
-      "community_name": "ReferralController.php",
+      "community": 163,
+      "community_name": "Illuminate\\View\\View",
       "norm_label": ".index()"
     },
     {
@@ -1880,8 +1880,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "app_http_controllers_referral_referralcontroller_referralcontroller_create",
-      "community": 6,
-      "community_name": "ReferralController.php",
+      "community": 163,
+      "community_name": "Illuminate\\View\\View",
       "norm_label": ".create()"
     },
     {
@@ -1891,8 +1891,8 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "app_http_controllers_referral_referralcontroller_referralcontroller_store",
-      "community": 6,
-      "community_name": "ReferralController.php",
+      "community": 163,
+      "community_name": "Illuminate\\View\\View",
       "norm_label": ".store()"
     },
     {
@@ -1902,8 +1902,8 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "app_http_controllers_referral_referralcontroller_referralcontroller_show",
-      "community": 6,
-      "community_name": "ReferralController.php",
+      "community": 163,
+      "community_name": "Illuminate\\View\\View",
       "norm_label": ".show()"
     },
     {
@@ -2232,8 +2232,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_http_controllers_reporting_healthreportcontroller",
-      "community": 17,
-      "community_name": "Illuminate\\Http\\RedirectResponse",
+      "community": 57,
+      "community_name": "HealthReportController.php",
       "norm_label": "healthreportcontroller.php"
     },
     {
@@ -2243,8 +2243,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "app_http_controllers_reporting_healthreportcontroller_healthreportcontroller",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 57,
+      "community_name": "HealthReportController.php",
       "norm_label": "healthreportcontroller"
     },
     {
@@ -2255,7 +2255,7 @@
       "_origin": "ast",
       "id": "app_http_controllers_reporting_healthreportcontroller_healthreportcontroller_construct",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".__construct()"
     },
     {
@@ -2265,8 +2265,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "app_http_controllers_reporting_healthreportcontroller_healthreportcontroller_index",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 57,
+      "community_name": "HealthReportController.php",
       "norm_label": ".index()"
     },
     {
@@ -2276,8 +2276,8 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "app_http_controllers_reporting_healthreportcontroller_healthreportcontroller_show",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 57,
+      "community_name": "HealthReportController.php",
       "norm_label": ".show()"
     },
     {
@@ -2287,8 +2287,8 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "app_http_controllers_reporting_healthreportcontroller_healthreportcontroller_export",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 57,
+      "community_name": "HealthReportController.php",
       "norm_label": ".export()"
     },
     {
@@ -2408,8 +2408,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "app_http_requests_admin_updaterolerequest_updaterolerequest",
-      "community": 215,
-      "community_name": ".update",
+      "community": 18,
+      "community_name": "Role",
       "norm_label": "updaterolerequest"
     },
     {
@@ -2419,19 +2419,19 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "app_http_requests_admin_updaterolerequest_updaterolerequest_authorize",
-      "community": 215,
-      "community_name": ".update",
+      "community": 18,
+      "community_name": "Role",
       "norm_label": ".authorize()"
     },
     {
       "label": ".rules()",
       "file_type": "code",
       "source_file": "app/Http/Requests/Admin/UpdateRoleRequest.php",
-      "source_location": "L51",
+      "source_location": "L52",
       "_origin": "ast",
       "id": "app_http_requests_admin_updaterolerequest_updaterolerequest_rules",
-      "community": 215,
-      "community_name": ".update",
+      "community": 18,
+      "community_name": "Role",
       "norm_label": ".rules()"
     },
     {
@@ -2453,7 +2453,7 @@
       "_origin": "ast",
       "id": "app_http_requests_admin_updateuserdirectpermissionsrequest_updateuserdirectpermissionsrequest",
       "community": 25,
-      "community_name": "UserController",
+      "community_name": ".updateDirectPermissions",
       "norm_label": "updateuserdirectpermissionsrequest"
     },
     {
@@ -2464,18 +2464,18 @@
       "_origin": "ast",
       "id": "app_http_requests_admin_updateuserdirectpermissionsrequest_updateuserdirectpermissionsrequest_authorize",
       "community": 25,
-      "community_name": "UserController",
+      "community_name": ".updateDirectPermissions",
       "norm_label": ".authorize()"
     },
     {
       "label": ".rules()",
       "file_type": "code",
       "source_file": "app/Http/Requests/Admin/UpdateUserDirectPermissionsRequest.php",
-      "source_location": "L49",
+      "source_location": "L51",
       "_origin": "ast",
       "id": "app_http_requests_admin_updateuserdirectpermissionsrequest_updateuserdirectpermissionsrequest_rules",
       "community": 25,
-      "community_name": "UserController",
+      "community_name": ".updateDirectPermissions",
       "norm_label": ".rules()"
     },
     {
@@ -2496,8 +2496,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_http_requests_admin_updateuserrolesrequest_updateuserrolesrequest",
-      "community": 25,
-      "community_name": "UserController",
+      "community": 17,
+      "community_name": "Illuminate\\Http\\RedirectResponse",
       "norm_label": "updateuserrolesrequest"
     },
     {
@@ -2507,8 +2507,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "app_http_requests_admin_updateuserrolesrequest_updateuserrolesrequest_authorize",
-      "community": 25,
-      "community_name": "UserController",
+      "community": 17,
+      "community_name": "Illuminate\\Http\\RedirectResponse",
       "norm_label": ".authorize()"
     },
     {
@@ -2518,8 +2518,8 @@
       "source_location": "L58",
       "_origin": "ast",
       "id": "app_http_requests_admin_updateuserrolesrequest_updateuserrolesrequest_rules",
-      "community": 25,
-      "community_name": "UserController",
+      "community": 17,
+      "community_name": "Illuminate\\Http\\RedirectResponse",
       "norm_label": ".rules()"
     },
     {
@@ -2529,8 +2529,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_http_requests_discharge_acknowledgeoperationalhandoffrequest",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 6,
+      "community_name": "ClinicalOperationalHandoffController.php",
       "norm_label": "acknowledgeoperationalhandoffrequest.php"
     },
     {
@@ -2540,8 +2540,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_http_requests_discharge_acknowledgeoperationalhandoffrequest_acknowledgeoperationalhandoffrequest",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 6,
+      "community_name": "ClinicalOperationalHandoffController.php",
       "norm_label": "acknowledgeoperationalhandoffrequest"
     },
     {
@@ -2551,8 +2551,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_http_requests_discharge_acknowledgeoperationalhandoffrequest_acknowledgeoperationalhandoffrequest_authorize",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 6,
+      "community_name": "ClinicalOperationalHandoffController.php",
       "norm_label": ".authorize()"
     },
     {
@@ -2562,8 +2562,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_http_requests_discharge_acknowledgeoperationalhandoffrequest_acknowledgeoperationalhandoffrequest_rules",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 6,
+      "community_name": "ClinicalOperationalHandoffController.php",
       "norm_label": ".rules()"
     },
     {
@@ -2573,8 +2573,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_http_requests_discharge_amendvisitdischargerequest",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": "amendvisitdischargerequest.php"
     },
     {
@@ -2584,8 +2584,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_http_requests_discharge_amendvisitdischargerequest_amendvisitdischargerequest",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": "amendvisitdischargerequest"
     },
     {
@@ -2595,8 +2595,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_http_requests_discharge_amendvisitdischargerequest_amendvisitdischargerequest_authorize",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": ".authorize()"
     },
     {
@@ -2606,8 +2606,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_http_requests_discharge_amendvisitdischargerequest_amendvisitdischargerequest_rules",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": ".rules()"
     },
     {
@@ -2617,8 +2617,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_http_requests_discharge_finalizevisitdischargerequest",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": "finalizevisitdischargerequest.php"
     },
     {
@@ -2628,8 +2628,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_http_requests_discharge_finalizevisitdischargerequest_finalizevisitdischargerequest",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": "finalizevisitdischargerequest"
     },
     {
@@ -2639,8 +2639,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_http_requests_discharge_finalizevisitdischargerequest_finalizevisitdischargerequest_authorize",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": ".authorize()"
     },
     {
@@ -2650,8 +2650,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_http_requests_discharge_finalizevisitdischargerequest_finalizevisitdischargerequest_rules",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": ".rules()"
     },
     {
@@ -2749,8 +2749,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_http_requests_discharge_storeoperationalhandoffrequest",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 6,
+      "community_name": "ClinicalOperationalHandoffController.php",
       "norm_label": "storeoperationalhandoffrequest.php"
     },
     {
@@ -2760,8 +2760,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_http_requests_discharge_storeoperationalhandoffrequest_storeoperationalhandoffrequest",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 6,
+      "community_name": "ClinicalOperationalHandoffController.php",
       "norm_label": "storeoperationalhandoffrequest"
     },
     {
@@ -2771,8 +2771,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_http_requests_discharge_storeoperationalhandoffrequest_storeoperationalhandoffrequest_authorize",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 6,
+      "community_name": "ClinicalOperationalHandoffController.php",
       "norm_label": ".authorize()"
     },
     {
@@ -2782,8 +2782,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_http_requests_discharge_storeoperationalhandoffrequest_storeoperationalhandoffrequest_rules",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 6,
+      "community_name": "ClinicalOperationalHandoffController.php",
       "norm_label": ".rules()"
     },
     {
@@ -2793,8 +2793,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_http_requests_discharge_storevisitdischargerequest",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": "storevisitdischargerequest.php"
     },
     {
@@ -2804,8 +2804,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_http_requests_discharge_storevisitdischargerequest_storevisitdischargerequest",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": "storevisitdischargerequest"
     },
     {
@@ -2815,8 +2815,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_http_requests_discharge_storevisitdischargerequest_storevisitdischargerequest_authorize",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": ".authorize()"
     },
     {
@@ -2826,8 +2826,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_http_requests_discharge_storevisitdischargerequest_storevisitdischargerequest_rules",
-      "community": 68,
-      "community_name": "VisitDischargeController.php",
+      "community": 192,
+      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
       "norm_label": ".rules()"
     },
     {
@@ -2925,8 +2925,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_http_requests_integration_resolveidentityconflictrequest",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 29,
+      "community_name": "AttendanceIntegrationController.php",
       "norm_label": "resolveidentityconflictrequest.php"
     },
     {
@@ -2936,8 +2936,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "app_http_requests_integration_resolveidentityconflictrequest_resolveidentityconflictrequest",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 29,
+      "community_name": "AttendanceIntegrationController.php",
       "norm_label": "resolveidentityconflictrequest"
     },
     {
@@ -2947,8 +2947,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "app_http_requests_integration_resolveidentityconflictrequest_resolveidentityconflictrequest_authorize",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 29,
+      "community_name": "AttendanceIntegrationController.php",
       "norm_label": ".authorize()"
     },
     {
@@ -2958,8 +2958,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "app_http_requests_integration_resolveidentityconflictrequest_resolveidentityconflictrequest_rules",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 29,
+      "community_name": "AttendanceIntegrationController.php",
       "norm_label": ".rules()"
     },
     {
@@ -2969,8 +2969,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "app_http_requests_integration_resolveidentityconflictrequest_resolveidentityconflictrequest_messages",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 29,
+      "community_name": "AttendanceIntegrationController.php",
       "norm_label": ".messages()"
     },
     {
@@ -3068,8 +3068,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_http_requests_referral_storereferralcompanionrequest",
-      "community": 17,
-      "community_name": "Illuminate\\Http\\RedirectResponse",
+      "community": 59,
+      "community_name": "ReferralCompanionController.php",
       "norm_label": "storereferralcompanionrequest.php"
     },
     {
@@ -3079,8 +3079,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_http_requests_referral_storereferralcompanionrequest_storereferralcompanionrequest",
-      "community": 17,
-      "community_name": "Illuminate\\Http\\RedirectResponse",
+      "community": 59,
+      "community_name": "ReferralCompanionController.php",
       "norm_label": "storereferralcompanionrequest"
     },
     {
@@ -3090,8 +3090,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_http_requests_referral_storereferralcompanionrequest_storereferralcompanionrequest_authorize",
-      "community": 17,
-      "community_name": "Illuminate\\Http\\RedirectResponse",
+      "community": 59,
+      "community_name": "ReferralCompanionController.php",
       "norm_label": ".authorize()"
     },
     {
@@ -3101,8 +3101,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_http_requests_referral_storereferralcompanionrequest_storereferralcompanionrequest_rules",
-      "community": 17,
-      "community_name": "Illuminate\\Http\\RedirectResponse",
+      "community": 59,
+      "community_name": "ReferralCompanionController.php",
       "norm_label": ".rules()"
     },
     {
@@ -3112,8 +3112,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_http_requests_referral_storereferralrequest",
-      "community": 6,
-      "community_name": "ReferralController.php",
+      "community": 163,
+      "community_name": "Illuminate\\View\\View",
       "norm_label": "storereferralrequest.php"
     },
     {
@@ -3123,8 +3123,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "app_http_requests_referral_storereferralrequest_storereferralrequest",
-      "community": 6,
-      "community_name": "ReferralController.php",
+      "community": 163,
+      "community_name": "Illuminate\\View\\View",
       "norm_label": "storereferralrequest"
     },
     {
@@ -3134,8 +3134,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "app_http_requests_referral_storereferralrequest_storereferralrequest_authorize",
-      "community": 6,
-      "community_name": "ReferralController.php",
+      "community": 163,
+      "community_name": "Illuminate\\View\\View",
       "norm_label": ".authorize()"
     },
     {
@@ -3145,8 +3145,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "app_http_requests_referral_storereferralrequest_storereferralrequest_rules",
-      "community": 6,
-      "community_name": "ReferralController.php",
+      "community": 163,
+      "community_name": "Illuminate\\View\\View",
       "norm_label": ".rules()"
     },
     {
@@ -3156,8 +3156,8 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "app_http_requests_referral_storereferralrequest_storereferralrequest_messages",
-      "community": 6,
-      "community_name": "ReferralController.php",
+      "community": 163,
+      "community_name": "Illuminate\\View\\View",
       "norm_label": ".messages()"
     },
     {
@@ -3343,8 +3343,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_http_requests_reporting_queryreportrequest",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 57,
+      "community_name": "HealthReportController.php",
       "norm_label": "queryreportrequest.php"
     },
     {
@@ -3354,8 +3354,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "app_http_requests_reporting_queryreportrequest_queryreportrequest",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 57,
+      "community_name": "HealthReportController.php",
       "norm_label": "queryreportrequest"
     },
     {
@@ -3365,8 +3365,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "app_http_requests_reporting_queryreportrequest_queryreportrequest_authorize",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 57,
+      "community_name": "HealthReportController.php",
       "norm_label": ".authorize()"
     },
     {
@@ -3376,8 +3376,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "app_http_requests_reporting_queryreportrequest_queryreportrequest_rules",
-      "community": 192,
-      "community_name": "Illuminate\\Foundation\\Http\\FormRequest",
+      "community": 57,
+      "community_name": "HealthReportController.php",
       "norm_label": ".rules()"
     },
     {
@@ -3552,8 +3552,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_models_clinicalassessment",
-      "community": 13,
-      "community_name": "Illuminate\\Database\\Eloquent\\Concerns\\HasUlids",
+      "community": 158,
+      "community_name": "ObservationEpisode",
       "norm_label": "clinicalassessment.php"
     },
     {
@@ -4025,8 +4025,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "app_models_clinicaloperationalhandoff_clinicaloperationalhandoff",
-      "community": 295,
-      "community_name": "ClinicalOperationalHandoff",
+      "community": 2,
+      "community_name": "VisitDischargeService",
       "norm_label": "clinicaloperationalhandoff"
     },
     {
@@ -4036,8 +4036,8 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "app_models_clinicaloperationalhandoff_clinicaloperationalhandoff_casts",
-      "community": 295,
-      "community_name": "ClinicalOperationalHandoff",
+      "community": 2,
+      "community_name": "VisitDischargeService",
       "norm_label": ".casts()"
     },
     {
@@ -4047,8 +4047,8 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "app_models_clinicaloperationalhandoff_clinicaloperationalhandoff_medicalvisit",
-      "community": 295,
-      "community_name": "ClinicalOperationalHandoff",
+      "community": 2,
+      "community_name": "VisitDischargeService",
       "norm_label": ".medicalvisit()"
     },
     {
@@ -4058,8 +4058,8 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "app_models_clinicaloperationalhandoff_clinicaloperationalhandoff_visitdischarge",
-      "community": 295,
-      "community_name": "ClinicalOperationalHandoff",
+      "community": 2,
+      "community_name": "VisitDischargeService",
       "norm_label": ".visitdischarge()"
     },
     {
@@ -4069,8 +4069,8 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "app_models_clinicaloperationalhandoff_clinicaloperationalhandoff_preparedby",
-      "community": 295,
-      "community_name": "ClinicalOperationalHandoff",
+      "community": 2,
+      "community_name": "VisitDischargeService",
       "norm_label": ".preparedby()"
     },
     {
@@ -4080,8 +4080,8 @@
       "source_location": "L81",
       "_origin": "ast",
       "id": "app_models_clinicaloperationalhandoff_clinicaloperationalhandoff_acknowledgedby",
-      "community": 295,
-      "community_name": "ClinicalOperationalHandoff",
+      "community": 2,
+      "community_name": "VisitDischargeService",
       "norm_label": ".acknowledgedby()"
     },
     {
@@ -4091,8 +4091,8 @@
       "source_location": "L86",
       "_origin": "ast",
       "id": "app_models_clinicaloperationalhandoff_clinicaloperationalhandoff_isacknowledged",
-      "community": 295,
-      "community_name": "ClinicalOperationalHandoff",
+      "community": 2,
+      "community_name": "VisitDischargeService",
       "norm_label": ".isacknowledged()"
     },
     {
@@ -4268,7 +4268,7 @@
       "_origin": "ast",
       "id": "app_models_gateidentitymapping_gateidentitymapping",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": "gateidentitymapping"
     },
     {
@@ -4279,7 +4279,7 @@
       "_origin": "ast",
       "id": "app_models_gateidentitymapping_gateidentitymapping_casts",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".casts()"
     },
     {
@@ -4290,7 +4290,7 @@
       "_origin": "ast",
       "id": "app_models_gateidentitymapping_gateidentitymapping_person",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".person()"
     },
     {
@@ -4301,7 +4301,7 @@
       "_origin": "ast",
       "id": "app_models_gateidentitymapping_gateidentitymapping_approvedby",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".approvedby()"
     },
     {
@@ -4322,8 +4322,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "app_models_gatesyncrun_gatesyncrun",
-      "community": 64,
-      "community_name": "GateClientContract.php",
+      "community": 13,
+      "community_name": "Illuminate\\Database\\Eloquent\\Concerns\\HasUlids",
       "norm_label": "gatesyncrun"
     },
     {
@@ -4333,8 +4333,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "app_models_gatesyncrun_gatesyncrun_casts",
-      "community": 64,
-      "community_name": "GateClientContract.php",
+      "community": 13,
+      "community_name": "Illuminate\\Database\\Eloquent\\Concerns\\HasUlids",
       "norm_label": ".casts()"
     },
     {
@@ -4344,8 +4344,8 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "app_models_gatesyncrun_gatesyncrun_executedby",
-      "community": 64,
-      "community_name": "GateClientContract.php",
+      "community": 1,
+      "community_name": "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
       "norm_label": ".executedby()"
     },
     {
@@ -4499,7 +4499,7 @@
       "_origin": "ast",
       "id": "app_models_integrationdeliveryattempt_integrationdeliveryattempt",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": "integrationdeliveryattempt"
     },
     {
@@ -4510,7 +4510,7 @@
       "_origin": "ast",
       "id": "app_models_integrationdeliveryattempt_integrationdeliveryattempt_outboxevent",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".outboxevent()"
     },
     {
@@ -5972,8 +5972,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "app_models_patient_patient_person",
-      "community": 29,
-      "community_name": "Person",
+      "community": 190,
+      "community_name": "VisitDischarge",
       "norm_label": ".person()"
     },
     {
@@ -6071,8 +6071,8 @@
       "source_location": "L80",
       "_origin": "ast",
       "id": "app_models_patient_patient_generatepatientnumber",
-      "community": 178,
-      "community_name": "static",
+      "community": 34,
+      "community_name": "Patient",
       "norm_label": ".generatepatientnumber()"
     },
     {
@@ -6082,8 +6082,8 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "app_models_patient_patient_generateuniquepatientnumber",
-      "community": 178,
-      "community_name": "static",
+      "community": 34,
+      "community_name": "Patient",
       "norm_label": ".generateuniquepatientnumber()"
     },
     {
@@ -6093,8 +6093,8 @@
       "source_location": "L114",
       "_origin": "ast",
       "id": "app_models_patient_patient_createorfindforperson",
-      "community": 178,
-      "community_name": "static",
+      "community": 34,
+      "community_name": "Patient",
       "norm_label": ".createorfindforperson()"
     },
     {
@@ -6104,8 +6104,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "app_models_patient_php_self",
-      "community": 178,
-      "community_name": "static",
+      "community": 34,
+      "community_name": "Patient",
       "norm_label": "self"
     },
     {
@@ -6412,8 +6412,8 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "app_models_permission_permission_getgroupedpermissions",
-      "community": 178,
-      "community_name": "static",
+      "community": 34,
+      "community_name": "Patient",
       "norm_label": ".getgroupedpermissions()"
     },
     {
@@ -6434,8 +6434,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "app_models_person_person",
-      "community": 29,
-      "community_name": "Person",
+      "community": 190,
+      "community_name": "VisitDischarge",
       "norm_label": "person"
     },
     {
@@ -6445,8 +6445,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "app_models_person_person_casts",
-      "community": 29,
-      "community_name": "Person",
+      "community": 190,
+      "community_name": "VisitDischarge",
       "norm_label": ".casts()"
     },
     {
@@ -6456,8 +6456,8 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "app_models_person_person_user",
-      "community": 29,
-      "community_name": "Person",
+      "community": 190,
+      "community_name": "VisitDischarge",
       "norm_label": ".user()"
     },
     {
@@ -6467,8 +6467,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "app_models_person_person_patient",
-      "community": 29,
-      "community_name": "Person",
+      "community": 190,
+      "community_name": "VisitDischarge",
       "norm_label": ".patient()"
     },
     {
@@ -6478,8 +6478,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "app_models_person_person_getfullnameattribute",
-      "community": 29,
-      "community_name": "Person",
+      "community": 190,
+      "community_name": "VisitDischarge",
       "norm_label": ".getfullnameattribute()"
     },
     {
@@ -6489,8 +6489,8 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "app_models_person_person_ishumanpatienteligible",
-      "community": 29,
-      "community_name": "Person",
+      "community": 190,
+      "community_name": "VisitDischarge",
       "norm_label": ".ishumanpatienteligible()"
     },
     {
@@ -7600,7 +7600,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "app_models_visitdischarge_visitdischarge",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": "visitdischarge"
     },
@@ -7611,7 +7611,7 @@
       "source_location": "L67",
       "_origin": "ast",
       "id": "app_models_visitdischarge_visitdischarge_casts",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".casts()"
     },
@@ -7622,7 +7622,7 @@
       "source_location": "L78",
       "_origin": "ast",
       "id": "app_models_visitdischarge_visitdischarge_medicalvisit",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".medicalvisit()"
     },
@@ -7633,7 +7633,7 @@
       "source_location": "L83",
       "_origin": "ast",
       "id": "app_models_visitdischarge_visitdischarge_preparedby",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".preparedby()"
     },
@@ -7644,7 +7644,7 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "app_models_visitdischarge_visitdischarge_finalizedby",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".finalizedby()"
     },
@@ -7655,7 +7655,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "app_models_visitdischarge_visitdischarge_followuppartner",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".followuppartner()"
     },
@@ -7666,7 +7666,7 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "app_models_visitdischarge_visitdischarge_parentdischarge",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".parentdischarge()"
     },
@@ -7677,7 +7677,7 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "app_models_visitdischarge_visitdischarge_amendments",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".amendments()"
     },
@@ -7688,7 +7688,7 @@
       "source_location": "L108",
       "_origin": "ast",
       "id": "app_models_visitdischarge_visitdischarge_versions",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".versions()"
     },
@@ -7710,7 +7710,7 @@
       "source_location": "L119",
       "_origin": "ast",
       "id": "app_models_visitdischarge_visitdischarge_followupplans",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".followupplans()"
     },
@@ -7721,7 +7721,7 @@
       "source_location": "L124",
       "_origin": "ast",
       "id": "app_models_visitdischarge_visitdischarge_activityrestrictions",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".activityrestrictions()"
     },
@@ -7732,7 +7732,7 @@
       "source_location": "L129",
       "_origin": "ast",
       "id": "app_models_visitdischarge_visitdischarge_operationalhandoffs",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".operationalhandoffs()"
     },
@@ -7743,7 +7743,7 @@
       "source_location": "L134",
       "_origin": "ast",
       "id": "app_models_visitdischarge_visitdischarge_isfinalized",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".isfinalized()"
     },
@@ -8073,8 +8073,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_policies_auditlogpolicy",
-      "community": 59,
-      "community_name": "AuditLogPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": "auditlogpolicy.php"
     },
     {
@@ -8084,8 +8084,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_policies_auditlogpolicy_auditlogpolicy",
-      "community": 59,
-      "community_name": "AuditLogPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": "auditlogpolicy"
     },
     {
@@ -8095,8 +8095,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_policies_auditlogpolicy_auditlogpolicy_viewany",
-      "community": 59,
-      "community_name": "AuditLogPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".viewany()"
     },
     {
@@ -8106,8 +8106,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_policies_auditlogpolicy_auditlogpolicy_view",
-      "community": 59,
-      "community_name": "AuditLogPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".view()"
     },
     {
@@ -8117,8 +8117,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "app_policies_auditlogpolicy_auditlogpolicy_create",
-      "community": 59,
-      "community_name": "AuditLogPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".create()"
     },
     {
@@ -8128,8 +8128,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "app_policies_auditlogpolicy_auditlogpolicy_update",
-      "community": 59,
-      "community_name": "AuditLogPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".update()"
     },
     {
@@ -8139,8 +8139,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "app_policies_auditlogpolicy_auditlogpolicy_delete",
-      "community": 59,
-      "community_name": "AuditLogPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".delete()"
     },
     {
@@ -8150,8 +8150,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_policies_clinicalactionpolicy",
-      "community": 4,
-      "community_name": "User",
+      "community": 186,
+      "community_name": "ClinicalActionPolicy",
       "norm_label": "clinicalactionpolicy.php"
     },
     {
@@ -8161,8 +8161,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_policies_clinicalactionpolicy_clinicalactionpolicy",
-      "community": 4,
-      "community_name": "User",
+      "community": 186,
+      "community_name": "ClinicalActionPolicy",
       "norm_label": "clinicalactionpolicy"
     },
     {
@@ -8172,8 +8172,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_policies_clinicalactionpolicy_clinicalactionpolicy_view",
-      "community": 4,
-      "community_name": "User",
+      "community": 186,
+      "community_name": "ClinicalActionPolicy",
       "norm_label": ".view()"
     },
     {
@@ -8183,8 +8183,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_policies_clinicalactionpolicy_clinicalactionpolicy_create",
-      "community": 4,
-      "community_name": "User",
+      "community": 186,
+      "community_name": "ClinicalActionPolicy",
       "norm_label": ".create()"
     },
     {
@@ -8194,8 +8194,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_policies_clinicalassessmentpolicy",
-      "community": 4,
-      "community_name": "User",
+      "community": 68,
+      "community_name": "ClinicalAssessmentPolicy",
       "norm_label": "clinicalassessmentpolicy.php"
     },
     {
@@ -8205,8 +8205,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "app_policies_clinicalassessmentpolicy_clinicalassessmentpolicy",
-      "community": 4,
-      "community_name": "User",
+      "community": 68,
+      "community_name": "ClinicalAssessmentPolicy",
       "norm_label": "clinicalassessmentpolicy"
     },
     {
@@ -8216,8 +8216,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "app_policies_clinicalassessmentpolicy_clinicalassessmentpolicy_view",
-      "community": 4,
-      "community_name": "User",
+      "community": 68,
+      "community_name": "ClinicalAssessmentPolicy",
       "norm_label": ".view()"
     },
     {
@@ -8227,8 +8227,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "app_policies_clinicalassessmentpolicy_clinicalassessmentpolicy_create",
-      "community": 4,
-      "community_name": "User",
+      "community": 68,
+      "community_name": "ClinicalAssessmentPolicy",
       "norm_label": ".create()"
     },
     {
@@ -8238,8 +8238,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "app_policies_clinicalassessmentpolicy_clinicalassessmentpolicy_update",
-      "community": 4,
-      "community_name": "User",
+      "community": 68,
+      "community_name": "ClinicalAssessmentPolicy",
       "norm_label": ".update()"
     },
     {
@@ -8249,8 +8249,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "app_policies_clinicalassessmentpolicy_clinicalassessmentpolicy_finalize",
-      "community": 4,
-      "community_name": "User",
+      "community": 68,
+      "community_name": "ClinicalAssessmentPolicy",
       "norm_label": ".finalize()"
     },
     {
@@ -8260,8 +8260,8 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "app_policies_clinicalassessmentpolicy_clinicalassessmentpolicy_amend",
-      "community": 4,
-      "community_name": "User",
+      "community": 68,
+      "community_name": "ClinicalAssessmentPolicy",
       "norm_label": ".amend()"
     },
     {
@@ -8271,8 +8271,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_policies_clinicalconsultationpolicy",
-      "community": 57,
-      "community_name": "ClinicalConsultationPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": "clinicalconsultationpolicy.php"
     },
     {
@@ -8282,8 +8282,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_policies_clinicalconsultationpolicy_clinicalconsultationpolicy",
-      "community": 57,
-      "community_name": "ClinicalConsultationPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": "clinicalconsultationpolicy"
     },
     {
@@ -8293,8 +8293,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_policies_clinicalconsultationpolicy_clinicalconsultationpolicy_view",
-      "community": 57,
-      "community_name": "ClinicalConsultationPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".view()"
     },
     {
@@ -8304,8 +8304,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_policies_clinicalconsultationpolicy_clinicalconsultationpolicy_create",
-      "community": 57,
-      "community_name": "ClinicalConsultationPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".create()"
     },
     {
@@ -8315,8 +8315,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "app_policies_clinicalconsultationpolicy_clinicalconsultationpolicy_send",
-      "community": 57,
-      "community_name": "ClinicalConsultationPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".send()"
     },
     {
@@ -8326,8 +8326,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "app_policies_clinicalconsultationpolicy_clinicalconsultationpolicy_recordadvice",
-      "community": 57,
-      "community_name": "ClinicalConsultationPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".recordadvice()"
     },
     {
@@ -8337,8 +8337,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "app_policies_clinicalconsultationpolicy_clinicalconsultationpolicy_decide",
-      "community": 57,
-      "community_name": "ClinicalConsultationPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".decide()"
     },
     {
@@ -8348,8 +8348,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_policies_clinicaloperationalhandoffpolicy",
-      "community": 295,
-      "community_name": "ClinicalOperationalHandoff",
+      "community": 2,
+      "community_name": "VisitDischargeService",
       "norm_label": "clinicaloperationalhandoffpolicy.php"
     },
     {
@@ -8359,8 +8359,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "app_policies_clinicaloperationalhandoffpolicy_clinicaloperationalhandoffpolicy",
-      "community": 295,
-      "community_name": "ClinicalOperationalHandoff",
+      "community": 2,
+      "community_name": "VisitDischargeService",
       "norm_label": "clinicaloperationalhandoffpolicy"
     },
     {
@@ -8370,8 +8370,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "app_policies_clinicaloperationalhandoffpolicy_clinicaloperationalhandoffpolicy_viewany",
-      "community": 295,
-      "community_name": "ClinicalOperationalHandoff",
+      "community": 2,
+      "community_name": "VisitDischargeService",
       "norm_label": ".viewany()"
     },
     {
@@ -8381,8 +8381,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "app_policies_clinicaloperationalhandoffpolicy_clinicaloperationalhandoffpolicy_view",
-      "community": 295,
-      "community_name": "ClinicalOperationalHandoff",
+      "community": 2,
+      "community_name": "VisitDischargeService",
       "norm_label": ".view()"
     },
     {
@@ -8392,8 +8392,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "app_policies_clinicaloperationalhandoffpolicy_clinicaloperationalhandoffpolicy_create",
-      "community": 295,
-      "community_name": "ClinicalOperationalHandoff",
+      "community": 2,
+      "community_name": "VisitDischargeService",
       "norm_label": ".create()"
     },
     {
@@ -8403,8 +8403,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "app_policies_clinicaloperationalhandoffpolicy_clinicaloperationalhandoffpolicy_acknowledge",
-      "community": 295,
-      "community_name": "ClinicalOperationalHandoff",
+      "community": 2,
+      "community_name": "VisitDischargeService",
       "norm_label": ".acknowledge()"
     },
     {
@@ -8414,8 +8414,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_policies_dashboardpolicy",
-      "community": 4,
-      "community_name": "User",
+      "community": 83,
+      "community_name": "DashboardPolicy",
       "norm_label": "dashboardpolicy.php"
     },
     {
@@ -8425,8 +8425,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_policies_dashboardpolicy_dashboardpolicy",
-      "community": 4,
-      "community_name": "User",
+      "community": 83,
+      "community_name": "DashboardPolicy",
       "norm_label": "dashboardpolicy"
     },
     {
@@ -8436,8 +8436,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_policies_dashboardpolicy_dashboardpolicy_viewclinical",
-      "community": 4,
-      "community_name": "User",
+      "community": 83,
+      "community_name": "DashboardPolicy",
       "norm_label": ".viewclinical()"
     },
     {
@@ -8447,8 +8447,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_policies_dashboardpolicy_dashboardpolicy_viewmanagement",
-      "community": 4,
-      "community_name": "User",
+      "community": 83,
+      "community_name": "DashboardPolicy",
       "norm_label": ".viewmanagement()"
     },
     {
@@ -8458,8 +8458,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "app_policies_dashboardpolicy_dashboardpolicy_viewoperational",
-      "community": 4,
-      "community_name": "User",
+      "community": 83,
+      "community_name": "DashboardPolicy",
       "norm_label": ".viewoperational()"
     },
     {
@@ -8469,8 +8469,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "app_policies_dashboardpolicy_dashboardpolicy_viewpharmacy",
-      "community": 4,
-      "community_name": "User",
+      "community": 83,
+      "community_name": "DashboardPolicy",
       "norm_label": ".viewpharmacy()"
     },
     {
@@ -8480,8 +8480,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_policies_gatemappingpolicy",
-      "community": 81,
-      "community_name": "GateMappingPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": "gatemappingpolicy.php"
     },
     {
@@ -8491,8 +8491,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_policies_gatemappingpolicy_gatemappingpolicy",
-      "community": 81,
-      "community_name": "GateMappingPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": "gatemappingpolicy"
     },
     {
@@ -8502,8 +8502,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_policies_gatemappingpolicy_gatemappingpolicy_view",
-      "community": 81,
-      "community_name": "GateMappingPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".view()"
     },
     {
@@ -8513,8 +8513,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_policies_gatemappingpolicy_gatemappingpolicy_manage",
-      "community": 81,
-      "community_name": "GateMappingPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".manage()"
     },
     {
@@ -8524,8 +8524,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_policies_gatesyncpolicy",
-      "community": 4,
-      "community_name": "User",
+      "community": 193,
+      "community_name": "GateSyncPolicy",
       "norm_label": "gatesyncpolicy.php"
     },
     {
@@ -8535,8 +8535,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_policies_gatesyncpolicy_gatesyncpolicy",
-      "community": 4,
-      "community_name": "User",
+      "community": 193,
+      "community_name": "GateSyncPolicy",
       "norm_label": "gatesyncpolicy"
     },
     {
@@ -8546,8 +8546,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_policies_gatesyncpolicy_gatesyncpolicy_view",
-      "community": 4,
-      "community_name": "User",
+      "community": 193,
+      "community_name": "GateSyncPolicy",
       "norm_label": ".view()"
     },
     {
@@ -8557,8 +8557,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_policies_gatesyncpolicy_gatesyncpolicy_apply",
-      "community": 4,
-      "community_name": "User",
+      "community": 193,
+      "community_name": "GateSyncPolicy",
       "norm_label": ".apply()"
     },
     {
@@ -8568,8 +8568,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_policies_healthcarepartnerpolicy",
-      "community": 83,
-      "community_name": "HealthcarePartnerPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": "healthcarepartnerpolicy.php"
     },
     {
@@ -8579,8 +8579,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_policies_healthcarepartnerpolicy_healthcarepartnerpolicy",
-      "community": 83,
-      "community_name": "HealthcarePartnerPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": "healthcarepartnerpolicy"
     },
     {
@@ -8590,8 +8590,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_policies_healthcarepartnerpolicy_healthcarepartnerpolicy_view",
-      "community": 83,
-      "community_name": "HealthcarePartnerPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".view()"
     },
     {
@@ -8601,8 +8601,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_policies_healthcarepartnerpolicy_healthcarepartnerpolicy_manage",
-      "community": 83,
-      "community_name": "HealthcarePartnerPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".manage()"
     },
     {
@@ -8788,8 +8788,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_policies_medicationadministrationpolicy",
-      "community": 4,
-      "community_name": "User",
+      "community": 85,
+      "community_name": "MedicationAdministrationPolicy",
       "norm_label": "medicationadministrationpolicy.php"
     },
     {
@@ -8799,8 +8799,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_policies_medicationadministrationpolicy_medicationadministrationpolicy",
-      "community": 4,
-      "community_name": "User",
+      "community": 85,
+      "community_name": "MedicationAdministrationPolicy",
       "norm_label": "medicationadministrationpolicy"
     },
     {
@@ -8810,8 +8810,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_policies_medicationadministrationpolicy_medicationadministrationpolicy_view",
-      "community": 4,
-      "community_name": "User",
+      "community": 85,
+      "community_name": "MedicationAdministrationPolicy",
       "norm_label": ".view()"
     },
     {
@@ -8821,8 +8821,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_policies_medicationadministrationpolicy_medicationadministrationpolicy_schedule",
-      "community": 4,
-      "community_name": "User",
+      "community": 85,
+      "community_name": "MedicationAdministrationPolicy",
       "norm_label": ".schedule()"
     },
     {
@@ -8832,8 +8832,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "app_policies_medicationadministrationpolicy_medicationadministrationpolicy_administer",
-      "community": 4,
-      "community_name": "User",
+      "community": 85,
+      "community_name": "MedicationAdministrationPolicy",
       "norm_label": ".administer()"
     },
     {
@@ -8843,8 +8843,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "app_policies_medicationadministrationpolicy_medicationadministrationpolicy_correct",
-      "community": 4,
-      "community_name": "User",
+      "community": 85,
+      "community_name": "MedicationAdministrationPolicy",
       "norm_label": ".correct()"
     },
     {
@@ -9096,8 +9096,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_policies_observationhandoverpolicy",
-      "community": 217,
-      "community_name": "ObservationHandoverPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": "observationhandoverpolicy.php"
     },
     {
@@ -9107,8 +9107,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_policies_observationhandoverpolicy_observationhandoverpolicy",
-      "community": 217,
-      "community_name": "ObservationHandoverPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": "observationhandoverpolicy"
     },
     {
@@ -9118,8 +9118,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_policies_observationhandoverpolicy_observationhandoverpolicy_prepare",
-      "community": 217,
-      "community_name": "ObservationHandoverPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".prepare()"
     },
     {
@@ -9129,8 +9129,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_policies_observationhandoverpolicy_observationhandoverpolicy_acknowledge",
-      "community": 217,
-      "community_name": "ObservationHandoverPolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".acknowledge()"
     },
     {
@@ -9250,8 +9250,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_policies_patientallergypolicy",
-      "community": 4,
-      "community_name": "User",
+      "community": 215,
+      "community_name": "PatientAllergyPolicy",
       "norm_label": "patientallergypolicy.php"
     },
     {
@@ -9261,8 +9261,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_policies_patientallergypolicy_patientallergypolicy",
-      "community": 4,
-      "community_name": "User",
+      "community": 215,
+      "community_name": "PatientAllergyPolicy",
       "norm_label": "patientallergypolicy"
     },
     {
@@ -9272,8 +9272,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_policies_patientallergypolicy_patientallergypolicy_view",
-      "community": 4,
-      "community_name": "User",
+      "community": 215,
+      "community_name": "PatientAllergyPolicy",
       "norm_label": ".view()"
     },
     {
@@ -9283,8 +9283,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_policies_patientallergypolicy_patientallergypolicy_manage",
-      "community": 4,
-      "community_name": "User",
+      "community": 215,
+      "community_name": "PatientAllergyPolicy",
       "norm_label": ".manage()"
     },
     {
@@ -9294,8 +9294,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_policies_patienthealthprofilepolicy",
-      "community": 309,
-      "community_name": "PatientHealthProfilePolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": "patienthealthprofilepolicy.php"
     },
     {
@@ -9305,8 +9305,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_policies_patienthealthprofilepolicy_patienthealthprofilepolicy",
-      "community": 309,
-      "community_name": "PatientHealthProfilePolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": "patienthealthprofilepolicy"
     },
     {
@@ -9316,8 +9316,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_policies_patienthealthprofilepolicy_patienthealthprofilepolicy_view",
-      "community": 309,
-      "community_name": "PatientHealthProfilePolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".view()"
     },
     {
@@ -9327,8 +9327,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_policies_patienthealthprofilepolicy_patienthealthprofilepolicy_update",
-      "community": 309,
-      "community_name": "PatientHealthProfilePolicy",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".update()"
     },
     {
@@ -9338,8 +9338,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_policies_patientpolicy",
-      "community": 85,
-      "community_name": "PatientPolicy.php",
+      "community": 4,
+      "community_name": "User",
       "norm_label": "patientpolicy.php"
     },
     {
@@ -9349,8 +9349,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_policies_patientpolicy_patientpolicy",
-      "community": 85,
-      "community_name": "PatientPolicy.php",
+      "community": 4,
+      "community_name": "User",
       "norm_label": "patientpolicy"
     },
     {
@@ -9360,8 +9360,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "app_policies_patientpolicy_patientpolicy_viewany",
-      "community": 85,
-      "community_name": "PatientPolicy.php",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".viewany()"
     },
     {
@@ -9371,8 +9371,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "app_policies_patientpolicy_patientpolicy_view",
-      "community": 85,
-      "community_name": "PatientPolicy.php",
+      "community": 4,
+      "community_name": "User",
       "norm_label": ".view()"
     },
     {
@@ -9635,8 +9635,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_policies_reportpolicy",
-      "community": 4,
-      "community_name": "User",
+      "community": 217,
+      "community_name": "ReportPolicy",
       "norm_label": "reportpolicy.php"
     },
     {
@@ -9646,8 +9646,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_policies_reportpolicy_reportpolicy",
-      "community": 4,
-      "community_name": "User",
+      "community": 217,
+      "community_name": "ReportPolicy",
       "norm_label": "reportpolicy"
     },
     {
@@ -9657,8 +9657,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_policies_reportpolicy_reportpolicy_view",
-      "community": 4,
-      "community_name": "User",
+      "community": 217,
+      "community_name": "ReportPolicy",
       "norm_label": ".view()"
     },
     {
@@ -9668,8 +9668,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_policies_reportpolicy_reportpolicy_export",
-      "community": 4,
-      "community_name": "User",
+      "community": 217,
+      "community_name": "ReportPolicy",
       "norm_label": ".export()"
     },
     {
@@ -9767,8 +9767,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_policies_userpolicy",
-      "community": 4,
-      "community_name": "User",
+      "community": 81,
+      "community_name": "UserPolicy",
       "norm_label": "userpolicy.php"
     },
     {
@@ -9778,8 +9778,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_policies_userpolicy_userpolicy",
-      "community": 4,
-      "community_name": "User",
+      "community": 81,
+      "community_name": "UserPolicy",
       "norm_label": "userpolicy"
     },
     {
@@ -9789,8 +9789,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_policies_userpolicy_userpolicy_viewany",
-      "community": 4,
-      "community_name": "User",
+      "community": 81,
+      "community_name": "UserPolicy",
       "norm_label": ".viewany()"
     },
     {
@@ -9800,8 +9800,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_policies_userpolicy_userpolicy_view",
-      "community": 4,
-      "community_name": "User",
+      "community": 81,
+      "community_name": "UserPolicy",
       "norm_label": ".view()"
     },
     {
@@ -9811,8 +9811,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "app_policies_userpolicy_userpolicy_create",
-      "community": 4,
-      "community_name": "User",
+      "community": 81,
+      "community_name": "UserPolicy",
       "norm_label": ".create()"
     },
     {
@@ -9822,8 +9822,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "app_policies_userpolicy_userpolicy_update",
-      "community": 4,
-      "community_name": "User",
+      "community": 81,
+      "community_name": "UserPolicy",
       "norm_label": ".update()"
     },
     {
@@ -9833,8 +9833,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "app_policies_userpolicy_userpolicy_delete",
-      "community": 4,
-      "community_name": "User",
+      "community": 81,
+      "community_name": "UserPolicy",
       "norm_label": ".delete()"
     },
     {
@@ -9844,7 +9844,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_policies_visitdischargepolicy",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": "visitdischargepolicy.php"
     },
@@ -9855,7 +9855,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "app_policies_visitdischargepolicy_visitdischargepolicy",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": "visitdischargepolicy"
     },
@@ -9866,7 +9866,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "app_policies_visitdischargepolicy_visitdischargepolicy_viewany",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".viewany()"
     },
@@ -9877,7 +9877,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "app_policies_visitdischargepolicy_visitdischargepolicy_view",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".view()"
     },
@@ -9888,7 +9888,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "app_policies_visitdischargepolicy_visitdischargepolicy_create",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".create()"
     },
@@ -9899,7 +9899,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "app_policies_visitdischargepolicy_visitdischargepolicy_prepare",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".prepare()"
     },
@@ -9910,7 +9910,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "app_policies_visitdischargepolicy_visitdischargepolicy_finalize",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".finalize()"
     },
@@ -9921,7 +9921,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "app_policies_visitdischargepolicy_visitdischargepolicy_amend",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".amend()"
     },
@@ -9932,7 +9932,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "app_policies_visitdischargepolicy_visitdischargepolicy_downloaddocument",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".downloaddocument()"
     },
@@ -9943,7 +9943,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "app_policies_visitdischargepolicy_visitdischargepolicy_generatedocument",
-      "community": 2,
+      "community": 190,
       "community_name": "VisitDischarge",
       "norm_label": ".generatedocument()"
     },
@@ -10108,8 +10108,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_providers_appserviceprovider",
-      "community": 58,
-      "community_name": "AppServiceProvider.php",
+      "community": 99,
+      "community_name": "GateClientContract.php",
       "norm_label": "appserviceprovider.php"
     },
     {
@@ -10119,8 +10119,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "app_providers_appserviceprovider_appserviceprovider",
-      "community": 58,
-      "community_name": "AppServiceProvider.php",
+      "community": 99,
+      "community_name": "GateClientContract.php",
       "norm_label": "appserviceprovider"
     },
     {
@@ -10130,8 +10130,8 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "app_providers_appserviceprovider_appserviceprovider_register",
-      "community": 58,
-      "community_name": "AppServiceProvider.php",
+      "community": 99,
+      "community_name": "GateClientContract.php",
       "norm_label": ".register()"
     },
     {
@@ -10141,8 +10141,8 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "app_providers_appserviceprovider_appserviceprovider_boot",
-      "community": 58,
-      "community_name": "AppServiceProvider.php",
+      "community": 99,
+      "community_name": "GateClientContract.php",
       "norm_label": ".boot()"
     },
     {
@@ -10416,8 +10416,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_services_auditlogservice",
-      "community": 17,
-      "community_name": "Illuminate\\Http\\RedirectResponse",
+      "community": 1064,
+      "community_name": "Person.php",
       "norm_label": "auditlogservice.php"
     },
     {
@@ -10449,8 +10449,8 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "app_services_auditlogservice_auditlogservice_sanitize",
-      "community": 178,
-      "community_name": "static",
+      "community": 34,
+      "community_name": "Patient",
       "norm_label": ".sanitize()"
     },
     {
@@ -10592,8 +10592,8 @@
       "source_location": "L231",
       "_origin": "ast",
       "id": "app_services_clinicalconsultationservice_clinicalconsultationservice_recordexternaladvice",
-      "community": 0,
-      "community_name": "ClinicalConsultationTransmission",
+      "community": 1,
+      "community_name": "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
       "norm_label": ".recordexternaladvice()"
     },
     {
@@ -10713,8 +10713,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_services_gate_fakegateclientservice",
-      "community": 58,
-      "community_name": "AppServiceProvider.php",
+      "community": 99,
+      "community_name": "GateClientContract.php",
       "norm_label": "fakegateclientservice.php"
     },
     {
@@ -10725,7 +10725,7 @@
       "_origin": "ast",
       "id": "app_services_gate_fakegateclientservice_fakegateclientservice",
       "community": 99,
-      "community_name": "GateUserDTO",
+      "community_name": "GateClientContract.php",
       "norm_label": "fakegateclientservice"
     },
     {
@@ -10736,7 +10736,7 @@
       "_origin": "ast",
       "id": "app_services_gate_fakegateclientservice_fakegateclientservice_construct",
       "community": 99,
-      "community_name": "GateUserDTO",
+      "community_name": "GateClientContract.php",
       "norm_label": ".__construct()"
     },
     {
@@ -10747,7 +10747,7 @@
       "_origin": "ast",
       "id": "app_services_gate_fakegateclientservice_fakegateclientservice_seedsyntheticusers",
       "community": 99,
-      "community_name": "GateUserDTO",
+      "community_name": "GateClientContract.php",
       "norm_label": ".seedsyntheticusers()"
     },
     {
@@ -10758,7 +10758,7 @@
       "_origin": "ast",
       "id": "app_services_gate_fakegateclientservice_fakegateclientservice_fetchusers",
       "community": 99,
-      "community_name": "GateUserDTO",
+      "community_name": "GateClientContract.php",
       "norm_label": ".fetchusers()"
     },
     {
@@ -10769,7 +10769,7 @@
       "_origin": "ast",
       "id": "app_services_gate_fakegateclientservice_fakegateclientservice_fetchuserbyid",
       "community": 99,
-      "community_name": "GateUserDTO",
+      "community_name": "GateClientContract.php",
       "norm_label": ".fetchuserbyid()"
     },
     {
@@ -10780,7 +10780,7 @@
       "_origin": "ast",
       "id": "app_services_gate_fakegateclientservice_fakegateclientservice_ping",
       "community": 99,
-      "community_name": "GateUserDTO",
+      "community_name": "GateClientContract.php",
       "norm_label": ".ping()"
     },
     {
@@ -10889,8 +10889,8 @@
       "source_location": "L117",
       "_origin": "ast",
       "id": "app_services_gate_fakegateoidcclient_fakegateoidcclient_fetchapplicationentitlement",
-      "community": 270,
-      "community_name": "GateOidcClientContract.php",
+      "community": 58,
+      "community_name": "GateApplicationEntitlementDTO",
       "norm_label": ".fetchapplicationentitlement()"
     },
     {
@@ -11022,7 +11022,7 @@
       "_origin": "ast",
       "id": "app_services_gate_gateidentityreconciliationservice",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": "gateidentityreconciliationservice.php"
     },
     {
@@ -11033,7 +11033,7 @@
       "_origin": "ast",
       "id": "app_services_gate_gateidentityreconciliationservice_gateidentityreconciliationservice",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": "gateidentityreconciliationservice"
     },
     {
@@ -11043,8 +11043,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "app_services_gate_gateidentityreconciliationservice_gateidentityreconciliationservice_getoverview",
-      "community": 64,
-      "community_name": "GateClientContract.php",
+      "community": 190,
+      "community_name": "VisitDischarge",
       "norm_label": ".getoverview()"
     },
     {
@@ -11055,7 +11055,7 @@
       "_origin": "ast",
       "id": "app_services_gate_gateidentityreconciliationservice_gateidentityreconciliationservice_getmappings",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".getmappings()"
     },
     {
@@ -11066,7 +11066,7 @@
       "_origin": "ast",
       "id": "app_services_gate_gateidentityreconciliationservice_gateidentityreconciliationservice_approvemapping",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".approvemapping()"
     },
     {
@@ -11077,7 +11077,7 @@
       "_origin": "ast",
       "id": "app_services_gate_gateidentityreconciliationservice_gateidentityreconciliationservice_rejectmapping",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".rejectmapping()"
     },
     {
@@ -11087,8 +11087,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_services_gate_gatesyncapplyservice",
-      "community": 64,
-      "community_name": "GateClientContract.php",
+      "community": 1064,
+      "community_name": "Person.php",
       "norm_label": "gatesyncapplyservice.php"
     },
     {
@@ -11099,7 +11099,7 @@
       "_origin": "ast",
       "id": "app_services_gate_gatesyncapplyservice_gatesyncapplyservice",
       "community": 64,
-      "community_name": "GateClientContract.php",
+      "community_name": "GateSyncApplyService",
       "norm_label": "gatesyncapplyservice"
     },
     {
@@ -11110,7 +11110,7 @@
       "_origin": "ast",
       "id": "app_services_gate_gatesyncapplyservice_gatesyncapplyservice_construct",
       "community": 64,
-      "community_name": "GateClientContract.php",
+      "community_name": "GateSyncApplyService",
       "norm_label": ".__construct()"
     },
     {
@@ -11121,7 +11121,7 @@
       "_origin": "ast",
       "id": "app_services_gate_gatesyncapplyservice_gatesyncapplyservice_executeapply",
       "community": 64,
-      "community_name": "GateClientContract.php",
+      "community_name": "GateSyncApplyService",
       "norm_label": ".executeapply()"
     },
     {
@@ -11132,7 +11132,7 @@
       "_origin": "ast",
       "id": "app_services_gate_gatesyncapplyservice_gatesyncapplyservice_applysinglerecord",
       "community": 64,
-      "community_name": "GateClientContract.php",
+      "community_name": "GateSyncApplyService",
       "norm_label": ".applysinglerecord()"
     },
     {
@@ -11143,7 +11143,7 @@
       "_origin": "ast",
       "id": "app_services_gate_gatesyncapplyservice_gatesyncapplyservice_normalizegender",
       "community": 64,
-      "community_name": "GateClientContract.php",
+      "community_name": "GateSyncApplyService",
       "norm_label": ".normalizegender()"
     },
     {
@@ -11165,7 +11165,7 @@
       "_origin": "ast",
       "id": "app_services_gate_gatesyncdryrunservice_gatesyncdryrunservice",
       "community": 64,
-      "community_name": "GateClientContract.php",
+      "community_name": "GateSyncApplyService",
       "norm_label": "gatesyncdryrunservice"
     },
     {
@@ -11176,7 +11176,7 @@
       "_origin": "ast",
       "id": "app_services_gate_gatesyncdryrunservice_gatesyncdryrunservice_construct",
       "community": 64,
-      "community_name": "GateClientContract.php",
+      "community_name": "GateSyncApplyService",
       "norm_label": ".__construct()"
     },
     {
@@ -11186,8 +11186,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "app_services_gate_gatesyncdryrunservice_gatesyncdryrunservice_execute",
-      "community": 29,
-      "community_name": "Person",
+      "community": 64,
+      "community_name": "GateSyncApplyService",
       "norm_label": ".execute()"
     },
     {
@@ -11197,8 +11197,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "app_services_gate_gatesyncdryrunservice_gatesyncdryrunservice_classifyrecord",
-      "community": 29,
-      "community_name": "Person",
+      "community": 64,
+      "community_name": "GateSyncApplyService",
       "norm_label": ".classifyrecord()"
     },
     {
@@ -11209,7 +11209,7 @@
       "_origin": "ast",
       "id": "app_services_gate_httpgateclient",
       "community": 99,
-      "community_name": "GateUserDTO",
+      "community_name": "GateClientContract.php",
       "norm_label": "httpgateclient.php"
     },
     {
@@ -11220,7 +11220,7 @@
       "_origin": "ast",
       "id": "app_services_gate_httpgateclient_httpgateclient",
       "community": 99,
-      "community_name": "GateUserDTO",
+      "community_name": "GateClientContract.php",
       "norm_label": "httpgateclient"
     },
     {
@@ -11230,8 +11230,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_services_gate_httpgateclient_httpgateclient_fetchusers",
-      "community": 65,
-      "community_name": ".log",
+      "community": 99,
+      "community_name": "GateClientContract.php",
       "norm_label": ".fetchusers()"
     },
     {
@@ -11242,7 +11242,7 @@
       "_origin": "ast",
       "id": "app_services_gate_httpgateclient_httpgateclient_fetchuserbyid",
       "community": 99,
-      "community_name": "GateUserDTO",
+      "community_name": "GateClientContract.php",
       "norm_label": ".fetchuserbyid()"
     },
     {
@@ -11253,7 +11253,7 @@
       "_origin": "ast",
       "id": "app_services_gate_httpgateclient_httpgateclient_ping",
       "community": 99,
-      "community_name": "GateUserDTO",
+      "community_name": "GateClientContract.php",
       "norm_label": ".ping()"
     },
     {
@@ -11263,8 +11263,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_services_gate_httpgateoidcclient",
-      "community": 270,
-      "community_name": "GateOidcClientContract.php",
+      "community": 65,
+      "community_name": ".log",
       "norm_label": "httpgateoidcclient.php"
     },
     {
@@ -11351,8 +11351,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_services_integration_attendancedispositionpayloadbuilder",
-      "community": 251,
-      "community_name": "ActivityRestriction",
+      "community": 190,
+      "community_name": "VisitDischarge",
       "norm_label": "attendancedispositionpayloadbuilder.php"
     },
     {
@@ -11362,8 +11362,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "app_services_integration_attendancedispositionpayloadbuilder_attendancedispositionpayloadbuilder",
-      "community": 251,
-      "community_name": "ActivityRestriction",
+      "community": 190,
+      "community_name": "VisitDischarge",
       "norm_label": "attendancedispositionpayloadbuilder"
     },
     {
@@ -11373,8 +11373,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "app_services_integration_attendancedispositionpayloadbuilder_attendancedispositionpayloadbuilder_builddormsupervisorpayload",
-      "community": 251,
-      "community_name": "ActivityRestriction",
+      "community": 190,
+      "community_name": "VisitDischarge",
       "norm_label": ".builddormsupervisorpayload()"
     },
     {
@@ -11384,8 +11384,8 @@
       "source_location": "L77",
       "_origin": "ast",
       "id": "app_services_integration_attendancedispositionpayloadbuilder_attendancedispositionpayloadbuilder_buildhomeroomteacherpayload",
-      "community": 251,
-      "community_name": "ActivityRestriction",
+      "community": 190,
+      "community_name": "VisitDischarge",
       "norm_label": ".buildhomeroomteacherpayload()"
     },
     {
@@ -11395,8 +11395,8 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "app_services_integration_attendancedispositionpayloadbuilder_attendancedispositionpayloadbuilder_buildattendancedto",
-      "community": 251,
-      "community_name": "ActivityRestriction",
+      "community": 190,
+      "community_name": "VisitDischarge",
       "norm_label": ".buildattendancedto()"
     },
     {
@@ -11406,8 +11406,8 @@
       "source_location": "L162",
       "_origin": "ast",
       "id": "app_services_integration_attendancedispositionpayloadbuilder_attendancedispositionpayloadbuilder_assertnoforbiddenkeys",
-      "community": 251,
-      "community_name": "ActivityRestriction",
+      "community": 190,
+      "community_name": "VisitDischarge",
       "norm_label": ".assertnoforbiddenkeys()"
     },
     {
@@ -11747,8 +11747,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "app_services_medicalvisitservice_medicalvisitservice",
-      "community": 34,
-      "community_name": "Patient",
+      "community": 16,
+      "community_name": "AuditLogService",
       "norm_label": "medicalvisitservice"
     },
     {
@@ -11758,8 +11758,8 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "app_services_medicalvisitservice_medicalvisitservice_registervisit",
-      "community": 34,
-      "community_name": "Patient",
+      "community": 16,
+      "community_name": "AuditLogService",
       "norm_label": ".registervisit()"
     },
     {
@@ -11769,8 +11769,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "app_services_medicalvisitservice_medicalvisitservice_cancelvisit",
-      "community": 34,
-      "community_name": "Patient",
+      "community": 16,
+      "community_name": "AuditLogService",
       "norm_label": ".cancelvisit()"
     },
     {
@@ -11934,8 +11934,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_services_operationalnotificationservice",
-      "community": 1064,
-      "community_name": "Person.php",
+      "community": 158,
+      "community_name": "ObservationEpisode",
       "norm_label": "operationalnotificationservice.php"
     },
     {
@@ -11956,8 +11956,8 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "app_services_operationalnotificationservice_operationalnotificationservice_construct",
-      "community": 251,
-      "community_name": "ActivityRestriction",
+      "community": 16,
+      "community_name": "AuditLogService",
       "norm_label": ".__construct()"
     },
     {
@@ -12276,7 +12276,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": "healthreportservice"
     },
     {
@@ -12287,7 +12287,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice_getvisitcensus",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".getvisitcensus()"
     },
     {
@@ -12298,7 +12298,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice_getobservationcensus",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".getobservationcensus()"
     },
     {
@@ -12309,7 +12309,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice_getreferralcensus",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".getreferralcensus()"
     },
     {
@@ -12320,7 +12320,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice_getdischargereport",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".getdischargereport()"
     },
     {
@@ -12331,7 +12331,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice_getpharmacystockreport",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".getpharmacystockreport()"
     },
     {
@@ -12342,7 +12342,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice_getintegrationdeliveryreport",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".getintegrationdeliveryreport()"
     },
     {
@@ -12353,7 +12353,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice_getreportsummary",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".getreportsummary()"
     },
     {
@@ -12364,7 +12364,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice_exportcsv",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".exportcsv()"
     },
     {
@@ -12375,7 +12375,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice_streamvisitcensus",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".streamvisitcensus()"
     },
     {
@@ -12386,7 +12386,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice_streamobservationcensus",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".streamobservationcensus()"
     },
     {
@@ -12397,7 +12397,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice_streamreferralcensus",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".streamreferralcensus()"
     },
     {
@@ -12408,7 +12408,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice_streamdischargereport",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".streamdischargereport()"
     },
     {
@@ -12419,7 +12419,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice_streampharmacystockreport",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".streampharmacystockreport()"
     },
     {
@@ -12430,7 +12430,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice_streamintegrationdeliveryreport",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".streamintegrationdeliveryreport()"
     },
     {
@@ -12441,7 +12441,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice_sanitizecsvvalue",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".sanitizecsvvalue()"
     },
     {
@@ -12452,7 +12452,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice_writecsvrow",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".writecsvrow()"
     },
     {
@@ -12463,7 +12463,7 @@
       "_origin": "ast",
       "id": "app_services_reporting_healthreportservice_healthreportservice_applydatefilters",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": ".applydatefilters()"
     },
     {
@@ -12639,7 +12639,7 @@
       "_origin": "ast",
       "id": "app_services_visitdischargeservice_visitdischargeservice",
       "community": 2,
-      "community_name": "VisitDischarge",
+      "community_name": "VisitDischargeService",
       "norm_label": "visitdischargeservice"
     },
     {
@@ -12650,7 +12650,7 @@
       "_origin": "ast",
       "id": "app_services_visitdischargeservice_visitdischargeservice_construct",
       "community": 2,
-      "community_name": "VisitDischarge",
+      "community_name": "VisitDischargeService",
       "norm_label": ".__construct()"
     },
     {
@@ -12661,7 +12661,7 @@
       "_origin": "ast",
       "id": "app_services_visitdischargeservice_visitdischargeservice_preparedraft",
       "community": 2,
-      "community_name": "VisitDischarge",
+      "community_name": "VisitDischargeService",
       "norm_label": ".preparedraft()"
     },
     {
@@ -12672,7 +12672,7 @@
       "_origin": "ast",
       "id": "app_services_visitdischargeservice_visitdischargeservice_finalizedischarge",
       "community": 2,
-      "community_name": "VisitDischarge",
+      "community_name": "VisitDischargeService",
       "norm_label": ".finalizedischarge()"
     },
     {
@@ -12683,7 +12683,7 @@
       "_origin": "ast",
       "id": "app_services_visitdischargeservice_visitdischargeservice_amenddischarge",
       "community": 2,
-      "community_name": "VisitDischarge",
+      "community_name": "VisitDischargeService",
       "norm_label": ".amenddischarge()"
     },
     {
@@ -12694,7 +12694,7 @@
       "_origin": "ast",
       "id": "app_services_visitdischargeservice_visitdischargeservice_markenteredinerror",
       "community": 2,
-      "community_name": "VisitDischarge",
+      "community_name": "VisitDischargeService",
       "norm_label": ".markenteredinerror()"
     },
     {
@@ -12705,7 +12705,7 @@
       "_origin": "ast",
       "id": "app_services_visitdischargeservice_visitdischargeservice_addfollowupplan",
       "community": 2,
-      "community_name": "VisitDischarge",
+      "community_name": "VisitDischargeService",
       "norm_label": ".addfollowupplan()"
     },
     {
@@ -12716,7 +12716,7 @@
       "_origin": "ast",
       "id": "app_services_visitdischargeservice_visitdischargeservice_completefollowupplan",
       "community": 2,
-      "community_name": "VisitDischarge",
+      "community_name": "VisitDischargeService",
       "norm_label": ".completefollowupplan()"
     },
     {
@@ -12727,7 +12727,7 @@
       "_origin": "ast",
       "id": "app_services_visitdischargeservice_visitdischargeservice_cancelfollowupplan",
       "community": 2,
-      "community_name": "VisitDischarge",
+      "community_name": "VisitDischargeService",
       "norm_label": ".cancelfollowupplan()"
     },
     {
@@ -12759,8 +12759,8 @@
       "source_location": "L422",
       "_origin": "ast",
       "id": "app_services_visitdischargeservice_visitdischargeservice_createoperationalhandoff",
-      "community": 295,
-      "community_name": "ClinicalOperationalHandoff",
+      "community": 2,
+      "community_name": "VisitDischargeService",
       "norm_label": ".createoperationalhandoff()"
     },
     {
@@ -12770,8 +12770,8 @@
       "source_location": "L476",
       "_origin": "ast",
       "id": "app_services_visitdischargeservice_visitdischargeservice_acknowledgeoperationalhandoff",
-      "community": 295,
-      "community_name": "ClinicalOperationalHandoff",
+      "community": 2,
+      "community_name": "VisitDischargeService",
       "norm_label": ".acknowledgeoperationalhandoff()"
     },
     {
@@ -12782,7 +12782,7 @@
       "_origin": "ast",
       "id": "app_services_visitdischargeservice_visitdischargeservice_buildsummarypayload",
       "community": 2,
-      "community_name": "VisitDischarge",
+      "community_name": "VisitDischargeService",
       "norm_label": ".buildsummarypayload()"
     },
     {
@@ -12859,7 +12859,7 @@
       "_origin": "ast",
       "id": "app_view_components_applayout",
       "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community_name": "Illuminate\\View\\View",
       "norm_label": "applayout.php"
     },
     {
@@ -12870,7 +12870,7 @@
       "_origin": "ast",
       "id": "app_view_components_applayout_applayout",
       "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community_name": "Illuminate\\View\\View",
       "norm_label": "applayout"
     },
     {
@@ -12881,7 +12881,7 @@
       "_origin": "ast",
       "id": "app_view_components_applayout_applayout_render",
       "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community_name": "Illuminate\\View\\View",
       "norm_label": ".render()"
     },
     {
@@ -12892,7 +12892,7 @@
       "_origin": "ast",
       "id": "app_view_components_guestlayout",
       "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community_name": "Illuminate\\View\\View",
       "norm_label": "guestlayout.php"
     },
     {
@@ -12903,7 +12903,7 @@
       "_origin": "ast",
       "id": "app_view_components_guestlayout_guestlayout",
       "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community_name": "Illuminate\\View\\View",
       "norm_label": "guestlayout"
     },
     {
@@ -12914,7 +12914,7 @@
       "_origin": "ast",
       "id": "app_view_components_guestlayout_guestlayout_render",
       "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community_name": "Illuminate\\View\\View",
       "norm_label": ".render()"
     },
     {
@@ -12946,8 +12946,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "bootstrap_providers",
-      "community": 58,
-      "community_name": "AppServiceProvider.php",
+      "community": 99,
+      "community_name": "GateClientContract.php",
       "norm_label": "providers.php"
     },
     {
@@ -13915,7 +13915,7 @@
       "_origin": "ast",
       "id": "database_factories_patientfactory_patientfactory",
       "community": 178,
-      "community_name": "static",
+      "community_name": "Illuminate\\Database\\Eloquent\\Factories\\Factory",
       "norm_label": "patientfactory"
     },
     {
@@ -13926,7 +13926,7 @@
       "_origin": "ast",
       "id": "database_factories_patientfactory_patientfactory_definition",
       "community": 178,
-      "community_name": "static",
+      "community_name": "Illuminate\\Database\\Eloquent\\Factories\\Factory",
       "norm_label": ".definition()"
     },
     {
@@ -13937,7 +13937,7 @@
       "_origin": "ast",
       "id": "database_factories_personfactory",
       "community": 178,
-      "community_name": "static",
+      "community_name": "Illuminate\\Database\\Eloquent\\Factories\\Factory",
       "norm_label": "personfactory.php"
     },
     {
@@ -13948,7 +13948,7 @@
       "_origin": "ast",
       "id": "database_factories_personfactory_personfactory",
       "community": 178,
-      "community_name": "static",
+      "community_name": "Illuminate\\Database\\Eloquent\\Factories\\Factory",
       "norm_label": "personfactory"
     },
     {
@@ -13959,7 +13959,7 @@
       "_origin": "ast",
       "id": "database_factories_personfactory_personfactory_definition",
       "community": 178,
-      "community_name": "static",
+      "community_name": "Illuminate\\Database\\Eloquent\\Factories\\Factory",
       "norm_label": ".definition()"
     },
     {
@@ -13970,7 +13970,7 @@
       "_origin": "ast",
       "id": "database_factories_userfactory",
       "community": 178,
-      "community_name": "static",
+      "community_name": "Illuminate\\Database\\Eloquent\\Factories\\Factory",
       "norm_label": "userfactory.php"
     },
     {
@@ -13981,7 +13981,7 @@
       "_origin": "ast",
       "id": "database_factories_userfactory_userfactory",
       "community": 178,
-      "community_name": "static",
+      "community_name": "Illuminate\\Database\\Eloquent\\Factories\\Factory",
       "norm_label": "userfactory"
     },
     {
@@ -13992,7 +13992,7 @@
       "_origin": "ast",
       "id": "database_factories_userfactory_userfactory_definition",
       "community": 178,
-      "community_name": "static",
+      "community_name": "Illuminate\\Database\\Eloquent\\Factories\\Factory",
       "norm_label": ".definition()"
     },
     {
@@ -14003,7 +14003,7 @@
       "_origin": "ast",
       "id": "database_factories_userfactory_userfactory_unverified",
       "community": 178,
-      "community_name": "static",
+      "community_name": "Illuminate\\Database\\Eloquent\\Factories\\Factory",
       "norm_label": ".unverified()"
     },
     {
@@ -14013,8 +14013,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "static",
-      "community": 178,
-      "community_name": "static",
+      "community": 34,
+      "community_name": "Patient",
       "norm_label": "static"
     },
     {
@@ -16884,8 +16884,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_feature_admin_rbacadministrationtest",
-      "community": 67,
-      "community_name": "Role.php",
+      "community": 26,
+      "community_name": "RbacAdministrationTest",
       "norm_label": "rbacadministrationtest.php"
     },
     {
@@ -17005,8 +17005,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_feature_audit_auditlogtest",
-      "community": 17,
-      "community_name": "Illuminate\\Http\\RedirectResponse",
+      "community": 1064,
+      "community_name": "Person.php",
       "norm_label": "auditlogtest.php"
     },
     {
@@ -17335,8 +17335,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_feature_exampletest",
-      "community": 193,
-      "community_name": "TestCase",
+      "community": 26,
+      "community_name": "RbacAdministrationTest",
       "norm_label": "feature/exampletest.php"
     },
     {
@@ -17346,8 +17346,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "tests_feature_exampletest_exampletest",
-      "community": 193,
-      "community_name": "TestCase",
+      "community": 26,
+      "community_name": "RbacAdministrationTest",
       "norm_label": "exampletest"
     },
     {
@@ -17357,8 +17357,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "tests_feature_exampletest_exampletest_test_the_application_redirects_unauthenticated_user_to_login",
-      "community": 193,
-      "community_name": "TestCase",
+      "community": 26,
+      "community_name": "RbacAdministrationTest",
       "norm_label": ".test_the_application_redirects_unauthenticated_user_to_login()"
     },
     {
@@ -17368,8 +17368,8 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "tests_feature_exampletest_exampletest_test_the_application_returns_a_successful_response_when_authenticated",
-      "community": 193,
-      "community_name": "TestCase",
+      "community": 26,
+      "community_name": "RbacAdministrationTest",
       "norm_label": ".test_the_application_returns_a_successful_response_when_authenticated()"
     },
     {
@@ -17390,8 +17390,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_feature_gate_gatemariadbsyncconcurrencytest",
-      "community": 99,
-      "community_name": "GateUserDTO",
+      "community": 64,
+      "community_name": "GateSyncApplyService",
       "norm_label": "gatemariadbsyncconcurrencytest.php"
     },
     {
@@ -17522,8 +17522,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_feature_integration_integrationoutboxfailureandretrytest",
-      "community": 158,
-      "community_name": "ObservationEpisode",
+      "community": 67,
+      "community_name": "Role.php",
       "norm_label": "integrationoutboxfailureandretrytest.php"
     },
     {
@@ -17962,8 +17962,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_feature_security_rbacprivilegeescalationtest",
-      "community": 67,
-      "community_name": "Role.php",
+      "community": 26,
+      "community_name": "RbacAdministrationTest",
       "norm_label": "rbacprivilegeescalationtest.php"
     },
     {
@@ -18066,10 +18066,21 @@
       "norm_label": ".test_normal_admin_cannot_grant_protected_permissions_directly_to_users()"
     },
     {
-      "label": ".test_normal_admin_cannot_modify_own_direct_permissions_self_escalation()",
+      "label": ".test_normal_admin_cannot_strip_protected_permissions_from_role_or_user()",
       "file_type": "code",
       "source_file": "tests/Feature/Security/RbacPrivilegeEscalationTest.php",
       "source_location": "L128",
+      "_origin": "ast",
+      "id": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest_test_normal_admin_cannot_strip_protected_permissions_from_role_or_user",
+      "community": 18,
+      "community_name": "Role",
+      "norm_label": ".test_normal_admin_cannot_strip_protected_permissions_from_role_or_user()"
+    },
+    {
+      "label": ".test_normal_admin_cannot_modify_own_direct_permissions_self_escalation()",
+      "file_type": "code",
+      "source_file": "tests/Feature/Security/RbacPrivilegeEscalationTest.php",
+      "source_location": "L154",
       "_origin": "ast",
       "id": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest_test_normal_admin_cannot_modify_own_direct_permissions_self_escalation",
       "community": 18,
@@ -18080,7 +18091,7 @@
       "label": ".test_cannot_delete_protected_system_roles()",
       "file_type": "code",
       "source_file": "tests/Feature/Security/RbacPrivilegeEscalationTest.php",
-      "source_location": "L139",
+      "source_location": "L165",
       "_origin": "ast",
       "id": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest_test_cannot_delete_protected_system_roles",
       "community": 18,
@@ -18091,7 +18102,7 @@
       "label": ".test_cannot_delete_role_assigned_to_active_users()",
       "file_type": "code",
       "source_file": "tests/Feature/Security/RbacPrivilegeEscalationTest.php",
-      "source_location": "L157",
+      "source_location": "L183",
       "_origin": "ast",
       "id": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest_test_cannot_delete_role_assigned_to_active_users",
       "community": 18,
@@ -18102,7 +18113,7 @@
       "label": ".test_cannot_deactivate_or_strip_last_super_admin()",
       "file_type": "code",
       "source_file": "tests/Feature/Security/RbacPrivilegeEscalationTest.php",
-      "source_location": "L170",
+      "source_location": "L196",
       "_origin": "ast",
       "id": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest_test_cannot_deactivate_or_strip_last_super_admin",
       "community": 18,
@@ -18369,8 +18380,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_pest",
-      "community": 193,
-      "community_name": "TestCase",
+      "community": 26,
+      "community_name": "RbacAdministrationTest",
       "norm_label": "pest.php"
     },
     {
@@ -18380,8 +18391,8 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "tests_pest_something",
-      "community": 193,
-      "community_name": "TestCase",
+      "community": 26,
+      "community_name": "RbacAdministrationTest",
       "norm_label": "something()"
     },
     {
@@ -18391,8 +18402,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_testcase",
-      "community": 193,
-      "community_name": "TestCase",
+      "community": 26,
+      "community_name": "RbacAdministrationTest",
       "norm_label": "testcase.php"
     },
     {
@@ -18402,8 +18413,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "tests_testcase_testcase",
-      "community": 193,
-      "community_name": "TestCase",
+      "community": 26,
+      "community_name": "RbacAdministrationTest",
       "norm_label": "testcase"
     },
     {
@@ -19723,8 +19734,8 @@
       "source_location": "L201",
       "_origin": "ast",
       "id": "changelog_0_19_1_2026_08_10_phase_4d2_independent_operational_evidence_verification",
-      "community": 1305,
-      "community_name": "Changelog",
+      "community": 265,
+      "community_name": "[0.19.1] \u2014 2026-08-10 (Phase 4D2 Independent Operational Evidence Verification)",
       "norm_label": "[0.19.1] \u2014 2026-08-10 (phase 4d2 independent operational evidence verification)"
     },
     {
@@ -19734,8 +19745,8 @@
       "source_location": "L204",
       "_origin": "ast",
       "id": "changelog_verified_204",
-      "community": 1305,
-      "community_name": "Changelog",
+      "community": 265,
+      "community_name": "[0.19.1] \u2014 2026-08-10 (Phase 4D2 Independent Operational Evidence Verification)",
       "norm_label": "verified"
     },
     {
@@ -19811,8 +19822,8 @@
       "source_location": "L246",
       "_origin": "ast",
       "id": "changelog_0_17_1_2026_08_10_phase_4c2_controlled_cutover_plan_preflight_state",
-      "community": 265,
-      "community_name": "[0.17.1] \u2014 2026-08-10 (Phase 4C2 Controlled Cutover Plan & Preflight State)",
+      "community": 1305,
+      "community_name": "Changelog",
       "norm_label": "[0.17.1] \u2014 2026-08-10 (phase 4c2 controlled cutover plan & preflight state)"
     },
     {
@@ -19822,8 +19833,8 @@
       "source_location": "L249",
       "_origin": "ast",
       "id": "changelog_added_249",
-      "community": 265,
-      "community_name": "[0.17.1] \u2014 2026-08-10 (Phase 4C2 Controlled Cutover Plan & Preflight State)",
+      "community": 1305,
+      "community_name": "Changelog",
       "norm_label": "added"
     },
     {
@@ -38027,8 +38038,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "illuminate_console_command",
-      "community": 186,
-      "community_name": "ProcessIntegrationOutbox.php",
+      "community": 56,
+      "community_name": "IntegrationOutboxService",
       "norm_label": "illuminate\\console\\command"
     },
     {
@@ -38071,8 +38082,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "illuminate_http_request",
-      "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community": 17,
+      "community_name": "Illuminate\\Http\\RedirectResponse",
       "norm_label": "illuminate\\http\\request"
     },
     {
@@ -38083,7 +38094,7 @@
       "_origin": "ast",
       "id": "illuminate_view_view",
       "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community_name": "Illuminate\\View\\View",
       "norm_label": "illuminate\\view\\view"
     },
     {
@@ -38247,8 +38258,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "illuminate_support_serviceprovider",
-      "community": 58,
-      "community_name": "AppServiceProvider.php",
+      "community": 99,
+      "community_name": "GateClientContract.php",
       "norm_label": "illuminate\\support\\serviceprovider"
     },
     {
@@ -38270,7 +38281,7 @@
       "_origin": "ast",
       "id": "illuminate_contracts_pagination_lengthawarepaginator",
       "community": 190,
-      "community_name": "HealthReportService",
+      "community_name": "VisitDischarge",
       "norm_label": "illuminate\\contracts\\pagination\\lengthawarepaginator"
     },
     {
@@ -38292,7 +38303,7 @@
       "_origin": "ast",
       "id": "illuminate_view_component",
       "community": 163,
-      "community_name": "Illuminate\\Http\\Request",
+      "community_name": "Illuminate\\View\\View",
       "norm_label": "illuminate\\view\\component"
     },
     {
@@ -38303,7 +38314,7 @@
       "_origin": "ast",
       "id": "illuminate_database_eloquent_factories_factory",
       "community": 178,
-      "community_name": "static",
+      "community_name": "Illuminate\\Database\\Eloquent\\Factories\\Factory",
       "norm_label": "illuminate\\database\\eloquent\\factories\\factory"
     },
     {
@@ -38335,8 +38346,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "illuminate_foundation_testing_refreshdatabase",
-      "community": 67,
-      "community_name": "Role.php",
+      "community": 26,
+      "community_name": "RbacAdministrationTest",
       "norm_label": "illuminate\\foundation\\testing\\refreshdatabase"
     },
     {
@@ -38346,8 +38357,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "illuminate_foundation_testing_testcase",
-      "community": 193,
-      "community_name": "TestCase",
+      "community": 26,
+      "community_name": "RbacAdministrationTest",
       "norm_label": "illuminate\\foundation\\testing\\testcase"
     },
     {
@@ -41308,7 +41319,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/Http/Controllers/Admin/UserController.php",
-      "source_location": "L144",
+      "source_location": "L165",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_http_controllers_admin_usercontroller_usercontroller",
@@ -41319,7 +41330,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/Http/Controllers/Admin/UserController.php",
-      "source_location": "L109",
+      "source_location": "L130",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_http_controllers_admin_usercontroller_usercontroller",
@@ -41462,7 +41473,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/Http/Controllers/Admin/UserController.php",
-      "source_location": "L83",
+      "source_location": "L85",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_http_controllers_admin_usercontroller_usercontroller_updateroles",
@@ -41474,7 +41485,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/Http/Controllers/Admin/UserController.php",
-      "source_location": "L73",
+      "source_location": "L76",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_http_controllers_admin_usercontroller_usercontroller_updateroles",
@@ -41486,7 +41497,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/Http/Controllers/Admin/UserController.php",
-      "source_location": "L96",
+      "source_location": "L111",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_http_controllers_admin_usercontroller_usercontroller_updateroles",
@@ -41508,7 +41519,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "app/Http/Controllers/Admin/UserController.php",
-      "source_location": "L109",
+      "source_location": "L130",
       "weight": 1.0,
       "context": "parameter_type",
       "_origin": "ast",
@@ -41522,7 +41533,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/Http/Controllers/Admin/UserController.php",
-      "source_location": "L121",
+      "source_location": "L142",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_http_controllers_admin_usercontroller_usercontroller_updatedirectpermissions",
@@ -41534,7 +41545,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/Http/Controllers/Admin/UserController.php",
-      "source_location": "L111",
+      "source_location": "L132",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_http_controllers_admin_usercontroller_usercontroller_updatedirectpermissions",
@@ -41546,7 +41557,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/Http/Controllers/Admin/UserController.php",
-      "source_location": "L131",
+      "source_location": "L152",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_http_controllers_admin_usercontroller_usercontroller_updatedirectpermissions",
@@ -41556,7 +41567,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "app/Http/Controllers/Admin/UserController.php",
-      "source_location": "L109",
+      "source_location": "L130",
       "weight": 1.0,
       "context": "return_type",
       "_origin": "ast",
@@ -41570,7 +41581,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/Http/Controllers/Admin/UserController.php",
-      "source_location": "L149",
+      "source_location": "L170",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_http_controllers_admin_usercontroller_usercontroller_togglestatus",
@@ -41582,7 +41593,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/Http/Controllers/Admin/UserController.php",
-      "source_location": "L166",
+      "source_location": "L187",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_http_controllers_admin_usercontroller_usercontroller_togglestatus",
@@ -41592,7 +41603,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "app/Http/Controllers/Admin/UserController.php",
-      "source_location": "L144",
+      "source_location": "L165",
       "weight": 1.0,
       "context": "return_type",
       "_origin": "ast",
@@ -41604,7 +41615,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "app/Http/Controllers/Admin/UserController.php",
-      "source_location": "L144",
+      "source_location": "L165",
       "weight": 1.0,
       "context": "parameter_type",
       "_origin": "ast",
@@ -48286,7 +48297,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/Http/Requests/Admin/UpdateRoleRequest.php",
-      "source_location": "L51",
+      "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_http_requests_admin_updaterolerequest_updaterolerequest",
@@ -48310,18 +48321,6 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/Http/Requests/Admin/UpdateRoleRequest.php",
-      "source_location": "L39",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "app_http_requests_admin_updaterolerequest_updaterolerequest_authorize",
-      "target": "app_models_permission_permission"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "app/Http/Requests/Admin/UpdateRoleRequest.php",
       "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast",
@@ -48334,7 +48333,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/Http/Requests/Admin/UpdateRoleRequest.php",
-      "source_location": "L54",
+      "source_location": "L55",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_http_requests_admin_updaterolerequest_updaterolerequest_rules",
@@ -48402,7 +48401,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/Http/Requests/Admin/UpdateUserDirectPermissionsRequest.php",
-      "source_location": "L49",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_http_requests_admin_updateuserdirectpermissionsrequest_updateuserdirectpermissionsrequest",
@@ -48419,18 +48418,6 @@
       "source": "app_http_requests_admin_updateuserdirectpermissionsrequest_updateuserdirectpermissionsrequest",
       "target": "illuminate_foundation_http_formrequest",
       "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "app/Http/Requests/Admin/UpdateUserDirectPermissionsRequest.php",
-      "source_location": "L37",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "app_http_requests_admin_updateuserdirectpermissionsrequest_updateuserdirectpermissionsrequest_authorize",
-      "target": "app_models_permission_permission"
     },
     {
       "relation": "calls",
@@ -62040,6 +62027,18 @@
       "context": "call",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
+      "source_file": "tests/Feature/Security/RbacPrivilegeEscalationTest.php",
+      "source_location": "L130",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest_test_normal_admin_cannot_strip_protected_permissions_from_role_or_user",
+      "target": "app_models_permission_permission"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "tests/Feature/UAT/Phase4BRoleMatrixPrivacyUatTest.php",
       "source_location": "L21",
       "weight": 1.0,
@@ -66501,7 +66500,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "tests/Feature/Security/RbacPrivilegeEscalationTest.php",
-      "source_location": "L182",
+      "source_location": "L208",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest_test_cannot_deactivate_or_strip_last_super_admin",
@@ -66513,7 +66512,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "tests/Feature/Security/RbacPrivilegeEscalationTest.php",
-      "source_location": "L141",
+      "source_location": "L167",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest_test_cannot_delete_protected_system_roles",
@@ -66525,7 +66524,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "tests/Feature/Security/RbacPrivilegeEscalationTest.php",
-      "source_location": "L159",
+      "source_location": "L185",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest_test_cannot_delete_role_assigned_to_active_users",
@@ -66577,6 +66576,18 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest_test_normal_admin_cannot_modify_super_admin_role",
+      "target": "app_models_role_role"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/Feature/Security/RbacPrivilegeEscalationTest.php",
+      "source_location": "L131",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest_test_normal_admin_cannot_strip_protected_permissions_from_role_or_user",
       "target": "app_models_role_role"
     },
     {
@@ -71549,6 +71560,18 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest_test_normal_admin_cannot_grant_protected_permissions_directly_to_users",
+      "target": "app_models_user_user",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/Feature/Security/RbacPrivilegeEscalationTest.php",
+      "source_location": "L143",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest_test_normal_admin_cannot_strip_protected_permissions_from_role_or_user",
       "target": "app_models_user_user",
       "confidence_score": 1.0
     },
@@ -85456,7 +85479,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "tests/Feature/Security/RbacPrivilegeEscalationTest.php",
-      "source_location": "L170",
+      "source_location": "L196",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest",
@@ -85467,7 +85490,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "tests/Feature/Security/RbacPrivilegeEscalationTest.php",
-      "source_location": "L139",
+      "source_location": "L165",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest",
@@ -85478,7 +85501,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "tests/Feature/Security/RbacPrivilegeEscalationTest.php",
-      "source_location": "L157",
+      "source_location": "L183",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest",
@@ -85544,7 +85567,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "tests/Feature/Security/RbacPrivilegeEscalationTest.php",
-      "source_location": "L128",
+      "source_location": "L154",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest",
@@ -85571,6 +85594,17 @@
       "_origin": "ast",
       "source": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest",
       "target": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest_test_normal_admin_cannot_modify_super_admin_role",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/Feature/Security/RbacPrivilegeEscalationTest.php",
+      "source_location": "L128",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest",
+      "target": "tests_feature_security_rbacprivilegeescalationtest_rbacprivilegeescalationtest_test_normal_admin_cannot_strip_protected_permissions_from_role_or_user",
       "confidence_score": 1.0
     },
     {

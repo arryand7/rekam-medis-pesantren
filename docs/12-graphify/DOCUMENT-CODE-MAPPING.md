@@ -8,6 +8,18 @@ last_updated: 2026-08-15
 
 # Pemetaan Dokumen ke Kode
 
+## Phase 5D — Light Mode Contrast & Theme Consistency Hotfix Mapping
+
+```text
+PHASE-5D-LIGHT-MODE-CONTRAST-HOTFIX.md & DESIGN-SYSTEM.md & LIGHT-DARK-THEME.md
+  -> resources/css/app.css
+  -> resources/views/pages/referrals/{index,create,show}.blade.php
+  -> resources/views/pages/visits/create.blade.php
+  -> resources/views/pages/dashboards/management.blade.php
+  -> resources/views/components/visit-stage-nav.blade.php
+  -> tests/Feature/Ui/LightModeContrastHotfixTest.php
+```
+
 ## Phase 5D — Pre-Staging Acceptance & RBAC Hardening Mapping
 
 ```text

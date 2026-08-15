@@ -1,11 +1,11 @@
 # Graph Report - rekam-medis-ponpes  (2026-08-15)
 
 ## Corpus Check
-- 657 files · ~213,633 words
+- 657 files · ~213,768 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3486 nodes · 5631 edges · 479 communities (390 shown, 89 thin omitted)
+- 3487 nodes · 5633 edges · 477 communities (389 shown, 88 thin omitted)
 - Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 275 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
@@ -17,11 +17,11 @@
 ## Community Hubs (Navigation)
 - ClinicalConsultationTransmission
 - Illuminate\Database\Eloquent\Relations\BelongsTo
-- VisitDischarge
+- VisitDischargeService
 - MedicalVisit
 - User
 - 1. Definisi Metrik Klinis (Clinical KPIs)
-- ReferralController.php
+- ClinicalOperationalHandoffController.php
 - Illuminate\Database\Eloquent\Relations\HasOne
 - ClinicalConsultation
 - Referral
@@ -40,11 +40,11 @@
 - Phase 5B2 Prompt Cleanup Audit
 - Kebijakan Kebersihan Repositori (Repository Hygiene Policy)
 - Graphify Version Control Policy
-- UserController
+- .updateDirectPermissions
 - RbacAdministrationTest
 - IntegrationOutboxEvent
 - ObservationEpisodePolicy
-- Person
+- AttendanceIntegrationController.php
 - RoleController
 - [0.20.1] — 2026-08-13 (Phase 5B1 Final Verification, Test Portability & Repository Hygiene)
 - README.md
@@ -70,18 +70,18 @@
 - [0.21.1] — 2026-08-14 (Phase 5C1 Reporting Correctness, Privacy Boundaries & Performance Closure)
 - ReferralTransportController.php
 - IntegrationOutboxService
-- ClinicalConsultationPolicy
-- AppServiceProvider.php
-- AuditLogPolicy
+- HealthReportController.php
+- GateApplicationEntitlementDTO
+- ReferralCompanionController.php
 - FakeAttendanceIntegration
 - HttpAttendanceSandboxIntegration
 - Alur Login Gate dan Kontrol Akses
 - Phase 3B MariaDB Concurrency & Hardening Report
-- GateClientContract.php
+- GateSyncApplyService
 - .log
 - 2. Resolusi Semantik & Implementasi Terstandarisasi
 - Role.php
-- VisitDischargeController.php
+- ClinicalAssessmentPolicy
 - Observasi
 - Rujukan
 - Laporan Resmikan Penutupan Phase 0 (Phase 0 Closure Report)
@@ -94,27 +94,27 @@
 - Laporan Resmi Penutupan Phase 3A (Phase 3A Closure Report)
 - Matriks Pengujian & Verifikasi Phase 5C2
 - Phase 5C2 Final Closure & Acceptance
-- GateMappingPolicy
+- UserPolicy
 - RbacMenuVisibilityTest
-- HealthcarePartnerPolicy
+- DashboardPolicy
 - ObservationRecordPolicy
-- PatientPolicy.php
+- MedicationAdministrationPolicy
 - PersonPolicy
 - [0.21.2] — 2026-08-14 (Phase 5C2 Pharmacy Reporting Semantics & Final Micro-Closure)
 - [0.16.0] — 2026-08-10 (Phase 4B Staging Integration, End-to-End UAT & Attendance Sandbox)
 - StoreRoleRequest
-- GateUserDTO
+- GateClientContract.php
 - concurrency-referral-test.sh
 - ObservationEpisode
 - Phase 4A Closure Report
 - UserNotification
 - GateUserInfoDTO
 - Gate OIDC / OAuth2 Contract Specification
-- Illuminate\Http\Request
+- Illuminate\View\View
 - PHASE 3B FINAL CLOSURE SANITY VERIFICATION
 - Illuminate\Database\Eloquent\Relations\BelongsToMany
 - Logging Privacy Guidelines
-- static
+- Illuminate\Database\Eloquent\Factories\Factory
 - Permission
 - Backup and Restore Runbook
 - Phase 4A Resume State
@@ -122,21 +122,21 @@
 - 2. Artefak & Komponen yang Dibangun
 - Phase 5D Pre-Staging Audit
 - Phase 5B1 Final Closure
-- ProcessIntegrationOutbox.php
+- ClinicalActionPolicy
 - VisitDischargeVersion
 - Phase 4B Closure Report
 - Phase 3C1 Closure Report — Visit Discharge, Follow-up, Return-to-Activity, and Operational Handoff
-- HealthReportService
+- VisitDischarge
 - 2. Catatan Pengujian per Peran
 - Illuminate\Foundation\Http\FormRequest
-- TestCase
+- GateSyncPolicy
 - 2. Pre-Implementation Screen-by-Screen Walkthrough
 - Phase 3C1 Final Sanity & Verification Closure Report
 - 2. Core Workflow Screen Checks
 - Kontrak Integrasi Disposisi Kehadiran (Attendance Health Disposition Contract)
-- .update
+- PatientAllergyPolicy
 - Production Authentication Runtime Incident Report & Root Cause Analysis
-- ObservationHandoverPolicy
+- ReportPolicy
 - [0.23.0] — 2026-08-15 (Phase 5D Pre-Staging Acceptance & Deployment Readiness)
 - Staging Rollback Runbook
 - AttendanceHealthDispositionDTO
@@ -174,7 +174,7 @@
 - Phase 4C2 Post-Cutover UAT & Canary Validation Protocol
 - 2. Metrik Kesehatan Sistem per Checkpoint
 - 2. File-by-File Classification
-- [0.17.1] — 2026-08-10 (Phase 4C2 Controlled Cutover Plan & Preflight State)
+- [0.19.1] — 2026-08-10 (Phase 4D2 Independent Operational Evidence Verification)
 - GateAuthenticationService
 - Phase 4D2 Independent Operational Evidence Register
 - Production Authentication Historical Exposure & Log Review
@@ -203,7 +203,6 @@
 - Production Monitoring Baseline, Service Level Indicators, and Incident Thresholds
 - RBAC-PRIVILEGE-ESCALATION-PROTECTION.md
 - STAGING-DATA-PRIVACY-POLICY.md
-- ClinicalOperationalHandoff
 - PHASE-5D0-RBAC-TEST-MATRIX.md
 - PHASE-5D-TEST-MATRIX.md
 - FIRST-STAGING-DEPLOYMENT-RUNBOOK.md
@@ -213,7 +212,6 @@
 - PHASE-5D-MIGRATION-REHEARSAL.md
 - REVERSE-PROXY-HTTPS-READINESS.md
 - STAGING-SERVER-REQUIREMENTS.md
-- PatientHealthProfilePolicy
 - Phase 5A UX & Workflow Test Matrix
 - 1. Komponen & Visual Architecture
 - 2. Formulir & Interaksi Operasional
@@ -365,15 +363,15 @@
 - FILE-MANIFEST.md
 
 ## God Nodes (most connected - your core abstractions)
-1. `User` - 304 edges
+1. `User` - 305 edges
 2. `AuditLogService` - 81 edges
 3. `MedicalVisit` - 71 edges
 4. `Referral` - 66 edges
 5. `VisitDischarge` - 56 edges
 6. `Controller` - 53 edges
-7. `Role` - 49 edges
+7. `Role` - 50 edges
 8. `ObservationEpisode` - 39 edges
-9. `Permission` - 39 edges
+9. `Permission` - 38 edges
 10. `MedicineBatch` - 37 edges
 
 ## Surprising Connections (you probably didn't know these)
@@ -391,27 +389,31 @@
 ## Import Cycles
 - None detected.
 
-## Communities (479 total, 89 thin omitted)
+## Communities (477 total, 88 thin omitted)
 
 ### Community 0 - "ClinicalConsultationTransmission"
 Cohesion: 0.13
 Nodes (5): transmit(), ClinicalConsultationTransmission, ClinicalConsultationVersion, ClinicalConsultationService, FakeClinicalConsultationTransport
 
 ### Community 1 - "Illuminate\Database\Eloquent\Relations\BelongsTo"
-Cohesion: 0.04
+Cohesion: 0.03
 Nodes (10): ClinicalAssessment, ExternalClinicalAdvice, MedicationAdministration, MedicationOrder, MedicationSafetyAcknowledgement, ObservationHandover, OperationalNotification, PatientAllergy (+2 more)
 
-### Community 2 - "VisitDischarge"
-Cohesion: 0.07
-Nodes (4): EvaluateVisitDischargeReadinessAction, VisitDischarge, VisitDischargePolicy, VisitDischargeService
+### Community 2 - "VisitDischargeService"
+Cohesion: 0.08
+Nodes (4): EvaluateVisitDischargeReadinessAction, ClinicalOperationalHandoff, ClinicalOperationalHandoffPolicy, VisitDischargeService
 
 ### Community 4 - "User"
 Cohesion: 0.04
-Nodes (18): User, ClinicalActionPolicy, ClinicalAssessmentPolicy, DashboardPolicy, GateSyncPolicy, MedicalVisitPolicy, MedicationAdministrationPolicy, MedicationOrderPolicy (+10 more)
+Nodes (17): User, AuditLogPolicy, ClinicalConsultationPolicy, GateMappingPolicy, HealthcarePartnerPolicy, MedicalVisitPolicy, MedicationOrderPolicy, MedicineBatchPolicy (+9 more)
 
 ### Community 5 - "1. Definisi Metrik Klinis (Clinical KPIs)"
 Cohesion: 0.10
 Nodes (20): 1. Definisi Metrik Klinis (Clinical KPIs), 2. Definisi Metrik Farmasi (Pharmacy KPIs), 3. Definisi Metrik Manajemen & Eksekutif (Management KPIs), 4. Keselarasan Filter Laporan (Report Summary & Table Filter Alignment), 5. Pembedaan Semantik: Laporan Stok vs Mutasi Buku Besar, A. Expired Batches (Batch Kedaluwarsa), A. Total Visits Served (Total Kunjungan), A. Visits Today (Kunjungan Hari Ini) (+12 more)
+
+### Community 6 - "ClinicalOperationalHandoffController.php"
+Cohesion: 0.18
+Nodes (3): ClinicalOperationalHandoffController, AcknowledgeOperationalHandoffRequest, StoreOperationalHandoffRequest
 
 ### Community 10 - "MedicineBatch"
 Cohesion: 0.06
@@ -427,7 +429,7 @@ Nodes (9): 1. Matrix Pengujian Antarmuka (UI & Viewport Matrix), 2. Temuan dan P
 
 ### Community 13 - "Illuminate\Database\Eloquent\Concerns\HasUlids"
 Cohesion: 0.06
-Nodes (12): ClinicalAction, ConsultationLocalDecision, ObservationRecord, PatientEmergencyContact, PatientHealthProfile, ReferralCompanion, ReferralReturnReview, ReferralStatusEvent (+4 more)
+Nodes (13): ClinicalAction, ConsultationLocalDecision, GateSyncRun, ObservationRecord, PatientEmergencyContact, PatientHealthProfile, ReferralCompanion, ReferralReturnReview (+5 more)
 
 ### Community 14 - "Panduan UI & Alur Kerja Dashboard & Laporan Operasional (Phase 5C)"
 Cohesion: 0.13
@@ -438,16 +440,16 @@ Cohesion: 0.07
 Nodes (27): 1. Ikhtisar, 2.1 State Parameter (CSRF Protection), 2.2 Nonce Parameter (Replay Protection), 2.3 Code Exchange, 2.4 Session Security, 2.5 Route Middleware Enforcement & Role-Aware Dashboard Dispatch, 2. Authentication Security, 3.1 Login-time Check (+19 more)
 
 ### Community 16 - "AuditLogService"
-Cohesion: 0.11
-Nodes (5): AuditLogService, ClinicalAssessmentService, ObservationService, OperationalNotificationService, ReferralService
+Cohesion: 0.09
+Nodes (6): AuditLogService, ClinicalAssessmentService, MedicalVisitService, ObservationService, OperationalNotificationService, ReferralService
 
 ### Community 17 - "Illuminate\Http\RedirectResponse"
-Cohesion: 0.10
-Nodes (10): GateOidcAuthController, Controller, ActivityRestrictionController, GateReconciliationController, ReferralCompanionController, ReferralDepartureController, ReferralHandoverController, StoreReferralCompanionRequest (+2 more)
+Cohesion: 0.12
+Nodes (12): UserController, GateOidcAuthController, Controller, ActivityRestrictionController, GateReconciliationController, OperationalNotificationController, ReferralDepartureController, ReferralHandoverController (+4 more)
 
 ### Community 18 - "Role"
-Cohesion: 0.18
-Nodes (3): Role, RbacPrivilegeEscalationTest, createUatStaff()
+Cohesion: 0.14
+Nodes (4): UpdateRoleRequest, Role, RbacPrivilegeEscalationTest, createUatStaff()
 
 ### Community 20 - "PHASE 3B CLOSURE — Actual Referral, Transport, Clinical Handover, Return, and Hardening"
 Cohesion: 0.11
@@ -469,17 +471,17 @@ Nodes (7): 1. Berkas yang Wajib Berada di Git (Tracked in Git), 2. Berkas yang D
 Cohesion: 0.25
 Nodes (7): Applied Policy, Audit Summary, Classification: KEEP-PARTIAL, Graphify Version Control Policy, Maintenance, Reasoning, Regeneration Command
 
-### Community 25 - "UserController"
-Cohesion: 0.18
-Nodes (3): UserController, UpdateUserDirectPermissionsRequest, UpdateUserRolesRequest
+### Community 26 - "RbacAdministrationTest"
+Cohesion: 0.11
+Nodes (5): Illuminate\Foundation\Testing\RefreshDatabase, Illuminate\Foundation\Testing\TestCase, RbacAdministrationTest, ExampleTest, TestCase
 
 ### Community 31 - "[0.20.1] — 2026-08-13 (Phase 5B1 Final Verification, Test Portability & Repository Hygiene)"
 Cohesion: 0.50
 Nodes (4): [0.20.1] — 2026-08-13 (Phase 5B1 Final Verification, Test Portability & Repository Hygiene), Added, Fixed, Verified (Phase 5B1)
 
 ### Community 34 - "Patient"
-Cohesion: 0.14
-Nodes (3): Patient, MedicalVisitService, createUatPatient()
+Cohesion: 0.12
+Nodes (4): Patient, self, static, createUatPatient()
 
 ### Community 35 - "Laporan Verifikasi Visual & Multi-Viewport Phase 5C1"
 Cohesion: 0.33
@@ -538,8 +540,12 @@ Cohesion: 0.67
 Nodes (3): [0.21.1] — 2026-08-14 (Phase 5C1 Reporting Correctness, Privacy Boundaries & Performance Closure), Fixed, Verified (Phase 5C1)
 
 ### Community 56 - "IntegrationOutboxService"
-Cohesion: 0.23
-Nodes (3): IntegrationOutboxService, AttendanceIntegrationContract, Illuminate\Support\Carbon
+Cohesion: 0.17
+Nodes (5): ProcessIntegrationOutbox, IntegrationOutboxService, AttendanceIntegrationContract, Illuminate\Console\Command, Illuminate\Support\Carbon
+
+### Community 58 - "GateApplicationEntitlementDTO"
+Cohesion: 0.25
+Nodes (3): fetchApplicationEntitlement(), GateApplicationEntitlementDTO, self
 
 ### Community 62 - "Alur Login Gate dan Kontrol Akses"
 Cohesion: 0.09
@@ -549,21 +555,17 @@ Nodes (22): 1.1 Prasyarat, 1.2 Langkah-langkah Login, 1.3 Error Handling, 1. Alu
 Cohesion: 0.18
 Nodes (10): 1. Environment & Database Metadata, 2. Four Concurrency Invariants & Empirical Proof, 3. Auth Stub Security Review, 4. Private Referral Documents Security Review, 5. Full Test Suite Execution Summary, Invariant 1: One Active Referral per Visit (`lockForUpdate`), Invariant 2: Concurrency-Safe Referral Numbers (No Unsafe `MAX()+1`), Invariant 3: Handoff Idempotency (+2 more)
 
-### Community 64 - "GateClientContract.php"
-Cohesion: 0.19
-Nodes (4): GateSyncController, GateSyncRun, GateSyncApplyService, GateSyncDryRunService
+### Community 64 - "GateSyncApplyService"
+Cohesion: 0.20
+Nodes (3): GateSyncController, GateSyncApplyService, GateSyncDryRunService
 
 ### Community 66 - "2. Resolusi Semantik & Implementasi Terstandarisasi"
 Cohesion: 0.33
 Nodes (5): 1. Analisis Akar Masalah (Root Cause Analysis), 2. Resolusi Semantik & Implementasi Terstandarisasi, A. Definisi Baku 4 Kategori Status Batch, B. Resolusi UI & Ekspor Laporan Stok Farmasi, Phase 5C2 Micro-Correction & Audit
 
 ### Community 67 - "Role.php"
-Cohesion: 0.17
-Nodes (4): DatabaseSeeder, Illuminate\Database\Console\Seeds\WithoutModelEvents, Illuminate\Database\Seeder, Illuminate\Foundation\Testing\RefreshDatabase
-
-### Community 68 - "VisitDischargeController.php"
-Cohesion: 0.12
-Nodes (4): VisitDischargeController, AmendVisitDischargeRequest, FinalizeVisitDischargeRequest, StoreVisitDischargeRequest
+Cohesion: 0.18
+Nodes (3): DatabaseSeeder, Illuminate\Database\Console\Seeds\WithoutModelEvents, Illuminate\Database\Seeder
 
 ### Community 69 - "Observasi"
 Cohesion: 0.50
@@ -617,9 +619,9 @@ Nodes (4): 1. Status Penyelesaian, 2. Quality Gates Status, 3. Klasifikasi Akhir
 Cohesion: 0.67
 Nodes (3): [0.21.2] — 2026-08-14 (Phase 5C2 Pharmacy Reporting Semantics & Final Micro-Closure), Fixed, Verified (Phase 5C2)
 
-### Community 99 - "GateUserDTO"
-Cohesion: 0.13
-Nodes (5): fetchUserById(), GateUserDTO, self, FakeGateClientService, HttpGateClient
+### Community 99 - "GateClientContract.php"
+Cohesion: 0.11
+Nodes (7): fetchUserById(), GateUserDTO, self, AppServiceProvider, FakeGateClientService, HttpGateClient, Illuminate\Support\ServiceProvider
 
 ### Community 158 - "ObservationEpisode"
 Cohesion: 0.11
@@ -630,7 +632,7 @@ Cohesion: 0.10
 Nodes (20): 10. Files Created/Modified, 1. Ringkasan Fase, 2.1 Pekerjaan yang Diwariskan dari Gemini (Diterima Tanpa Perubahan Besar), 2.2 Koreksi oleh Claude, 2.3 Fitur yang Diselesaikan oleh Claude, 2. Attributions, 3. Definition of Done Checklist, 4.1 Test Suite (+12 more)
 
 ### Community 160 - "UserNotification"
-Cohesion: 0.20
+Cohesion: 0.19
 Nodes (3): UserNotificationController, UserNotification, UserNotificationService
 
 ### Community 161 - "GateUserInfoDTO"
@@ -641,9 +643,9 @@ Nodes (4): fetchUserInfo(), GateUserInfoDTO, self, FakeGateOidcClient
 Cohesion: 0.13
 Nodes (14): 1. Ikhtisar, 2. Endpoints, 3. Authorization Flow, 4.1 Authorization Request, 4.2 Token Exchange Request, 4. Request Parameters, 5.1 GateOidcTokenResponseDTO, 5.2 GateUserInfoDTO (+6 more)
 
-### Community 163 - "Illuminate\Http\Request"
-Cohesion: 0.11
-Nodes (10): DashboardController, ClinicalOperationalHandoffController, AttendanceIntegrationController, OperationalNotificationController, HealthReportController, AppLayout, GuestLayout, Illuminate\Http\Request (+2 more)
+### Community 163 - "Illuminate\View\View"
+Cohesion: 0.10
+Nodes (7): DashboardController, ReferralController, StoreReferralRequest, AppLayout, GuestLayout, Illuminate\View\Component, Illuminate\View\View
 
 ### Community 164 - "PHASE 3B FINAL CLOSURE SANITY VERIFICATION"
 Cohesion: 0.50
@@ -653,9 +655,9 @@ Nodes (3): 1. Sanity Verification Checklist, 2. Verdict, PHASE 3B FINAL CLOSURE 
 Cohesion: 0.40
 Nodes (4): Aturan implementasi, Boleh dicatat, Dilarang di log aplikasi biasa, Logging Privacy Guidelines
 
-### Community 178 - "static"
-Cohesion: 0.14
-Nodes (6): self, PatientFactory, PersonFactory, UserFactory, Illuminate\Database\Eloquent\Factories\Factory, static
+### Community 178 - "Illuminate\Database\Eloquent\Factories\Factory"
+Cohesion: 0.24
+Nodes (4): PatientFactory, PersonFactory, UserFactory, Illuminate\Database\Eloquent\Factories\Factory
 
 ### Community 179 - "Permission"
 Cohesion: 0.10
@@ -697,21 +699,17 @@ Nodes (7): 1. Ringkasan Eksekutif, 2. Attributions & Ringkasan Perubahan, 3. Che
 Cohesion: 0.40
 Nodes (4): 1. Ringkasan Pencapaian Phase 3C1, 2. Metrik Pengujian & Validasi, 3. Invariant Klinis & Keamanan yang Terpenuhi, Phase 3C1 Closure Report — Visit Discharge, Follow-up, Return-to-Activity, and Operational Handoff
 
-### Community 190 - "HealthReportService"
-Cohesion: 0.13
-Nodes (6): Carbon, GateIdentityMapping, IntegrationDeliveryAttempt, GateIdentityReconciliationService, HealthReportService, Illuminate\Contracts\Pagination\LengthAwarePaginator
+### Community 190 - "VisitDischarge"
+Cohesion: 0.05
+Nodes (10): Carbon, GateIdentityMapping, IntegrationDeliveryAttempt, Person, VisitDischarge, VisitDischargePolicy, GateIdentityReconciliationService, AttendanceDispositionPayloadBuilder (+2 more)
 
 ### Community 191 - "2. Catatan Pengujian per Peran"
 Cohesion: 0.20
 Nodes (9): 1. Standar Dokumentasi UAT Tanpa PII, 1. `UAT-CLINICAL-01` — Tenaga Medis / Dokter, 2. Catatan Pengujian per Peran, 2. `UAT-PHARMACY-01` — Petugas Farmasi / Asisten, 3. Ringkasan Penerimaan, 3. `UAT-DORM-01` — Pembina Asrama / Wali Asrama, 4. `UAT-MANAGEMENT-01` — Pimpinan Pesantren / Manajemen, 5. `UAT-IT-01` — Administrator Teknis / IT (+1 more)
 
 ### Community 192 - "Illuminate\Foundation\Http\FormRequest"
-Cohesion: 0.05
-Nodes (10): AcknowledgeOperationalHandoffRequest, StoreActivityRestrictionRequest, StoreFollowUpPlanRequest, StoreOperationalHandoffRequest, ApplyGateSyncRequest, ApproveIdentityMappingRequest, ResolveIdentityConflictRequest, AcknowledgeOperationalNotificationRequest (+2 more)
-
-### Community 193 - "TestCase"
-Cohesion: 0.25
-Nodes (3): Illuminate\Foundation\Testing\TestCase, ExampleTest, TestCase
+Cohesion: 0.06
+Nodes (10): VisitDischargeController, AmendVisitDischargeRequest, FinalizeVisitDischargeRequest, StoreActivityRestrictionRequest, StoreFollowUpPlanRequest, StoreVisitDischargeRequest, ApplyGateSyncRequest, ApproveIdentityMappingRequest (+2 more)
 
 ### Community 194 - "2. Pre-Implementation Screen-by-Screen Walkthrough"
 Cohesion: 0.22
@@ -805,10 +803,6 @@ Nodes (4): 1. Ikhtisar Lingkungan Staging, 2. Checklist Konfigurasi Staging, 3. 
 Cohesion: 0.40
 Nodes (4): 1. Ringkasan Eksekusi Skenario UAT, 2. Bukti Pengujian Outbox Failure, Retry & Dead-Letter, 3. Bukti Verifikasi Pemisahan Peran & Privasi (Role Matrix UAT), Phase 4B End-to-End UAT Evidence & Scenario Logs
 
-### Community 251 - "ActivityRestriction"
-Cohesion: 0.14
-Nodes (3): ActivityRestriction, ActivityRestrictionPolicy, AttendanceDispositionPayloadBuilder
-
 ### Community 252 - "Phase 4D2 Independent Operational Evidence Verification — Final Report"
 Cohesion: 0.33
 Nodes (5): 1. Status Resmi Rilis Operasional, 2. Ringkasan Hasil Verifikasi Bukti Independen, 3. Jadwal Pemantauan Stabilisasi Lanjutan, Phase 4D2 Independent Operational Evidence Verification — Final Report, **STATUS: `STABILIZATION-IN-PROGRESS` (Checkpoint T+1h Verified)**
@@ -874,8 +868,8 @@ Cohesion: 0.33
 Nodes (5): 1. Verifikasi Hostname Produksi Tanpa Cookie (*Curl No Cookie Proof*), 2. Pengujian Incognito Browser Window, 3. Verifikasi Alur Gate SSO Produksi & Isolasi Peran, 4. Hasil Pengujian Mutu (*Automated Quality Gate*), Production Authentication Hotfix Verification Matrix & Proof of Isolation
 
 ### Community 270 - "GateOidcClientContract.php"
-Cohesion: 0.12
-Nodes (6): exchangeAuthorizationCode(), fetchApplicationEntitlement(), GateApplicationEntitlementDTO, self, GateOidcTokenResponseDTO, self
+Cohesion: 0.20
+Nodes (3): exchangeAuthorizationCode(), GateOidcTokenResponseDTO, self
 
 ### Community 273 - "VisitFollowUpPlan"
 Cohesion: 0.07
@@ -1051,7 +1045,7 @@ Nodes (6): Kondisi dasar, Konsekuensi untuk sistem, Konsultasi tanpa pasien data
 
 ### Community 1305 - "Changelog"
 Cohesion: 0.11
-Nodes (18): [0.13.0] — 2026-08-09 (Phase 3C1 Visit Discharge, Follow-up & Operational Handoff), [0.15.0] — 2026-08-09 (Phase 4A Gate SSO, Secure Sync Apply & Identity Hardening), [0.17.0] — 2026-08-10 (Phase 4C Production Deployment Hardening, Runbooks & Go-Live Readiness), [0.18.0] — 2026-08-10 (Phase 4C2 Production Cutover Complete & Live Validation), [0.19.0] — 2026-08-10 (Phase 4D Post-Go-Live Stabilization & Operational Acceptance), [0.19.1] — 2026-08-10 (Phase 4D2 Independent Operational Evidence Verification), [0.19.2] — 2026-08-11 (Direct Credentials Login & Hybrid SSO Activation), [0.20.0] — 2026-08-12 (Phase 5B Clinical Workflow Continuity & Clinical Workspace Polish) (+10 more)
+Nodes (18): [0.13.0] — 2026-08-09 (Phase 3C1 Visit Discharge, Follow-up & Operational Handoff), [0.15.0] — 2026-08-09 (Phase 4A Gate SSO, Secure Sync Apply & Identity Hardening), [0.17.0] — 2026-08-10 (Phase 4C Production Deployment Hardening, Runbooks & Go-Live Readiness), [0.17.1] — 2026-08-10 (Phase 4C2 Controlled Cutover Plan & Preflight State), [0.18.0] — 2026-08-10 (Phase 4C2 Production Cutover Complete & Live Validation), [0.19.0] — 2026-08-10 (Phase 4D Post-Go-Live Stabilization & Operational Acceptance), [0.19.2] — 2026-08-11 (Direct Credentials Login & Hybrid SSO Activation), [0.20.0] — 2026-08-12 (Phase 5B Clinical Workflow Continuity & Clinical Workspace Polish) (+10 more)
 
 ### Community 1306 - "require-dev"
 Cohesion: 0.17
@@ -1432,22 +1426,22 @@ Nodes (3): test, @php artisan config:clear --ansi @no_additional_args, @php arti
 ## Knowledge Gaps
 - **1275 isolated node(s):** `$schema`, `name`, `type`, `description`, `laravel` (+1270 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **89 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **88 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `User` connect `User` to `ClinicalConsultationTransmission`, `Illuminate\Database\Eloquent\Relations\BelongsTo`, `VisitDischarge`, `Referral`, `GateAuthenticationService`, `MedicineBatch`, `Illuminate\Database\Eloquent\Concerns\HasUlids`, `AuditLogService`, `Illuminate\Http\RedirectResponse`, `VisitFollowUpPlan`, `OperationalNotificationPolicy`, `Role`, `HealthcarePartner`, `UserController`, `RbacAdministrationTest`, `IntegrationOutboxEvent`, `ObservationEpisodePolicy`, `RoleController`, `ObservationEpisode`, `UserNotification`, `Patient`, `VitalSign`, `ClinicalOperationalHandoff`, `Person.php`, `.getEffectivePermissionsWithSource`, `Permission`, `PatientHealthProfilePolicy`, `IntegrationOutboxService`, `ClinicalConsultationPolicy`, `AuditLogPolicy`, `VisitDischargeVersion`, `HealthReportService`, `GateClientContract.php`, `Role.php`, `GateMappingPolicy`, `HealthcarePartnerPolicy`, `ObservationRecordPolicy`, `PatientPolicy.php`, `PersonPolicy`, `ObservationHandoverPolicy`, `IntegrationIdentityConflict`, `ActivityRestriction`?**
+- **Why does `User` connect `User` to `ClinicalConsultationTransmission`, `Illuminate\Database\Eloquent\Relations\BelongsTo`, `VisitDischargeService`, `Referral`, `GateAuthenticationService`, `MedicineBatch`, `Illuminate\Database\Eloquent\Concerns\HasUlids`, `AuditLogService`, `Illuminate\Http\RedirectResponse`, `VisitFollowUpPlan`, `OperationalNotificationPolicy`, `Role`, `HealthcarePartner`, `.updateDirectPermissions`, `RbacAdministrationTest`, `IntegrationOutboxEvent`, `ObservationEpisodePolicy`, `RoleController`, `ObservationEpisode`, `UserNotification`, `VitalSign`, `Person.php`, `.getEffectivePermissionsWithSource`, `Permission`, `IntegrationOutboxService`, `ClinicalActionPolicy`, `VisitDischargeVersion`, `VisitDischarge`, `GateSyncApplyService`, `GateSyncPolicy`, `Role.php`, `ClinicalAssessmentPolicy`, `UserPolicy`, `DashboardPolicy`, `ObservationRecordPolicy`, `MedicationAdministrationPolicy`, `PersonPolicy`, `PatientAllergyPolicy`, `ReportPolicy`, `IntegrationIdentityConflict`, `ActivityRestriction`?**
   _High betweenness centrality (0.062) - this node is a cross-community bridge._
-- **Why does `VisitDischarge` connect `VisitDischarge` to `Illuminate\Foundation\Http\FormRequest`, `Illuminate\Http\Request`, `VisitDischargeController.php`, `Illuminate\Database\Eloquent\Relations\HasOne`, `Person.php`, `ClinicalOperationalHandoff`, `Illuminate\Database\Eloquent\Concerns\HasUlids`, `ActivityRestriction`, `AuditLogService`, `Illuminate\Http\RedirectResponse`, `VisitFollowUpPlan`, `VisitDischargeVersion`, `HealthReportService`, `ObservationEpisode`?**
+- **Why does `VisitDischarge` connect `VisitDischarge` to `Illuminate\Foundation\Http\FormRequest`, `VisitDischargeService`, `ClinicalOperationalHandoffController.php`, `Illuminate\Database\Eloquent\Relations\HasOne`, `Person.php`, `Illuminate\Database\Eloquent\Concerns\HasUlids`, `ActivityRestriction`, `AuditLogService`, `Illuminate\Http\RedirectResponse`, `VisitFollowUpPlan`, `VisitDischargeVersion`, `ObservationEpisode`?**
   _High betweenness centrality (0.010) - this node is a cross-community bridge._
-- **Why does `IntegrationOutboxEvent` connect `IntegrationOutboxEvent` to `Illuminate\Http\Request`, `IntegrationOutboxController.php`, `Illuminate\Database\Eloquent\Concerns\HasUlids`, `VisitFollowUpPlan`, `IntegrationOutboxService`, `ObservationEpisode`?**
+- **Why does `IntegrationOutboxEvent` connect `IntegrationOutboxEvent` to `IntegrationOutboxController.php`, `Illuminate\Database\Eloquent\Concerns\HasUlids`, `VisitFollowUpPlan`, `IntegrationOutboxService`, `ObservationEpisode`?**
   _High betweenness centrality (0.009) - this node is a cross-community bridge._
 - **Are the 8 inferred relationships involving `User` (e.g. with `.index()` and `.show()`) actually correct?**
   _`User` has 8 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `$schema`, `name`, `type` to the rest of the system?**
   _1275 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `ClinicalConsultationTransmission` be split into smaller, more focused modules?**
-  _Cohesion score 0.12648221343873517 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1341991341991342 - nodes in this community are weakly interconnected._
 - **Should `Illuminate\Database\Eloquent\Relations\BelongsTo` be split into smaller, more focused modules?**
-  _Cohesion score 0.035283993115318414 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.03419972640218878 - nodes in this community are weakly interconnected._

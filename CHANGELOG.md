@@ -15,6 +15,21 @@ Semua perubahan penting proyek dicatat di file ini.
 > Istilah *production* pada dokumen historis sebelum koreksi ini merujuk pada
 > *rehearsal / readiness validation*, bukan deployment server production fisik aktual.
 
+## [0.23.1] — 2026-08-15 (Light Mode Contrast & Theme Consistency Hotfix)
+
+### Fixed
+
+- Menambahkan semantic tokens untuk secondary/tertiary/disabled text, placeholder, subtle/disabled surface, dan soft border dengan pasangan light/dark yang konsisten.
+- Menambahkan primitive reusable untuk card, form hint/control, banner, badge, filter chip, table heading, dan chart label.
+- Memperbaiki readability `/referrals`, `/visits/create`, dan `/dashboards/management`, termasuk pola terkait pada create/detail referral dan visit stage navigation.
+- Menghapus pembentukan class warna Tailwind dinamis pada status/urgency referral agar hasil styling deterministik pada production build.
+
+### Verified
+
+- Test kontrak rasio kontras WCAG AA dan pemakaian primitive semantik ditambahkan pada `LightModeContrastHotfixTest`.
+- Targeted regression: 26 tests / 164 assertions PASS; full suite: 279 tests / 1.268 assertions PASS; Pint, PHPStan (0 errors), Vite production build, dan `git diff --check` PASS.
+- Browser automation tidak tersedia di sesi ini; acceptance dilakukan melalui inspeksi source/render contract dan catatan verifikasi di dokumen delivery.
+
 ## [0.23.0] — 2026-08-15 (Phase 5D Pre-Staging Acceptance & Deployment Readiness)
 
 ### Added
