@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Direktori Person — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Direktori Person</x-slot>
 
     <div class="space-y-6">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-[var(--surface)] p-6 rounded-2xl border border-[var(--border)] shadow-xs">

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Stok & Inventaris Farmasi — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Stok & Inventaris Farmasi</x-slot>
 
     <div class="space-y-6">
         <!-- Header Banner & Action Buttons -->

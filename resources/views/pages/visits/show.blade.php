@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Workspace Kunjungan {{ $visit->visit_number }} — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Workspace Kunjungan {{ $visit->visit_number }}</x-slot>
 
     <div class="space-y-6">
         <!-- Patient Context Header Component -->

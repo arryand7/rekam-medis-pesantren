@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Workspace Pengkajian Klinis — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Workspace Pengkajian Klinis</x-slot>
 
     <div class="space-y-6">
         <!-- Patient Context Header Component -->

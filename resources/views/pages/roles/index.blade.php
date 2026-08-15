@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Manajemen Role & Hak Akses — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Manajemen Role & Hak Akses</x-slot>
 
     <div class="space-y-6">
         <!-- Header & Action Strip -->

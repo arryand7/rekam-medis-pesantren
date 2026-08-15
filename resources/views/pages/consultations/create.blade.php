@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Pengajuan Konsultasi Eksternal — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Pengajuan Konsultasi Eksternal</x-slot>
 
     <div class="space-y-6 max-w-3xl mx-auto">
         <!-- Patient Banner & Emergency Warning Guard -->

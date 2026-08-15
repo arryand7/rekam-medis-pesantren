@@ -28,6 +28,7 @@ Legenda: F = penuh, T = terbatas, A = agregat, - = tidak boleh.
 | Laporan agregat | T | - | T | T | T | F | T |
 | Audit log | T diri/sendiri | - | - | - | - | T | F teknis |
 | Role/permission | - | - | - | - | - | T approval | F |
+| Identitas aplikasi | - | - | - | - | - | - | F dengan `manage-system-settings` |
 
 Matrix final wajib dipetakan ke Policy dan permission granular.
 

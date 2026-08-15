@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Inbox Notifikasi Petugas — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Inbox Notifikasi Petugas</x-slot>
     <div class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8 space-y-6">
 
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-zinc-200 dark:border-zinc-700 pb-4">

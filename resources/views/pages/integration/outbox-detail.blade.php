@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Detail Outbox Event — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Detail Outbox Event</x-slot>
     <div class="max-w-5xl mx-auto py-8 px-4 sm:px-6 lg:px-8 space-y-6">
 
         <div class="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-700 pb-4">

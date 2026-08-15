@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Daftar Observasi Pasien — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Daftar Observasi Pasien</x-slot>
 
     <div class="space-y-6">
         <!-- Page Title & Actions -->

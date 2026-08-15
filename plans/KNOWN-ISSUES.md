@@ -8,6 +8,12 @@ last_updated: 2026-08-15
 
 # Known Issues and Open Questions
 
+## Application Identity & Branding
+
+- [ ] **Actual institution logo `[PERLU DIKONFIRMASI]`**: pemilik menentukan aset institusi yang memang berhak dan layak dipublikasikan. Repository hanya memuat identitas default generic project-owned; upload aktual dilakukan sebagai runtime branding.
+- [ ] **Manual branding visual matrix**: ulangi `/admin/system/application-identity`, login, dashboard, referrals, dan management dashboard pada 375×812, 768×1024, 1024×768, serta 1440×900 dalam Light/Dark/System. In-app Browser/Node REPL tidak tersedia pada sesi implementasi; automated render/theme contract dan raster asset inspection lulus.
+- [x] **Branding upload boundary (RESOLVED 2026-08-15)**: raster allowlist, content validation, UUID filename, public/private separation, replacement cleanup, reset, dan audit diterapkan.
+
 ## Phase 6A0 Public Repository Owner Decisions
 
 - [ ] **License**: pemilik memilih lisensi open-source yang sesuai atau secara sadar mempertahankan status proprietary/all-rights-reserved. Agent tidak menetapkan lisensi secara otomatis.

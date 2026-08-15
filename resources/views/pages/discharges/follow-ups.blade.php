@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Antrean Tindak Lanjut (Follow-Up Plans) — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Antrean Tindak Lanjut (Follow-Up Plans)</x-slot>
 
     <div class="space-y-6">
         <div class="flex items-center justify-between">

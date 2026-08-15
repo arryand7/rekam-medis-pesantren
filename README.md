@@ -10,6 +10,8 @@ last_updated: 2026-08-15
 
 SABIRA POSKESTREN Health adalah aplikasi Laravel untuk mendukung pencatatan layanan kesehatan warga pesantren: penerimaan kunjungan, assessment, observasi, farmasi, konsultasi eksternal, rujukan, kepulangan, tindak lanjut, dashboard, dan pelaporan berbasis peran.
 
+Identitas tampilan dapat dikelola melalui pengaturan sistem. Repository publik hanya menyertakan mark Islam-inspired generik project-owned; logo institusi aktual disimpan sebagai runtime public branding setelah pemilik memastikan hak publikasinya, terpisah dari seluruh dokumen medis privat.
+
 > Status: local pre-staging/rehearsal. Repositori ini belum merupakan bukti deployment staging atau production. Integrasi Gate, Attendance, TLS/proxy, dan browser acceptance nyata masih harus diverifikasi pada environment tujuan.
 
 ## Prinsip keamanan dan privasi

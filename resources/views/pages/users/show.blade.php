@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Akses Pengguna: {{ $user->name }} — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Akses Pengguna: {{ $user->name }}</x-slot>
 
     @php
         $userRoleNames = $user->roles->pluck('name')->toArray();

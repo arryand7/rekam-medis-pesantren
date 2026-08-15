@@ -75,6 +75,25 @@ Field: `visit_id`, `urgency`, `reason`, `facility_name`, `departed_at/null`, `re
 
 Field: `actor_id`, `action`, `subject_type`, `subject_id`, `before_json`, `after_json`, `reason`, `ip_address`, `user_agent`, `correlation_id`, `created_at`.
 
+## ENT-APPLICATION-IDENTITY — `application_identities`
+
+| Field | Tipe | Catatan |
+|---|---|---|
+| id | ULID | Primary key |
+| singleton | boolean | Unique guard untuk satu identity aktif |
+| application_name | string(120) | Nama aplikasi publik |
+| application_short_name | string(50) | Nama ringkas untuk area sempit |
+| institution_name | string(160) | Nama institusi tampilan |
+| tagline | string(160) | Tagline publik |
+| description | text/null | Deskripsi ringkas, bukan data klinis |
+| footer_text | string(255)/null | Identitas footer |
+| logo_path | string/null | Path raster publik relatif terhadap public disk |
+| logo_dark_path | string/null | Path raster dark opsional |
+| favicon_path | string/null | Path raster favicon publik |
+| created_at, updated_at | timestamp | Server time |
+
+Binary tidak disimpan di database. Tanpa row, aplikasi memakai source defaults dari `config/branding.php`.
+
 ## Catatan
 
 Tabel alergi, kondisi, diagnosis, tindakan, file, notifikasi, dan role-permission dirinci saat desain migration per fase.

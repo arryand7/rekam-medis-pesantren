@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title ?? config('app.name', 'SABIRA POSKESTREN Health') }}</title>
+    <title>{{ isset($title) && trim((string) $title) !== '' ? trim((string) $title).' — '.$identity['application_name'] : $identity['application_name'] }}</title>
+    <link rel="icon" href="{{ $identity['favicon_url'] }}">
 
     <!-- Inline Anti-Flicker Theme Script -->
     <script>

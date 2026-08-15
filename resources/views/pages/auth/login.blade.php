@@ -3,14 +3,13 @@
         <div class="w-full sm:max-w-md bg-white dark:bg-slate-800 shadow-2xl rounded-2xl p-8 border border-slate-200/80 dark:border-slate-700/60 backdrop-blur-sm">
             <!-- App Branding Header -->
             <div class="text-center mb-6">
-                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-sky-600 to-indigo-600 text-white shadow-lg shadow-sky-500/30 mb-3">
-                    <svg class="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                    </svg>
-                </div>
-                <h1 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">SABIRA POSKESTREN</h1>
-                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Sistem Rekam Medis & Kesehatan Pesantren</p>
+                <picture class="inline-block mb-3">
+                    <source media="(prefers-color-scheme: dark)" srcset="{{ $identity['logo_dark_url'] }}">
+                    <img src="{{ $identity['logo_url'] }}" alt="Logo {{ $identity['application_name'] }}" class="h-20 w-auto max-w-full mx-auto object-contain">
+                </picture>
+                <h1 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">{{ $identity['application_name'] }}</h1>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">{{ $identity['tagline'] }}</p>
+                <p class="text-[11px] font-semibold uppercase tracking-wider text-sky-700 dark:text-sky-300 mt-2">{{ $identity['institution_name'] }}</p>
             </div>
 
             <!-- Flash Notifications -->
@@ -135,33 +134,21 @@
                 <div class="flex-grow border-t border-slate-200 dark:border-slate-700"></div>
             </div>
 
-            <!-- Gate SSO Action -->
+            <!-- Optional centralized account sign-in -->
             <div class="space-y-3">
                 <a href="{{ route('login', ['redirect' => 1]) }}"
                    class="w-full flex items-center justify-center gap-3 px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-700/60 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-medium border border-slate-300/80 dark:border-slate-600 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 text-sm shadow-sm">
                     <svg class="w-4 h-4 text-sky-600 dark:text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
-                    <span>Masuk dengan SABIRA Gate SSO</span>
+                    <span>Masuk dengan Akun SABIRA</span>
                 </a>
-
-                <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-1">
-                    <div class="flex items-center justify-between font-medium">
-                        <span>Pusat Autentikasi:</span>
-                        <span class="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-semibold text-[11px]">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                            SSO & Langsung Aktif
-                        </span>
-                    </div>
-                    <p class="text-[11px] text-slate-400 dark:text-slate-500">
-                        Anda dapat masuk menggunakan akun lokal POSKESTREN atau akun terpusat SABIRA Gate.
-                    </p>
-                </div>
+                <p class="text-center text-[11px] text-slate-500 dark:text-slate-400">Gunakan akun yang telah diberikan akses oleh pengelola.</p>
             </div>
 
             <!-- Footer -->
             <div class="mt-6 text-center text-[11px] text-slate-400 dark:text-slate-500">
-                &copy; {{ date('Y') }} POSKESTREN SABIRA. Seluruh Hak Cipta Dilindungi.
+                &copy; {{ date('Y') }} {{ $identity['footer_text'] ?: $identity['application_name'] }}
             </div>
         </div>
     </div>

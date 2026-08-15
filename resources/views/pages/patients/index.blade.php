@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Data Rekam Medis Pasien — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Data Rekam Medis Pasien</x-slot>
 
     <div class="space-y-6">
         <!-- Header Card -->

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Penerimaan Stok Obat Baru — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Penerimaan Stok Obat Baru</x-slot>
 
     <div class="max-w-2xl mx-auto space-y-6">
         <div class="bg-[var(--surface)] p-6 rounded-2xl border border-[var(--border)] shadow-xs">

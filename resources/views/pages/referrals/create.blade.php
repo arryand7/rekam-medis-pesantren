@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Buat Rujukan — {{ $visit->patient->person->name }} — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Buat Rujukan — {{ $visit->patient->person->name }}</x-slot>
 
     <div class="max-w-3xl mx-auto space-y-6">
         <!-- Header -->

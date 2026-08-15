@@ -15,6 +15,30 @@ Semua perubahan penting proyek dicatat di file ini.
 > Istilah *production* pada dokumen historis sebelum koreksi ini merujuk pada
 > *rehearsal / readiness validation*, bukan deployment server production fisik aktual.
 
+## [0.25.0] — 2026-08-15 (Application Identity & Branding Management)
+
+### Added
+
+- Menambahkan identitas aplikasi persisten yang dapat dikelola pemegang `manage-system-settings`: nama aplikasi/pendek/institusi, tagline, deskripsi, footer, logo utama/dark, dan favicon.
+- Menambahkan `ApplicationIdentityService` dengan source fallback, cached read model, invalidasi langsung, asset URL versioning, secure raster upload, orphan cleanup, reset, dan audit trail.
+- Menambahkan mark SVG project-owned bernuansa Islam dan layanan kesehatan yang original, minimal, light/dark-safe, dan aman untuk repository publik.
+- Menambahkan halaman admin dengan preview light/dark/header/favicon, upload guidance, serta reset terkonfirmasi.
+
+### Changed
+
+- Branding hardcoded pada login, header, sidebar, footer, favicon, dan HTML title dipusatkan pada identity service tanpa mengubah domain/flow klinis.
+- Versi fungsional dinaikkan ke `0.25.0`; PWA manifest tetap `NOT-APPLICABLE`.
+
+### Security
+
+- Upload runtime hanya PNG/JPEG/WebP dengan limit 2 MB untuk logo dan 1 MB untuk favicon, pemeriksaan extension/MIME/struktur gambar, UUID filename, serta penolakan SVG dan executable tersamarkan.
+- Runtime branding dipisahkan pada public `branding/`; medical/referral documents tetap privat dan binary tidak masuk audit log.
+
+### Verified
+
+- Full suite 305 tests / 1.429 assertions, Pint, PHPStan (0 error), Vite build, Composer audit, npm audit, Graphify update/query, dan repository hygiene PASS.
+- Default SVG diperiksa melalui raster preview lokal. In-app browser tidak tersedia, sehingga klasifikasi akhir adalah `APPLICATION-IDENTITY-BRANDING-COMPLETE-WITH-MANUAL-VISUAL-CHECK`; tidak ada staging/production deployment atau push.
+
 ## [0.24.0] — 2026-08-15 (Public Repository Sanitization Release Gate)
 
 ### Security

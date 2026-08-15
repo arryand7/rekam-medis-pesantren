@@ -8,6 +8,25 @@ last_updated: 2026-08-15
 
 # Pemetaan Dokumen ke Kode
 
+## Application Identity & Branding Management Mapping
+
+```text
+APPLICATION-IDENTITY-BRANDING-{AUDIT,CLOSURE}.md
+APPLICATION-IDENTITY-BRANDING-UX.md
+APPLICATION-BRANDING-UPLOAD-SECURITY.md
+APPLICATION-IDENTITY-BRANDING-TEST-MATRIX.md
+  -> config/branding.php
+  -> database/migrations/2026_08_15_000100_create_application_identities_table.php
+  -> app/Models/ApplicationIdentity.php
+  -> app/Services/ApplicationIdentityService.php
+  -> app/Http/Controllers/Admin/ApplicationIdentityController.php
+  -> app/Http/Requests/Admin/UpdateApplicationIdentityRequest.php
+  -> resources/views/layouts/{app,guest}.blade.php
+  -> resources/views/pages/{admin/application-identity/edit,auth/login}.blade.php
+  -> public/branding/default/*.svg
+  -> tests/Feature/{Admin,Security,Ui}/Application*Branding*Test.php
+```
+
 ## Phase 5D — Light Mode Contrast & Theme Consistency Hotfix Mapping
 
 ```text

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Detail Konsultasi Eksternal — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Detail Konsultasi Eksternal</x-slot>
 
     <div class="space-y-6">
         <!-- Patient Context Header -->

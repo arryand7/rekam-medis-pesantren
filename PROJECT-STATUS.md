@@ -10,7 +10,17 @@ last_updated: 2026-08-15
 
 ## Fase saat ini
 
-**Phase 6A0 Public Repository Sanitization Release Gate** (Status: `PUBLIC-GITHUB-READY-WITH-OWNER-LICENSE-DECISION` / v0.24.0)
+**Application Identity & Branding Management** (Status: `APPLICATION-IDENTITY-BRANDING-COMPLETE-WITH-MANUAL-VISUAL-CHECK` / v0.25.0)
+
+## Application Identity & Branding Management
+
+- [x] Persistent single-row identity dengan source fallback, cached read model, dan immediate invalidation.
+- [x] Secure PNG/JPEG/WebP branding upload, UUID filename, public/private storage separation, replacement cleanup, reset, dan audit events.
+- [x] Original generic Islamic-inspired default mark untuk light/dark/favicon tanpa logo institusi aktual atau protected emblem.
+- [x] Admin UI, RBAC `manage-system-settings`, preview, login, header, sidebar, title, footer, dan favicon integration.
+- [x] Feature/security/rendering regression tests terarah.
+- [x] Full quality, Graphify, dan public-repository hygiene gate lulus.
+- [ ] In-app browser tidak tersedia; manual viewport/theme interaction check tetap terbuka tanpa memblokir kontrak render otomatis.
 
 ## Public Repository Release Gate
 
@@ -80,12 +90,13 @@ last_updated: 2026-08-15
 - [x] **Phase 5D0 — RBAC Permission Administration Hardening**: Selesai (`PHASE-5D0-RBAC-COMPLETE`, digabung dalam v0.23.0).
 - [x] **Phase 5D — Pre-Staging Acceptance & Deployment Readiness**: Selesai bersyarat (`PHASE-5D-PRE-STAGING-READY-WITH-MANUAL-ITEMS`, v0.23.0).
 - [x] **Phase 6A0 — Public Repository Sanitization Release Gate**: Gate teknis selesai (`PUBLIC-GITHUB-READY-WITH-OWNER-LICENSE-DECISION`, v0.24.0).
+- [x] **Application Identity & Branding Management**: Selesai dengan manual visual check tersisa (`APPLICATION-IDENTITY-BRANDING-COMPLETE-WITH-MANUAL-VISUAL-CHECK`, v0.25.0).
 
 ## Current Environment & Readiness State
 
 ```text
 Application Development:          ACTIVE
-Current Functional Version:       0.24.0 (Phase 6A0 Public Repository Sanitization)
+Current Functional Version:       0.25.0 (Application Identity & Branding Management)
 Environment:                      LOCAL-DEVELOPMENT (macOS Developer Workstation)
 Deployment Status:                NOT_DEPLOYED (Belum pernah dideploy ke server fisik)
 Production Host Status:           NOT_STARTED
@@ -99,12 +110,12 @@ Attendance Sandbox Validation:    LOCAL_SIMULATION_VALIDATED
 
 - Tanggal: 2026-08-15
 - Database: MariaDB 10.4.28 (`poskestren_sabira`, InnoDB, REPEATABLE-READ)
-- Test Suite: 283 tests, 1301 assertions (100% Passed, 0 Skipped, 0 Failed)
+- Test Suite: 305 tests, 1429 assertions (100% Passed, 0 Skipped, 0 Failed)
 - Code Formatter: Pint Passed
 - Static Analysis: PHPStan Passed (0 errors)
 - Frontend: Vite Build Passed
 - Dependency Install/Audit: `npm ci`, Composer audit, dan npm audit Passed (0 advisory)
 - Repository Scan: current tree + 38 pre-existing commits reviewed; no active secret or confirmed real patient data
-- Graphify: incremental update + public release-policy query Passed (3.551 nodes / 5.686 edges)
+- Graphify: `graphify update .` + branding query Passed (3.628 nodes / 5.817 edges)
 - git diff --check: PASSED
-- Status Rilis: LOCAL PRE-STAGING — `PUBLIC-GITHUB-READY-WITH-OWNER-LICENSE-DECISION` (v0.24.0); no remote/push/deployment
+- Status Rilis: LOCAL PRE-STAGING — `APPLICATION-IDENTITY-BRANDING-COMPLETE-WITH-MANUAL-VISUAL-CHECK` (v0.25.0); no push/deployment

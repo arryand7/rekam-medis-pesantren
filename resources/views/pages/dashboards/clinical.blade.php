@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Dashboard Klinis & Antrean Pelayanan — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Dashboard Klinis & Antrean Pelayanan</x-slot>
     <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 space-y-8">
 
         <!-- Header -->

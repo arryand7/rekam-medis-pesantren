@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Registrasi Kunjungan Medis — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Registrasi Kunjungan Medis</x-slot>
 
     <div class="max-w-3xl mx-auto space-y-6">
         <div class="ui-card p-6 rounded-2xl shadow-xs">

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="title">
-        Dashboard Shell — SABIRA POSKESTREN Health
+        Dashboard Shell
     </x-slot>
 
     <div class="space-y-6">

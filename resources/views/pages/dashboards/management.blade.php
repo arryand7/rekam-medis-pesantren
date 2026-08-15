@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Dashboard Manajemen Eksekutif — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Dashboard Manajemen Eksekutif</x-slot>
     <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 space-y-8">
 
         <!-- Header & Date Range Filter Toolbar -->

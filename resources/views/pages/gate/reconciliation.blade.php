@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Rekonsiliasi Identitas Gate - POSKESTREN</x-slot>
+    <x-slot name="title">Rekonsiliasi Identitas Gate</x-slot>
 
     <div class="space-y-6">
         <!-- Header -->

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Master Data Obat — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Master Data Obat</x-slot>
 
     <div class="space-y-6">
         <!-- Header Banner -->

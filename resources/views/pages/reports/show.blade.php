@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Laporan: {{ ucwords(str_replace('_', ' ', $reportType)) }} — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Laporan: {{ ucwords(str_replace('_', ' ', $reportType)) }}</x-slot>
     <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 space-y-6">
 
         <!-- Top Header & Breadcrumb -->

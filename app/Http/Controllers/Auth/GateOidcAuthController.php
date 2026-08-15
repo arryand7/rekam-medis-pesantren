@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Services\ApplicationIdentityService;
 use App\Services\AuditLogService;
 use App\Services\Gate\GateAuthenticationService;
 use Illuminate\Http\RedirectResponse;
@@ -17,7 +18,8 @@ use Illuminate\View\View;
 class GateOidcAuthController extends Controller
 {
     public function __construct(
-        protected GateAuthenticationService $authService
+        protected GateAuthenticationService $authService,
+        protected ApplicationIdentityService $identityService
     ) {}
 
     /**
@@ -36,7 +38,7 @@ class GateOidcAuthController extends Controller
             return redirect()->away($redirectUrl);
         }
 
-        return view('pages.auth.login');
+        return view('pages.auth.login', ['identity' => $this->identityService->get()]);
     }
 
     /**

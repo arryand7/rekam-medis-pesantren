@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title ?? config('app.name', 'SABIRA POSKESTREN Health') }}</title>
+    <title>{{ isset($title) && trim((string) $title) !== '' ? trim((string) $title).' — '.$identity['application_name'] : $identity['application_name'] }}</title>
+    <link rel="icon" href="{{ $identity['favicon_url'] }}">
 
     <!-- Inline Anti-Flicker Theme Script (Runs BEFORE First Paint) -->
     <script>
@@ -53,13 +54,14 @@
                     </svg>
                 </button>
 
-                <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5 group">
-                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-600 to-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-sm group-hover:opacity-90 transition-opacity">
-                        +
-                    </div>
-                    <div>
-                        <span class="font-bold text-base tracking-tight text-[var(--foreground)] block">SABIRA POSKESTREN</span>
-                        <span class="text-[10px] uppercase font-semibold text-[var(--primary)] tracking-wider block">Health Services</span>
+                <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5 group min-w-0">
+                    <picture class="shrink-0">
+                        <source media="(prefers-color-scheme: dark)" srcset="{{ $identity['logo_dark_url'] }}">
+                        <img src="{{ $identity['logo_url'] }}" alt="Logo {{ $identity['application_name'] }}" class="h-10 w-auto max-w-44 object-contain group-hover:opacity-90 transition-opacity">
+                    </picture>
+                    <div class="hidden xl:block min-w-0">
+                        <span class="font-bold text-sm tracking-tight text-[var(--foreground)] block truncate">{{ $identity['application_short_name'] }}</span>
+                        <span class="text-[10px] font-semibold text-[var(--primary)] tracking-wide block truncate">{{ $identity['institution_name'] }}</span>
                     </div>
                 </a>
             </div>
@@ -256,7 +258,7 @@
                 @endcanany
 
                 {{-- Administrasi Sistem Section --}}
-                @canany(['manage-users', 'manage-roles', 'manage-permissions', 'view-people', 'manage-gate-sync', 'view-gate-sync', 'view-audit-log', 'manage-healthcare-partners'])
+                @canany(['manage-users', 'manage-roles', 'manage-permissions', 'manage-system-settings', 'view-people', 'manage-gate-sync', 'view-gate-sync', 'view-audit-log', 'manage-healthcare-partners'])
                     <div class="pt-3 border-t border-[var(--border)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--foreground-muted)]">
                         Administrasi & Sistem
                     </div>
@@ -285,6 +287,14 @@
                         </a>
                     @endcan
 
+                    @can('manage-system-settings')
+                        <a href="{{ route('admin.system.application-identity.edit') }}"
+                           class="flex items-center gap-3 px-3 py-2 text-xs font-medium rounded-xl transition-colors {{ request()->routeIs('admin.system.application-identity.*') ? 'bg-[var(--primary)] text-white' : 'text-[var(--foreground-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]' }}">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7V4h3m10 0h3v3M4 17v3h3m10 0h3v-3M8 12a4 4 0 108 0 4 4 0 00-8 0Z" /></svg>
+                            <span>Identitas Aplikasi</span>
+                        </a>
+                    @endcan
+
                     @can('manage-healthcare-partners')
                         <a href="{{ route('healthcare-partners.index') }}"
                            class="flex items-center gap-3 px-3 py-2 text-xs font-medium rounded-xl transition-colors {{ request()->routeIs('healthcare-partners.*') ? 'bg-[var(--primary)] text-white' : 'text-[var(--foreground-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]' }}">
@@ -309,6 +319,14 @@
                         </a>
                     @endcan
                 @endcanany
+
+                <div class="mt-3 pt-3 border-t border-[var(--border)] px-3 flex items-center gap-2">
+                    <img src="{{ $identity['mark_url'] }}" alt="" class="w-7 h-7 rounded-lg" aria-hidden="true">
+                    <div class="min-w-0">
+                        <div class="text-[11px] font-semibold text-[var(--foreground)] truncate">{{ $identity['application_short_name'] }}</div>
+                        <div class="text-[10px] text-[var(--foreground-muted)] truncate">{{ $identity['institution_name'] }}</div>
+                    </div>
+                </div>
             </nav>
         </aside>
 
@@ -321,7 +339,7 @@
     <!-- Footer -->
     <footer class="mt-auto bg-[var(--surface)] border-t border-[var(--border)] py-4 text-center text-xs text-[var(--foreground-muted)] no-print">
         <div class="max-w-7xl mx-auto px-4">
-            &copy; {{ date('Y') }} SABIRA POSKESTREN Health — Rekam Medis & Pelayanan Kesehatan Santri. All rights reserved.
+            &copy; {{ date('Y') }} {{ $identity['footer_text'] ?: $identity['application_name'] }}
         </div>
     </footer>
 

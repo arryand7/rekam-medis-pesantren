@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Pemberian Obat Santri — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Pemberian Obat Santri</x-slot>
 
     <div class="space-y-6">
         <!-- Patient Context Header Component -->

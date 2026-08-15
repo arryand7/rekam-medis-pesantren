@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Kelola Akun Pengguna — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Kelola Akun Pengguna</x-slot>
 
     <div class="space-y-6">
         <!-- Header & Breadcrumb -->

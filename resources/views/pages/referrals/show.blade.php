@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Rujukan {{ $referral->referral_number }} — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Rujukan {{ $referral->referral_number }}</x-slot>
 
     <div class="space-y-6">
         @if($referral->medicalVisit && $referral->medicalVisit->patient)

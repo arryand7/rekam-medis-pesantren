@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Tambah Role Baru — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Tambah Role Baru</x-slot>
 
     <div class="space-y-6" x-data="{
         searchQuery: '',

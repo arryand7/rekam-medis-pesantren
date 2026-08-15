@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Rincian Role: {{ $role->display_name ?? $role->name }} — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Rincian Role: {{ $role->display_name ?? $role->name }}</x-slot>
 
     <div class="space-y-6">
         <!-- Top Breadcrumb & Header -->

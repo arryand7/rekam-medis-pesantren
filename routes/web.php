@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ApplicationIdentityController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\GateOidcAuthController;
@@ -127,6 +128,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/roles/{id}/edit', [RoleController::class, 'edit'])->name('roles.edit');
     Route::put('/roles/{id}', [RoleController::class, 'update'])->name('roles.update');
     Route::delete('/roles/{id}', [RoleController::class, 'destroy'])->name('roles.destroy');
+
+    Route::prefix('/admin/system/application-identity')->name('admin.system.application-identity.')->group(function () {
+        Route::get('/', [ApplicationIdentityController::class, 'edit'])->name('edit');
+        Route::put('/', [ApplicationIdentityController::class, 'update'])->name('update');
+        Route::post('/reset', [ApplicationIdentityController::class, 'reset'])->name('reset');
+    });
 
     Route::get('/gate-sync/preview', function (Request $request, GateSyncDryRunService $dryRunService) {
         Gate::authorize('view-gate-sync');

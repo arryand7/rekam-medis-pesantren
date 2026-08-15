@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">POSKESTREN Health app mark</title>
+  <desc id="desc">A blue geometric crescent, star, and subtle care motif.</desc>
+  <defs>
+    <linearGradient id="bg" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0284c7"/>
+      <stop offset="1" stop-color="#4338ca"/>
+    </linearGradient>
+    <mask id="crescent">
+      <rect width="64" height="64" fill="black"/>
+      <circle cx="29" cy="29" r="16" fill="white"/>
+      <circle cx="36" cy="24" r="15" fill="black"/>
+    </mask>
+  </defs>
+  <rect x="3" y="3" width="58" height="58" rx="17" fill="url(#bg)"/>
+  <circle cx="29" cy="29" r="18" fill="#e0f2fe" opacity=".96" mask="url(#crescent)"/>
+  <path d="m43 15 1.7 4.3 4.3 1.7-4.3 1.7L43 27l-1.7-4.3L37 21l4.3-1.7L43 15Z" fill="#fef3c7"/>
+  <path d="M20 43c4.7-3.8 8.7-3.8 12 0 3.3-3.8 7.3-3.8 12 0-3.7 5.1-7.7 7.6-12 7.6S23.7 48.1 20 43Z" fill="#bae6fd"/>
+  <circle cx="18" cy="18" r="1.5" fill="#fff" opacity=".45"/>
+  <circle cx="49" cy="41" r="1.5" fill="#fff" opacity=".45"/>
+</svg>

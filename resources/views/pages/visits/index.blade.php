@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Kunjungan Medis & Antrean Intake — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Kunjungan Medis & Antrean Intake</x-slot>
 
     <div class="space-y-6">
         <!-- Page Title & Actions -->

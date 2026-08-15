@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Detail Kepulangan {{ $discharge->medicalVisit?->visit_number }} — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Detail Kepulangan {{ $discharge->medicalVisit?->visit_number }}</x-slot>
 
     <div class="space-y-6">
         <!-- Top Bar -->

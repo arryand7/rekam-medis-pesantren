@@ -80,6 +80,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('execute-gate-sync-apply', fn ($user) => $user->hasPermission('execute-gate-sync-apply'));
         Gate::define('manage-identity-mappings', fn ($user) => $user->hasPermission('manage-identity-mappings'));
         Gate::define('view-gate-reconciliation', fn ($user) => $user->hasPermission('view-gate-reconciliation'));
+        Gate::define('manage-system-settings', fn ($user) => $user->hasPermission('manage-system-settings'));
 
         Gate::policy(IntegrationOutboxEvent::class, IntegrationOutboxPolicy::class);
         Gate::policy(IntegrationIdentityConflict::class, IntegrationIdentityConflictPolicy::class);

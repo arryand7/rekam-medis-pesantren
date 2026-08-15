@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Edit Role: {{ $role->display_name ?? $role->name }} — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Edit Role: {{ $role->display_name ?? $role->name }}</x-slot>
 
     @php
         $initPerms = json_encode(old('permissions', $currentPermissions));

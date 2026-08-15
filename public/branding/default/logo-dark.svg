@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 88" role="img" aria-labelledby="title desc">
+  <title id="title">SABIRA POSKESTREN Health dark logo</title>
+  <desc id="desc">An original luminous crescent and star beside a light wordmark for dark surfaces.</desc>
+  <defs>
+    <linearGradient id="bg" x1="8" y1="4" x2="76" y2="84" gradientUnits="userSpaceOnUse"><stop stop-color="#38bdf8"/><stop offset="1" stop-color="#6366f1"/></linearGradient>
+    <mask id="crescent"><rect width="88" height="88" fill="black"/><circle cx="39" cy="41" r="23" fill="white"/><circle cx="50" cy="33" r="22" fill="black"/></mask>
+  </defs>
+  <rect x="4" y="4" width="80" height="80" rx="23" fill="#0f172a" stroke="url(#bg)" stroke-width="3"/>
+  <circle cx="39" cy="41" r="26" fill="#bae6fd" mask="url(#crescent)"/>
+  <path d="m61 17 2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5Z" fill="#fef3c7"/>
+  <path d="M27 62c6-4.6 11.3-4.6 16 0 4.7-4.6 10-4.6 16 0-5 6.2-10.3 9.3-16 9.3S32 68.2 27 62Z" fill="#7dd3fc"/>
+  <text x="104" y="39" fill="#f8fafc" font-family="Inter, ui-sans-serif, system-ui" font-size="24" font-weight="750" letter-spacing="-.5">SABIRA POSKESTREN</text>
+  <text x="104" y="64" fill="#7dd3fc" font-family="Inter, ui-sans-serif, system-ui" font-size="16" font-weight="650" letter-spacing="2.3">HEALTH</text>
+  <path d="M202 60h128" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+</svg>

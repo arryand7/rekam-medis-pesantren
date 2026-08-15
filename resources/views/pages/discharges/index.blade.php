@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Daftar Kepulangan Kunjungan Medis — SABIRA POSKESTREN</x-slot>
+    <x-slot name="title">Daftar Kepulangan Kunjungan Medis</x-slot>
 
     <div class="space-y-6">
         <div class="flex items-center justify-between">
