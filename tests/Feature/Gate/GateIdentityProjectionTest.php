@@ -13,7 +13,7 @@ test('identity projection creates Person, User, and Patient records atomically',
     $userInfo = new GateUserInfoDTO(
         gateUserId: 'GATE-PROJ-001',
         name: 'Santri Zaid',
-        email: 'zaid@sabira.id',
+        email: 'zaid@sabira.test',
         nik: '3201010101010001',
         nisNip: 'NIS-2026-001',
         userType: 'santri',
@@ -47,7 +47,7 @@ test('subsequent identity projections update authoritative fields without duplic
     $userInfo1 = new GateUserInfoDTO(
         gateUserId: 'GATE-PROJ-002',
         name: 'Ahmad Awal',
-        email: 'ahmad@sabira.id',
+        email: 'ahmad@sabira.test',
         userType: 'santri',
         sourceStatus: 'active'
     );
@@ -67,7 +67,7 @@ test('subsequent identity projections update authoritative fields without duplic
     $userInfo2 = new GateUserInfoDTO(
         gateUserId: 'GATE-PROJ-002',
         name: 'Ahmad Baru',
-        email: 'ahmad.baru@sabira.id',
+        email: 'ahmad.baru@sabira.test',
         phone: '081299998888',
         userType: 'santri',
         sourceStatus: 'active'
@@ -89,7 +89,7 @@ test('technical accounts are not eligible for patient record creation', function
     $userInfo = new GateUserInfoDTO(
         gateUserId: 'GATE-BOT-001',
         name: 'Backup Service Account',
-        email: 'backup@sabira.id',
+        email: 'backup@sabira.test',
         userType: 'service_account',
         sourceStatus: 'active'
     );

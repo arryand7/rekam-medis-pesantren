@@ -10,7 +10,7 @@ test('concurrent apply sync operations on same gate_user_id produce deterministi
     $dto = new GateUserDTO(
         gateUserId: 'GATE-CONCURRENCY-001',
         name: 'Santri Concurrency Test',
-        email: 'concurrency@sabira.id',
+        email: 'concurrency@sabira.test',
         userType: 'santri',
         sourceStatus: 'active',
         checksum: 'HASH-001'

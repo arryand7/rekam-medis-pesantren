@@ -567,3 +567,21 @@ docs/10-delivery/PHASE-5B1-FINAL-CLOSURE.md
   -> database/seeders/DatabaseSeeder.php
   -> tests/Feature/Ui/Phase5BClinicalWorkflowContinuityTest.php
 ```
+
+## Phase 6A0 — Public Repository Sanitization Mapping
+
+```text
+docs/07-security/PUBLIC-REPOSITORY-THREAT-MODEL.md
+docs/10-delivery/PUBLIC-REPOSITORY-SECRET-SCAN.md
+docs/10-delivery/PUBLIC-REPOSITORY-DATA-SANITIZATION.md
+docs/10-delivery/PUBLIC-REPOSITORY-SANITIZATION-AUDIT.md
+docs/10-delivery/PUBLIC-GITHUB-RELEASE-GATE.md
+  -> .gitignore
+  -> .env.example
+  -> phpunit.xml
+  -> config/gate.php
+  -> app/Services/Gate/*
+  -> database/seeders/DatabaseSeeder.php
+  -> SECURITY.md
+  -> tests/Unit/PublicRepositorySanitizationTest.php
+```

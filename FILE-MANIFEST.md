@@ -3,118 +3,44 @@ id: DOC-FILE-MANIFEST
 title: "Manifest File Dokumentasi"
 status: active
 owner: "Tim Pengembang POSKESTREN"
-last_updated: 2026-08-05
+last_updated: 2026-08-15
 ---
 
 # Manifest File
 
-Versi: **2.0**  
-Tanggal: **2026-08-05**  
-Total file Markdown: **106**
+Manifest ini mendeskripsikan kelompok file kanonikal tanpa menyimpan daftar statis yang cepat usang. Inventaris exact untuk suatu commit selalu diperoleh dengan `git ls-files`; file ignored dan untracked bukan bagian dari rilis.
 
-- `AGENTS.md`
-- `AI-FIRST-RUN-PROMPT.md`
-- `BOOTSTRAP-CHECKLIST.md`
-- `CHANGELOG.md`
-- `CONTRIBUTING.md`
-- `FILE-MANIFEST.md`
-- `PROJECT-STATUS.md`
-- `README.md`
-- `UPDATE-SUMMARY.md`
-- `docs/00-project/GLOSSARY.md`
-- `docs/00-project/MVP-SCOPE.md`
-- `docs/00-project/PROJECT-BRIEF.md`
-- `docs/00-project/PROJECT-SCOPE.md`
-- `docs/00-project/STAKEHOLDERS.md`
-- `docs/01-domain/BUSINESS-RULES.md`
-- `docs/01-domain/MEDICAL-TERMINOLOGY.md`
-- `docs/01-domain/OPERATIONAL-CONTEXT.md`
-- `docs/01-domain/PATIENT-JOURNEY.md`
-- `docs/01-domain/PERSON-PATIENT-IDENTITY.md`
-- `docs/01-domain/ROLES-AND-RESPONSIBILITIES.md`
-- `docs/01-domain/VISIT-STATUS-LIFECYCLE.md`
-- `docs/02-workflows/DISCHARGE-AND-RETURN.md`
-- `docs/02-workflows/EMERGENCY-HANDLING.md`
-- `docs/02-workflows/GATE-USER-SYNC.md`
-- `docs/02-workflows/HOSPITAL-REFERRAL.md`
-- `docs/02-workflows/INITIAL-ASSESSMENT.md`
-- `docs/02-workflows/MEDICATION-ADMINISTRATION.md`
-- `docs/02-workflows/OBSERVATION-AND-CARE.md`
-- `docs/02-workflows/POSKESTREN-ADMISSION.md`
-- `docs/02-workflows/REMOTE-CLINICAL-CONSULTATION.md`
-- `docs/02-workflows/REPORTING-SICK-STUDENT.md`
-- `docs/02-workflows/RETURN-FROM-REFERRAL.md`
-- `docs/03-requirements/ACCEPTANCE-CRITERIA.md`
-- `docs/03-requirements/FUNCTIONAL-REQUIREMENTS.md`
-- `docs/03-requirements/NON-FUNCTIONAL-REQUIREMENTS.md`
-- `docs/03-requirements/TRACEABILITY-MATRIX.md`
-- `docs/03-requirements/USE-CASES.md`
-- `docs/03-requirements/USER-STORIES.md`
-- `docs/04-architecture/APPLICATION-LAYERS.md`
-- `docs/04-architecture/DATA-FLOW.md`
-- `docs/04-architecture/DIRECTORY-CONVENTIONS.md`
-- `docs/04-architecture/INTEGRATIONS.md`
-- `docs/04-architecture/MODULE-BOUNDARIES.md`
-- `docs/04-architecture/SYSTEM-ARCHITECTURE.md`
-- `docs/04-architecture/TECH-STACK.md`
-- `docs/05-data/DATA-DICTIONARY.md`
-- `docs/05-data/DATA-RETENTION.md`
-- `docs/05-data/DATABASE-CONVENTIONS.md`
-- `docs/05-data/DOMAIN-MODEL.md`
-- `docs/05-data/ENTITY-RELATIONSHIPS.md`
-- `docs/05-data/IDENTITY-AND-PATIENT-MODEL.md`
-- `docs/05-data/MEDICAL-RECORD-VERSIONING.md`
-- `docs/05-data/STATE-MACHINES.md`
-- `docs/06-ui-ux/ACCESSIBILITY.md`
-- `docs/06-ui-ux/DESIGN-SYSTEM.md`
-- `docs/06-ui-ux/FORM-STANDARDS.md`
-- `docs/06-ui-ux/LIGHT-DARK-THEME.md`
-- `docs/06-ui-ux/NAVIGATION-MAP.md`
-- `docs/06-ui-ux/SCREEN-INVENTORY.md`
-- `docs/06-ui-ux/TABLE-STANDARDS.md`
-- `docs/06-ui-ux/UI-UX-CONCEPT.md`
-- `docs/07-security/ACCESS-CONTROL-MATRIX.md`
-- `docs/07-security/AUDIT-LOG.md`
-- `docs/07-security/BACKUP-AND-RECOVERY.md`
-- `docs/07-security/GATE-SYNC-SECURITY.md`
-- `docs/07-security/MEDICAL-DATA-PRIVACY.md`
-- `docs/07-security/REMOTE-CONSULTATION-GOVERNANCE.md`
-- `docs/07-security/SECURITY-REQUIREMENTS.md`
-- `docs/07-security/SESSION-SECURITY.md`
-- `docs/07-security/THREAT-MODEL.md`
-- `docs/08-api/API-AUTHENTICATION.md`
-- `docs/08-api/API-CONVENTIONS.md`
-- `docs/08-api/API-ENDPOINTS.md`
-- `docs/08-api/ERROR-RESPONSES.md`
-- `docs/08-api/GATE-USER-SYNC-CONTRACT.md`
-- `docs/08-api/INTEGRATION-CONTRACTS.md`
-- `docs/09-testing/BUSINESS-SCENARIOS.md`
-- `docs/09-testing/FEATURE-TEST-MATRIX.md`
-- `docs/09-testing/SECURITY-TESTS.md`
-- `docs/09-testing/TEST-STRATEGY.md`
-- `docs/09-testing/UAT-CHECKLIST.md`
-- `docs/10-delivery/DEFINITION-OF-DONE.md`
-- `docs/10-delivery/DEPLOYMENT.md`
-- `docs/10-delivery/IMPLEMENTATION-PLAN.md`
-- `docs/10-delivery/OPERATIONS.md`
-- `docs/10-delivery/READINESS-REVIEW.md`
-- `docs/10-delivery/RELEASE-CHECKLIST.md`
-- `docs/10-delivery/ROADMAP.md`
-- `docs/11-decisions/ADR-001-LARAVEL-LIVEWIRE.md`
-- `docs/11-decisions/ADR-002-MODULAR-MONOLITH.md`
-- `docs/11-decisions/ADR-003-GATE-SSO.md`
-- `docs/11-decisions/ADR-004-MEDICAL-AUDIT-LOG.md`
-- `docs/11-decisions/ADR-005-THEME-STRATEGY.md`
-- `docs/11-decisions/ADR-006-PERSON-PATIENT-SEPARATION.md`
-- `docs/11-decisions/ADR-007-REMOTE-CLINICAL-CONSULTATION.md`
-- `docs/11-decisions/README.md`
-- `docs/12-graphify/AI-HANDOFF.md`
-- `docs/12-graphify/DOCUMENT-CODE-MAPPING.md`
-- `docs/12-graphify/GRAPH-NAMING-CONVENTIONS.md`
-- `docs/12-graphify/GRAPH-VALIDATION-QUESTIONS.md`
-- `docs/12-graphify/GRAPHIFY-GUIDE.md`
-- `docs/12-graphify/GRAPHIFY-INSTALLATION.md`
-- `docs/README.md`
-- `plans/CURRENT-SPRINT.md`
-- `plans/IMPLEMENTATION-BACKLOG.md`
-- `plans/KNOWN-ISSUES.md`
+## Root kanonikal
+
+- `AGENTS.md` — kontrak coding agent.
+- `README.md` — orientasi publik, instalasi, keamanan, dan lisensi.
+- `PROJECT-STATUS.md` dan `CHANGELOG.md` — status serta riwayat perubahan.
+- `SECURITY.md` — kanal dan aturan pelaporan kerentanan.
+- `CONTRIBUTING.md` dan `BOOTSTRAP-CHECKLIST.md` — panduan contributor/bootstrap.
+- `plans/` — backlog, sprint, dan keputusan yang masih terbuka.
+
+Prompt eksekusi AI bukan dokumentasi kanonikal dan tidak boleh di-track.
+
+## Dokumentasi
+
+`docs/00-project` sampai `docs/12-graphify` mengelompokkan konteks proyek, domain, workflow, requirements, architecture, data, UI, security, API, testing, delivery, ADR, dan Graphify. Indeks naratif tersedia di `docs/README.md`; hubungan dokumen dengan implementasi tersedia di `docs/12-graphify/DOCUMENT-CODE-MAPPING.md`.
+
+## Implementasi dan verifikasi
+
+- `app/`, `config/`, `database/`, `resources/`, dan `routes/` — source aplikasi.
+- `tests/` — unit, feature, security, UAT, concurrency, dan UI contract tests.
+- `composer.json`/`composer.lock` serta `package.json`/`package-lock.json` — dependency manifests.
+- `.env.example` — satu-satunya environment template yang boleh tracked.
+- `graphify-out/` — canonical graph outputs; cache tetap ignored.
+
+## Inventaris rilis
+
+Gunakan sebelum commit/publikasi:
+
+```bash
+git ls-files
+git status --short
+git diff --cached --name-status
+```
+
+Larangan dan klasifikasi file rinci terdapat di `docs/10-delivery/REPOSITORY-HYGIENE-POLICY.md` dan `docs/10-delivery/GITHUB-PUBLIC-REPOSITORY-CHECKLIST.md`.

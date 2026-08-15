@@ -6,8 +6,8 @@ return [
     | SABIRA Gate Identity & OIDC Configuration
     |--------------------------------------------------------------------------
     */
-    'base_url' => env('GATE_BASE_URL', 'https://gate.sabira.id'),
-    'client_id' => env('GATE_CLIENT_ID', 'poskestren-health-app'),
+    'base_url' => env('GATE_BASE_URL', 'https://gate.example.invalid'),
+    'client_id' => env('GATE_CLIENT_ID', ''),
     'client_secret' => env('GATE_CLIENT_SECRET', ''),
     'redirect_uri' => env('GATE_REDIRECT_URI', env('APP_URL', 'http://localhost:8000').'/auth/gate/callback'),
     'scopes' => env('GATE_SCOPES', 'openid profile email phone offline_access poskestren_access'),
@@ -80,7 +80,7 @@ return [
     */
     'break_glass' => [
         'enabled' => env('BREAK_GLASS_ENABLED', false),
-        'username' => env('BREAK_GLASS_USERNAME', 'emergency_admin'),
-        'alert_email' => env('BREAK_GLASS_ALERT_EMAIL', 'security@sabira.id'),
+        'username' => env('BREAK_GLASS_USERNAME', ''),
+        'alert_email' => env('BREAK_GLASS_ALERT_EMAIL', ''),
     ],
 ];

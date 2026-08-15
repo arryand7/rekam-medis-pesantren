@@ -9,9 +9,9 @@ test('authorized user can register healthcare partner facility and clinician con
 
     $partner = $consultationService->createPartner([
         'code' => 'PKM-AMPEL-TEST',
-        'name' => 'Puskesmas Ampel Test',
+        'name' => 'Fasilitas Kesehatan Mitra Fiktif',
         'partner_type' => 'puskesmas',
-        'phone' => '031-5550199',
+        'phone' => 'TEST-PHONE-001',
     ], $staff);
 
     expect($partner->code)->toBe('PKM-AMPEL-TEST');

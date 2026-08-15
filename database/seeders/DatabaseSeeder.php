@@ -292,16 +292,16 @@ class DatabaseSeeder extends Seeder
             return;
         }
 
-        // Default Healthcare Partner Facility
+        // Explicitly fictional healthcare partner fixture for local demonstrations.
         $partner = HealthcarePartner::firstOrCreate([
-            'code' => 'PUSKESMAS-AMPEL',
+            'code' => 'FASKES-CONTOH',
         ], [
-            'name' => 'Puskesmas Pembantu / Kecamatan Ampel',
+            'name' => 'Fasilitas Kesehatan Mitra Fiktif',
             'partner_type' => 'puskesmas',
-            'address' => 'Jl. Raya Ampel No. 12, Surabaya',
-            'phone' => '031-5550199',
-            'official_email' => 'pkm.ampel@surabaya.go.id',
-            'cooperation_reference' => 'MOU-POSKESTREN-2026/01',
+            'address' => 'Alamat sintetis untuk demonstrasi lokal',
+            'phone' => 'TEST-PHONE-FASKES',
+            'official_email' => 'partner@example.invalid',
+            'cooperation_reference' => 'MOU-SYNTHETIC-001',
             'is_active' => true,
             'consultation_enabled' => true,
             'referral_enabled' => true,
@@ -310,12 +310,12 @@ class DatabaseSeeder extends Seeder
 
         HealthcarePartnerContact::firstOrCreate([
             'healthcare_partner_id' => $partner->id,
-            'name' => 'dr. H. Ahmad Dahlan, Sp.PD',
+            'name' => 'dr. Contoh Mitra',
         ], [
             'profession' => 'Dokter Spesialis Penyakit Dalam',
-            'registration_identifier' => 'SIP-3578/2025/8812',
-            'department' => 'Poli Penyakit Dalam / Konsultasi Faskes',
-            'official_contact' => '0812-3456-7890',
+            'registration_identifier' => 'SIP-SYNTHETIC-001',
+            'department' => 'Layanan Contoh',
+            'official_contact' => 'TEST-CONTACT-001',
             'channel_type' => 'fake_transport',
             'is_active' => true,
             'verified_at' => now(),

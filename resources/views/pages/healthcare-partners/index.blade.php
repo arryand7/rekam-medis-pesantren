@@ -25,12 +25,12 @@
                     @csrf
                     <div>
                         <label class="block text-xs font-medium text-[var(--foreground-muted)] mb-1">Kode Faskes <span class="text-rose-500">*</span></label>
-                        <input type="text" name="code" required placeholder="PUSKESMAS-AMPEL" class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)] uppercase font-mono">
+                        <input type="text" name="code" required placeholder="FASKES-CONTOH" class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)] uppercase font-mono">
                     </div>
 
                     <div>
                         <label class="block text-xs font-medium text-[var(--foreground-muted)] mb-1">Nama Faskes Mitra <span class="text-rose-500">*</span></label>
-                        <input type="text" name="name" required placeholder="Puskesmas Pembantu Ampel" class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)]">
+                        <input type="text" name="name" required placeholder="Fasilitas Kesehatan Mitra Fiktif" class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)]">
                     </div>
 
                     <div>
@@ -45,17 +45,17 @@
 
                     <div>
                         <label class="block text-xs font-medium text-[var(--foreground-muted)] mb-1">Telepon Resmi</label>
-                        <input type="text" name="phone" placeholder="031-5550199" class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)]">
+                        <input type="text" name="phone" placeholder="Nomor kontak resmi" class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)]">
                     </div>
 
                     <div>
                         <label class="block text-xs font-medium text-[var(--foreground-muted)] mb-1">Alamat Email Resmi</label>
-                        <input type="email" name="official_email" placeholder="pkm.ampel@surabaya.go.id" class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)]">
+                        <input type="email" name="official_email" placeholder="partner@example.invalid" class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)]">
                     </div>
 
                     <div>
                         <label class="block text-xs font-medium text-[var(--foreground-muted)] mb-1">Nomor Referensi Kerjasama / MOU</label>
-                        <input type="text" name="cooperation_reference" placeholder="MOU-POSKESTREN-2026/01" class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)]">
+                        <input type="text" name="cooperation_reference" placeholder="MOU-SYNTHETIC-001" class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)]">
                     </div>
 
                     <div class="pt-2 text-right">

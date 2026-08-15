@@ -120,8 +120,8 @@ Browser                POSKESTREN                  Gate IdP
 
 | Variable | Default | Keterangan |
 |---|---|---|
-| `GATE_BASE_URL` | `https://gate.sabira.id` | Base URL Gate server |
-| `GATE_CLIENT_ID` | `poskestren-health-app` | OAuth2 Client ID |
+| `GATE_BASE_URL` | `https://gate.example.invalid` | Base URL Gate server |
+| `GATE_CLIENT_ID` | *(kosong)* | OAuth2 Client ID, wajib diisi per environment |
 | `GATE_CLIENT_SECRET` | *(kosong)* | OAuth2 Client Secret |
 | `GATE_REDIRECT_URI` | `{APP_URL}/auth/gate/callback` | Callback URL |
 | `GATE_SCOPES` | `openid profile email phone offline_access poskestren_access` | Scope |

@@ -15,7 +15,7 @@ test('login page redirects to Gate authorization endpoint with state and nonce w
     $response->assertRedirect();
     $targetUrl = $response->headers->get('Location');
 
-    expect($targetUrl)->toContain('https://gate.sabira.id/oauth/authorize');
+    expect($targetUrl)->toContain('https://gate.example.invalid/oauth/authorize');
     expect($targetUrl)->toContain('client_id=');
     expect($targetUrl)->toContain('state=');
     expect(session()->has('gate_auth_state'))->toBeTrue();
@@ -47,7 +47,7 @@ test('successful callback logs in user, regenerates session, and redirects to da
     $userDTO = new GateUserInfoDTO(
         gateUserId: 'GATE-USR-SSO-001',
         name: 'Ustadz Salman Al-Farisi',
-        email: 'salman@sabira.id',
+        email: 'salman@sabira.test',
         userType: 'tenaga_kesehatan',
         sourceStatus: 'active',
         appRoles: ['health_officer']

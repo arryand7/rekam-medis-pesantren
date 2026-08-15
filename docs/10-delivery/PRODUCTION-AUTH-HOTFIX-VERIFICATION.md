@@ -42,7 +42,7 @@ Hasil pengujian langsung terhadap target endpoint menggunakan request tanpa cook
 ## 3. Verifikasi Alur Gate SSO Produksi & Isolasi Peran
 
 1. **Alur Autentikasi Nyata (*Real SSO Flow*)**:
-   - `GET /login` $\rightarrow$ Redirect ke `https://gate.sabira.id/oauth/authorize`
+   - `GET /login` $\rightarrow$ Redirect ke `{GATE_BASE_URL}/oauth/authorize` pada environment yang dikonfigurasi; domain `.invalid` hanya placeholder publik.
    - OIDC Callback $\rightarrow$ Validasi state, nonce, token exchange, verifikasi entitlement `poskestren-health`.
    - Sesi lokal terbentuk, diarahkan ke `route('dashboard')`.
 2. **Perilaku Role Resolver**:

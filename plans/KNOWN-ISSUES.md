@@ -8,6 +8,13 @@ last_updated: 2026-08-15
 
 # Known Issues and Open Questions
 
+## Phase 6A0 Public Repository Owner Decisions
+
+- [ ] **License**: pemilik memilih lisensi open-source yang sesuai atau secara sadar mempertahankan status proprietary/all-rights-reserved. Agent tidak menetapkan lisensi secara otomatis.
+- [ ] **Private security contact**: ganti `[PERLU DIKONFIRMASI]` pada `SECURITY.md` dengan alamat atau private security advisory yang dipantau.
+- [ ] **GitHub controls**: setelah repository dibuat, aktifkan secret scanning, private vulnerability reporting, Dependabot, branch protection, dan least-privilege Actions.
+- [x] **Repository security gate (RESOLVED 2026-08-15)**: current tree/history, secret, data, dependency, configuration, dan documentation gate selesai. Status `PUBLIC-GITHUB-READY-WITH-OWNER-LICENSE-DECISION`.
+
 ## Phase 5D Pre-Staging Manual Items
 
 - [ ] **Gate staging contract**: konfirmasi endpoint/credential/redirect URI, issuer-audience-JWKS atau jaminan validasi provider, entitlement dan deactivation behavior pada environment staging nyata.

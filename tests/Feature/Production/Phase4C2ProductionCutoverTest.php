@@ -53,7 +53,7 @@ test('Step 3 — Gate SSO Canary login flow completes with entitlement enforceme
     $userDTO = new GateUserInfoDTO(
         gateUserId: $gateUserId,
         name: 'Dr. Canary Staf Poskestren',
-        email: 'dr.canary@sabira.id',
+        email: 'dr.canary@sabira.test',
         userType: 'tenaga_kesehatan',
         sourceStatus: 'active',
         appRoles: ['tenaga_kesehatan']
@@ -68,7 +68,7 @@ test('Step 3 — Gate SSO Canary login flow completes with entitlement enforceme
     expect(Auth::check())->toBeTrue();
     $user = Auth::user();
     expect($user)->not->toBeNull();
-    expect($user->email)->toBe('dr.canary@sabira.id');
+    expect($user->email)->toBe('dr.canary@sabira.test');
 
     // Verify Person and Patient created cleanly
     $person = Person::where('gate_user_id', $gateUserId)->first();
@@ -86,7 +86,7 @@ test('Step 3b — Gate SSO denies unassigned user entitlement safely', function 
     $userDTO = new GateUserInfoDTO(
         gateUserId: $gateUserId,
         name: 'Tamu Tanpa Hak Akses',
-        email: 'unassigned@sabira.id',
+        email: 'unassigned@sabira.test',
         userType: 'guest',
         sourceStatus: 'active',
         appRoles: []

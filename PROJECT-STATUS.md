@@ -10,7 +10,17 @@ last_updated: 2026-08-15
 
 ## Fase saat ini
 
-**Phase 5D Light Mode Contrast Hotfix Complete** (Status: `LIGHT-MODE-CONTRAST-HOTFIX-COMPLETE` / v0.23.1)
+**Phase 6A0 Public Repository Sanitization Release Gate** (Status: `PUBLIC-GITHUB-READY-WITH-OWNER-LICENSE-DECISION` / v0.24.0)
+
+## Public Repository Release Gate
+
+- [x] Current tree dan seluruh 38 commit yang sudah ada pada entry gate diaudit untuk secret, credential, data privat, binary, dump, backup, archive, dan metadata infrastruktur.
+- [x] Tidak ditemukan secret aktif atau data pasien nyata; test key historis diklasifikasikan material sintetis.
+- [x] `.env.testing` dihapus, safe example/fallback memakai `.test`/`.invalid`, dan fixture realistis dinetralkan.
+- [x] `SECURITY.md`, threat model, secret/data scan, entry gate, checklist, final gate, dan regression test ditambahkan.
+- [x] `HISTORY_SAFE_TO_PUBLISH=YES`; `SECRET_ROTATION_REQUIRED=NO` berdasarkan evidence repository lokal.
+- [ ] Pemilik memilih lisensi dan menetapkan kanal disclosure privat sebelum menyatakan proyek open source.
+- [ ] Remote/push/deployment tidak dilakukan; aktivasi kontrol GitHub menjadi tindakan pemilik.
 
 ## Light Mode Contrast Hotfix
 
@@ -69,12 +79,13 @@ last_updated: 2026-08-15
 - [x] **Phase 5C2 — Pharmacy Reporting Semantics & Final Micro-Closure**: Selesai (`PHASE-5C-FINAL-COMPLETE`, v0.21.2).
 - [x] **Phase 5D0 — RBAC Permission Administration Hardening**: Selesai (`PHASE-5D0-RBAC-COMPLETE`, digabung dalam v0.23.0).
 - [x] **Phase 5D — Pre-Staging Acceptance & Deployment Readiness**: Selesai bersyarat (`PHASE-5D-PRE-STAGING-READY-WITH-MANUAL-ITEMS`, v0.23.0).
+- [x] **Phase 6A0 — Public Repository Sanitization Release Gate**: Gate teknis selesai (`PUBLIC-GITHUB-READY-WITH-OWNER-LICENSE-DECISION`, v0.24.0).
 
 ## Current Environment & Readiness State
 
 ```text
 Application Development:          ACTIVE
-Current Functional Version:       0.23.1 (Phase 5D Light Mode Contrast Hotfix)
+Current Functional Version:       0.24.0 (Phase 6A0 Public Repository Sanitization)
 Environment:                      LOCAL-DEVELOPMENT (macOS Developer Workstation)
 Deployment Status:                NOT_DEPLOYED (Belum pernah dideploy ke server fisik)
 Production Host Status:           NOT_STARTED
@@ -88,9 +99,12 @@ Attendance Sandbox Validation:    LOCAL_SIMULATION_VALIDATED
 
 - Tanggal: 2026-08-15
 - Database: MariaDB 10.4.28 (`poskestren_sabira`, InnoDB, REPEATABLE-READ)
-- Test Suite: 279 tests, 1268 assertions (100% Passed, 0 Skipped, 0 Failed)
+- Test Suite: 283 tests, 1301 assertions (100% Passed, 0 Skipped, 0 Failed)
 - Code Formatter: Pint Passed
 - Static Analysis: PHPStan Passed (0 errors)
 - Frontend: Vite Build Passed
+- Dependency Install/Audit: `npm ci`, Composer audit, dan npm audit Passed (0 advisory)
+- Repository Scan: current tree + 38 pre-existing commits reviewed; no active secret or confirmed real patient data
+- Graphify: incremental update + public release-policy query Passed (3.551 nodes / 5.686 edges)
 - git diff --check: PASSED
-- Status Rilis: LOCAL PRE-STAGING — LIGHT-MODE-CONTRAST-HOTFIX-COMPLETE (v0.23.1); visual browser smoke tetap perlu diulang pada staging, no staging/production deployment
+- Status Rilis: LOCAL PRE-STAGING — `PUBLIC-GITHUB-READY-WITH-OWNER-LICENSE-DECISION` (v0.24.0); no remote/push/deployment

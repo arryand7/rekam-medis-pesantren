@@ -59,8 +59,8 @@ class FakeGateOidcClient implements GateOidcClientContract
 
     public function getAuthorizationUrl(string $state, ?string $nonce = null, ?string $codeChallenge = null): string
     {
-        $baseUrl = config('gate.base_url', 'https://gate.sabira.id');
-        $clientId = config('gate.client_id', 'poskestren-health-app');
+        $baseUrl = config('gate.base_url', 'https://gate.example.invalid');
+        $clientId = config('gate.client_id', 'synthetic-test-client');
         $redirectUri = urlencode(config('gate.redirect_uri', 'http://localhost:8000/auth/gate/callback'));
         $scopes = urlencode(config('gate.scopes', 'openid profile email'));
 
@@ -101,11 +101,11 @@ class FakeGateOidcClient implements GateOidcClientContract
         // Default canned user
         return new GateUserInfoDTO(
             gateUserId: 'GATE-USR-DEFAULT-001',
-            name: 'dr. H. Abdullah Mansur',
-            email: 'abdullah.mansur@sabira.id',
-            phone: '081234567890',
-            nik: '3201234567890001',
-            nisNip: 'NIP-19800101',
+            name: 'dr. Tenaga Kesehatan Contoh',
+            email: 'synthetic.health.officer@sabira.test',
+            phone: 'TEST-PHONE-001',
+            nik: 'TEST-NIK-001',
+            nisNip: 'TEST-NIP-001',
             userType: 'tenaga_kesehatan',
             gender: 'laki-laki',
             sourceStatus: 'active',
@@ -146,7 +146,7 @@ class FakeGateOidcClient implements GateOidcClientContract
 
     public function getEndSessionUrl(?string $idToken = null, ?string $postLogoutRedirectUri = null): ?string
     {
-        $baseUrl = config('gate.base_url', 'https://gate.sabira.id');
+        $baseUrl = config('gate.base_url', 'https://gate.example.invalid');
         $endpoint = config('gate.endpoints.end_session', '/oauth/logout');
 
         $url = "{$baseUrl}{$endpoint}";

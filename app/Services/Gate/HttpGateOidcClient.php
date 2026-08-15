@@ -15,7 +15,7 @@ class HttpGateOidcClient implements GateOidcClientContract
 {
     public function getAuthorizationUrl(string $state, ?string $nonce = null, ?string $codeChallenge = null): string
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.sabira.id'), '/');
+        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
         $endpoint = config('gate.endpoints.authorize', '/oauth/authorize');
         $clientId = config('gate.client_id', '');
         $redirectUri = urlencode(config('gate.redirect_uri', ''));
@@ -34,7 +34,7 @@ class HttpGateOidcClient implements GateOidcClientContract
 
     public function exchangeAuthorizationCode(string $code, ?string $codeVerifier = null): GateOidcTokenResponseDTO
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.sabira.id'), '/');
+        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
         $endpoint = config('gate.endpoints.token', '/oauth/token');
         $timeout = (int) config('gate.http.timeout', 5);
 
@@ -74,7 +74,7 @@ class HttpGateOidcClient implements GateOidcClientContract
 
     public function fetchUserInfo(string $accessToken): GateUserInfoDTO
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.sabira.id'), '/');
+        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
         $endpoint = config('gate.endpoints.userinfo', '/oauth/userinfo');
         $timeout = (int) config('gate.http.timeout', 5);
 
@@ -98,7 +98,7 @@ class HttpGateOidcClient implements GateOidcClientContract
 
     public function fetchApplicationEntitlement(string $accessToken, string $gateUserId, string $appCode): GateApplicationEntitlementDTO
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.sabira.id'), '/');
+        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
         $endpoint = config('gate.endpoints.entitlements', '/api/v1/entitlements');
         $timeout = (int) config('gate.http.timeout', 5);
 
@@ -133,7 +133,7 @@ class HttpGateOidcClient implements GateOidcClientContract
 
     public function getEndSessionUrl(?string $idToken = null, ?string $postLogoutRedirectUri = null): ?string
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.sabira.id'), '/');
+        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
         $endpoint = config('gate.endpoints.end_session', '/oauth/logout');
 
         $url = "{$baseUrl}{$endpoint}";
@@ -146,7 +146,7 @@ class HttpGateOidcClient implements GateOidcClientContract
 
     public function probeHealth(): array
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.sabira.id'), '/');
+        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
         $endpoint = config('gate.endpoints.health', '/health');
         $timeout = 3;
 

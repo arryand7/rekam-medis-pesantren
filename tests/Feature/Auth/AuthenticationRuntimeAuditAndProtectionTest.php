@@ -132,7 +132,7 @@ test('valid Gate OIDC callback authenticates user and creates session', function
     $userDTO = new GateUserInfoDTO(
         gateUserId: 'GATE-USR-RUNTIME-001',
         name: 'dr. H. Zulkifli Medis',
-        email: 'zulkifli@sabira.id',
+        email: 'zulkifli@sabira.test',
         userType: 'tenaga_kesehatan',
         sourceStatus: 'active',
         appRoles: ['tenaga_kesehatan']
@@ -145,7 +145,7 @@ test('valid Gate OIDC callback authenticates user and creates session', function
     $response->assertRedirect(route('dashboard'));
 
     expect(Auth::check())->toBeTrue();
-    expect(Auth::user()->email)->toBe('zulkifli@sabira.id');
+    expect(Auth::user()->email)->toBe('zulkifli@sabira.test');
 });
 
 test('invalid state in Gate callback is rejected and leaves user unauthenticated', function () {
@@ -163,7 +163,7 @@ test('user denied application entitlement is blocked from accessing application'
     $userDTO = new GateUserInfoDTO(
         gateUserId: 'GATE-USR-UNAUTHORIZED-99',
         name: 'Akun Belum Diberi Izin',
-        email: 'unauthorized@sabira.id',
+        email: 'unauthorized@sabira.test',
         userType: 'guest',
         sourceStatus: 'active',
         appRoles: []

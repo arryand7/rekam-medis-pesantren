@@ -191,7 +191,7 @@
                             @csrf
                             <div>
                                 <label class="block text-xs font-medium text-[var(--foreground-muted)] mb-1">Nama Dokter / Tenaga Medis Mitra <span class="text-rose-500">*</span></label>
-                                <input type="text" name="clinician_name" required value="{{ $consultation->recipientContact->name ?? '' }}" placeholder="dr. H. Ahmad Dahlan, Sp.PD" class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)]">
+                                <input type="text" name="clinician_name" required value="{{ $consultation->recipientContact->name ?? '' }}" placeholder="dr. Contoh Mitra, Sp.PD" class="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-xs text-[var(--foreground)]">
                             </div>
 
                             <div>

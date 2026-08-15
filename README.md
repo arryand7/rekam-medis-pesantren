@@ -8,70 +8,70 @@ last_updated: 2026-08-15
 
 # SABIRA POSKESTREN Health
 
-Sistem rekam medis dan pelayanan kesehatan warga SABIRA, dengan prioritas operasional santri berasrama selama 24 jam.
+SABIRA POSKESTREN Health adalah aplikasi Laravel untuk mendukung pencatatan layanan kesehatan warga pesantren: penerimaan kunjungan, assessment, observasi, farmasi, konsultasi eksternal, rujukan, kepulangan, tindak lanjut, dashboard, dan pelaporan berbasis peran.
 
-Seluruh santri tinggal di asrama. Santri yang diketahui sakit tidak diperbolehkan tetap berada di asrama tanpa penanganan. Santri harus dibawa atau diarahkan ke POSKESTREN untuk didata, diperiksa, mendapatkan tindakan pertama, lalu diputuskan apakah dapat kembali beraktivitas, perlu diobservasi di ruang kesehatan, atau harus dirujuk ke fasilitas kesehatan.
+> Status: local pre-staging/rehearsal. Repositori ini belum merupakan bukti deployment staging atau production. Integrasi Gate, Attendance, TLS/proxy, dan browser acceptance nyata masih harus diverifikasi pada environment tujuan.
 
-## Sasaran sistem
+## Prinsip keamanan dan privasi
 
-- Menyatukan rekam medis seluruh pengguna manusia yang memenuhi syarat sebagai pasien, termasuk santri, guru, dan staf.
-- Menertibkan alur penerimaan, pemeriksaan, observasi, pemberian obat, konsultasi klinis jarak jauh, rujukan, dan pemulangan.
-- Memberikan informasi operasional yang tepat kepada petugas kesehatan, pengasuh, wali kelas, manajemen, dan wali santri sesuai kewenangan.
-- Menyediakan audit trail untuk setiap perubahan data medis.
-- Menyediakan dokumentasi yang dapat dipetakan oleh Graphify dari aturan bisnis sampai implementasi dan pengujian.
+- Gate adalah sumber kebenaran identitas; authorization tetap ditegakkan server-side melalui Policy/Gate.
+- Data medis, identitas pasien, credential, dump database, log runtime, dan ekspor privat tidak boleh dimasukkan ke Git atau public issue.
+- Fixture bawaan menggunakan data sintetis. Jangan memakai data pasien nyata untuk demo atau pengujian publik.
+- Rekam medis yang disahkan bersifat append-only/amendment-aware dan perubahan penting menghasilkan audit trail.
+- Aplikasi tidak menghasilkan diagnosis, resep, atau keputusan klinis otomatis berbasis AI.
 
-## Baseline teknis
+Jika menemukan kerentanan, ikuti [SECURITY.md](SECURITY.md). Jangan mengirim secret, token, atau data medis melalui public issue.
 
-- Laravel 13
-- PHP 8.3 atau lebih baru
-- Livewire 4
-- Tailwind CSS
-- Flux UI
-- Pest
+## Stack dan kebutuhan lokal
+
+- PHP 8.3+
+- Composer 2
+- Node.js/npm yang kompatibel dengan lockfile
 - MariaDB
-- Redis-ready untuk queue, cache, dan lock
-- Vite
-- Tema `light`, `dark`, dan `system`
-- Zona waktu aplikasi `Asia/Jakarta`
+- Laravel 13, Livewire 4, Tailwind CSS, Flux UI, Pest, dan Vite
 
-## Status
+## Instalasi pengembangan
 
-Proyek berada pada local pre-staging readiness dengan klasifikasi `PHASE-5D-PRE-STAGING-READY-WITH-MANUAL-ITEMS`. Aplikasi belum pernah dideploy ke staging/production; Gate, Attendance, TLS/proxy dan browser acceptance nyata masih menunggu verifikasi environment. Belum ada keputusan final mengenai SOP medis yang ditandai perlu konfirmasi.
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+```
 
-## Mulai membaca
+Siapkan database lokal yang terisolasi, isi hanya nilai lokal di `.env`, lalu jalankan:
 
-1. [AGENTS.md](AGENTS.md)
-2. [docs/00-project/PROJECT-BRIEF.md](docs/00-project/PROJECT-BRIEF.md)
-3. [docs/00-project/MVP-SCOPE.md](docs/00-project/MVP-SCOPE.md)
-4. [docs/01-domain/OPERATIONAL-CONTEXT.md](docs/01-domain/OPERATIONAL-CONTEXT.md)
-5. [docs/01-domain/BUSINESS-RULES.md](docs/01-domain/BUSINESS-RULES.md)
-6. [docs/01-domain/PERSON-PATIENT-IDENTITY.md](docs/01-domain/PERSON-PATIENT-IDENTITY.md)
-7. [docs/02-workflows/GATE-USER-SYNC.md](docs/02-workflows/GATE-USER-SYNC.md)
-8. [docs/02-workflows/REMOTE-CLINICAL-CONSULTATION.md](docs/02-workflows/REMOTE-CLINICAL-CONSULTATION.md)
-9. [docs/04-architecture/TECH-STACK.md](docs/04-architecture/TECH-STACK.md)
-10. [docs/07-security/ACCESS-CONTROL-MATRIX.md](docs/07-security/ACCESS-CONTROL-MATRIX.md)
-11. [docs/10-delivery/IMPLEMENTATION-PLAN.md](docs/10-delivery/IMPLEMENTATION-PLAN.md)
-12. [docs/12-graphify/GRAPHIFY-INSTALLATION.md](docs/12-graphify/GRAPHIFY-INSTALLATION.md)
-13. [docs/12-graphify/AI-HANDOFF.md](docs/12-graphify/AI-HANDOFF.md)
+```bash
+php artisan migrate
+npm ci
+npm run build
+php artisan serve
+```
 
-## Model identitas dan pasien
+Jangan menyalin credential staging/production ke `.env.example`, source code, fixture, dokumentasi, log, atau issue tracker. Integrasi eksternal default memakai endpoint `.invalid` dan tetap nonaktif sampai dikonfigurasi secara eksplisit.
 
-Gate adalah sumber kebenaran identitas, tipe pengguna, dan status akun. Aplikasi menyimpan proyeksi lokal yang aman untuk kebutuhan operasional.
+## Quality gate
 
-Identitas manusia, akun login, role aplikasi, dan profil pasien dipisahkan:
+Gunakan database test yang terisolasi. Contoh portabel:
 
-- `person` merepresentasikan manusia;
-- `user` merepresentasikan akun login;
-- role/permission menentukan akses;
-- `patient` merepresentasikan subjek rekam medis.
+```bash
+APP_ENV=testing DB_DATABASE=poskestren_health_test php artisan test
+./vendor/bin/pint --test
+./vendor/bin/phpstan analyse --memory-limit=512M
+npm run build
+composer validate --strict
+composer audit
+npm audit
+git diff --check
+```
 
-Semua `person` dapat menjadi pasien. Akun teknis atau administratif murni tidak memiliki profil pasien. Pengguna manusia yang juga memiliki permission admin tetap dapat menjadi pasien.
+Detail strategi dan portabilitas database terdapat di [TEST-STRATEGY.md](docs/09-testing/TEST-STRATEGY.md) dan [TEST-DATABASE-PORTABILITY.md](docs/09-testing/TEST-DATABASE-PORTABILITY.md).
 
-## Prinsip penting
+## Dokumentasi utama
 
-- Dokumentasi domain adalah sumber kebenaran untuk perilaku sistem.
-- Data medis tidak boleh diubah atau dihapus tanpa jejak.
-- UI tidak menjadi pengganti authorization di server.
-- Status medis dan disposisi tidak boleh ditentukan oleh client.
-- Sistem tahap awal tidak memberikan diagnosis otomatis berbasis AI.
-- Implementasi dilakukan per fase dan wajib disertai test serta pembaruan dokumentasi.
+Mulai dari [AGENTS.md](AGENTS.md), [project brief](docs/00-project/PROJECT-BRIEF.md), [business rules](docs/01-domain/BUSINESS-RULES.md), [module boundaries](docs/04-architecture/MODULE-BOUNDARIES.md), [access-control matrix](docs/07-security/ACCESS-CONTROL-MATRIX.md), dan [implementation plan](docs/10-delivery/IMPLEMENTATION-PLAN.md).
+
+Gate publikasi repositori didokumentasikan dalam [PUBLIC-GITHUB-RELEASE-GATE.md](docs/10-delivery/PUBLIC-GITHUB-RELEASE-GATE.md). Canonical Graphify outputs boleh di-track, sedangkan cache AST tetap diabaikan sesuai [Graphify version-control policy](docs/12-graphify/GRAPHIFY-VERSION-CONTROL-POLICY.md).
+
+## Lisensi
+
+Belum ada lisensi open-source yang dipilih pemilik proyek. Tanpa file `LICENSE`, hak penggunaan, penyalinan, modifikasi, dan distribusi tidak diberikan secara otomatis. Keputusan lisensi harus dibuat pemilik sebelum mengumumkan proyek sebagai open source.

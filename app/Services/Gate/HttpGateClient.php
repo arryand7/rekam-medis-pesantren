@@ -13,7 +13,7 @@ class HttpGateClient implements GateClientContract
 {
     public function fetchUsers(int $page = 1, int $perPage = 50): array
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.sabira.id'), '/');
+        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
         $endpoint = config('gate.endpoints.users', '/api/v1/users');
         $timeout = (int) config('gate.http.timeout', 5);
 
@@ -57,7 +57,7 @@ class HttpGateClient implements GateClientContract
 
     public function fetchUserById(string $gateUserId): ?GateUserDTO
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.sabira.id'), '/');
+        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
         $endpoint = config('gate.endpoints.users', '/api/v1/users');
         $timeout = (int) config('gate.http.timeout', 5);
 
@@ -88,7 +88,7 @@ class HttpGateClient implements GateClientContract
 
     public function ping(): bool
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.sabira.id'), '/');
+        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
         $endpoint = config('gate.endpoints.health', '/health');
         $timeout = 3;
 

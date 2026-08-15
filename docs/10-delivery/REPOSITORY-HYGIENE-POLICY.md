@@ -31,7 +31,7 @@ Berikut adalah artefak permanen yang sah untuk disimpan dalam kontrol versi:
   - Delivery & Release: `docs/10-delivery/`
   - Keputusan Arsitektur: `docs/11-decisions/` (ADR)
   - Graphify Knowledge Graph: `docs/12-graphify/` (kebijakan khusus di bawah)
-- **Status & Panduan**: `README.md`, `CHANGELOG.md`, `PROJECT-STATUS.md`, `AGENTS.md`, `CONTRIBUTING.md`, `FILE-MANIFEST.md`, `BOOTSTRAP-CHECKLIST.md`, `AI-FIRST-RUN-PROMPT.md`.
+- **Status & Panduan**: `README.md`, `CHANGELOG.md`, `PROJECT-STATUS.md`, `AGENTS.md`, `CONTRIBUTING.md`, `FILE-MANIFEST.md`, dan `BOOTSTRAP-CHECKLIST.md`.
 - **Graphify Canonical Deliverables**: `graphify-out/graph.json`, `graphify-out/graph.html`, `graphify-out/GRAPH_REPORT.md`, `graphify-out/manifest.json`, `graphify-out/.graphify_labels.json*`, `graphify-out/.graphify_root`, dated snapshots.
 
 ---

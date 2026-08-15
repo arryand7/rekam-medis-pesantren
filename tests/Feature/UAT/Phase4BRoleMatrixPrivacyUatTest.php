@@ -10,7 +10,7 @@ function createUserWithRole(string $roleName, array $permissionNames = []): User
     $person = Person::factory()->create(['name' => "User {$roleName}"]);
     $user = User::factory()->create([
         'person_id' => $person->id,
-        'email' => "{$roleName}.".uniqid().'@sabira.id',
+        'email' => "{$roleName}.".uniqid().'@sabira.test',
         'is_active' => true,
     ]);
 

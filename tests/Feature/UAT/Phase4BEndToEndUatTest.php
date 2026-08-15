@@ -36,7 +36,7 @@ function createUatStaff(): User
 
     $user = User::factory()->create([
         'person_id' => $person->id,
-        'email' => 'sarah.'.uniqid().'@sabira.id',
+        'email' => 'sarah.'.uniqid().'@sabira.test',
         'is_active' => true,
     ]);
 

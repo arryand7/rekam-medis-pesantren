@@ -265,7 +265,7 @@ class GateAuthenticationService
 
             $user->person_id = $person->id;
             $user->name = $person->name;
-            $user->email = $person->email ?? "{$userInfo->gateUserId}@gate.sabira.id";
+            $user->email = $person->email ?? "{$userInfo->gateUserId}@gate.example.invalid";
             $user->is_active = ($userInfo->sourceStatus === 'active');
             $user->save();
 

@@ -15,6 +15,21 @@ Semua perubahan penting proyek dicatat di file ini.
 > Istilah *production* pada dokumen historis sebelum koreksi ini merujuk pada
 > *rehearsal / readiness validation*, bukan deployment server production fisik aktual.
 
+## [0.24.0] — 2026-08-15 (Public Repository Sanitization Release Gate)
+
+### Security
+
+- Mengaudit current tree dan seluruh Git history untuk secret, credential, data privat, binary, dump, backup, archive, local path, dan fixture realistis.
+- Menghapus tracked `.env.testing`, memperluas `.gitignore`, menetralkan fallback/fixture dengan `.test`/`.invalid`, dan menambahkan regression test sanitasi.
+- Menambahkan `SECURITY.md`, public repository threat model, secret/data scan evidence, entry gate, GitHub checklist, serta final release gate.
+- Mengklasifikasikan fixed historical Laravel key sebagai `SYNTHETIC-TEST-MATERIAL`; tidak ditemukan secret aktif sehingga `SECRET_ROTATION_REQUIRED=NO` dan `HISTORY_SAFE_TO_PUBLISH=YES`.
+
+### Changed
+
+- Status lisensi Composer dinetralkan menjadi `proprietary` karena belum ada keputusan lisensi atau file `LICENSE` dari pemilik.
+- README diperbarui dengan instalasi portabel, privacy warning, security reporting, quality gates, serta status local pre-staging yang akurat.
+- Klasifikasi akhir: `PUBLIC-GITHUB-READY-WITH-OWNER-LICENSE-DECISION`; tidak ada remote, push, atau deployment.
+
 ## [0.23.1] — 2026-08-15 (Light Mode Contrast & Theme Consistency Hotfix)
 
 ### Fixed

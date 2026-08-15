@@ -248,7 +248,7 @@ class GateSyncApplyService
 
             $user->person_id = $person->id;
             $user->name = $person->name;
-            $user->email = $person->email ?? "{$dto->gateUserId}@gate.sabira.id";
+            $user->email = $person->email ?? "{$dto->gateUserId}@gate.example.invalid";
             $user->is_active = ($dto->sourceStatus === 'active');
             $user->save();
 

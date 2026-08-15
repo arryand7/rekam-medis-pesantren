@@ -13,7 +13,7 @@ test('user with allowed entitlement can log in successfully', function () {
     $userDTO = new GateUserInfoDTO(
         gateUserId: 'GATE-USR-ALLOWED-001',
         name: 'dr. Sarah Humaira',
-        email: 'sarah@sabira.id',
+        email: 'sarah@sabira.test',
         userType: 'tenaga_kesehatan',
         sourceStatus: 'active',
         appRoles: ['health_officer']
@@ -39,7 +39,7 @@ test('user with not_assigned or revoked entitlement is redirected to access deni
     $userDTO = new GateUserInfoDTO(
         gateUserId: 'GATE-USR-REVOKED-001',
         name: 'Fulan bin Fulan',
-        email: 'fulan@sabira.id',
+        email: 'fulan@sabira.test',
         userType: 'santri',
         sourceStatus: 'active'
     );
@@ -63,7 +63,7 @@ test('Gate role admin does not automatically grant clinical medical record permi
     $userDTO = new GateUserInfoDTO(
         gateUserId: 'GATE-USR-ADMIN-001',
         name: 'Admin Sekolah',
-        email: 'admin.sekolah@sabira.id',
+        email: 'admin.sekolah@sabira.test',
         userType: 'staf',
         sourceStatus: 'active',
         appRoles: ['school_admin'] // maps to administrator

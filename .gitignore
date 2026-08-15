@@ -5,8 +5,8 @@
 /public/storage
 /public/fonts-manifest.dev.json
 /.env
-/.env.backup
-/.env.production
+/.env.*
+!/.env.example
 /.phpunit.cache
 .phpunit.result.cache
 /.task
@@ -24,3 +24,30 @@
 
 # Graphify cache — reproducible AST extraction cache, not tracked
 graphify-out/cache/
+
+# Public-repository safety: secrets, local databases, backups and private exports
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.sqlite
+*.sqlite3
+*.db
+*.sql
+*.dump
+*.bak
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+/backups/
+/exports/
+/storage/app/private/**
+
+# Transient AI execution prompts are never canonical project documentation
+/PROMPT-*.md
+/CODEX-PROMPT-*.md
+/CLAUDE*PROMPT*.md
+/GEMINI*PROMPT*.md

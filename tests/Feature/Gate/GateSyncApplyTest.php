@@ -38,7 +38,7 @@ test('apply sync deactivates user without deleting Person or Patient records', f
     $dto = new GateUserDTO(
         gateUserId: 'GATE-DEACT-001',
         name: 'Santri Keluar',
-        email: 'keluar@sabira.id',
+        email: 'keluar@sabira.test',
         userType: 'santri',
         sourceStatus: 'active'
     );
@@ -55,7 +55,7 @@ test('apply sync deactivates user without deleting Person or Patient records', f
     $deactivatedDto = new GateUserDTO(
         gateUserId: 'GATE-DEACT-001',
         name: 'Santri Keluar',
-        email: 'keluar@sabira.id',
+        email: 'keluar@sabira.test',
         userType: 'santri',
         sourceStatus: 'deactivated'
     );

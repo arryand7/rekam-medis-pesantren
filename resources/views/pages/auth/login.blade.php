@@ -63,7 +63,7 @@
                                required
                                autofocus
                                autocomplete="username"
-                               placeholder="nama@sabira.id atau username"
+                               placeholder="nama@sabira.test atau username"
                                class="block w-full pl-10 pr-3.5 py-2.5 bg-slate-50 dark:bg-slate-900/70 border @error('login') border-rose-500 focus:ring-rose-500 focus:border-rose-500 @else border-slate-300 dark:border-slate-700 focus:ring-sky-500 focus:border-sky-500 @enderror rounded-xl text-sm text-slate-900 dark:text-white placeholder-slate-400 transition-colors duration-150 focus:outline-none focus:ring-2">
                     </div>
                     @error('login')
