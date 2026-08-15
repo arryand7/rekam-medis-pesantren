@@ -180,7 +180,14 @@ class IntegrationOutboxService
             } catch (Throwable $e) {
                 $latencyMs = (int) round((microtime(true) - $startTime) * 1000);
 
-                return $this->handleFailure($event, $attemptNumber, $startedAt, $latencyMs, $e->getMessage(), 500);
+                return $this->handleFailure(
+                    $event,
+                    $attemptNumber,
+                    $startedAt,
+                    $latencyMs,
+                    'Integration transport exception ('.$e::class.').',
+                    500
+                );
             }
         });
     }

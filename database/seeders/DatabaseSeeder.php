@@ -126,6 +126,33 @@ class DatabaseSeeder extends Seeder
             'cancel-referrals' => 'Batalkan Rujukan Medis',
             'download-referral-documents' => 'Unduh Surat & Berkas Rujukan',
 
+            // Phase 3C Permissions (Discharge, Handoff, Activity Restriction, Follow Up)
+            'view-discharges' => 'Lihat Kepulangan Medis',
+            'create-discharges' => 'Pencatatan Kepulangan Medis',
+            'finalize-discharges' => 'Finalisasi Resume Kepulangan',
+            'download-discharge-documents' => 'Unduh Resume Medis & Instruksi',
+            'view-operational-handoffs' => 'Lihat Handoff Asrama',
+            'prepare-operational-handoffs' => 'Buat Lembar Handoff Asrama',
+            'acknowledge-operational-handoffs' => 'Konfirmasi Penerimaan Handoff',
+            'view-activity-restrictions' => 'Lihat Pembatasan Aktivitas',
+            'manage-activity-restrictions' => 'Kelola Pembatasan Aktivitas Santri',
+            'view-follow-up-plans' => 'Lihat Rencana Kontrol',
+            'create-follow-up-plans' => 'Buat Rencana Kontrol Baru',
+            'complete-follow-up-plans' => 'Penyelesaian Jadwal Kontrol',
+            'cancel-follow-up-plans' => 'Batalkan Jadwal Kontrol',
+
+            // Phase 4 Permissions (Notification & Integration Outbox)
+            'view-operational-notifications' => 'Lihat Notifikasi Operasional',
+            'prepare-operational-notifications' => 'Buat Notifikasi Operasional',
+            'acknowledge-operational-notifications' => 'Konfirmasi Notifikasi Asrama',
+            'view-attendance-integration-settings' => 'Lihat Integrasi Presensi',
+            'manage-attendance-integration-settings' => 'Kelola Pengaturan Presensi',
+            'view-integration-outbox' => 'Lihat Outbox Integrasi Event',
+            'replay-integration-outbox' => 'Kirim Ulang Event Integrasi',
+            'manage-identity-mappings' => 'Kelola Pemetaan Identitas Santri',
+            'execute-gate-sync-apply' => 'Eksekusi Sinkronisasi Gate',
+            'view-gate-reconciliation' => 'Lihat Laporan Rekonsiliasi Gate',
+
             // Phase 5C Dashboard & Reporting Permissions
             'view-clinical-dashboard' => 'Lihat Dashboard Klinis Poskestren',
             'view-operational-dashboard' => 'Lihat Dashboard Operasional Asrama',
@@ -145,14 +172,23 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // 1. Role Admin Poskestren
+        // 1. Role Super Admin (Full Universal Access)
+        $superAdminRole = Role::firstOrCreate([
+            'name' => 'super_admin',
+        ], [
+            'display_name' => 'Super Administrator',
+            'description' => 'Akses penuh dan wewenang mutlak atas seluruh modul dan konfigurasi sistem POSKESTREN',
+        ]);
+        $superAdminRole->permissions()->syncWithoutDetaching(array_values(array_map(fn ($p) => $p->id, $createdPermissions)));
+
+        // 2. Role Admin Poskestren (Delegated Administration)
         $adminRole = Role::firstOrCreate([
             'name' => 'admin',
         ], [
             'display_name' => 'Administrator POSKESTREN',
-            'description' => 'Pengelola sistem identitas, pengguna, dan konfigurasi integrasi Gate SSO',
+            'description' => 'Pengelola sistem identitas, pengguna, peran, dan konfigurasi integrasi Gate SSO',
         ]);
-        $adminRole->permissions()->sync([
+        $adminRole->permissions()->syncWithoutDetaching([
             $createdPermissions['manage-users']->id,
             $createdPermissions['manage-roles']->id,
             $createdPermissions['manage-permissions']->id,
@@ -163,18 +199,83 @@ class DatabaseSeeder extends Seeder
             $createdPermissions['view-audit-log']->id,
             $createdPermissions['manage-system-settings']->id,
             $createdPermissions['manage-healthcare-partners']->id,
+            $createdPermissions['view-healthcare-partners']->id,
+            $createdPermissions['view-management-dashboard']->id,
+            $createdPermissions['view-health-reports']->id,
+            $createdPermissions['export-health-reports']->id,
         ]);
 
-        // 2. Role Petugas Kesehatan & Farmasi (Medical & Pharmacy Staff)
+        // 3. Role Petugas Kesehatan (Clinical & Medical Staff)
         $medicalRole = Role::firstOrCreate([
             'name' => 'petugas_kesehatan',
         ], [
             'display_name' => 'Tim Kesehatan POSKESTREN',
-            'description' => 'Tenaga medis/kesehatan dan farmasi yang melayani santri dan warga di Poskestren',
+            'description' => 'Dokter dan perawat yang melayani pendaftaran, pengkajian klinis, observasi, konsultasi, dan rujukan santri',
         ]);
-        $medicalRole->permissions()->sync(array_values(array_map(fn ($p) => $p->id, array_diff_key($createdPermissions, array_flip([
-            'manage-users', 'manage-roles', 'manage-permissions', 'manage-gate-sync', 'resolve-identity-conflicts', 'manage-system-settings',
-        ])))));
+        $medicalExcluded = [
+            'manage-users', 'manage-roles', 'manage-permissions', 'view-people',
+            'manage-gate-sync', 'view-gate-sync', 'resolve-identity-conflicts',
+            'manage-system-settings', 'view-audit-log', 'manage-healthcare-partners',
+            'view-management-dashboard', 'view-operational-dashboard',
+        ];
+        $medicalRole->permissions()->syncWithoutDetaching(array_values(array_map(fn ($p) => $p->id, array_diff_key($createdPermissions, array_flip($medicalExcluded)))));
+
+        // 4. Role Farmasi / Apoteker
+        $pharmacyRole = Role::firstOrCreate([
+            'name' => 'farmasi',
+        ], [
+            'display_name' => 'Apoteker & Petugas Farmasi',
+            'description' => 'Pengelola stok inventaris obat, penerimaan batch, mutasi, dan dispensing obat',
+        ]);
+        $pharmacyPermKeys = [
+            'view-pharmacy-dashboard', 'view-pharmacy-inventory', 'manage-medicine-master', 'receive-medicine-stock',
+            'adjust-medicine-stock', 'reverse-stock-movements', 'transfer-medicine-stock', 'view-stock-movements',
+            'view-stock-reconciliation', 'manage-stock-locations', 'view-medication-orders', 'create-medication-orders',
+            'activate-medication-orders', 'revise-medication-orders', 'discontinue-medication-orders',
+            'view-medication-administrations', 'schedule-medication-administrations', 'administer-medications',
+            'administer-one-time-medication', 'hold-medications', 'record-medication-refusal',
+            'record-missed-medication', 'correct-medication-administrations', 'view-health-reports', 'export-health-reports',
+        ];
+        $pharmacyPermIds = [];
+        foreach ($pharmacyPermKeys as $key) {
+            if (isset($createdPermissions[$key])) {
+                $pharmacyPermIds[] = $createdPermissions[$key]->id;
+            }
+        }
+        $pharmacyRole->permissions()->syncWithoutDetaching($pharmacyPermIds);
+
+        // 5. Role Pengasuh Asrama (Operational)
+        $operationalRole = Role::firstOrCreate([
+            'name' => 'pengasuh_asrama',
+        ], [
+            'display_name' => 'Pengasuh Asrama / Staf Operasional',
+            'description' => 'Menerima instruksi pemantauan santri pasca rawat dan pembatasan aktivitas fisik',
+        ]);
+        $operationalPermKeys = [
+            'view-operational-dashboard', 'view-operational-handoffs', 'prepare-operational-handoffs',
+            'acknowledge-operational-handoffs', 'view-operational-notifications', 'prepare-operational-notifications',
+            'acknowledge-operational-notifications',
+        ];
+        $operationalPermIds = [];
+        foreach ($operationalPermKeys as $key) {
+            if (isset($createdPermissions[$key])) {
+                $operationalPermIds[] = $createdPermissions[$key]->id;
+            }
+        }
+        $operationalRole->permissions()->syncWithoutDetaching($operationalPermIds);
+
+        // 6. Role Manajemen Eksekutif (Management)
+        $managementRole = Role::firstOrCreate([
+            'name' => 'manajemen',
+        ], [
+            'display_name' => 'Manajemen & Pimpinan Pesantren',
+            'description' => 'Melihat statistik agregat pelayanan kesehatan santri dan laporan eksekutif',
+        ]);
+        $managementRole->permissions()->syncWithoutDetaching([
+            $createdPermissions['view-management-dashboard']->id,
+            $createdPermissions['view-health-reports']->id,
+            $createdPermissions['export-health-reports']->id,
+        ]);
 
         // Default Stock Location
         StockLocation::firstOrCreate([
@@ -184,6 +285,12 @@ class DatabaseSeeder extends Seeder
             'description' => 'Gudang & penyimpanan utama obat-obatan Poskestren',
             'is_active' => true,
         ]);
+
+        // Synthetic identities, credentials, partner contacts, and clinical
+        // fixtures must never be created implicitly in staging/production.
+        if (! config('app.seed_demo_data', false)) {
+            return;
+        }
 
         // Default Healthcare Partner Facility
         $partner = HealthcarePartner::firstOrCreate([
@@ -215,39 +322,48 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Create Seed Person & Admin User
-        $adminPerson = Person::factory()->create([
-            'name' => 'Admin Utama Poskestren',
-            'user_type' => 'admin',
-            'email' => 'admin@poskestren.sabira.test',
-        ]);
+        $adminPerson = Person::firstOrCreate(
+            ['email' => 'admin@poskestren.sabira.test'],
+            [
+                'name' => 'Admin Utama Poskestren',
+                'user_type' => 'admin',
+            ]
+        );
 
-        $patient = Patient::factory()->create([
-            'person_id' => $adminPerson->id,
-            'is_eligible' => true,
-        ]);
+        $patient = Patient::createOrFindForPerson($adminPerson, ['is_eligible' => true]);
 
-        PatientHealthProfile::create([
-            'patient_id' => $patient->id,
-            'blood_type' => 'O+',
-            'emergency_notes' => 'Tidak ada penyakit kronis bawaan.',
-        ]);
+        PatientHealthProfile::firstOrCreate(
+            ['patient_id' => $patient->id],
+            [
+                'blood_type' => 'O+',
+                'emergency_notes' => 'Tidak ada penyakit kronis bawaan.',
+            ]
+        );
 
-        PatientAllergy::create([
-            'patient_id' => $patient->id,
-            'allergen' => 'Penicillin',
-            'reaction' => 'Ruam kulit & gatal',
-            'severity' => 'moderate',
-            'clinical_status' => 'active',
-            'verification_status' => 'confirmed',
-            'notes' => 'Tercatat dari riwayat masa lalu',
-        ]);
+        PatientAllergy::firstOrCreate(
+            [
+                'patient_id' => $patient->id,
+                'allergen' => 'Penicillin',
+            ],
+            [
+                'reaction' => 'Ruam kulit & gatal',
+                'severity' => 'moderate',
+                'clinical_status' => 'active',
+                'verification_status' => 'confirmed',
+                'notes' => 'Tercatat dari riwayat masa lalu',
+            ]
+        );
 
-        PatientMedicalCondition::create([
-            'patient_id' => $patient->id,
-            'condition_name' => 'Asma Bronkial',
-            'status' => 'active',
-            'notes' => 'Kambuh bila dingin ekstrem',
-        ]);
+        PatientMedicalCondition::firstOrCreate(
+            [
+                'patient_id' => $patient->id,
+                'condition_name' => 'Asma Bronkial',
+            ],
+            [
+                'status' => 'active',
+                'notes' => 'Kambuh bila dingin ekstrem',
+            ]
+        );
 
         $adminUser = User::firstOrCreate(
             ['email' => 'admin@poskestren.sabira.test'],
@@ -258,7 +374,7 @@ class DatabaseSeeder extends Seeder
                 'is_active' => true,
             ]
         );
-        $adminUser->roles()->syncWithoutDetaching([$adminRole->id]);
+        $adminUser->roles()->syncWithoutDetaching([$adminRole->id, $superAdminRole->id]);
 
         // Create Doctor/Nurse User
         $doctorPerson = Person::firstOrCreate(
@@ -278,5 +394,62 @@ class DatabaseSeeder extends Seeder
             ]
         );
         $doctorUser->roles()->syncWithoutDetaching([$medicalRole->id]);
+
+        // Create Pharmacy User
+        $pharmacyPerson = Person::firstOrCreate(
+            ['email' => 'apoteker@sabira.test'],
+            [
+                'name' => 'Ahmad Apoteker, S.Farm',
+                'user_type' => 'petugas_kesehatan',
+            ]
+        );
+        $pharmacyUser = User::firstOrCreate(
+            ['email' => 'apoteker@sabira.test'],
+            [
+                'person_id' => $pharmacyPerson->id,
+                'name' => $pharmacyPerson->name,
+                'password' => bcrypt('password'),
+                'is_active' => true,
+            ]
+        );
+        $pharmacyUser->roles()->syncWithoutDetaching([$pharmacyRole->id]);
+
+        // Create Operational / Asrama User
+        $musyrifPerson = Person::firstOrCreate(
+            ['email' => 'musyrif@sabira.test'],
+            [
+                'name' => 'Ustadz Abdullah (Musyrif Asrama)',
+                'user_type' => 'pengasuh_asrama',
+            ]
+        );
+        $musyrifUser = User::firstOrCreate(
+            ['email' => 'musyrif@sabira.test'],
+            [
+                'person_id' => $musyrifPerson->id,
+                'name' => $musyrifPerson->name,
+                'password' => bcrypt('password'),
+                'is_active' => true,
+            ]
+        );
+        $musyrifUser->roles()->syncWithoutDetaching([$operationalRole->id]);
+
+        // Create Management User
+        $managementPerson = Person::firstOrCreate(
+            ['email' => 'pimpinan@sabira.test'],
+            [
+                'name' => 'Kyai Pengasuh Pesantren',
+                'user_type' => 'manajemen',
+            ]
+        );
+        $managementUser = User::firstOrCreate(
+            ['email' => 'pimpinan@sabira.test'],
+            [
+                'person_id' => $managementPerson->id,
+                'name' => $managementPerson->name,
+                'password' => bcrypt('password'),
+                'is_active' => true,
+            ]
+        );
+        $managementUser->roles()->syncWithoutDetaching([$managementRole->id]);
     }
 }

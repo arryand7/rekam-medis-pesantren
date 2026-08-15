@@ -12,7 +12,7 @@ Dokumen ini mencatat hasil pemeriksaan *read-only* pada awal eksekusi **Phase 0*
 
 ## 1. Environment & Runtime Tools
 
-- **Current Working Directory**: `/Users/ryand/Documents/LARAVEL/sabira/rekam-medis-ponpes`
+- **Current Working Directory**: repository root pada workstation lokal (path mesin tidak disimpan)
 - **PHP Version**: `8.4.1` (Memenuhi standar minimum PHP 8.3+)
 - **Composer Version**: `2.8.12`
 - **Node.js Version**: `v24.4.1`

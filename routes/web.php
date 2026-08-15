@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\GateOidcAuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Discharge\ActivityRestrictionController;
@@ -58,9 +60,9 @@ Route::get('/health', HealthController::class)->name('health');
 Route::get('/health/ready', [HealthController::class, 'ready'])->name('health.ready');
 
 // Gate SSO & Direct Authentication Routes (Public access points for authentication flow)
-Route::get('/login', [GateOidcAuthController::class, 'login'])->name('login');
+Route::get('/login', [GateOidcAuthController::class, 'login'])->middleware('throttle:60,1')->name('login');
 Route::post('/login', [GateOidcAuthController::class, 'authenticate'])->name('login.attempt');
-Route::get('/auth/gate/callback', [GateOidcAuthController::class, 'callback'])->name('auth.gate.callback');
+Route::get('/auth/gate/callback', [GateOidcAuthController::class, 'callback'])->middleware('throttle:30,1')->name('auth.gate.callback');
 Route::get('/auth/gate/access-denied', [GateOidcAuthController::class, 'accessDenied'])->name('auth.gate.access_denied');
 Route::post('/logout', [GateOidcAuthController::class, 'logout'])->name('logout');
 
@@ -110,20 +112,21 @@ Route::middleware('auth')->group(function () {
         return view('pages.patients.show', compact('patient'));
     })->name('patients.show');
 
-    Route::get('/users', function () {
-        Gate::authorize('manage-users');
-        $users = User::with(['person', 'roles'])->latest()->paginate(15);
+    // User Administration & RBAC Routes
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+    Route::post('/users/{id}/roles', [UserController::class, 'updateRoles'])->name('users.roles.update');
+    Route::post('/users/{id}/permissions', [UserController::class, 'updateDirectPermissions'])->name('users.permissions.update');
+    Route::post('/users/{id}/toggle-status', [UserController::class, 'toggleStatus'])->name('users.toggle-status');
 
-        return view('pages.users.index', compact('users'));
-    })->name('users.index');
-
-    Route::get('/roles', function () {
-        Gate::authorize('manage-roles');
-        $roles = Role::with('permissions')->get();
-        $permissions = Permission::all();
-
-        return view('pages.roles.index', compact('roles', 'permissions'));
-    })->name('roles.index');
+    // Role & Permission Matrix Administration Routes
+    Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
+    Route::get('/roles/create', [RoleController::class, 'create'])->name('roles.create');
+    Route::post('/roles', [RoleController::class, 'store'])->name('roles.store');
+    Route::get('/roles/{id}', [RoleController::class, 'show'])->name('roles.show');
+    Route::get('/roles/{id}/edit', [RoleController::class, 'edit'])->name('roles.edit');
+    Route::put('/roles/{id}', [RoleController::class, 'update'])->name('roles.update');
+    Route::delete('/roles/{id}', [RoleController::class, 'destroy'])->name('roles.destroy');
 
     Route::get('/gate-sync/preview', function (Request $request, GateSyncDryRunService $dryRunService) {
         Gate::authorize('view-gate-sync');
@@ -799,13 +802,13 @@ Route::middleware('auth')->group(function () {
     // Phase 3C2 & 5C Health Reports & Secure Export
     Route::get('/reports', [HealthReportController::class, 'index'])->name('reports.index');
     Route::get('/reports/view', [HealthReportController::class, 'show'])->name('reports.show');
-    Route::get('/reports/export', [HealthReportController::class, 'export'])->name('reports.export');
+    Route::get('/reports/export', [HealthReportController::class, 'export'])->middleware('throttle:10,1')->name('reports.export');
 
     // Phase 4A Gate User Synchronization & Reconciliation
     Route::prefix('gate')->name('gate.')->group(function () {
         Route::get('/sync', [GateSyncController::class, 'index'])->name('sync.index');
         Route::get('/sync/dry-run', [GateSyncController::class, 'dryRun'])->name('sync.dry_run');
-        Route::post('/sync/apply', [GateSyncController::class, 'apply'])->name('sync.apply');
+        Route::post('/sync/apply', [GateSyncController::class, 'apply'])->middleware('throttle:10,1')->name('sync.apply');
         Route::get('/sync/runs/{run}', [GateSyncController::class, 'showRun'])->name('sync.show');
 
         Route::get('/reconciliation', [GateReconciliationController::class, 'index'])->name('reconciliation.index');

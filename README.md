@@ -3,7 +3,7 @@ id: DOC-ROOT-README
 title: "SABIRA POSKESTREN Health"
 status: active
 owner: "Tim Pengembang POSKESTREN"
-last_updated: 2026-08-05
+last_updated: 2026-08-15
 ---
 
 # SABIRA POSKESTREN Health
@@ -36,7 +36,7 @@ Seluruh santri tinggal di asrama. Santri yang diketahui sakit tidak diperbolehka
 
 ## Status
 
-Proyek berada pada tahap dokumentasi dan readiness review. Belum ada keputusan final mengenai SOP medis, kewenangan klinis setiap petugas, dan kontrak integrasi eksternal.
+Proyek berada pada local pre-staging readiness dengan klasifikasi `PHASE-5D-PRE-STAGING-READY-WITH-MANUAL-ITEMS`. Aplikasi belum pernah dideploy ke staging/production; Gate, Attendance, TLS/proxy dan browser acceptance nyata masih menunggu verifikasi environment. Belum ada keputusan final mengenai SOP medis yang ditandai perlu konfirmasi.
 
 ## Mulai membaca
 

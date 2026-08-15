@@ -67,8 +67,8 @@ class HttpGateOidcClient implements GateOidcClientContract
 
             return GateOidcTokenResponseDTO::fromArray($data);
         } catch (Throwable $e) {
-            Log::error('Gate token exchange exception', ['message' => $e->getMessage()]);
-            throw new RuntimeException('Tidak dapat menghubungi server Gate: '.$e->getMessage(), 0, $e);
+            Log::error('Gate token exchange exception', ['exception_class' => $e::class]);
+            throw new RuntimeException('Tidak dapat menghubungi server Gate.', 0, $e);
         }
     }
 
@@ -91,8 +91,8 @@ class HttpGateOidcClient implements GateOidcClientContract
 
             return GateUserInfoDTO::fromArray($data);
         } catch (Throwable $e) {
-            Log::error('Gate userinfo fetch exception', ['message' => $e->getMessage()]);
-            throw new RuntimeException('Gagal memproses UserInfo Gate: '.$e->getMessage(), 0, $e);
+            Log::error('Gate userinfo fetch exception', ['exception_class' => $e::class]);
+            throw new RuntimeException('Gagal memproses UserInfo Gate.', 0, $e);
         }
     }
 
@@ -121,7 +121,7 @@ class HttpGateOidcClient implements GateOidcClientContract
 
             return GateApplicationEntitlementDTO::fromArray($response->json());
         } catch (Throwable $e) {
-            Log::error('Gate entitlement check exception', ['message' => $e->getMessage()]);
+            Log::error('Gate entitlement check exception', ['exception_class' => $e::class]);
 
             return new GateApplicationEntitlementDTO(
                 gateUserId: $gateUserId,
@@ -159,12 +159,12 @@ class HttpGateOidcClient implements GateOidcClientContract
                 'reachable' => $response->successful(),
                 'message' => $response->successful() ? 'Gate OIDC Server online.' : 'Gate Server HTTP '.$response->status(),
             ];
-        } catch (Throwable $e) {
+        } catch (Throwable) {
             return [
                 'driver' => 'http',
                 'enabled' => config('gate.sso_enabled', false),
                 'reachable' => false,
-                'message' => 'Gate Server unreachable: '.$e->getMessage(),
+                'message' => 'Gate Server unreachable.',
             ];
         }
     }

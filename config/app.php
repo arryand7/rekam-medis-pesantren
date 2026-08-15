@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'version' => env('APP_VERSION', '0.23.0'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -83,6 +85,18 @@ return [
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'id'),
 
     'faker_locale' => env('APP_FAKER_LOCALE', 'id_ID'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Synthetic Demo Data
+    |--------------------------------------------------------------------------
+    |
+    | Demo users and clinical fixtures are unsafe for shared environments and
+    | therefore require an explicit opt-in. PHPUnit enables this independently.
+    |
+    */
+
+    'seed_demo_data' => (bool) env('SEED_DEMO_DATA', false),
 
     /*
     |--------------------------------------------------------------------------

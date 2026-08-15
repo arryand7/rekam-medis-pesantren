@@ -25,7 +25,7 @@ Laporan ini menandai penyelesaian resmi **Phase 5A: Documentation Truth Normaliz
 ## 2. Pencapaian Utama Phase 5A
 
 1. **Normalisasi Kebenaran Lingkungan (*Truth Normalization*)**:
-   - Menerbitkan dokumen resmi [`ENVIRONMENT-TRUTH-CORRECTION.md`](file:///Users/ryand/Documents/LARAVEL/sabira/rekam-medis-ponpes/docs/10-delivery/ENVIRONMENT-TRUTH-CORRECTION.md).
+   - Menerbitkan dokumen resmi [`ENVIRONMENT-TRUTH-CORRECTION.md`](ENVIRONMENT-TRUTH-CORRECTION.md).
    - Menyelaraskan seluruh klaim dokumen historis menjadi *pre-production rehearsal / operational readiness validation*.
    - Menambahkan catatan kejelasan lingkungan pada `CHANGELOG.md` dan memperbarui status kanonikal di `PROJECT-STATUS.md`.
 2. **Penyempurnaan Autentikasi Hybrid (v0.19.2)**:
@@ -33,10 +33,10 @@ Laporan ini menandai penyelesaian resmi **Phase 5A: Documentation Truth Normaliz
    - Opsi terintegrasi ke SABIRA Gate SSO.
    - Perlindungan *rate limiting*, *password hashing verification*, dan audit trail `local_login`.
 3. **Inventaris Antarmuka & Kontinuitas Alur Kerja**:
-   - Memetakan 117 rute aplikasi pada [`PHASE-5A-ROUTE-AND-SCREEN-INVENTORY.md`](file:///Users/ryand/Documents/LARAVEL/sabira/rekam-medis-ponpes/docs/05-ui/PHASE-5A-ROUTE-AND-SCREEN-INVENTORY.md).
-   - Mendefinisikan matriks visibilitas menu navigasi per peran di [`PHASE-5A-ROLE-NAVIGATION-MATRIX.md`](file:///Users/ryand/Documents/LARAVEL/sabira/rekam-medis-ponpes/docs/05-ui/PHASE-5A-ROLE-NAVIGATION-MATRIX.md).
-   - Menyusun arsitektur alur kerja klinis terpadu pada [`PHASE-5A-VISIT-WORKSPACE.md`](file:///Users/ryand/Documents/LARAVEL/sabira/rekam-medis-ponpes/docs/05-ui/PHASE-5A-VISIT-WORKSPACE.md).
-   - Mengaudit kepatuhan aksesibilitas dan responsivitas pada [`PHASE-5A-RESPONSIVE-ACCESSIBILITY-AUDIT.md`](file:///Users/ryand/Documents/LARAVEL/sabira/rekam-medis-ponpes/docs/05-ui/PHASE-5A-RESPONSIVE-ACCESSIBILITY-AUDIT.md).
+   - Memetakan 117 rute aplikasi pada [`PHASE-5A-ROUTE-AND-SCREEN-INVENTORY.md`](../05-ui/PHASE-5A-ROUTE-AND-SCREEN-INVENTORY.md).
+   - Mendefinisikan matriks visibilitas menu navigasi per peran di [`PHASE-5A-ROLE-NAVIGATION-MATRIX.md`](../05-ui/PHASE-5A-ROLE-NAVIGATION-MATRIX.md).
+   - Menyusun arsitektur alur kerja klinis terpadu pada [`PHASE-5A-VISIT-WORKSPACE.md`](../05-ui/PHASE-5A-VISIT-WORKSPACE.md).
+   - Mengaudit kepatuhan aksesibilitas dan responsivitas pada [`PHASE-5A-RESPONSIVE-ACCESSIBILITY-AUDIT.md`](../05-ui/PHASE-5A-RESPONSIVE-ACCESSIBILITY-AUDIT.md).
 4. **Jaminan Kualitas Otomatis (*Quality Gate*)**:
    - 205 test cases dengan 821 assertions lulus 100%.
    - PHPStan Level 5 lulus dengan 0 errors.

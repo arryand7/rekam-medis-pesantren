@@ -18,7 +18,7 @@ STABILIZATION_START_AT      = 2026-08-10 21:53:58 +0700
 ELAPSED_HOURS               = 24.45 Jam (T+6h Eligible sejak 2026-08-11 03:53:58 WIB)
 
 HOST_OS                     = Darwin Kernel Version 25.5.0 arm64 (macOS Workstation)
-WORKSPACE_PATH              = /Users/ryand/Documents/LARAVEL/sabira/rekam-medis-ponpes
+WORKSPACE_PATH              = [LOCAL_WORKSPACE_REDACTED]
 LOCAL_RUNTIME               = PHP 8.4.1 (cli / built-in server)
 LOCAL_DATABASE              = MariaDB 10.4.28 (127.0.0.1:8186)
 TARGET_PROD_HOSTNAME        = https://poskestren.sabira.id (DOMAIN_NOT_REACHABLE dari workstation lokal)

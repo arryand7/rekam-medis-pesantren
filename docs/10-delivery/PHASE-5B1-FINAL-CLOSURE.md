@@ -24,7 +24,7 @@ Phase 5B1 merupakan tahap penutupan dan verifikasi menyeluruh setelah Phase 5B C
 - 223 tests dari Phase 5B ditetapkan sebagai target minimal
 
 ### Stage B: Test Database Portability (SELESAI)
-- `phpunit.xml` dibersihkan dari path developer-spesifik `/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock`
+- `phpunit.xml` dibersihkan dari path socket developer-spesifik.
 - Restored ke standar portabel: `127.0.0.1:3306`, `DB_CONNECTION=mysql`
 - Runtime injection via `DB_SOCKET=...` env variable didokumentasikan
 - Dokumen: `docs/09-testing/TEST-DATABASE-PORTABILITY.md`

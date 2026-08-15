@@ -50,8 +50,8 @@ class HttpGateClient implements GateClientContract
                 'total_items' => (int) ($json['total_items'] ?? count($dtos)),
             ];
         } catch (Throwable $e) {
-            Log::error('Gate fetchUsers exception', ['message' => $e->getMessage()]);
-            throw new RuntimeException('Koneksi sinkronisasi Gate terganggu: '.$e->getMessage(), 0, $e);
+            Log::error('Gate fetchUsers exception', ['exception_class' => $e::class]);
+            throw new RuntimeException('Koneksi sinkronisasi Gate terganggu.', 0, $e);
         }
     }
 
@@ -80,7 +80,7 @@ class HttpGateClient implements GateClientContract
 
             return GateUserDTO::fromArray($response->json());
         } catch (Throwable $e) {
-            Log::error('Gate fetchUserById exception', ['message' => $e->getMessage()]);
+            Log::error('Gate fetchUserById exception', ['exception_class' => $e::class]);
 
             return null;
         }

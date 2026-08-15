@@ -11,19 +11,40 @@ class Role extends Model
 {
     use HasFactory, HasUlids;
 
+    public const PROTECTED_ROLES = [
+        'super_admin',
+        'admin',
+    ];
+
     protected $fillable = [
         'name',
         'display_name',
         'description',
     ];
 
+    /**
+     * @return BelongsToMany<Permission, $this>
+     */
     public function permissions(): BelongsToMany
     {
         return $this->belongsToMany(Permission::class, 'role_has_permissions', 'role_id', 'permission_id');
     }
 
+    /**
+     * @return BelongsToMany<User, $this>
+     */
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'model_has_roles', 'role_id', 'model_id');
+    }
+
+    public function isProtected(): bool
+    {
+        return in_array($this->name, self::PROTECTED_ROLES, true);
+    }
+
+    public function hasPermission(string $permissionName): bool
+    {
+        return $this->permissions()->where('name', $permissionName)->exists();
     }
 }

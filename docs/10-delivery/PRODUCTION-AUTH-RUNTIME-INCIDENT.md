@@ -51,4 +51,4 @@ Sebelum perbaikan dilakukan, uji curl tanpa header cookie menunjukkan perilaku b
    - Mengalihkan pimpinan ke `dashboards.management`.
    - Mengalihkan admin teknis ke `dashboard` admin tanpa hak akses klinis otomatis.
 4. **Penambahan Automated Regression Test Suite**:
-   - Dibuat test suite baru [`AuthenticationRuntimeAuditAndProtectionTest.php`](file:///Users/ryand/Documents/LARAVEL/sabira/rekam-medis-ponpes/tests/Feature/Auth/AuthenticationRuntimeAuditAndProtectionTest.php) (15 tests baru, 72 assertions) yang memverifikasi guest redirection, role-aware routing, privilege isolation, entitlement rejection, dan invalidasi sesi saat logout.
+   - Dibuat test suite baru [`AuthenticationRuntimeAuditAndProtectionTest.php`](../../tests/Feature/Auth/AuthenticationRuntimeAuditAndProtectionTest.php) (15 tests baru, 72 assertions) yang memverifikasi guest redirection, role-aware routing, privilege isolation, entitlement rejection, dan invalidasi sesi saat logout.

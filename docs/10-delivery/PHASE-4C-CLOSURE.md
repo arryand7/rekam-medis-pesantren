@@ -49,4 +49,4 @@ Berdasarkan aturan tata kelola Phase 4C Section 34:
 ## 5. Rekomendasi Selanjutnya
 
 Repositori berada dalam status **PRODUCTION-READY-NOT-CUTOVER**.
-Operator/DevOps dapat menjalankan eksekusi cutover produksi mengikuti panduan di [`PHASE-4C-DEPLOYMENT-RUNBOOK.md`](file:///Users/ryand/Documents/LARAVEL/sabira/rekam-medis-ponpes/docs/10-delivery/PHASE-4C-DEPLOYMENT-RUNBOOK.md).
+Operator/DevOps dapat menjalankan eksekusi cutover produksi mengikuti panduan di [`PHASE-4C-DEPLOYMENT-RUNBOOK.md`](PHASE-4C-DEPLOYMENT-RUNBOOK.md).

@@ -33,7 +33,9 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app/private'),
-            'serve' => true,
+            // Private-by-default. Medical files are streamed only by authorized
+            // controllers on their dedicated disks below.
+            'serve' => false,
             'throw' => false,
             'report' => false,
         ],

@@ -28,7 +28,7 @@ test('Step 1 & 2 — Core application liveness and readiness probes pass with ze
     $this->get('/health')->assertOk()
         ->assertJson([
             'status' => 'ok',
-            'version' => '1.0.0',
+            'version' => config('app.version'),
         ]);
 
     $ready = $this->get('/health/ready')->assertOk();

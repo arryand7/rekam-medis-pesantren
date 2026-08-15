@@ -3,14 +3,23 @@ id: DOC-PROJECT-STATUS
 title: "Status Proyek"
 status: active
 owner: "Ryand Arifriantoni"
-last_updated: 2026-08-14
+last_updated: 2026-08-15
 ---
 
 # Status Proyek
 
 ## Fase saat ini
 
-**Phase 5C2 Complete — Pharmacy Reporting Semantics & Final Micro-Closure** (Status: `PHASE-5C-FINAL-COMPLETE` / v0.21.2)
+**Phase 5D Complete — Pre-Staging Acceptance & Deployment Readiness** (Status: `PHASE-5D-PRE-STAGING-READY-WITH-MANUAL-ITEMS` / v0.23.0)
+
+## Perubahan & Temuan di Phase 5D
+
+- [x] Entry/final quality gate, dependency advisory audit, cache rehearsal dan migration rehearsal pada database terisolasi.
+- [x] RBAC administration Phase 5D0 dengan protected core roles, direct permission exception, anti-escalation dan audit trail.
+- [x] Seeder aman untuk staging: data demo opt-in dan baseline permission non-destruktif.
+- [x] Outbox command + scheduler, log/privacy redaction, private-by-default storage dan trusted proxy configuration.
+- [x] Backup/restore lokal terisolasi dan first-staging deployment/rollback/security runbooks.
+- [ ] Browser smoke, nilai Gate/Attendance nyata, TLS/proxy CIDR dan server topology harus diverifikasi pada staging pertama.
 
 ## Perubahan & Temuan di Phase 5C2
 
@@ -49,12 +58,14 @@ last_updated: 2026-08-14
 - [x] **Phase 5C — Role-Aware Dashboards, Actionable Work Queues, Operational Reports & Streaming Export**: Selesai (`PHASE-5C-FINAL-COMPLETE`, v0.21.0).
 - [x] **Phase 5C1 — Reporting Correctness, Privacy Boundaries, Query Performance & Visual Closure**: Selesai (`PHASE-5C-FINAL-COMPLETE`, v0.21.1).
 - [x] **Phase 5C2 — Pharmacy Reporting Semantics & Final Micro-Closure**: Selesai (`PHASE-5C-FINAL-COMPLETE`, v0.21.2).
+- [x] **Phase 5D0 — RBAC Permission Administration Hardening**: Selesai (`PHASE-5D0-RBAC-COMPLETE`, digabung dalam v0.23.0).
+- [x] **Phase 5D — Pre-Staging Acceptance & Deployment Readiness**: Selesai bersyarat (`PHASE-5D-PRE-STAGING-READY-WITH-MANUAL-ITEMS`, v0.23.0).
 
 ## Current Environment & Readiness State
 
 ```text
 Application Development:          ACTIVE
-Current Functional Version:       0.21.2 (Phase 5C2 Pharmacy Reporting Semantics & Final Micro-Closure Complete)
+Current Functional Version:       0.23.0 (Phase 5D Pre-Staging Acceptance Complete with Manual Staging Items)
 Environment:                      LOCAL-DEVELOPMENT (macOS Developer Workstation)
 Deployment Status:                NOT_DEPLOYED (Belum pernah dideploy ke server fisik)
 Production Host Status:           NOT_STARTED
@@ -66,11 +77,11 @@ Attendance Sandbox Validation:    LOCAL_SIMULATION_VALIDATED
 
 ## Last verified
 
-- Tanggal: 2026-08-14
+- Tanggal: 2026-08-15
 - Database: MariaDB 10.4.28 (`poskestren_sabira`, InnoDB, REPEATABLE-READ)
-- Test Suite: 244 tests, 1043 assertions (100% Passed, 0 Skipped, 0 Failed)
+- Test Suite: 277 tests, 1218 assertions (100% Passed, 0 Skipped, 0 Failed)
 - Code Formatter: Pint Passed
 - Static Analysis: PHPStan Passed (0 errors)
-- Frontend: Vite Build Passed (651ms)
+- Frontend: Vite Build Passed
 - git diff --check: PASSED
-- Status Rilis: LOCAL DEVELOPMENT — PHASE-5C-FINAL-COMPLETE (v0.21.2)
+- Status Rilis: LOCAL PRE-STAGING — PHASE-5D-PRE-STAGING-READY-WITH-MANUAL-ITEMS (v0.23.0); no staging/production deployment

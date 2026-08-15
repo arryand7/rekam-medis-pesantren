@@ -19,7 +19,7 @@ class HealthController extends Controller
             'status' => 'ok',
             'app' => (string) config('app.name', 'SABIRA POSKESTREN Health'),
             'environment' => (string) config('app.env', 'production'),
-            'version' => '1.0.0',
+            'version' => (string) config('app.version', 'unknown'),
             'timestamp' => now()->toIso8601String(),
         ], 200);
     }

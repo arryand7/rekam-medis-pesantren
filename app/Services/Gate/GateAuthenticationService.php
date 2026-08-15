@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use RuntimeException;
+use Throwable;
 
 class GateAuthenticationService
 {
@@ -38,7 +39,7 @@ class GateAuthenticationService
             subjectType: 'Session',
             subjectId: null,
             before: null,
-            after: ['state' => $state],
+            after: ['state_created' => true],
             reason: 'Inisiasi login Gate SSO'
         );
 
@@ -81,7 +82,7 @@ class GateAuthenticationService
                 subjectType: 'Session',
                 subjectId: null,
                 before: null,
-                after: ['received_state' => $state],
+                after: ['state_validation' => 'mismatch'],
                 reason: 'State validation mismatch pada Gate callback (CSRF/replay risk)'
             );
 
@@ -111,7 +112,7 @@ class GateAuthenticationService
                 subjectType: 'Session',
                 subjectId: null,
                 before: null,
-                after: ['exception' => $e->getMessage()],
+                after: ['failure_type' => 'token_exchange'],
                 reason: 'Pertukaran token Gate gagal'
             );
 
@@ -123,16 +124,34 @@ class GateAuthenticationService
             ];
         }
 
-        // 2. Fetch UserInfo
-        $userInfo = $this->oidcClient->fetchUserInfo($tokenResponse->accessToken);
+        try {
+            // 2. Fetch UserInfo
+            $userInfo = $this->oidcClient->fetchUserInfo($tokenResponse->accessToken);
 
-        // 3. Enforce Application Entitlement
-        $appCode = config('gate.app_code', 'poskestren-health');
-        $entitlement = $this->oidcClient->fetchApplicationEntitlement(
-            $tokenResponse->accessToken,
-            $userInfo->gateUserId,
-            $appCode
-        );
+            // 3. Enforce Application Entitlement
+            $appCode = config('gate.app_code', 'poskestren-health');
+            $entitlement = $this->oidcClient->fetchApplicationEntitlement(
+                $tokenResponse->accessToken,
+                $userInfo->gateUserId,
+                $appCode
+            );
+        } catch (Throwable) {
+            AuditLogService::log(
+                action: 'gate_login.failed',
+                subjectType: 'Session',
+                subjectId: null,
+                before: null,
+                after: ['failure_type' => 'userinfo_or_entitlement'],
+                reason: 'Validasi identitas atau entitlement Gate gagal'
+            );
+
+            return [
+                'user' => null,
+                'entitlement' => null,
+                'status' => 'provider_validation_failed',
+                'message' => 'Gate tidak dapat memvalidasi identitas atau hak akses aplikasi.',
+            ];
+        }
 
         if (! $entitlement->isAllowed()) {
             AuditLogService::log(

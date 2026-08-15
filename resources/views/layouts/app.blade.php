@@ -116,10 +116,18 @@
                 </a>
 
                 {{-- Pelayanan Medis Section --}}
-                @canany(['view-medical-visits', 'view-patients', 'view-observations', 'view-referrals', 'view-discharges'])
+                @canany(['view-clinical-dashboard', 'view-medical-visits', 'view-patients', 'view-observations', 'view-referrals', 'view-discharges'])
                     <div class="pt-3 border-t border-[var(--border)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--foreground-muted)]">
                         Pelayanan Medis
                     </div>
+
+                    @can('view-clinical-dashboard')
+                        <a href="{{ route('dashboards.clinical') }}"
+                           class="flex items-center gap-3 px-3 py-2 text-xs font-medium rounded-xl transition-colors {{ request()->routeIs('dashboards.clinical') ? 'bg-[var(--primary)] text-white' : 'text-[var(--foreground-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]' }}">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            <span>Dashboard Klinis</span>
+                        </a>
+                    @endcan
 
                     @can('view-medical-visits')
                         <a href="{{ route('visits.index') }}"
@@ -163,7 +171,7 @@
                 @endcanany
 
                 {{-- Farmasi Section --}}
-                @canany(['manage-medicines', 'view-pharmacy-inventory', 'view-pharmacy-dashboard'])
+                @canany(['manage-medicines', 'manage-medicine-master', 'view-pharmacy-inventory', 'view-pharmacy-dashboard'])
                     <div class="pt-3 border-t border-[var(--border)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--foreground-muted)]">
                         Farmasi & Obat
                     </div>
@@ -176,13 +184,13 @@
                         </a>
                     @endcanany
 
-                    @can('manage-medicines')
+                    @canany(['manage-medicines', 'manage-medicine-master'])
                         <a href="{{ route('pharmacy.medicines.index') }}"
                            class="flex items-center gap-3 px-3 py-2 text-xs font-medium rounded-xl transition-colors {{ request()->routeIs('pharmacy.medicines.*') ? 'bg-[var(--primary)] text-white' : 'text-[var(--foreground-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]' }}">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                             <span>Master Data Obat</span>
                         </a>
-                    @endcan
+                    @endcanany
 
                     @can('view-pharmacy-inventory')
                         <a href="{{ route('pharmacy.inventory.index') }}"
@@ -194,10 +202,18 @@
                 @endcanany
 
                 {{-- Operasional & Asrama Section --}}
-                @canany(['view-operational-handoffs', 'view-follow-up-plans'])
+                @canany(['view-operational-dashboard', 'view-operational-handoffs', 'view-follow-up-plans'])
                     <div class="pt-3 border-t border-[var(--border)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--foreground-muted)]">
                         Operasional Asrama
                     </div>
+
+                    @can('view-operational-dashboard')
+                        <a href="{{ route('dashboards.operational') }}"
+                           class="flex items-center gap-3 px-3 py-2 text-xs font-medium rounded-xl transition-colors {{ request()->routeIs('dashboards.operational') ? 'bg-[var(--primary)] text-white' : 'text-[var(--foreground-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]' }}">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
+                            <span>Dashboard Operasional</span>
+                        </a>
+                    @endcan
 
                     @can('view-operational-handoffs')
                         <a href="{{ route('operational-handoffs.index') }}"
@@ -240,7 +256,7 @@
                 @endcanany
 
                 {{-- Administrasi Sistem Section --}}
-                @canany(['manage-users', 'manage-roles', 'view-people', 'manage-gate-sync', 'view-audit-log', 'manage-healthcare-partners'])
+                @canany(['manage-users', 'manage-roles', 'manage-permissions', 'view-people', 'manage-gate-sync', 'view-gate-sync', 'view-audit-log', 'manage-healthcare-partners'])
                     <div class="pt-3 border-t border-[var(--border)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--foreground-muted)]">
                         Administrasi & Sistem
                     </div>
@@ -271,20 +287,19 @@
 
                     @can('manage-healthcare-partners')
                         <a href="{{ route('healthcare-partners.index') }}"
-
                            class="flex items-center gap-3 px-3 py-2 text-xs font-medium rounded-xl transition-colors {{ request()->routeIs('healthcare-partners.*') ? 'bg-[var(--primary)] text-white' : 'text-[var(--foreground-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]' }}">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
                             <span>Mitra Faskes</span>
                         </a>
                     @endcan
 
-                    @can('manage-gate-sync')
+                    @canany(['manage-gate-sync', 'view-gate-sync'])
                         <a href="{{ route('gate-sync.preview') }}"
                            class="flex items-center gap-3 px-3 py-2 text-xs font-medium rounded-xl transition-colors {{ request()->routeIs('gate-sync.*') ? 'bg-[var(--primary)] text-white' : 'text-[var(--foreground-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]' }}">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
                             <span>Gate Sync Preview</span>
                         </a>
-                    @endcan
+                    @endcanany
 
                     @can('view-audit-log')
                         <a href="{{ route('audit-logs.index') }}"

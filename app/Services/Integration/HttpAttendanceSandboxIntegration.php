@@ -60,14 +60,14 @@ class HttpAttendanceSandboxIntegration implements AttendanceIntegrationContract
                 'success' => false,
                 'external_reference' => null,
                 'status_code' => $response->status(),
-                'error' => "HTTP {$response->status()}: ".substr($response->body(), 0, 500),
+                'error' => "Attendance upstream returned HTTP {$response->status()}.",
             ];
         } catch (Throwable $e) {
             return [
                 'success' => false,
                 'external_reference' => null,
                 'status_code' => 504,
-                'error' => 'Attendance sandbox transport error: '.$e->getMessage(),
+                'error' => 'Attendance transport exception ('.$e::class.').',
             ];
         }
     }
@@ -109,14 +109,14 @@ class HttpAttendanceSandboxIntegration implements AttendanceIntegrationContract
                 'success' => false,
                 'external_reference' => null,
                 'status_code' => $response->status(),
-                'error' => "HTTP {$response->status()}: ".substr($response->body(), 0, 500),
+                'error' => "Attendance upstream returned HTTP {$response->status()}.",
             ];
         } catch (Throwable $e) {
             return [
                 'success' => false,
                 'external_reference' => null,
                 'status_code' => 504,
-                'error' => 'Attendance sandbox supersede error: '.$e->getMessage(),
+                'error' => 'Attendance supersede exception ('.$e::class.').',
             ];
         }
     }
@@ -149,14 +149,14 @@ class HttpAttendanceSandboxIntegration implements AttendanceIntegrationContract
                 'success' => false,
                 'external_reference' => null,
                 'status_code' => $response->status(),
-                'error' => "HTTP {$response->status()}: ".substr($response->body(), 0, 500),
+                'error' => "Attendance upstream returned HTTP {$response->status()}.",
             ];
         } catch (Throwable $e) {
             return [
                 'success' => false,
                 'external_reference' => null,
                 'status_code' => 504,
-                'error' => 'Attendance sandbox revoke error: '.$e->getMessage(),
+                'error' => 'Attendance revoke exception ('.$e::class.').',
             ];
         }
     }
@@ -178,12 +178,12 @@ class HttpAttendanceSandboxIntegration implements AttendanceIntegrationContract
                     ? 'Attendance sandbox endpoint reachable.'
                     : "Sandbox returned HTTP {$response->status()}.",
             ];
-        } catch (Throwable $e) {
+        } catch (Throwable) {
             return [
                 'driver' => 'sandbox',
                 'enabled' => $enabled,
                 'reachable' => false,
-                'message' => 'Attendance sandbox endpoint unreachable: '.$e->getMessage(),
+                'message' => 'Attendance sandbox endpoint unreachable.',
             ];
         }
     }

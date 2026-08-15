@@ -51,11 +51,26 @@ class AuditLogService
             return null;
         }
 
-        $sensitiveKeys = ['password', 'remember_token', 'token', 'secret', 'api_key'];
+        $sensitiveKeys = [
+            'password',
+            'remember_token',
+            'token',
+            'access_token',
+            'refresh_token',
+            'id_token',
+            'authorization_code',
+            'client_secret',
+            'secret',
+            'api_key',
+            'state',
+            'nonce',
+        ];
 
         foreach ($payload as $key => $value) {
             if (in_array(strtolower($key), $sensitiveKeys, true)) {
                 $payload[$key] = '********';
+            } elseif (is_array($value)) {
+                $payload[$key] = static::sanitize($value);
             }
         }
 

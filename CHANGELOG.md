@@ -3,7 +3,7 @@ id: DOC-CHANGELOG
 title: "Changelog"
 status: active
 owner: "Ryand Arifriantoni"
-last_updated: 2026-08-13
+last_updated: 2026-08-15
 ---
 
 # Changelog
@@ -14,6 +14,27 @@ Semua perubahan penting proyek dicatat di file ini.
 > Sampai versi 0.19.2 aplikasi masih berada pada local development/pre-production.
 > Istilah *production* pada dokumen historis sebelum koreksi ini merujuk pada
 > *rehearsal / readiness validation*, bukan deployment server production fisik aktual.
+
+## [0.23.0] — 2026-08-15 (Phase 5D Pre-Staging Acceptance & Deployment Readiness)
+
+### Added
+
+- RBAC administration untuk role/user/direct permission dengan effective-permission source, protected core roles dan anti-privilege-escalation tests.
+- Scheduled `integration:outbox:process` command dengan overlap/distributed lock guard.
+- Trusted proxy configuration, expanded safe `.env.example`, pre-staging security/seeder tests dan complete first-staging/rollback/backup runbooks.
+
+### Changed
+
+- Seeder data demo kini opt-in melalui `SEED_DEMO_DATA`; role permission seed tidak menghapus grant lokal.
+- Gate/Attendance/outbox logging menyimpan kategori/status/exception class saja dan menyensor secret secara rekursif.
+- Default local filesystem menjadi private-by-default tanpa temporary-serving route.
+- Health version mengikuti `APP_VERSION`; route sensitif memperoleh rate limit tambahan.
+- Node lockfile memperbarui transitive `nanoid` ke 3.3.18 untuk menutup advisory build-time.
+
+### Verified
+
+- Entry full suite 266 test / 1.168 assertion; final full suite 277 test / 1.218 assertion; targeted acceptance 33 test / 175 assertion; migration 57 file + idempotency, cache rehearsal, Composer/npm audit dan local isolated backup/restore PASS.
+- Klasifikasi: `PHASE-5D-PRE-STAGING-READY-WITH-MANUAL-ITEMS`; tidak ada deployment atau panggilan Gate/Attendance nyata.
 
 ## [0.21.2] — 2026-08-14 (Phase 5C2 Pharmacy Reporting Semantics & Final Micro-Closure)
 

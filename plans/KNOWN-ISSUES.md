@@ -3,10 +3,20 @@ id: DOC-KNOWN-ISSUES
 title: "Known Issues and Open Questions"
 status: active
 owner: "Ryand Arifriantoni"
-last_updated: 2026-08-13
+last_updated: 2026-08-15
 ---
 
 # Known Issues and Open Questions
+
+## Phase 5D Pre-Staging Manual Items
+
+- [ ] **Gate staging contract**: konfirmasi endpoint/credential/redirect URI, issuer-audience-JWKS atau jaminan validasi provider, entitlement dan deactivation behavior pada environment staging nyata.
+- [ ] **Attendance sandbox**: konfirmasi endpoint/API key/channel approval dan jalankan minimum-necessary/retry/dead-letter UAT nyata.
+- [ ] **Server/TLS/proxy**: tetapkan hostname, certificate, trusted proxy CIDR, capacity, scheduler/worker supervisor dan retention.
+- [ ] **Browser staging smoke**: ulangi login/RBAC/private document serta light-dark/responsive; browser automation tidak callable pada sesi Phase 5D akhir.
+- [x] **Seeder/outbox/log/private storage blockers (RESOLVED 2026-08-15)**: demo seed opt-in, permission seed non-destruktif, scheduler outbox, secret redaction dan private default disk sudah diterapkan serta diuji.
+
+Tidak ada konflik dokumentasi domain/medis yang diselesaikan dengan asumsi pada Phase 5D.
 
 ## Phase 5C2 Pharmacy Reporting Semantics & Micro-Closure Status
 

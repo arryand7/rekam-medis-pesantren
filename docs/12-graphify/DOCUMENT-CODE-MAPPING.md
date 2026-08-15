@@ -3,10 +3,32 @@ id: DOC-DOC-CODE-MAP
 title: "Pemetaan Dokumen ke Kode"
 status: active
 owner: "Ryand Arifriantoni"
-last_updated: 2026-08-13
+last_updated: 2026-08-15
 ---
 
 # Pemetaan Dokumen ke Kode
+
+## Phase 5D — Pre-Staging Acceptance & RBAC Hardening Mapping
+
+```text
+PHASE-5D-PRE-STAGING-AUDIT.md & PHASE-5D-FINAL-CLOSURE.md & PHASE-5D-TEST-MATRIX.md
+  -> .env.example, config/app.php, config/trustedproxy.php, config/filesystems.php
+  -> app/Console/Commands/ProcessIntegrationOutbox.php, routes/console.php
+  -> app/Services/AuditLogService.php, app/Services/Gate/*, app/Services/Integration/*
+  -> database/seeders/DatabaseSeeder.php
+  -> tests/Feature/Database/SeederSafetyTest.php
+  -> tests/Feature/Integration/IntegrationOutboxCommandTest.php
+  -> tests/Feature/Security/PreStagingSecurityTest.php
+
+PHASE-5D0-RBAC-BASELINE-AUDIT.md & RBAC-PERMISSION-CATALOG.md & RBAC-PRIVILEGE-ESCALATION-PROTECTION.md
+  -> app/Models/{User,Role,Permission}.php
+  -> app/Http/Controllers/Admin/*, app/Http/Requests/Admin/*
+  -> database/migrations/2026_08_14_000600_create_model_has_permissions_table.php
+  -> resources/views/pages/{roles,users}/*
+  -> tests/Feature/Admin/RbacAdministrationTest.php
+  -> tests/Feature/Security/RbacPrivilegeEscalationTest.php
+  -> tests/Feature/Ui/RbacMenuVisibilityTest.php
+```
 
 ## Phase 5C2 — Pharmacy Reporting Semantics & Final Micro-Closure Mapping
 

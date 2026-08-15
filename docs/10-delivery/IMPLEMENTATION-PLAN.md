@@ -3,7 +3,7 @@ id: DOC-IMPLEMENTATION-PLAN
 title: "Rencana Implementasi"
 status: draft
 owner: "Tim Pengembang POSKESTREN"
-last_updated: 2026-08-05
+last_updated: 2026-08-15
 ---
 
 # Rencana Implementasi
@@ -91,3 +91,12 @@ AI tidak boleh melompat fase tanpa memperbarui `PROJECT-STATUS.md`.
 - External advice.
 - Emergency guard.
 - Audit and UAT.
+
+## Phase 5D — Pre-Staging Acceptance (completed locally)
+
+- RBAC administration and privilege-escalation hardening.
+- Configuration, dependency, cache and migration rehearsal.
+- Seeder, private storage, outbox/scheduler and logging privacy hardening.
+- Isolated backup/restore rehearsal.
+- First staging deployment, rollback, security and integration checklists.
+- Status: `PHASE-5D-PRE-STAGING-READY-WITH-MANUAL-ITEMS`; staging execution remains a separately approved step.

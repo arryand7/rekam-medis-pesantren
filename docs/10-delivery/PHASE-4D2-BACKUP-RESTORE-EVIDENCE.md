@@ -10,7 +10,7 @@ last_updated: 2026-08-10
 
 ## 1. Status Cadangan Database & Berkas Medis
 
-- **Mekanisme Backup**: Prosedur backup database MariaDB harian dan arsip direktori `storage/app/private` dikonfigurasi mengikuti [`PHASE-4C-BACKUP-AND-ROLLBACK.md`](file:///Users/ryand/Documents/LARAVEL/sabira/rekam-medis-ponpes/docs/10-delivery/PHASE-4C-BACKUP-AND-ROLLBACK.md).
+- **Mekanisme Backup**: Prosedur backup database MariaDB harian dan arsip direktori `storage/app/private` dikonfigurasi mengikuti [`PHASE-4C-BACKUP-AND-ROLLBACK.md`](PHASE-4C-BACKUP-AND-ROLLBACK.md).
 - **Izin Berkas Medis Privat**: Direktori `storage/app/private` dikunci dengan hak akses terbatas (hanya dapat dibaca oleh user proses PHP-FPM, tidak terekspos langsung ke web server publik).
 
 ---
