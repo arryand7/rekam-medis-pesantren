@@ -6,22 +6,23 @@ return [
     | SABIRA Gate Identity & OIDC Configuration
     |--------------------------------------------------------------------------
     */
-    'base_url' => env('GATE_BASE_URL', 'https://gate.example.invalid'),
-    'client_id' => env('GATE_CLIENT_ID', ''),
-    'client_secret' => env('GATE_CLIENT_SECRET', ''),
-    'redirect_uri' => env('GATE_REDIRECT_URI', env('APP_URL', 'http://localhost:8000').'/auth/gate/callback'),
-    'scopes' => env('GATE_SCOPES', 'openid profile email phone offline_access poskestren_access'),
-    'app_code' => env('GATE_APP_CODE', 'poskestren-health'),
+    'settings_cache_key' => 'gate_sso_configuration.current',
+    'base_url' => 'https://gate.example.invalid',
+    'client_id' => '',
+    'client_secret' => '',
+    'redirect_uri' => rtrim((string) config('app.url', 'http://localhost:8000'), '/').'/auth/gate/callback',
+    'scopes' => 'openid profile email phone offline_access poskestren_access',
+    'app_code' => 'poskestren-health',
 
     /*
     |--------------------------------------------------------------------------
     | Gate Feature Flags
     |--------------------------------------------------------------------------
     */
-    'sso_enabled' => env('GATE_SSO_ENABLED', false),
+    'sso_enabled' => false,
     'sync_apply_enabled' => env('GATE_SYNC_APPLY_ENABLED', false),
     'webhook_enabled' => env('GATE_WEBHOOK_ENABLED', false),
-    'driver' => env('GATE_CLIENT_DRIVER', 'fake'), // 'http' or 'fake'
+    'driver' => 'fake', // Persistent Super Admin setting: 'http' or safe 'fake' fallback.
 
     /*
     |--------------------------------------------------------------------------
@@ -44,9 +45,9 @@ return [
     |--------------------------------------------------------------------------
     */
     'http' => [
-        'timeout' => (int) env('GATE_HTTP_TIMEOUT', 5),
-        'retry_attempts' => (int) env('GATE_HTTP_RETRY_ATTEMPTS', 2),
-        'retry_backoff_ms' => (int) env('GATE_HTTP_RETRY_BACKOFF_MS', 200),
+        'timeout' => 5,
+        'retry_attempts' => 2,
+        'retry_backoff_ms' => 200,
     ],
 
     /*
@@ -54,7 +55,7 @@ return [
     | Session & Entitlement Revalidation
     |--------------------------------------------------------------------------
     */
-    'entitlement_revalidation_ttl_seconds' => (int) env('GATE_ENTITLEMENT_TTL', 300), // 5 minutes
+    'entitlement_revalidation_ttl_seconds' => 300, // 5 minutes
 
     /*
     |--------------------------------------------------------------------------

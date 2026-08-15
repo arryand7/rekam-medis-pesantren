@@ -49,7 +49,7 @@ npm run build
 php artisan serve
 ```
 
-Jangan menyalin credential staging/production ke `.env.example`, source code, fixture, dokumentasi, log, atau issue tracker. Integrasi eksternal default memakai endpoint `.invalid` dan tetap nonaktif sampai dikonfigurasi secara eksplisit.
+Jangan menyalin credential staging/production ke `.env.example`, source code, fixture, dokumentasi, log, atau issue tracker. Integrasi eksternal default memakai endpoint `.invalid` dan tetap nonaktif sampai dikonfigurasi secara eksplisit. Endpoint serta kredensial Gate OIDC dikelola oleh Super Admin melalui **Administrasi & Sistem → Pengaturan Gate SSO**; credential tersebut tidak perlu dan tidak boleh ditaruh di `.env` atau repository.
 
 ## Quality gate
 

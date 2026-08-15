@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 beforeEach(function () {
     FakeGateOidcClient::reset();
+    config()->set('gate.sso_enabled', true);
 });
 
 test('user with allowed entitlement can log in successfully', function () {

@@ -3,7 +3,7 @@ id: DOC-GATE-SSO-SECURITY
 title: "Gate SSO Security Controls"
 status: active
 owner: "Ryand Arifriantoni"
-last_updated: 2026-08-09
+last_updated: 2026-08-15
 ---
 
 # Gate SSO Security Controls
@@ -150,28 +150,32 @@ Semua operasi proyeksi identitas menggunakan `lockForUpdate()` untuk mencegah ra
 - Conflict mapping dibuat sebagai `pending` → memerlukan manual approval
 - **TIDAK ADA** auto-merge berdasarkan nama
 
-## 7. Feature Flags
+## 7. Runtime Configuration & Feature Flags
 
 | Flag | Default | Keterangan |
 |---|---|---|
-| `GATE_SSO_ENABLED` | `false` | SSO aktif/nonaktif |
+| Persistent `sso_enabled` | `false` | SSO aktif/nonaktif; hanya exact `super_admin` |
 | `GATE_SYNC_APPLY_ENABLED` | `false` | Sync apply aktif/nonaktif |
 | `GATE_WEBHOOK_ENABLED` | `false` | Webhook aktif/nonaktif |
-| `GATE_CLIENT_DRIVER` | `fake` | `fake` atau `http` |
+| Persistent `driver` | `fake` | `fake` atau `http`; aktivasi SSO mensyaratkan `http` |
 | `BREAK_GLASS_ENABLED` | `false` | Emergency local admin |
 
 > [!WARNING]
-> Semua flag default `false`/`fake`. Production activation memerlukan konfigurasi eksplisit dan tidak boleh otomatis.
+> SSO default `false`/`fake`. Aktivasi memerlukan konfigurasi lengkap melalui UI Super Admin dan tidak boleh otomatis. Sync apply, webhook, dan break-glass tetap flag operasional terpisah.
 
 ## 8. Secret Management
 
 | Item | Lokasi | Status |
 |---|---|---|
-| `GATE_CLIENT_SECRET` | `.env` only | ✅ Tidak di Git |
+| Gate client secret | Encrypted cast pada singleton `sso_configurations` | ✅ Ciphertext at rest; plaintext tidak masuk cache bersama/UI/audit/Git |
 | OAuth tokens | Session only | ✅ Tidak di log/audit |
 | ID Token | Session only | ✅ Untuk end-session URL saja |
 | Random passwords | `bcrypt(Str::random(32))` | ✅ Opaque, tidak recoverable |
 | Audit log | Tidak menyimpan token/secret | ✅ Data identitas saja |
+
+Cache `SsoConfigurationService` menyimpan ciphertext dari raw database column. Dekripsi hanya dilakukan di memory pada saat client Gate membutuhkan credential. Field secret kosong pada update berarti mempertahankan secret lama; rotasi menghasilkan event audit tanpa nilainya.
+
+Guard aktivasi menegakkan HTTPS (kecuali localhost pada local/testing), callback canonical `/auth/gate/callback`, scope `openid`, endpoint non-placeholder, Client ID, dan secret. Login lokal tetap tersedia untuk pemulihan jika SSO salah konfigurasi atau provider tidak tersedia.
 
 ## 9. Audit Trail
 
@@ -188,6 +192,9 @@ Semua kejadian keamanan menghasilkan audit log:
 | Logout | `gate_logout` |
 | Proyeksi identitas dibuat | `gate_user.projection_created` |
 | Proyeksi identitas diperbarui | `gate_user.projection_updated` |
+| Konfigurasi SSO diperbarui | `SSO_CONFIGURATION_UPDATED` |
+| Client secret disimpan/dirotasi | `SSO_CLIENT_SECRET_ROTATED` |
+| Konfigurasi SSO direset | `SSO_CONFIGURATION_RESET` |
 | Sync apply dimulai | `gate_sync.apply_started` |
 | Sync item diterapkan | `gate_sync.item_applied` |
 | Sync selesai | `gate_sync.completed` |

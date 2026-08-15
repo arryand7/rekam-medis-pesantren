@@ -15,6 +15,52 @@ Semua perubahan penting proyek dicatat di file ini.
 > Istilah *production* pada dokumen historis sebelum koreksi ini merujuk pada
 > *rehearsal / readiness validation*, bukan deployment server production fisik aktual.
 
+## [0.26.0] — 2026-08-15 (Super Admin SSO Configuration Management)
+
+### Added
+
+- Menambahkan halaman **Administrasi & Sistem → Pengaturan Gate SSO** yang hanya dapat diakses exact role `super_admin` untuk mengelola aktivasi, mode koneksi, endpoint, Client ID, client secret, callback, scopes, application code, timeout, retry, dan TTL entitlement.
+- Menambahkan singleton `sso_configurations`, `SsoConfigurationService`, cache runtime, reset aman, serta audit `SSO_CONFIGURATION_UPDATED`, `SSO_CLIENT_SECRET_ROTATED`, dan `SSO_CONFIGURATION_RESET`.
+- Menambahkan validasi fail-closed untuk HTTPS/non-local, callback `/auth/gate/callback`, scope `openid`, konfigurasi HTTP lengkap, dan larangan mengaktifkan SSO pada fake driver.
+
+### Security
+
+- Client secret disimpan menggunakan encrypted cast Laravel; cache hanya memuat ciphertext dan UI/audit tidak pernah menampilkan atau mencatat plaintext.
+- Tombol login SSO hanya muncul ketika aktif dan siap. Redirect serta callback ditolak ketika SSO nonaktif/tidak lengkap, sementara login lokal tetap menjadi jalur pemulihan.
+- Seluruh konfigurasi OIDC tidak lagi bergantung pada variabel `GATE_*` di `.env`; source fallback tetap nonaktif, fake, dan memakai domain `.invalid`.
+
+### Changed
+
+- OIDC client, Gate sync client, authentication service, login, logout, health readiness, dan dashboard Gate membaca konfigurasi melalui service persisten terpusat.
+- Versi fungsional dinaikkan menjadi `0.26.0`; tidak ada deployment atau push.
+
+### Verified
+
+- Targeted SSO/auth/security regression: 49 tests / 276 assertions PASS. Full suite: 331 tests / 1.604 assertions PASS.
+- Pint, PHPStan (0 error), Vite production build, Composer audit, npm audit, `graphify update .`, dan `git diff --check` PASS.
+- In-app browser tidak tersedia; visual interaction Light/Dark/System dan staging provider end-to-end tetap manual.
+
+## [0.25.1] — 2026-08-15 (Operational Search & Filter UX)
+
+### Added
+
+- Mengganti dropdown seluruh pasien pada `/visits/create` dengan combobox pencarian server-side berdasarkan nama, nomor rekam medis, atau NIS/NIP.
+- Menambahkan endpoint terotorisasi `GET /visits/patient-search` dengan minimum dua karakter, throttle, hanya pasien eligible, response minimum-necessary, dan batas maksimal 20 hasil.
+- Menambahkan dukungan keyboard, status loading/empty/error, pilihan awal dari patient context, tombol ganti/hapus, serta test aksesibilitas dan regresi pencarian.
+- Menambahkan filter server-side pada `/pharmacy/inventory` berdasarkan nama/merek/kode obat, nomor batch, lokasi, kondisi persediaan, dan lokasi stok.
+- Menambahkan reset filter, jumlah hasil, empty state khusus hasil pencarian, pagination yang mempertahankan filter, serta badge kondisi berdasarkan kuantitas dan tanggal kedaluwarsa aktual.
+
+### Changed
+
+- Halaman intake tidak lagi memuat seluruh pasien ke HTML; hanya pasien preselected yang dibaca saat membuka form, sehingga payload tetap kecil ketika jumlah pasien bertambah.
+- Query inventaris dipisahkan dari route closure ke controller, Form Request, dan query object terotorisasi agar pencarian tetap server-side dan mudah dirawat ketika data batch bertambah.
+
+### Verified
+
+- Targeted inventory regression: 7 tests / 60 assertions PASS. Full suite: 316 tests / 1.517 assertions PASS.
+- Pint, PHPStan (0 error), Vite production build, `graphify update .`, dan `git diff --check` PASS.
+- In-app browser tidak tersedia pada sesi ini; pemeriksaan interaksi visual light/dark dan viewport nyata tetap dicatat sebagai manual visual check.
+
 ## [0.25.0] — 2026-08-15 (Application Identity & Branding Management)
 
 ### Added

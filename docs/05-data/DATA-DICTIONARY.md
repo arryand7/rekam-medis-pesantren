@@ -94,6 +94,26 @@ Field: `actor_id`, `action`, `subject_type`, `subject_id`, `before_json`, `after
 
 Binary tidak disimpan di database. Tanpa row, aplikasi memakai source defaults dari `config/branding.php`.
 
+## ENT-SSO-CONFIGURATION — `sso_configurations`
+
+| Field | Tipe | Catatan |
+|---|---|---|
+| id | ULID | Primary key |
+| singleton | boolean | Unique guard untuk satu konfigurasi aktif |
+| sso_enabled | boolean | Aktivasi login/callback, default false |
+| driver | string(20) | `fake` atau `http` |
+| base_url | string(500) | URL dasar provider Gate |
+| client_id | string(255) | OAuth client identifier |
+| client_secret | encrypted text/null | Ciphertext Laravel; hidden dari serialisasi/UI/audit |
+| redirect_uri | string(500) | Callback canonical `/auth/gate/callback` |
+| scopes | string(500) | Space-delimited OIDC scopes; wajib memuat `openid` |
+| app_code | string(120) | Kode entitlement aplikasi |
+| http_timeout, retry_attempts, retry_backoff_ms | integer | Batas keandalan koneksi |
+| entitlement_ttl_seconds | integer | TTL revalidasi entitlement |
+| created_at, updated_at | timestamp | Waktu server |
+
+Tanpa row, aplikasi memakai fallback source-controlled yang nonaktif, fake, dan tidak memiliki secret. Secret memerlukan `APP_KEY` aplikasi untuk enkripsi/dekripsi, tetapi tidak memerlukan variabel `.env` khusus Gate.
+
 ## Catatan
 
 Tabel alergi, kondisi, diagnosis, tindakan, file, notifikasi, dan role-permission dirinci saat desain migration per fase.

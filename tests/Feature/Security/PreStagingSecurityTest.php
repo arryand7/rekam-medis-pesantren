@@ -28,6 +28,8 @@ test('audit payload sanitization is recursive for authentication secrets', funct
 });
 
 test('gate userinfo failure is controlled and does not leak provider exception details', function () {
+    config()->set('gate.sso_enabled', true);
+
     $client = Mockery::mock(GateOidcClientContract::class);
     $client->shouldReceive('exchangeAuthorizationCode')->once()->andReturn(new GateOidcTokenResponseDTO(
         accessToken: 'secret-access-token',

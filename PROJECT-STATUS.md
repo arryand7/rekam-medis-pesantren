@@ -10,7 +10,31 @@ last_updated: 2026-08-15
 
 ## Fase saat ini
 
-**Application Identity & Branding Management** (Status: `APPLICATION-IDENTITY-BRANDING-COMPLETE-WITH-MANUAL-VISUAL-CHECK` / v0.25.0)
+**Super Admin SSO Configuration Management** (Status: implementation verified / v0.26.0)
+
+## Super Admin SSO Configuration Management
+
+- [x] Konfigurasi OIDC persisten menggantikan kebutuhan variabel `.env` khusus SSO dengan fallback aman nonaktif/fake.
+- [x] Client secret terenkripsi di database, tidak ditampilkan kembali, cache hanya menyimpan ciphertext, dan audit tidak memuat plaintext.
+- [x] Exact role `super_admin` mengelola endpoint, Client ID/secret, callback, scopes, app code, aktivasi, timeout/retry/TTL, serta reset melalui UI.
+- [x] Login button, redirect, callback, logout, OIDC/sync clients, dan health status memakai read model terpusat serta berlaku segera setelah simpan/reset.
+- [x] Aktivasi fail-closed: HTTP mode lengkap, HTTPS (kecuali localhost lokal), callback canonical, `openid`, dan secret wajib.
+- [ ] Nilai provider/credential nyata, registered callback, issuer/audience/JWKS, dan login end-to-end tetap harus diverifikasi pada staging.
+
+## Pharmacy Inventory Filter UX
+
+- [x] Pencarian server-side mencakup nama generik, merek, kode obat, nomor batch, serta nama/kode lokasi stok.
+- [x] Filter kondisi `tersedia & aman`, `hampir kedaluwarsa`, `kedaluwarsa`, dan `stok habis` memakai semantik kuantitas/tanggal yang sudah menjadi source of truth.
+- [x] Filter lokasi, reset, jumlah hasil, empty state terpisah, dan query string persisten pada pagination diterapkan secara responsif dengan semantic theme tokens.
+- [x] Permission `view-pharmacy-inventory`, validasi query, targeted regression, full suite, Pint, PHPStan, dan Vite build lulus.
+- [ ] In-app browser tidak tersedia; interaksi visual Light/Dark/System pada viewport nyata perlu diperiksa manual.
+
+## Visit Intake Patient Search UX
+
+- [x] Native all-patient dropdown diganti combobox server-side yang mencari nama, nomor RM, dan NIS/NIP.
+- [x] Query hanya mengembalikan pasien eligible, maksimal 20 hasil, tanpa data klinis atau kontak sensitif.
+- [x] Permission `create-medical-visits`, validasi minimum dua karakter, throttle, keyboard navigation, prefill, empty/error state, dan light/dark semantic styles diterapkan.
+- [x] Feature, intake, dan core workflow targeted regression lulus; full quality gate dicatat pada `Last verified`.
 
 ## Application Identity & Branding Management
 
@@ -96,7 +120,7 @@ last_updated: 2026-08-15
 
 ```text
 Application Development:          ACTIVE
-Current Functional Version:       0.25.0 (Application Identity & Branding Management)
+Current Functional Version:       0.26.0 (Super Admin SSO Configuration Management)
 Environment:                      LOCAL-DEVELOPMENT (macOS Developer Workstation)
 Deployment Status:                NOT_DEPLOYED (Belum pernah dideploy ke server fisik)
 Production Host Status:           NOT_STARTED
@@ -110,12 +134,12 @@ Attendance Sandbox Validation:    LOCAL_SIMULATION_VALIDATED
 
 - Tanggal: 2026-08-15
 - Database: MariaDB 10.4.28 (`poskestren_sabira`, InnoDB, REPEATABLE-READ)
-- Test Suite: 305 tests, 1429 assertions (100% Passed, 0 Skipped, 0 Failed)
+- Test Suite: 331 tests, 1604 assertions (100% Passed, 0 Skipped, 0 Failed)
 - Code Formatter: Pint Passed
 - Static Analysis: PHPStan Passed (0 errors)
 - Frontend: Vite Build Passed
 - Dependency Install/Audit: `npm ci`, Composer audit, dan npm audit Passed (0 advisory)
 - Repository Scan: current tree + 38 pre-existing commits reviewed; no active secret or confirmed real patient data
-- Graphify: `graphify update .` + branding query Passed (3.628 nodes / 5.817 edges)
+- Graphify: `graphify update .` Passed (3.723 nodes / 6.027 edges); refresh nama komunitas direkomendasikan setelah perubahan community set.
 - git diff --check: PASSED
-- Status Rilis: LOCAL PRE-STAGING — `APPLICATION-IDENTITY-BRANDING-COMPLETE-WITH-MANUAL-VISUAL-CHECK` (v0.25.0); no push/deployment
+- Status Rilis: LOCAL PRE-STAGING — Super Admin SSO Configuration Management terverifikasi dengan staging/visual checks tersisa (v0.26.0); no push/deployment

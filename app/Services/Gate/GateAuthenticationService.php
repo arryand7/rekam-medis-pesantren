@@ -10,6 +10,7 @@ use App\Models\Person;
 use App\Models\Role;
 use App\Models\User;
 use App\Services\AuditLogService;
+use App\Services\SsoConfigurationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,8 @@ use Throwable;
 class GateAuthenticationService
 {
     public function __construct(
-        protected GateOidcClientContract $oidcClient
+        protected GateOidcClientContract $oidcClient,
+        protected SsoConfigurationService $configuration
     ) {}
 
     /**
@@ -129,7 +131,7 @@ class GateAuthenticationService
             $userInfo = $this->oidcClient->fetchUserInfo($tokenResponse->accessToken);
 
             // 3. Enforce Application Entitlement
-            $appCode = config('gate.app_code', 'poskestren-health');
+            $appCode = (string) $this->configuration->get()['app_code'];
             $entitlement = $this->oidcClient->fetchApplicationEntitlement(
                 $tokenResponse->accessToken,
                 $userInfo->gateUserId,
@@ -360,6 +362,10 @@ class GateAuthenticationService
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
+        if (! $this->configuration->get()['sso_enabled']) {
+            return null;
+        }
 
         $postLogoutRedirectUri = route('login');
 

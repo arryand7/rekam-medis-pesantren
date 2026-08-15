@@ -15,6 +15,7 @@ use App\Services\Gate\HttpGateClient;
 use App\Services\Gate\HttpGateOidcClient;
 use App\Services\Integration\FakeAttendanceIntegration;
 use App\Services\Integration\HttpAttendanceSandboxIntegration;
+use App\Services\SsoConfigurationService;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,19 +28,19 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             GateOidcClientContract::class,
-            function () {
-                return config('gate.driver') === 'http'
-                    ? new HttpGateOidcClient
-                    : new FakeGateOidcClient;
+            function ($app) {
+                return $app->make(SsoConfigurationService::class)->get()['driver'] === 'http'
+                    ? $app->make(HttpGateOidcClient::class)
+                    : $app->make(FakeGateOidcClient::class);
             }
         );
 
         $this->app->bind(
             GateClientContract::class,
-            function () {
-                return config('gate.driver') === 'http'
-                    ? new HttpGateClient
-                    : new FakeGateClientService;
+            function ($app) {
+                return $app->make(SsoConfigurationService::class)->get()['driver'] === 'http'
+                    ? $app->make(HttpGateClient::class)
+                    : $app->make(FakeGateClientService::class);
             }
         );
 
@@ -81,6 +82,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('manage-identity-mappings', fn ($user) => $user->hasPermission('manage-identity-mappings'));
         Gate::define('view-gate-reconciliation', fn ($user) => $user->hasPermission('view-gate-reconciliation'));
         Gate::define('manage-system-settings', fn ($user) => $user->hasPermission('manage-system-settings'));
+        Gate::define('manage-sso-settings', fn ($user) => $user->isSuperAdmin());
 
         Gate::policy(IntegrationOutboxEvent::class, IntegrationOutboxPolicy::class);
         Gate::policy(IntegrationIdentityConflict::class, IntegrationIdentityConflictPolicy::class);

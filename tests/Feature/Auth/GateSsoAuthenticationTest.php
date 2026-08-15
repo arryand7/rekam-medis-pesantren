@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 beforeEach(function () {
     FakeGateOidcClient::reset();
+    config()->set('gate.sso_enabled', true);
 });
 
 test('login page redirects to Gate authorization endpoint with state and nonce when redirect query is present', function () {

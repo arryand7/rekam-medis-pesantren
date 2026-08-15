@@ -295,6 +295,14 @@
                         </a>
                     @endcan
 
+                    @can('manage-sso-settings')
+                        <a href="{{ route('admin.system.sso-configuration.edit') }}"
+                           class="flex items-center gap-3 px-3 py-2 text-xs font-medium rounded-xl transition-colors {{ request()->routeIs('admin.system.sso-configuration.*') ? 'bg-[var(--primary)] text-white' : 'text-[var(--foreground-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]' }}">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-10 0v4H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2Zm3-10H9V7a3 3 0 0 1 6 0v4Z" /></svg>
+                            <span>Pengaturan Gate SSO</span>
+                        </a>
+                    @endcan
+
                     @can('manage-healthcare-partners')
                         <a href="{{ route('healthcare-partners.index') }}"
                            class="flex items-center gap-3 px-3 py-2 text-xs font-medium rounded-xl transition-colors {{ request()->routeIs('healthcare-partners.*') ? 'bg-[var(--primary)] text-white' : 'text-[var(--foreground-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]' }}">

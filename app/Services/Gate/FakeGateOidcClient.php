@@ -6,10 +6,15 @@ use App\Contracts\GateOidcClientContract;
 use App\DTOs\GateApplicationEntitlementDTO;
 use App\DTOs\GateOidcTokenResponseDTO;
 use App\DTOs\GateUserInfoDTO;
+use App\Services\SsoConfigurationService;
 use RuntimeException;
 
 class FakeGateOidcClient implements GateOidcClientContract
 {
+    public function __construct(
+        private readonly SsoConfigurationService $configuration
+    ) {}
+
     /**
      * @var array<string, GateUserInfoDTO>
      */
@@ -59,10 +64,11 @@ class FakeGateOidcClient implements GateOidcClientContract
 
     public function getAuthorizationUrl(string $state, ?string $nonce = null, ?string $codeChallenge = null): string
     {
-        $baseUrl = config('gate.base_url', 'https://gate.example.invalid');
-        $clientId = config('gate.client_id', 'synthetic-test-client');
-        $redirectUri = urlencode(config('gate.redirect_uri', 'http://localhost:8000/auth/gate/callback'));
-        $scopes = urlencode(config('gate.scopes', 'openid profile email'));
+        $settings = $this->configuration->get();
+        $baseUrl = $settings['base_url'];
+        $clientId = $settings['client_id'];
+        $redirectUri = urlencode((string) $settings['redirect_uri']);
+        $scopes = urlencode((string) $settings['scopes']);
 
         $url = "{$baseUrl}/oauth/authorize?response_type=code&client_id={$clientId}&redirect_uri={$redirectUri}&scope={$scopes}&state={$state}";
         if ($nonce) {
@@ -87,7 +93,7 @@ class FakeGateOidcClient implements GateOidcClientContract
             tokenType: 'Bearer',
             expiresIn: 3600,
             refreshToken: 'fake_refresh_token_'.md5($code),
-            scope: config('gate.scopes', 'openid profile email')
+            scope: (string) $this->configuration->get()['scopes']
         );
     }
 
@@ -146,7 +152,7 @@ class FakeGateOidcClient implements GateOidcClientContract
 
     public function getEndSessionUrl(?string $idToken = null, ?string $postLogoutRedirectUri = null): ?string
     {
-        $baseUrl = config('gate.base_url', 'https://gate.example.invalid');
+        $baseUrl = $this->configuration->get()['base_url'];
         $endpoint = config('gate.endpoints.end_session', '/oauth/logout');
 
         $url = "{$baseUrl}{$endpoint}";
@@ -161,7 +167,7 @@ class FakeGateOidcClient implements GateOidcClientContract
     {
         return [
             'driver' => 'fake',
-            'enabled' => config('gate.sso_enabled', false),
+            'enabled' => (bool) $this->configuration->get()['sso_enabled'],
             'reachable' => self::$isReachable,
             'message' => self::$isReachable ? 'Fake Gate OIDC Client ready.' : 'Fake Gate service unreachable.',
         ];

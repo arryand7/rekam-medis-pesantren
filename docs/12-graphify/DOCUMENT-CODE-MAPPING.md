@@ -8,6 +8,45 @@ last_updated: 2026-08-15
 
 # Pemetaan Dokumen ke Kode
 
+## Super Admin SSO Configuration Management Mapping
+
+```text
+GATE-SSO-SECURITY.md & SSO-CONFIGURATION-MANAGEMENT.md
+  -> config/gate.php
+  -> database/migrations/2026_08_15_000200_create_sso_configurations_table.php
+  -> app/Models/SsoConfiguration.php
+  -> app/Services/SsoConfigurationService.php
+  -> app/Http/Controllers/Admin/SsoConfigurationController.php
+  -> app/Http/Requests/Admin/UpdateSsoConfigurationRequest.php
+  -> app/Services/Gate/{GateAuthenticationService,HttpGateOidcClient,HttpGateClient}.php
+  -> resources/views/pages/admin/sso-configuration/edit.blade.php
+  -> resources/views/pages/auth/login.blade.php
+  -> tests/Feature/{Admin,Security}/*SsoConfiguration*Test.php
+```
+
+## Pharmacy Inventory Filter UX Mapping
+
+```text
+PROJECT-STATUS.md & CHANGELOG.md
+  -> app/Http/Controllers/Pharmacy/InventoryController.php
+  -> app/Http/Requests/Pharmacy/FilterInventoryRequest.php
+  -> app/Queries/Pharmacy/InventoryBatchQuery.php
+  -> routes/web.php (pharmacy.inventory.index)
+  -> resources/views/pages/pharmacy/inventory/index.blade.php
+  -> tests/Feature/Pharmacy/InventoryFilterTest.php
+```
+
+## Visit Intake Patient Search UX Mapping
+
+```text
+PROJECT-STATUS.md & CHANGELOG.md
+  -> app/Queries/MedicalVisit/PatientSearchQuery.php
+  -> app/Http/Controllers/MedicalVisit/PatientSearchController.php
+  -> routes/web.php (visits.patient-search + visits.create prefill)
+  -> resources/views/pages/visits/create.blade.php
+  -> tests/Feature/MedicalVisit/PatientSearchTest.php
+```
+
 ## Application Identity & Branding Management Mapping
 
 ```text

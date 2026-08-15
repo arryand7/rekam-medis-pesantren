@@ -127,6 +127,7 @@
 
             </form>
 
+            @if($sso['sso_enabled'] && $sso['is_ready'])
             <!-- Divider -->
             <div class="relative flex py-4 items-center my-1">
                 <div class="flex-grow border-t border-slate-200 dark:border-slate-700"></div>
@@ -145,6 +146,7 @@
                 </a>
                 <p class="text-center text-[11px] text-slate-500 dark:text-slate-400">Gunakan akun yang telah diberikan akses oleh pengelola.</p>
             </div>
+            @endif
 
             <!-- Footer -->
             <div class="mt-6 text-center text-[11px] text-slate-400 dark:text-slate-500">

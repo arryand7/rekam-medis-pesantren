@@ -8,6 +8,12 @@ last_updated: 2026-08-15
 
 # Known Issues and Open Questions
 
+## Super Admin SSO Configuration
+
+- [ ] **Gate staging values `[PERLU DIKONFIRMASI]`**: Super Admin memasukkan endpoint, Client ID, secret, callback, scopes, dan app code nyata setelah pemilik memperoleh nilai resmi dari Gate.
+- [ ] **OIDC provider validation `[PERLU DIKONFIRMASI]`**: issuer, audience, JWKS/signature, nonce, refresh/logout semantics, dan entitlement contract harus diuji end-to-end pada staging provider nyata sebelum SSO diaktifkan.
+- [x] **Environment-free SSO configuration (RESOLVED 2026-08-15)**: konfigurasi OIDC persisten, encrypted secret, exact Super Admin authorization, fail-closed activation, cache invalidation, reset, audit, dan login guard diterapkan.
+
 ## Application Identity & Branding
 
 - [ ] **Actual institution logo `[PERLU DIKONFIRMASI]`**: pemilik menentukan aset institusi yang memang berhak dan layak dipublikasikan. Repository hanya memuat identitas default generic project-owned; upload aktual dilakukan sebagai runtime branding.

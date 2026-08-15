@@ -4,6 +4,8 @@ namespace App\Services\Gate;
 
 use App\Contracts\GateClientContract;
 use App\DTOs\GateUserDTO;
+use App\Services\SsoConfigurationService;
+use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use RuntimeException;
@@ -11,17 +13,20 @@ use Throwable;
 
 class HttpGateClient implements GateClientContract
 {
+    public function __construct(
+        private readonly SsoConfigurationService $configuration
+    ) {}
+
     public function fetchUsers(int $page = 1, int $perPage = 50): array
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
+        $settings = $this->configuration->get();
+        $baseUrl = rtrim((string) $settings['base_url'], '/');
         $endpoint = config('gate.endpoints.users', '/api/v1/users');
-        $timeout = (int) config('gate.http.timeout', 5);
-
         try {
-            $response = Http::timeout($timeout)
+            $response = $this->request($settings)
                 ->withHeaders([
-                    'X-Client-ID' => config('gate.client_id', ''),
-                    'X-Client-Secret' => config('gate.client_secret', ''),
+                    'X-Client-ID' => $settings['client_id'],
+                    'X-Client-Secret' => $settings['client_secret'],
                     'Accept' => 'application/json',
                 ])
                 ->get("{$baseUrl}{$endpoint}", [
@@ -57,15 +62,14 @@ class HttpGateClient implements GateClientContract
 
     public function fetchUserById(string $gateUserId): ?GateUserDTO
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
+        $settings = $this->configuration->get();
+        $baseUrl = rtrim((string) $settings['base_url'], '/');
         $endpoint = config('gate.endpoints.users', '/api/v1/users');
-        $timeout = (int) config('gate.http.timeout', 5);
-
         try {
-            $response = Http::timeout($timeout)
+            $response = $this->request($settings)
                 ->withHeaders([
-                    'X-Client-ID' => config('gate.client_id', ''),
-                    'X-Client-Secret' => config('gate.client_secret', ''),
+                    'X-Client-ID' => $settings['client_id'],
+                    'X-Client-Secret' => $settings['client_secret'],
                     'Accept' => 'application/json',
                 ])
                 ->get("{$baseUrl}{$endpoint}/{$gateUserId}");
@@ -88,16 +92,26 @@ class HttpGateClient implements GateClientContract
 
     public function ping(): bool
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
+        $settings = $this->configuration->get();
+        $baseUrl = rtrim((string) $settings['base_url'], '/');
         $endpoint = config('gate.endpoints.health', '/health');
-        $timeout = 3;
-
         try {
-            $response = Http::timeout($timeout)->get("{$baseUrl}{$endpoint}");
+            $response = $this->request($settings, 3)->get("{$baseUrl}{$endpoint}");
 
             return $response->successful();
         } catch (Throwable) {
             return false;
         }
+    }
+
+    /** @param array<string, mixed> $settings */
+    private function request(array $settings, ?int $timeout = null): PendingRequest
+    {
+        $request = Http::timeout($timeout ?? (int) $settings['http_timeout']);
+        $attempts = (int) $settings['retry_attempts'];
+
+        return $attempts > 0
+            ? $request->retry($attempts, (int) $settings['retry_backoff_ms'], throw: false)
+            : $request;
     }
 }

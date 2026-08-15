@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\SsoConfigurationService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +29,7 @@ class HealthController extends Controller
      * Application Readiness Probe Endpoint (/health/ready).
      * Verifies critical subsystems (Database, Cache, Private Storage, and Integration configurations).
      */
-    public function ready(): JsonResponse
+    public function ready(SsoConfigurationService $ssoConfiguration): JsonResponse
     {
         $dbStatus = false;
         try {
@@ -51,6 +52,8 @@ class HealthController extends Controller
 
         $isReady = $dbStatus && $cacheStatus && $storageStatus;
 
+        $sso = $ssoConfiguration->get();
+
         return response()->json([
             'status' => $isReady ? 'ready' : 'degraded',
             'timestamp' => now()->toIso8601String(),
@@ -61,8 +64,8 @@ class HealthController extends Controller
             ],
             'integrations' => [
                 'gate' => [
-                    'driver' => (string) config('gate.driver', 'fake'),
-                    'sso_enabled' => (bool) config('gate.sso_enabled', false),
+                    'driver' => (string) $sso['driver'],
+                    'sso_enabled' => (bool) $sso['sso_enabled'],
                     'sync_apply_enabled' => (bool) config('gate.sync_apply_enabled', false),
                 ],
                 'attendance' => [

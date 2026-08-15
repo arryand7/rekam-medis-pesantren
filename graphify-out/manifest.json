@@ -5,8 +5,8 @@
     "semantic_hash": ""
   },
   "app/Http/Controllers/HealthController.php": {
-    "mtime": 1786763249.5421822,
-    "ast_hash": "7927bf462aaefdb6ddb91e40c3e1cee9",
+    "mtime": 1786791700.3417974,
+    "ast_hash": "05d240aa70d3b56c9a70734e8c6e8c14",
     "semantic_hash": ""
   },
   "app/Models/User.php": {
@@ -15,8 +15,8 @@
     "semantic_hash": ""
   },
   "app/Providers/AppServiceProvider.php": {
-    "mtime": 1786779180.3440378,
-    "ast_hash": "49d57a581a81c9ea1fb67946a3ea557c",
+    "mtime": 1786791606.1133397,
+    "ast_hash": "fbdba64a1a8f2a9dc4a304d4b094ee79",
     "semantic_hash": ""
   },
   "app/View/Components/AppLayout.php": {
@@ -45,8 +45,8 @@
     "semantic_hash": ""
   },
   "config/app.php": {
-    "mtime": 1786779180.802224,
-    "ast_hash": "94413749d5111b93d76cb827a6f15bbf",
+    "mtime": 1786792272.2685654,
+    "ast_hash": "3463cc5e1b53cbe3deb2cf6539b8e119",
     "semantic_hash": ""
   },
   "config/auth.php": {
@@ -150,8 +150,8 @@
     "semantic_hash": ""
   },
   "resources/views/layouts/app.blade.php": {
-    "mtime": 1786779712.2965121,
-    "ast_hash": "28bded48f608895379f57456f6b22ebb",
+    "mtime": 1786791606.195483,
+    "ast_hash": "6e627ae80864b6f2d9805694922ef345",
     "semantic_hash": ""
   },
   "resources/views/welcome.blade.php": {
@@ -165,8 +165,8 @@
     "semantic_hash": ""
   },
   "routes/web.php": {
-    "mtime": 1786780013.2676752,
-    "ast_hash": "ce6a2809e53411d0c2a8c75b62c26cd3",
+    "mtime": 1786791606.0339625,
+    "ast_hash": "645aa3aabb4a5f3e55b8ef70d5ef2bb1",
     "semantic_hash": ""
   },
   "tests/Feature/DashboardTest.php": {
@@ -275,8 +275,8 @@
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1786779989.7996871,
-    "ast_hash": "70d214171f7776848cf759548fcb96f4",
+    "mtime": 1786792272.429171,
+    "ast_hash": "19c7fcd5072aa25e90ded3440478080b",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -290,13 +290,13 @@
     "semantic_hash": ""
   },
   "PROJECT-STATUS.md": {
-    "mtime": 1786779989.9326987,
-    "ast_hash": "3c6d701105b4773f637ed3f832207a9e",
+    "mtime": 1786792272.5094955,
+    "ast_hash": "af77f375fb570c6e33b3913c13d38262",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1786779990.5960526,
-    "ast_hash": "91d3dec4b479809d151559082573523d",
+    "mtime": 1786792272.3494148,
+    "ast_hash": "ca41c581ee02ba26e5ceee113f57c456",
     "semantic_hash": ""
   },
   "docs/00-project/GLOSSARY.md": {
@@ -480,8 +480,8 @@
     "semantic_hash": ""
   },
   "docs/05-data/DATA-DICTIONARY.md": {
-    "mtime": 1786779990.192396,
-    "ast_hash": "a2aa9103f83121d33a86e19640383ca5",
+    "mtime": 1786792326.1781244,
+    "ast_hash": "e685da56bbbfe741b16b5c21aa4308a3",
     "semantic_hash": ""
   },
   "docs/05-data/DATA-RETENTION.md": {
@@ -560,8 +560,8 @@
     "semantic_hash": ""
   },
   "docs/07-security/ACCESS-CONTROL-MATRIX.md": {
-    "mtime": 1786779990.329897,
-    "ast_hash": "c60b089521257031868dea35d76971e9",
+    "mtime": 1786792326.2577596,
+    "ast_hash": "8413fbdf6a4e35d953486559de85f2d8",
     "semantic_hash": ""
   },
   "docs/07-security/AUDIT-LOG.md": {
@@ -750,8 +750,8 @@
     "semantic_hash": ""
   },
   "docs/12-graphify/DOCUMENT-CODE-MAPPING.md": {
-    "mtime": 1786779990.4630787,
-    "ast_hash": "21624d6bb5c94eedf4cb588c8bcb4071",
+    "mtime": 1786792326.5735536,
+    "ast_hash": "865d37eae98001f791d13a17e9fdf78e",
     "semantic_hash": ""
   },
   "docs/12-graphify/GRAPH-NAMING-CONVENTIONS.md": {
@@ -790,8 +790,8 @@
     "semantic_hash": ""
   },
   "plans/KNOWN-ISSUES.md": {
-    "mtime": 1786779990.0653634,
-    "ast_hash": "cad1fa5ef2f387aa4d39bb7696dca693",
+    "mtime": 1786792326.495439,
+    "ast_hash": "2e200d0ffce18434d8dda18c964626f4",
     "semantic_hash": ""
   },
   "public/robots.txt": {
@@ -1525,8 +1525,8 @@
     "semantic_hash": ""
   },
   "resources/views/pages/pharmacy/inventory/index.blade.php": {
-    "mtime": 1786779326.052066,
-    "ast_hash": "c903a63b5b97541f7fe5789794b44782",
+    "mtime": 1786786721.0596347,
+    "ast_hash": "9a3327fb6e0b7028f0797bfa3c962469",
     "semantic_hash": ""
   },
   "resources/views/pages/pharmacy/medicines/index.blade.php": {
@@ -1570,8 +1570,8 @@
     "semantic_hash": ""
   },
   "resources/views/pages/visits/create.blade.php": {
-    "mtime": 1786779326.060592,
-    "ast_hash": "fc4c220a6493a5100354de2643c4ee82",
+    "mtime": 1786785585.1733017,
+    "ast_hash": "575c0a25a1cbbf5e7fa10e31676784a3",
     "semantic_hash": ""
   },
   "resources/views/pages/visits/index.blade.php": {
@@ -2340,8 +2340,8 @@
     "semantic_hash": ""
   },
   "app/Http/Controllers/Auth/GateOidcAuthController.php": {
-    "mtime": 1786780012.4594615,
-    "ast_hash": "f0fcf89c6f867d1cf13687703863f8a5",
+    "mtime": 1786791657.3205605,
+    "ast_hash": "ca8b1711f372e3c8cf031e54ed1fc57f",
     "semantic_hash": ""
   },
   "app/Http/Controllers/Gate/GateReconciliationController.php": {
@@ -2350,8 +2350,8 @@
     "semantic_hash": ""
   },
   "app/Http/Controllers/Gate/GateSyncController.php": {
-    "mtime": 1786375690.1177232,
-    "ast_hash": "b8214d07f360a37ade2d7d4915bba935",
+    "mtime": 1786791700.4209003,
+    "ast_hash": "814a05a9099a71be3da15f09155d8412",
     "semantic_hash": ""
   },
   "app/Http/Middleware/EnforceGateApplicationEntitlement.php": {
@@ -2385,13 +2385,13 @@
     "semantic_hash": ""
   },
   "app/Services/Gate/FakeGateOidcClient.php": {
-    "mtime": 1786769876.473014,
-    "ast_hash": "032c3230216c3dbb85a4943ffc180215",
+    "mtime": 1786791700.1815553,
+    "ast_hash": "afc65db0e787af4051d4c5813a4d1861",
     "semantic_hash": ""
   },
   "app/Services/Gate/GateAuthenticationService.php": {
-    "mtime": 1786769289.2447586,
-    "ast_hash": "213b2dbc18007c2e962eab95eb178ee5",
+    "mtime": 1786791700.2616417,
+    "ast_hash": "0f5f2f04cc63003502d4312bf7bb6e11",
     "semantic_hash": ""
   },
   "app/Services/Gate/GateIdentityReconciliationService.php": {
@@ -2405,13 +2405,13 @@
     "semantic_hash": ""
   },
   "app/Services/Gate/HttpGateClient.php": {
-    "mtime": 1786769289.2465322,
-    "ast_hash": "bc8a66594418dcd84f5e2092ca60f667",
+    "mtime": 1786792372.7873607,
+    "ast_hash": "8ec71db91d3e8f024e7b5b42eaeb8487",
     "semantic_hash": ""
   },
   "app/Services/Gate/HttpGateOidcClient.php": {
-    "mtime": 1786769289.2458937,
-    "ast_hash": "7fbb448e18cffae6ad0a7386a4e4bb21",
+    "mtime": 1786792372.7080648,
+    "ast_hash": "02c088e5d4bb4c26009ead8c41972282",
     "semantic_hash": ""
   },
   "app/View/Components/GuestLayout.php": {
@@ -2420,8 +2420,8 @@
     "semantic_hash": ""
   },
   "config/gate.php": {
-    "mtime": 1786769191.6040418,
-    "ast_hash": "ff16fa3204482591bcf7a388d1b007c4",
+    "mtime": 1786791343.7761924,
+    "ast_hash": "d004c624597d5dc1006aecd08341a16b",
     "semantic_hash": ""
   },
   "database/migrations/2026_08_05_005300_create_gate_identity_mappings_table.php": {
@@ -2450,8 +2450,8 @@
     "semantic_hash": ""
   },
   "resources/views/pages/auth/login.blade.php": {
-    "mtime": 1786779574.6611323,
-    "ast_hash": "bc1934b691a4dccc6ae3da2511decfa7",
+    "mtime": 1786791657.4007294,
+    "ast_hash": "d56e1826ec5f5ab96d64f406bbe40bc1",
     "semantic_hash": ""
   },
   "resources/views/pages/gate/dry-run-preview.blade.php": {
@@ -2470,18 +2470,18 @@
     "semantic_hash": ""
   },
   "resources/views/pages/gate/sync.blade.php": {
-    "mtime": 1786779326.034402,
-    "ast_hash": "e375c0ba5ce8e511bf3a82aefffdaa50",
+    "mtime": 1786791700.5006688,
+    "ast_hash": "e07d1f95ae07854b3a83091236c3ad3c",
     "semantic_hash": ""
   },
   "tests/Feature/Auth/GateApplicationEntitlementTest.php": {
-    "mtime": 1786769289.251224,
-    "ast_hash": "4bce75cb4c54634b549ee063e042d9ac",
+    "mtime": 1786793006.4708197,
+    "ast_hash": "17ada61e8fa27466f8b9dd12ac5df394",
     "semantic_hash": ""
   },
   "tests/Feature/Auth/GateSsoAuthenticationTest.php": {
-    "mtime": 1786769289.2536345,
-    "ast_hash": "4df331adc5659c20c77205fbe6f12bea",
+    "mtime": 1786792116.273008,
+    "ast_hash": "f458e2790356fc21907228cf38428ff3",
     "semantic_hash": ""
   },
   "tests/Feature/Gate/GateIdentityProjectionTest.php": {
@@ -2510,8 +2510,8 @@
     "semantic_hash": ""
   },
   "docs/07-security/GATE-SSO-SECURITY.md": {
-    "mtime": 1786375690.1482587,
-    "ast_hash": "eee88d6afda402e71b3616cdf567e107",
+    "mtime": 1786792326.338741,
+    "ast_hash": "034886b84ebfdb8fe6ea2f0626ae0111",
     "semantic_hash": ""
   },
   "docs/07-security/OPERATIONAL-DATA-SHARING.md": {
@@ -3135,8 +3135,8 @@
     "semantic_hash": ""
   },
   "tests/Feature/Security/PreStagingSecurityTest.php": {
-    "mtime": 1786763279.7044687,
-    "ast_hash": "44f7921cfdb976ddfc40e24b2c1e0517",
+    "mtime": 1786793006.5545962,
+    "ast_hash": "212b93b4a1aa36e47a7b30413a4ee190",
     "semantic_hash": ""
   },
   "tests/Feature/Security/RbacPrivilegeEscalationTest.php": {
@@ -3165,8 +3165,8 @@
     "semantic_hash": ""
   },
   "docs/06-integration/GATE-STAGING-CONFIGURATION-CHECKLIST.md": {
-    "mtime": 1786764166.0821114,
-    "ast_hash": "faaefd0bc0632d6128075091a4da1f2f",
+    "mtime": 1786792326.4175081,
+    "ast_hash": "dbb678bf7217ad02e7c086dbb2be9893",
     "semantic_hash": ""
   },
   "docs/07-security/GATE-ENTITLEMENT-VS-LOCAL-RBAC.md": {
@@ -3295,8 +3295,8 @@
     "semantic_hash": ""
   },
   "tests/Unit/PublicRepositorySanitizationTest.php": {
-    "mtime": 1786770095.882084,
-    "ast_hash": "6f8ff31b85a03cde2d154aca1b047608",
+    "mtime": 1786791715.7198179,
+    "ast_hash": "3ff27295107964097c991c7bfbd37f8c",
     "semantic_hash": ""
   },
   "SECURITY.md": {
@@ -3415,8 +3415,8 @@
     "semantic_hash": ""
   },
   "docs/10-delivery/APPLICATION-IDENTITY-BRANDING-CLOSURE.md": {
-    "mtime": 1786779989.6608934,
-    "ast_hash": "01f09b0f9ff8d9f8c29ba299f18f0559",
+    "mtime": 1786780978.0503397,
+    "ast_hash": "0ec5d902eeda66ce1b17a69b0314148b",
     "semantic_hash": ""
   },
   "public/branding/default/app-mark.svg": {
@@ -3437,6 +3437,91 @@
   "public/branding/default/logo-light.svg": {
     "mtime": 1786779223.6181507,
     "ast_hash": "928913bb02d0f27eed171d76e591606d",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/MedicalVisit/PatientSearchController.php": {
+    "mtime": 1786785744.718346,
+    "ast_hash": "c2c0d35605c17819ef33d8eaaa9b1b53",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Pharmacy/InventoryController.php": {
+    "mtime": 1786786598.5132344,
+    "ast_hash": "d603b1391921384287ff479b3a4af394",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Pharmacy/FilterInventoryRequest.php": {
+    "mtime": 1786786598.2410884,
+    "ast_hash": "27d5a8ccae4b7d296ecbf0c05f53b51e",
+    "semantic_hash": ""
+  },
+  "app/Queries/MedicalVisit/PatientSearchQuery.php": {
+    "mtime": 1786785793.8977234,
+    "ast_hash": "5b9d13616ba2715917193290013ea51a",
+    "semantic_hash": ""
+  },
+  "app/Queries/Pharmacy/InventoryBatchQuery.php": {
+    "mtime": 1786786598.377559,
+    "ast_hash": "28327ce5c631764fdd6e5b14d71c87e1",
+    "semantic_hash": ""
+  },
+  "tests/Feature/MedicalVisit/PatientSearchTest.php": {
+    "mtime": 1786785585.0927954,
+    "ast_hash": "95ce91916a0c5d5fe77778e9bf0f5637",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Pharmacy/InventoryFilterTest.php": {
+    "mtime": 1786786721.1406987,
+    "ast_hash": "fd72943f1b1e9b6a0416f222fa24f7df",
+    "semantic_hash": ""
+  },
+  "app/Http/Controllers/Admin/SsoConfigurationController.php": {
+    "mtime": 1786791536.566741,
+    "ast_hash": "171d9df7205a9460c17c96354158f1c7",
+    "semantic_hash": ""
+  },
+  "app/Http/Requests/Admin/UpdateSsoConfigurationRequest.php": {
+    "mtime": 1786792162.0392573,
+    "ast_hash": "db57345947ef369fcc6aa90b45fc1f5b",
+    "semantic_hash": ""
+  },
+  "app/Models/SsoConfiguration.php": {
+    "mtime": 1786791343.5772192,
+    "ast_hash": "64dbea90c0ab7fac5f1fc9d3a7015ddd",
+    "semantic_hash": ""
+  },
+  "app/Services/SsoConfigurationService.php": {
+    "mtime": 1786791700.0989354,
+    "ast_hash": "9ba13211f3c326b292b264becbfbd07a",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_08_15_000200_create_sso_configurations_table.php": {
+    "mtime": 1786791343.4487195,
+    "ast_hash": "d8008197077dfa90e073d5f0e6ab06a5",
+    "semantic_hash": ""
+  },
+  "resources/views/pages/admin/sso-configuration/edit.blade.php": {
+    "mtime": 1786791587.123348,
+    "ast_hash": "acc060b7adf8ddc3b42ec497364c5509",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Admin/SsoConfigurationManagementTest.php": {
+    "mtime": 1786792381.3456278,
+    "ast_hash": "4b60cf6d8fbe8a92773a4e03fef40e23",
+    "semantic_hash": ""
+  },
+  "tests/Feature/Security/SsoConfigurationAuthorizationTest.php": {
+    "mtime": 1786791802.756152,
+    "ast_hash": "c20d75abb84b12a182d7845cbe29559d",
+    "semantic_hash": ""
+  },
+  "tests/Support/SsoConfigurationTestHelpers.php": {
+    "mtime": 1786791802.6766858,
+    "ast_hash": "6c4d6680bdd26ce807ee435d1f77acdf",
+    "semantic_hash": ""
+  },
+  "docs/10-delivery/SSO-CONFIGURATION-MANAGEMENT.md": {
+    "mtime": 1786792326.6509295,
+    "ast_hash": "0b25d9860a6e431b3ab365ee9d3aa03d",
     "semantic_hash": ""
   }
 }

@@ -9,6 +9,7 @@ use App\Http\Requests\Gate\ApplyGateSyncRequest;
 use App\Models\GateSyncRun;
 use App\Services\Gate\GateSyncApplyService;
 use App\Services\Gate\GateSyncDryRunService;
+use App\Services\SsoConfigurationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -20,7 +21,8 @@ class GateSyncController extends Controller
         protected GateSyncDryRunService $dryRunService,
         protected GateSyncApplyService $applyService,
         protected GateClientContract $gateClient,
-        protected GateOidcClientContract $oidcClient
+        protected GateOidcClientContract $oidcClient,
+        protected SsoConfigurationService $ssoConfiguration
     ) {}
 
     /**
@@ -31,9 +33,10 @@ class GateSyncController extends Controller
         Gate::authorize('view-gate-sync');
 
         $health = $this->oidcClient->probeHealth();
+        $sso = $this->ssoConfiguration->forForm();
         $recentRuns = GateSyncRun::latest('started_at')->paginate(10);
 
-        return view('pages.gate.sync', compact('health', 'recentRuns'));
+        return view('pages.gate.sync', compact('health', 'sso', 'recentRuns'));
     }
 
     /**

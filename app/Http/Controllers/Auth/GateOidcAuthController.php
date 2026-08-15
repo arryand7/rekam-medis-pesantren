@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Services\ApplicationIdentityService;
 use App\Services\AuditLogService;
 use App\Services\Gate\GateAuthenticationService;
+use App\Services\SsoConfigurationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,8 @@ class GateOidcAuthController extends Controller
 {
     public function __construct(
         protected GateAuthenticationService $authService,
-        protected ApplicationIdentityService $identityService
+        protected ApplicationIdentityService $identityService,
+        protected SsoConfigurationService $ssoConfiguration
     ) {}
 
     /**
@@ -33,12 +35,21 @@ class GateOidcAuthController extends Controller
 
         // If user explicitly clicks/requests Gate SSO redirect
         if ($request->has('redirect') || $request->has('sso')) {
+            $sso = $this->ssoConfiguration->get();
+            if (! $this->canUseSso($sso)) {
+                return redirect()->route('login')
+                    ->with('error', 'Gate SSO belum diaktifkan atau konfigurasinya belum lengkap. Gunakan login lokal atau hubungi Super Admin.');
+            }
+
             $redirectUrl = $this->authService->initiateLogin($request);
 
             return redirect()->away($redirectUrl);
         }
 
-        return view('pages.auth.login', ['identity' => $this->identityService->get()]);
+        return view('pages.auth.login', [
+            'identity' => $this->identityService->get(),
+            'sso' => $this->ssoConfiguration->forForm(),
+        ]);
     }
 
     /**
@@ -114,6 +125,12 @@ class GateOidcAuthController extends Controller
      */
     public function callback(Request $request): RedirectResponse
     {
+        $sso = $this->ssoConfiguration->get();
+        if (! $this->canUseSso($sso)) {
+            return redirect()->route('login')
+                ->with('error', 'Callback Gate SSO ditolak karena integrasi sedang nonaktif atau belum lengkap.');
+        }
+
         $result = $this->authService->handleCallback($request);
 
         if ($result['status'] === 'success') {
@@ -151,5 +168,16 @@ class GateOidcAuthController extends Controller
         }
 
         return redirect()->route('login')->with('info', 'Anda telah berhasil keluar dari sistem.');
+    }
+
+    /** @param array<string, mixed> $settings */
+    private function canUseSso(array $settings): bool
+    {
+        if (! $settings['sso_enabled']) {
+            return false;
+        }
+
+        return (bool) $settings['is_ready']
+            || (app()->environment(['local', 'testing']) && $settings['driver'] === 'fake');
     }
 }

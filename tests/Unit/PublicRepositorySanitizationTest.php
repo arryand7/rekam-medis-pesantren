@@ -10,11 +10,11 @@ it('keeps public configuration examples free from populated secrets', function (
 
     expect($environment)
         ->not->toBeFalse()
-        ->toContain('GATE_BASE_URL=https://gate.example.invalid')
         ->toContain('ATTENDANCE_INTEGRATION_ENDPOINT_URL=https://attendance.example.invalid')
         ->toContain("APP_KEY=\n")
-        ->toContain("GATE_CLIENT_SECRET=\n")
         ->toContain("ATTENDANCE_INTEGRATION_API_KEY=\n")
+        ->not->toContain('GATE_CLIENT_SECRET=')
+        ->not->toContain('GATE_BASE_URL=')
         ->not->toContain('/Users/')
         ->not->toContain('/Applications/');
 });

@@ -6,6 +6,8 @@ use App\Contracts\GateOidcClientContract;
 use App\DTOs\GateApplicationEntitlementDTO;
 use App\DTOs\GateOidcTokenResponseDTO;
 use App\DTOs\GateUserInfoDTO;
+use App\Services\SsoConfigurationService;
+use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use RuntimeException;
@@ -13,13 +15,18 @@ use Throwable;
 
 class HttpGateOidcClient implements GateOidcClientContract
 {
+    public function __construct(
+        private readonly SsoConfigurationService $configuration
+    ) {}
+
     public function getAuthorizationUrl(string $state, ?string $nonce = null, ?string $codeChallenge = null): string
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
+        $settings = $this->configuration->get();
+        $baseUrl = rtrim((string) $settings['base_url'], '/');
         $endpoint = config('gate.endpoints.authorize', '/oauth/authorize');
-        $clientId = config('gate.client_id', '');
-        $redirectUri = urlencode(config('gate.redirect_uri', ''));
-        $scopes = urlencode(config('gate.scopes', 'openid profile email'));
+        $clientId = (string) $settings['client_id'];
+        $redirectUri = urlencode((string) $settings['redirect_uri']);
+        $scopes = urlencode((string) $settings['scopes']);
 
         $url = "{$baseUrl}{$endpoint}?response_type=code&client_id={$clientId}&redirect_uri={$redirectUri}&scope={$scopes}&state={$state}";
         if ($nonce) {
@@ -34,15 +41,16 @@ class HttpGateOidcClient implements GateOidcClientContract
 
     public function exchangeAuthorizationCode(string $code, ?string $codeVerifier = null): GateOidcTokenResponseDTO
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
+        $settings = $this->configuration->get();
+        $baseUrl = rtrim((string) $settings['base_url'], '/');
         $endpoint = config('gate.endpoints.token', '/oauth/token');
-        $timeout = (int) config('gate.http.timeout', 5);
+        $timeout = (int) $settings['http_timeout'];
 
         $params = [
             'grant_type' => 'authorization_code',
-            'client_id' => config('gate.client_id', ''),
-            'client_secret' => config('gate.client_secret', ''),
-            'redirect_uri' => config('gate.redirect_uri', ''),
+            'client_id' => $settings['client_id'],
+            'client_secret' => $settings['client_secret'],
+            'redirect_uri' => $settings['redirect_uri'],
             'code' => $code,
         ];
 
@@ -74,12 +82,11 @@ class HttpGateOidcClient implements GateOidcClientContract
 
     public function fetchUserInfo(string $accessToken): GateUserInfoDTO
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
+        $settings = $this->configuration->get();
+        $baseUrl = rtrim((string) $settings['base_url'], '/');
         $endpoint = config('gate.endpoints.userinfo', '/oauth/userinfo');
-        $timeout = (int) config('gate.http.timeout', 5);
-
         try {
-            $response = Http::timeout($timeout)
+            $response = $this->request($settings)
                 ->withToken($accessToken)
                 ->get("{$baseUrl}{$endpoint}");
 
@@ -98,12 +105,11 @@ class HttpGateOidcClient implements GateOidcClientContract
 
     public function fetchApplicationEntitlement(string $accessToken, string $gateUserId, string $appCode): GateApplicationEntitlementDTO
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
+        $settings = $this->configuration->get();
+        $baseUrl = rtrim((string) $settings['base_url'], '/');
         $endpoint = config('gate.endpoints.entitlements', '/api/v1/entitlements');
-        $timeout = (int) config('gate.http.timeout', 5);
-
         try {
-            $response = Http::timeout($timeout)
+            $response = $this->request($settings)
                 ->withToken($accessToken)
                 ->get("{$baseUrl}{$endpoint}/{$gateUserId}/{$appCode}");
 
@@ -133,7 +139,8 @@ class HttpGateOidcClient implements GateOidcClientContract
 
     public function getEndSessionUrl(?string $idToken = null, ?string $postLogoutRedirectUri = null): ?string
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
+        $settings = $this->configuration->get();
+        $baseUrl = rtrim((string) $settings['base_url'], '/');
         $endpoint = config('gate.endpoints.end_session', '/oauth/logout');
 
         $url = "{$baseUrl}{$endpoint}";
@@ -146,26 +153,36 @@ class HttpGateOidcClient implements GateOidcClientContract
 
     public function probeHealth(): array
     {
-        $baseUrl = rtrim(config('gate.base_url', 'https://gate.example.invalid'), '/');
+        $settings = $this->configuration->get();
+        $baseUrl = rtrim((string) $settings['base_url'], '/');
         $endpoint = config('gate.endpoints.health', '/health');
-        $timeout = 3;
-
         try {
-            $response = Http::timeout($timeout)->get("{$baseUrl}{$endpoint}");
+            $response = $this->request($settings, 3)->get("{$baseUrl}{$endpoint}");
 
             return [
                 'driver' => 'http',
-                'enabled' => config('gate.sso_enabled', false),
+                'enabled' => (bool) $settings['sso_enabled'],
                 'reachable' => $response->successful(),
                 'message' => $response->successful() ? 'Gate OIDC Server online.' : 'Gate Server HTTP '.$response->status(),
             ];
         } catch (Throwable) {
             return [
                 'driver' => 'http',
-                'enabled' => config('gate.sso_enabled', false),
+                'enabled' => (bool) $settings['sso_enabled'],
                 'reachable' => false,
                 'message' => 'Gate Server unreachable.',
             ];
         }
+    }
+
+    /** @param array<string, mixed> $settings */
+    private function request(array $settings, ?int $timeout = null): PendingRequest
+    {
+        $request = Http::timeout($timeout ?? (int) $settings['http_timeout']);
+        $attempts = (int) $settings['retry_attempts'];
+
+        return $attempts > 0
+            ? $request->retry($attempts, (int) $settings['retry_backoff_ms'], throw: false)
+            : $request;
     }
 }

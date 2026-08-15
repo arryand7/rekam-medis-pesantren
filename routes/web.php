@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ApplicationIdentityController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\SsoConfigurationController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\GateOidcAuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
@@ -15,8 +16,10 @@ use App\Http\Controllers\Gate\GateSyncController;
 use App\Http\Controllers\HealthController;
 use App\Http\Controllers\Integration\AttendanceIntegrationController;
 use App\Http\Controllers\Integration\IntegrationOutboxController;
+use App\Http\Controllers\MedicalVisit\PatientSearchController;
 use App\Http\Controllers\Notification\OperationalNotificationController;
 use App\Http\Controllers\Notification\UserNotificationController;
+use App\Http\Controllers\Pharmacy\InventoryController;
 use App\Http\Controllers\Referral\ReferralCompanionController;
 use App\Http\Controllers\Referral\ReferralController;
 use App\Http\Controllers\Referral\ReferralDepartureController;
@@ -135,6 +138,12 @@ Route::middleware('auth')->group(function () {
         Route::post('/reset', [ApplicationIdentityController::class, 'reset'])->name('reset');
     });
 
+    Route::prefix('/admin/system/sso-configuration')->name('admin.system.sso-configuration.')->group(function () {
+        Route::get('/', [SsoConfigurationController::class, 'edit'])->name('edit');
+        Route::put('/', [SsoConfigurationController::class, 'update'])->name('update');
+        Route::post('/reset', [SsoConfigurationController::class, 'reset'])->name('reset');
+    });
+
     Route::get('/gate-sync/preview', function (Request $request, GateSyncDryRunService $dryRunService) {
         Gate::authorize('view-gate-sync');
         $report = null;
@@ -166,12 +175,19 @@ Route::middleware('auth')->group(function () {
         return view('pages.visits.index', compact('visits'));
     })->name('visits.index');
 
-    Route::get('/visits/create', function () {
+    Route::get('/visits/create', function (Request $request) {
         Gate::authorize('create-medical-visits');
-        $patients = Patient::with('person')->where('is_eligible', true)->get();
+        $selectedPatientId = old('patient_id', $request->string('patient_id')->toString());
+        $selectedPatient = $selectedPatientId !== ''
+            ? Patient::with('person')->where('is_eligible', true)->find($selectedPatientId)
+            : null;
 
-        return view('pages.visits.create', compact('patients'));
+        return view('pages.visits.create', compact('selectedPatient'));
     })->name('visits.create');
+
+    Route::get('/visits/patient-search', PatientSearchController::class)
+        ->middleware('throttle:60,1')
+        ->name('visits.patient-search');
 
     Route::post('/visits', function (Request $request, MedicalVisitService $visitService) {
         Gate::authorize('create-medical-visits');
@@ -458,12 +474,7 @@ Route::middleware('auth')->group(function () {
         }
     })->name('pharmacy.medicines.store');
 
-    Route::get('/pharmacy/inventory', function () {
-        Gate::authorize('view-pharmacy-inventory');
-        $batches = MedicineBatch::with(['medicine', 'location'])->where('status', '!=', 'entered_in_error')->latest()->paginate(15);
-
-        return view('pages.pharmacy.inventory.index', compact('batches'));
-    })->name('pharmacy.inventory.index');
+    Route::get('/pharmacy/inventory', InventoryController::class)->name('pharmacy.inventory.index');
 
     Route::get('/pharmacy/receipt/create', function () {
         Gate::authorize('receive-medicine-stock');

@@ -50,14 +50,14 @@
             <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-700/60 shadow-sm">
                 <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">SSO Production Flag</div>
                 <div class="mt-2 text-lg font-bold font-mono text-slate-900 dark:text-white">
-                    {{ config('gate.sso_enabled') ? 'ENABLED' : 'DISABLED (Sandbox)' }}
+                    {{ $sso['sso_enabled'] ? 'ENABLED' : 'DISABLED (Sandbox)' }}
                 </div>
             </div>
 
             <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-700/60 shadow-sm">
                 <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Application Code</div>
                 <div class="mt-2 text-lg font-bold font-mono text-sky-600 dark:text-sky-400">
-                    {{ config('gate.app_code') }}
+                    {{ $sso['app_code'] }}
                 </div>
             </div>
 
