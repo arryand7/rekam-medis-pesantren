@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreUserRequest;
 use App\Http\Requests\Admin\UpdateUserDirectPermissionsRequest;
+use App\Http\Requests\Admin\UpdateUserRequest;
 use App\Http\Requests\Admin\UpdateUserRolesRequest;
+use App\Models\Patient;
 use App\Models\Permission;
+use App\Models\Person;
 use App\Models\Role;
 use App\Models\User;
 use App\Services\AuditLogService;
@@ -14,6 +18,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -203,5 +209,197 @@ class UserController extends Controller
         $statusText = $result->is_active ? 'diaktifkan' : 'dinonaktifkan';
 
         return redirect()->route('users.show', $result->id)->with('success', "Akun '{$result->name}' telah berhasil {$statusText}.");
+    }
+
+    /**
+     * Show form to create a new local user.
+     */
+    public function create(): View
+    {
+        Gate::authorize('manage-users');
+
+        $roles = Role::orderBy('name')->get();
+        // Only show persons that don't have a user account yet
+        $availablePersons = Person::whereDoesntHave('user')
+            ->orderBy('name')
+            ->get(['id', 'name', 'user_type', 'nis_nip', 'gate_user_id']);
+
+        return view('pages.users.create', compact('roles', 'availablePersons'));
+    }
+
+    /**
+     * Store a new local user.
+     */
+    public function store(StoreUserRequest $request): RedirectResponse
+    {
+        $validated = $request->validated();
+
+        $user = DB::transaction(function () use ($validated) {
+            // Resolve or create Person
+            if ($validated['person_mode'] === 'existing' && ! empty($validated['person_id'])) {
+                $person = Person::lockForUpdate()->findOrFail($validated['person_id']);
+            } else {
+                // Create a new local Person (no gate_user_id)
+                $person = Person::create([
+                    'id'        => (string) Str::ulid(),
+                    'name'      => $validated['name'],
+                    'email'     => $validated['email'],
+                    'user_type' => $validated['user_type'] ?? 'staff',
+                    'nis_nip'   => $validated['nis_nip'] ?? null,
+                    'source_status' => 'active',
+                    'synced_at'     => now(),
+                ]);
+
+                // Create patient profile if eligible
+                if ($person->isHumanPatientEligible()) {
+                    Patient::createOrFindForPerson($person);
+                }
+            }
+
+            // Create User account
+            $user = User::create([
+                'person_id' => $person->id,
+                'name'      => $validated['name'],
+                'email'     => $validated['email'],
+                'password'  => Hash::make($validated['password']),
+                'is_active' => (bool) ($validated['is_active'] ?? true),
+            ]);
+
+            AuditLogService::log(
+                action: 'USER_CREATED_LOCAL',
+                subjectType: User::class,
+                subjectId: $user->id,
+                before: null,
+                after: ['name' => $user->name, 'email' => $user->email, 'person_mode' => $validated['person_mode']],
+                reason: 'User lokal baru dibuat oleh ' . (auth()->user()->name ?? 'System')
+            );
+
+            return $user;
+        });
+
+        return redirect()->route('users.show', $user->id)
+            ->with('success', "Akun lokal '{$user->name}' berhasil dibuat. Sampaikan kata sandi kepada pengguna secara langsung.");
+    }
+
+    /**
+     * Show form to edit a local user.
+     */
+    public function edit(string $id): View
+    {
+        Gate::authorize('manage-users');
+
+        $user = User::with('person')->findOrFail($id);
+
+        // Determine if identity fields are locked (managed by Gate SSO)
+        $isGateManaged = ! empty($user->person?->gate_user_id);
+
+        return view('pages.users.edit', compact('user', 'isGateManaged'));
+    }
+
+    /**
+     * Update a local user's profile.
+     */
+    public function update(UpdateUserRequest $request, string $id): RedirectResponse
+    {
+        $validated = $request->validated();
+
+        $user = DB::transaction(function () use ($id, $validated) {
+            $user = User::with('person')->lockForUpdate()->findOrFail($id);
+            $isGateManaged = ! empty($user->person?->gate_user_id);
+
+            $before = [
+                'name'      => $user->name,
+                'email'     => $user->email,
+                'is_active' => $user->is_active,
+            ];
+
+            // Identity fields: only update if not Gate-managed
+            if (! $isGateManaged) {
+                $user->name  = $validated['name'];
+                $user->email = $validated['email'];
+
+                // Also sync name on the Person record
+                if ($user->person) {
+                    $user->person->name  = $validated['name'];
+                    $user->person->email = $validated['email'];
+                    $user->person->save();
+                }
+            }
+
+            // Password: optional
+            if (! empty($validated['password'])) {
+                $user->password = Hash::make($validated['password']);
+            }
+
+            $user->is_active = (bool) ($validated['is_active'] ?? $user->is_active);
+            $user->save();
+
+            $after = [
+                'name'           => $user->name,
+                'email'          => $user->email,
+                'is_active'      => $user->is_active,
+                'password_reset' => ! empty($validated['password']),
+            ];
+
+            AuditLogService::log(
+                action: 'USER_UPDATED',
+                subjectType: User::class,
+                subjectId: $user->id,
+                before: $before,
+                after: $after,
+                reason: 'Data user diperbarui oleh ' . (auth()->user()->name ?? 'System')
+            );
+
+            return $user;
+        });
+
+        return redirect()->route('users.show', $user->id)
+            ->with('success', "Data akun '{$user->name}' berhasil diperbarui.");
+    }
+
+    /**
+     * Reset a user's password and display it once to the admin.
+     */
+    public function resetPassword(string $id): RedirectResponse
+    {
+        Gate::authorize('manage-users');
+
+        $user = DB::transaction(function () use ($id) {
+            $user = User::lockForUpdate()->findOrFail($id);
+
+            // Protect last active super admin
+            if ($user->isSuperAdmin()) {
+                $activeSuperAdminCount = User::where('is_active', true)
+                    ->whereHas('roles', fn ($q) => $q->where('name', 'super_admin'))
+                    ->count();
+
+                if ($activeSuperAdminCount <= 1 && auth()->id() !== $user->id) {
+                    return ['user' => null, 'plain' => null];
+                }
+            }
+
+            $plain = Str::random(12);
+            $user->password = Hash::make($plain);
+            $user->save();
+
+            AuditLogService::log(
+                action: 'USER_PASSWORD_RESET',
+                subjectType: User::class,
+                subjectId: $user->id,
+                before: null,
+                after: ['reset_by' => auth()->user()->name ?? 'System'],
+                reason: 'Kata sandi direset oleh admin. Password baru tidak dicatat di log.'
+            );
+
+            return ['user' => $user, 'plain' => $plain];
+        });
+
+        if ($user['user'] === null) {
+            return redirect()->back()->with('error', 'Tidak dapat mereset password Super Admin aktif terakhir.');
+        }
+
+        return redirect()->route('users.show', $user['user']->id)
+            ->with('password_reset_plain', $user['plain'])
+            ->with('success', "Kata sandi untuk '{$user['user']->name}' berhasil direset. Catat kata sandi baru di bawah ini — hanya ditampilkan sekali.");
     }
 }

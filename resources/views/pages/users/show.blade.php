@@ -53,7 +53,26 @@
                 </div>
             </div>
 
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 flex-wrap">
+                <!-- Edit Button -->
+                <a href="{{ route('users.edit', $user->id) }}"
+                   class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] text-[var(--foreground)] hover:bg-[var(--border)] text-xs font-semibold transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                    Edit
+                </a>
+
+                <!-- Reset Password Button -->
+                @if(!$isSelf)
+                    <form method="POST" action="{{ route('users.reset-password', $user->id) }}"
+                          onsubmit="return confirm('Reset kata sandi untuk {{ addslashes($user->name) }}? Password baru akan ditampilkan sekali dan tidak bisa dikembalikan.')">
+                        @csrf
+                        <button type="submit" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-900/50 text-xs font-semibold transition-colors">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+                            Reset Password
+                        </button>
+                    </form>
+                @endif
+
                 <!-- Status Toggle Button -->
                 <form method="POST" action="{{ route('users.toggle-status', $user->id) }}" onsubmit="return confirm('Apakah Anda yakin ingin mengubah status aktifitas akun pengguna ini?');">
                     @csrf
@@ -69,6 +88,38 @@
                 </form>
             </div>
         </div>
+
+        <!-- Password Reset Flash — hanya tampil sekali -->
+        @if (session('password_reset_plain'))
+            <div class="p-5 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border-2 border-amber-400 dark:border-amber-700 space-y-3">
+                <div class="flex items-center gap-2 text-amber-800 dark:text-amber-300">
+                    <svg class="w-5 h-5 shrink-0 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+                    <span class="font-bold text-sm">Kata Sandi Baru — Salin Sekarang</span>
+                </div>
+                <p class="text-xs text-amber-700 dark:text-amber-400">Kata sandi berikut hanya ditampilkan <strong>satu kali</strong>. Setelah halaman ini ditinggalkan, kata sandi tidak dapat dilihat lagi. Sampaikan kepada pengguna secara langsung.</p>
+                <div class="flex items-center gap-3 p-3.5 rounded-xl bg-white dark:bg-amber-950/60 border border-amber-300 dark:border-amber-700">
+                    <code id="new-password-display" class="text-base font-bold font-mono text-amber-900 dark:text-amber-200 tracking-widest select-all flex-1">
+                        {{ session('password_reset_plain') }}
+                    </code>
+                    <button type="button" onclick="copyPassword()"
+                            class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold transition-colors">
+                        Salin
+                    </button>
+                </div>
+            </div>
+            <script>
+                function copyPassword() {
+                    const text = document.getElementById('new-password-display').textContent.trim();
+                    navigator.clipboard.writeText(text).then(() => {
+                        const btn = event.target;
+                        btn.textContent = '✓ Disalin';
+                        btn.classList.add('bg-emerald-500');
+                        btn.classList.remove('bg-amber-500');
+                        setTimeout(() => { btn.textContent = 'Salin'; btn.classList.remove('bg-emerald-500'); btn.classList.add('bg-amber-500'); }, 2000);
+                    });
+                }
+            </script>
+        @endif
 
         <!-- Feedback Messages -->
         @if (session('success'))

@@ -122,10 +122,15 @@ Route::middleware('auth')->group(function () {
 
     // User Administration & RBAC Routes
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
     Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
     Route::post('/users/{id}/roles', [UserController::class, 'updateRoles'])->name('users.roles.update');
     Route::post('/users/{id}/permissions', [UserController::class, 'updateDirectPermissions'])->name('users.permissions.update');
     Route::post('/users/{id}/toggle-status', [UserController::class, 'toggleStatus'])->name('users.toggle-status');
+    Route::post('/users/{id}/reset-password', [UserController::class, 'resetPassword'])->name('users.reset-password');
 
     // Role & Permission Matrix Administration Routes
     Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');

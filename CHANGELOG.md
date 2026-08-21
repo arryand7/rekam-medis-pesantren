@@ -15,6 +15,27 @@ Semua perubahan penting proyek dicatat di file ini.
 > Istilah *production* pada dokumen historis sebelum koreksi ini merujuk pada
 > *rehearsal / readiness validation*, bukan deployment server production fisik aktual.
 
+## [0.28.0] — 2026-08-21 (CRUD User Lokal & Logout Fix)
+
+### Added
+- **CRUD User Lokal**: Admin dengan permission `manage-users` kini dapat membuat, mengedit, dan mereset password user langsung dari dashboard.
+  - Form buat user baru (`/users/create`) dengan dua mode: buat `Person` baru sekaligus, atau pilih `Person` yang sudah ada di DB namun belum punya akun.
+  - Form edit user (`/users/{id}/edit`) dengan deteksi Gate-managed: field nama/email di-readonly jika user disinkronisasi dari Gate SSO.
+  - Reset Password (`POST /users/{id}/reset-password`): generate password acak 12 karakter, ditampilkan sekali di halaman show dengan tombol salin — tidak disimpan di log.
+  - Semua operasi mutasi menggunakan `DB::transaction` dan menghasilkan audit trail via `AuditLogService`.
+- **Routes baru**: `users.create`, `users.store`, `users.edit`, `users.update`, `users.reset-password`.
+- **Form Requests baru**: `StoreUserRequest`, `UpdateUserRequest` dengan validasi server-side lengkap.
+- **Tombol "Tambah User Lokal"** di header halaman `users.index`.
+- **Tombol "Edit"** dan **"Reset Password"** di halaman `users.show` dengan banner flash satu-kali untuk kata sandi yang baru direset.
+- **14 feature tests baru** (`UserCrudTest`) — semua passed.
+- **phpunit.xml** diperbarui: DB driver `mariadb`, port `8186` sesuai konfigurasi lokal.
+
+### Fixed
+- **Logout redirect ke domain Gate production** (`gate.sabira-iibs.id`) saat `sso_enabled=false`.
+  - Controller `logout()` sekarang memvalidasi domain — redirect ke Gate hanya jika `sso_enabled=true`, `is_ready=true`, **dan** host URL Gate cocok dengan `base_url` yang terkonfigurasi saat ini.
+  - Session keys Gate (`gate_id_token`, `gate_auth_state`, dll.) dibersihkan lebih awal sebelum invalidasi session.
+  - Session stale yang menyebabkan masalah ini sudah dihapus.
+
 ## [0.27.0] — 2026-08-21 (Gate SSO Sync & Photo Integration)
 
 ### Added

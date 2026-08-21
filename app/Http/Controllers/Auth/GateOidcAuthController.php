@@ -158,13 +158,29 @@ class GateOidcAuthController extends Controller
 
     /**
      * Log the user out of POSKESTREN and optionally Gate session.
+     *
+     * Keamanan: hanya redirect ke Gate jika SSO aktif DAN konfigurasi Gate terkini siap.
+     * Ini mencegah redirect ke domain Gate lama yang mungkin masih tersimpan di session.
      */
     public function logout(Request $request): RedirectResponse
     {
+        $sso = $this->ssoConfiguration->get();
+
+        // Hapus token Gate dari session sebelum logout lokal
+        $request->session()->forget(['gate_id_token', 'gate_auth_state', 'gate_auth_nonce', 'gate_access_token']);
+
         $endSessionUrl = $this->authService->logout($request);
 
-        if (! empty($endSessionUrl)) {
-            return redirect()->away($endSessionUrl);
+        // Hanya redirect ke Gate jika:
+        // 1. SSO aktif dan konfigurasi lengkap
+        // 2. URL yang dihasilkan berasal dari base_url yang terkonfigurasi saat ini (bukan stale URL)
+        if (! empty($endSessionUrl) && $sso['sso_enabled'] && $sso['is_ready']) {
+            $configuredBaseUrl = parse_url((string) $sso['base_url'], PHP_URL_HOST);
+            $redirectHost = parse_url($endSessionUrl, PHP_URL_HOST);
+
+            if ($configuredBaseUrl && $redirectHost && $configuredBaseUrl === $redirectHost) {
+                return redirect()->away($endSessionUrl);
+            }
         }
 
         return redirect()->route('login')->with('info', 'Anda telah berhasil keluar dari sistem.');

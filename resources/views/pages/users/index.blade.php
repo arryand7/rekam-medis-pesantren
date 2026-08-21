@@ -15,7 +15,14 @@
                     Kelola penugasan role aplikatif, hak akses langsung (exception), dan preview effective permissions per pengguna.
                 </p>
             </div>
-            <div>
+            <div class="flex items-center gap-2 shrink-0">
+                <a href="{{ route('users.create') }}"
+                   class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-[var(--primary)] text-white hover:bg-[var(--primary-hover)] transition-colors shadow-xs">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                    Tambah User Lokal
+                </a>
                 <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--surface-muted)] text-[var(--foreground)] border border-[var(--border)]">
                     Gate Entitlement & Local RBAC
                 </span>
