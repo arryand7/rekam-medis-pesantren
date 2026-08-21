@@ -3,7 +3,7 @@ id: DOC-CHANGELOG
 title: "Changelog"
 status: active
 owner: "Ryand Arifriantoni"
-last_updated: 2026-08-15
+last_updated: 2026-08-21
 ---
 
 # Changelog
@@ -14,6 +14,36 @@ Semua perubahan penting proyek dicatat di file ini.
 > Sampai versi 0.19.2 aplikasi masih berada pada local development/pre-production.
 > Istilah *production* pada dokumen historis sebelum koreksi ini merujuk pada
 > *rehearsal / readiness validation*, bukan deployment server production fisik aktual.
+
+## [0.27.0] — 2026-08-21 (Gate SSO Sync & Photo Integration)
+
+### Added
+
+- **Sinkronisasi foto profil dari Gate SSO**: `GateSyncApplyService` sekarang mengunduh foto via signed URL dan menyimpannya di disk private `person_photos` (di luar transaksi DB untuk menghindari lock I/O).
+- **Checksum-aware photo sync**: Foto tidak diunduh ulang jika `photo_checksum` Gate sama dengan checksum yang tersimpan di DB.
+- **Validasi magic bytes**: Format gambar diverifikasi dari header file (jpg/png/webp/gif) sebelum disimpan.
+- **Migration `people`**: Kolom `photo_path` (VARCHAR) dan `photo_checksum` (VARCHAR 64) ditambahkan ke tabel `people`.
+- **Person model accessors**: `photo_url` (URL route aman via `PersonPhotoController`) dan `photo_or_avatar_url` (fallback ke ui-avatars.com).
+- **Disk `person_photos`**: Disk filesystem private baru di `storage/app/private/person-photos/` untuk foto profil.
+- **`PersonPhotoController`**: Controller serving foto dari private storage dengan header `Cache-Control: private, max-age=3600` dan validasi MIME type.
+- **Route `person.photo`**: Route `GET /person/{person}/photo` dalam middleware `auth`.
+- **`GateUserDTO`**: Tiga field baru — `photoAvailable`, `photoUrl`, `photoChecksum` — dan parsing dari format API Gate SSO.
+- **`HttpGateClient`**: Method `downloadPhoto()` untuk mengunduh gambar via signed URL, plus endpoint dikoreksi ke `/api/provisioning/users` dan ping diubah ke `/api/provisioning/me`.
+- **`FakeGateClientService`**: Implementasi `downloadPhoto()` yang selalu mengembalikan null (mode pengujian).
+- **Artisan command `gate:setup-local`**: Mengkonfigurasi koneksi Gate SSO lokal (base URL, client ID, secret) dan menguji koneksi otomatis.
+- **Tampilan foto di UI pasien**: Komponen `patient-context-header` dan halaman `patients/index` menampilkan foto profil pasien dari Gate SSO (fallback ke avatar inisial).
+
+### Fixed
+
+- Endpoint Gate SSO dikoreksi dari `/api/v1/users` ke `/api/provisioning/users` sesuai route aktual Gate SSO.
+- Health check `ping()` diubah dari `/health` (tidak ada) ke `/api/provisioning/me` yang juga memvalidasi kredensial.
+- `GateUserDTO::fromArray()` diperbaiki untuk menangani field `uuid`/`gate_user_uuid` dari respons provisioning Gate (bukan hanya `gate_user_id` atau `id`).
+
+### Security
+
+- Foto profil hanya dapat diakses melalui route terautentikasi (`auth` middleware + `view-patient-profile` Gate authorization).
+- Nama file foto menggunakan UUID random untuk mencegah path enumeration.
+- Foto tidak pernah disimpan di public storage atau diekspos via URL langsung.
 
 ## [0.26.0] — 2026-08-15 (Super Admin SSO Configuration Management)
 

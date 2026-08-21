@@ -3,21 +3,38 @@
 @php
     $person = $patient->person;
     $activeAllergies = $patient->activeAllergies ?? collect();
-    $initials = strtoupper(substr($person->name ?? 'P', 0, 2));
+    $initials = strtoupper(mb_substr($person->name ?? 'P', 0, 1));
+    if (str_contains($person->name ?? '', ' ')) {
+        $parts = explode(' ', trim($person->name ?? ''));
+        $initials = mb_strtoupper(mb_substr($parts[0], 0, 1) . mb_substr(end($parts), 0, 1));
+    }
     $userType = ucfirst(str_replace('_', ' ', $person->user_type ?? 'santri'));
     $gender = match($person->gender ?? '') {
         'L', 'male' => 'Laki-laki',
         'P', 'female' => 'Perempuan',
         default => '-'
     };
+    $photoUrl = $person->photo_url ?? null;
 @endphp
 
 <div class="bg-[var(--surface)] p-5 sm:p-6 rounded-2xl border border-[var(--border)] shadow-xs space-y-4 mb-6">
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <!-- Patient Identity Info -->
         <div class="flex items-start gap-4">
-            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-sky-500/10 text-sky-600 dark:text-sky-400 flex items-center justify-center font-bold text-lg sm:text-xl border border-sky-500/20 shrink-0">
-                {{ $initials }}
+            <!-- Foto Profil atau Avatar Inisial -->
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl shrink-0 overflow-hidden border-2 shadow-sm
+                {{ $photoUrl ? 'border-sky-300/60 dark:border-sky-600/60' : 'border-sky-500/20 bg-sky-500/10' }}">
+                @if ($photoUrl)
+                    <img src="{{ $photoUrl }}"
+                         alt="Foto {{ $person->name }}"
+                         class="w-full h-full object-cover"
+                         loading="lazy"
+                         onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-sky-500/10 text-sky-600 dark:text-sky-400 font-bold text-xl\'>{{ $initials }}</div>'">
+                @else
+                    <div class="w-full h-full flex items-center justify-center text-sky-600 dark:text-sky-400 font-bold text-xl">
+                        {{ $initials }}
+                    </div>
+                @endif
             </div>
             <div>
                 <div class="flex flex-wrap items-center gap-2">

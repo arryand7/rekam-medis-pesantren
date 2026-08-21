@@ -34,9 +34,11 @@ return [
         'token' => '/oauth/token',
         'userinfo' => '/oauth/userinfo',
         'entitlements' => '/api/v1/entitlements',
-        'users' => '/api/v1/users',
+        'users' => '/api/provisioning/users',
+        'provisioning_me' => '/api/provisioning/me',
+        'sync_results' => '/api/provisioning/sync-results',
         'end_session' => '/oauth/logout',
-        'health' => '/health',
+        'health' => '/api/provisioning/me', // Gate SSO tidak punya /health; gunakan /me sebagai health check
     ],
 
     /*

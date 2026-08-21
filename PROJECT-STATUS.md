@@ -3,14 +3,32 @@ id: DOC-PROJECT-STATUS
 title: "Status Proyek"
 status: active
 owner: "Ryand Arifriantoni"
-last_updated: 2026-08-15
+last_updated: 2026-08-21
 ---
 
 # Status Proyek
 
 ## Fase saat ini
 
-**Super Admin SSO Configuration Management** (Status: implementation verified / v0.26.0)
+**Gate SSO Sync & Photo Integration** (Status: completed / v0.27.0)
+
+## Gate SSO Sync & Photo Integration
+
+- [x] Gate SSO provisioning API terhubung dan terverifikasi via `gate:setup-local` Artisan command.
+- [x] `GateUserDTO` diperluas dengan field `photoAvailable`, `photoUrl`, `photoChecksum`.
+- [x] `HttpGateClient` mendukung `downloadPhoto()` via signed URL Gate SSO, endpoint dikoreksi ke `/api/provisioning/users`.
+- [x] `GateSyncApplyService` mengunduh & menyimpan foto di private disk `person_photos` setelah transaksi DB commit (I/O tidak di dalam transaction).
+- [x] Checksum-aware photo sync: foto tidak diunduh ulang jika checksum Gate sama dengan yang tersimpan.
+- [x] Validasi magic bytes (jpg/png/webp/gif) mencegah penyimpanan file non-gambar.
+- [x] Migration `photo_path` + `photo_checksum` pada tabel `people` diterapkan.
+- [x] `Person` model: accessor `photo_url` (ke route aman) dan `photo_or_avatar_url` (fallback ui-avatars).
+- [x] Route `person.photo` + `PersonPhotoController` menyajikan foto dari private storage dengan header cache dan MIME type yang tepat.
+- [x] Komponen `patient-context-header` menampilkan foto profil pasien (fallback ke inisial jika tidak ada).
+- [x] Halaman daftar pasien (`patients/index`) menampilkan foto mini di samping nama.
+- [x] 7 user Gate SSO disinkronisasi, 3 foto berhasil diunduh (Administrator, Guru Demo, ryand1).
+- [x] 5 unit test `GateUserDTOPhotoTest` lulus.
+- [ ] Feature test Gate sync photo membutuhkan test DB terpisah (MariaDB).
+- [ ] Manual: verifikasi tampilan foto di browser (light/dark theme).
 
 ## Super Admin SSO Configuration Management
 

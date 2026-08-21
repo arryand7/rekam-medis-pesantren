@@ -21,7 +21,7 @@ class HttpGateClient implements GateClientContract
     {
         $settings = $this->configuration->get();
         $baseUrl = rtrim((string) $settings['base_url'], '/');
-        $endpoint = config('gate.endpoints.users', '/api/v1/users');
+        $endpoint = config('gate.endpoints.users', '/api/provisioning/users');
         try {
             $response = $this->request($settings)
                 ->withHeaders([
@@ -39,7 +39,8 @@ class HttpGateClient implements GateClientContract
             }
 
             $json = $response->json();
-            $data = $json['data'] ?? $json;
+            // Gate SSO mengembalikan { users: [...], total_users: N, ... }
+            $data = $json['users'] ?? $json['data'] ?? $json;
 
             $dtos = [];
             foreach ($data as $item) {
@@ -52,7 +53,7 @@ class HttpGateClient implements GateClientContract
                 'data' => $dtos,
                 'page' => (int) ($json['page'] ?? $page),
                 'total_pages' => (int) ($json['total_pages'] ?? 1),
-                'total_items' => (int) ($json['total_items'] ?? count($dtos)),
+                'total_items' => (int) ($json['total_users'] ?? $json['total_items'] ?? count($dtos)),
             ];
         } catch (Throwable $e) {
             Log::error('Gate fetchUsers exception', ['exception_class' => $e::class]);
@@ -64,7 +65,7 @@ class HttpGateClient implements GateClientContract
     {
         $settings = $this->configuration->get();
         $baseUrl = rtrim((string) $settings['base_url'], '/');
-        $endpoint = config('gate.endpoints.users', '/api/v1/users');
+        $endpoint = config('gate.endpoints.users', '/api/provisioning/users');
         try {
             $response = $this->request($settings)
                 ->withHeaders([
@@ -82,9 +83,45 @@ class HttpGateClient implements GateClientContract
                 throw new RuntimeException('Gagal mengambil data user Gate: HTTP '.$response->status());
             }
 
-            return GateUserDTO::fromArray($response->json());
+            $json = $response->json();
+            $userData = $json['user'] ?? $json;
+
+            return GateUserDTO::fromArray($userData);
         } catch (Throwable $e) {
             Log::error('Gate fetchUserById exception', ['exception_class' => $e::class]);
+
+            return null;
+        }
+    }
+
+    /**
+     * Download foto dari Temporary Signed URL Gate SSO.
+     * Mengembalikan binary content gambar, atau null jika gagal.
+     */
+    public function downloadPhoto(string $signedUrl): ?string
+    {
+        try {
+            $response = Http::timeout(15)->get($signedUrl);
+
+            if (! $response->successful()) {
+                Log::warning('Gate downloadPhoto failed', [
+                    'status' => $response->status(),
+                    'url' => substr($signedUrl, 0, 80).'...',
+                ]);
+
+                return null;
+            }
+
+            $contentType = $response->header('Content-Type') ?? '';
+            if (! str_starts_with($contentType, 'image/')) {
+                Log::warning('Gate downloadPhoto: response is not an image', ['content_type' => $contentType]);
+
+                return null;
+            }
+
+            return $response->body();
+        } catch (Throwable $e) {
+            Log::error('Gate downloadPhoto exception', ['exception_class' => $e::class]);
 
             return null;
         }
@@ -94,9 +131,16 @@ class HttpGateClient implements GateClientContract
     {
         $settings = $this->configuration->get();
         $baseUrl = rtrim((string) $settings['base_url'], '/');
-        $endpoint = config('gate.endpoints.health', '/health');
+        // Gate SSO menggunakan /api/provisioning/me sebagai health+credential check
+        $endpoint = config('gate.endpoints.provisioning_me', '/api/provisioning/me');
         try {
-            $response = $this->request($settings, 3)->get("{$baseUrl}{$endpoint}");
+            $response = $this->request($settings, 5)
+                ->withHeaders([
+                    'X-Client-ID' => $settings['client_id'],
+                    'X-Client-Secret' => $settings['client_secret'],
+                    'Accept' => 'application/json',
+                ])
+                ->get("{$baseUrl}{$endpoint}");
 
             return $response->successful();
         } catch (Throwable) {

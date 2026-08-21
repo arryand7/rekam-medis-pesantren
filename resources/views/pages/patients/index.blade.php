@@ -88,20 +88,48 @@
                                     {{ $patient->patient_number }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div class="font-bold text-[var(--foreground)]">
-                                        <a href="{{ route('patients.show', $patient->id) }}" class="hover:underline text-[var(--foreground)]">
-                                            {{ $patient->person->name ?? 'Unknown' }}
-                                        </a>
-                                    </div>
-                                    @if($patient->activeAllergies->count() > 0)
-                                        <div class="mt-1 flex flex-wrap gap-1">
-                                            @foreach($patient->activeAllergies as $allergy)
-                                                <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-200 border border-amber-200 dark:border-amber-900">
-                                                    ⚠️ {{ $allergy->allergen }}
+                                    <div class="flex items-center gap-3">
+                                        @php
+                                            $pPerson = $patient->person;
+                                            $pPhoto = $pPerson?->photo_url;
+                                            $pInit = '';
+                                            $pName = $pPerson?->name ?? '';
+                                            if ($pName) {
+                                                $parts = explode(' ', trim($pName));
+                                                $pInit = mb_strtoupper(mb_substr($parts[0], 0, 1) . (count($parts) > 1 ? mb_substr(end($parts), 0, 1) : ''));
+                                            }
+                                        @endphp
+                                        <!-- Avatar / Foto -->
+                                        <div class="w-9 h-9 rounded-xl shrink-0 overflow-hidden border border-sky-300/40 dark:border-sky-700/40 {{ $pPhoto ? '' : 'bg-sky-500/10' }}">
+                                            @if ($pPhoto)
+                                                <img src="{{ $pPhoto }}"
+                                                     alt="{{ $pName }}"
+                                                     class="w-full h-full object-cover"
+                                                     loading="lazy"
+                                                     onerror="this.parentElement.innerHTML='<span class=\'w-full h-full flex items-center justify-center text-sky-600 dark:text-sky-400 text-xs font-bold\'>{{ $pInit }}</span>'">
+                                            @else
+                                                <span class="w-full h-full flex items-center justify-center text-sky-600 dark:text-sky-400 text-xs font-bold">
+                                                    {{ $pInit }}
                                                 </span>
-                                            @endforeach
+                                            @endif
                                         </div>
-                                    @endif
+                                        <div>
+                                            <div class="font-bold text-[var(--foreground)]">
+                                                <a href="{{ route('patients.show', $patient->id) }}" class="hover:underline text-[var(--foreground)]">
+                                                    {{ $pName ?: 'Unknown' }}
+                                                </a>
+                                            </div>
+                                            @if($patient->activeAllergies->count() > 0)
+                                                <div class="mt-1 flex flex-wrap gap-1">
+                                                    @foreach($patient->activeAllergies as $allergy)
+                                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-200 border border-amber-200 dark:border-amber-900">
+                                                            ⚠️ {{ $allergy->allergen }}
+                                                        </span>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </td>
                                 <td class="px-6 py-4 text-xs">
                                     <span class="px-2 py-0.5 rounded-md bg-[var(--surface-muted)] text-[var(--foreground-muted)] font-semibold uppercase text-[10px] border border-[var(--border)]">

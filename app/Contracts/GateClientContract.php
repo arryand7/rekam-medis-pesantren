@@ -19,6 +19,12 @@ interface GateClientContract
     public function fetchUserById(string $gateUserId): ?GateUserDTO;
 
     /**
+     * Download photo from a temporary signed URL provided by Gate SSO.
+     * Returns binary content of the image, or null on failure.
+     */
+    public function downloadPhoto(string $signedUrl): ?string;
+
+    /**
      * Ping Gate service endpoint health.
      */
     public function ping(): bool;

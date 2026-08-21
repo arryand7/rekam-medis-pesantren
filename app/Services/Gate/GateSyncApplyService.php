@@ -11,11 +11,19 @@ use App\Models\User;
 use App\Services\AuditLogService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Throwable;
 
 class GateSyncApplyService
 {
+    /** Disk untuk menyimpan foto profil person (private, tidak dapat diakses langsung) */
+    private const PHOTO_DISK = 'person_photos';
+
+    /** Direktori penyimpanan foto relatif terhadap disk (kosong karena disk sudah punya root) */
+    private const PHOTO_DIR = '';
+
     public function __construct(
         protected GateClientContract $gateClient,
         protected GateSyncDryRunService $dryRunService
@@ -68,6 +76,8 @@ class GateSyncApplyService
             'unchanged' => 0,
             'conflicts' => 0,
             'failed' => 0,
+            'photos_synced' => 0,
+            'photos_skipped' => 0,
         ];
 
         $appliedItems = [];
@@ -89,12 +99,19 @@ class GateSyncApplyService
                     $summary['conflicts']++;
                 }
 
+                if ($result['photo_synced'] ?? false) {
+                    $summary['photos_synced']++;
+                } else {
+                    $summary['photos_skipped']++;
+                }
+
                 $appliedItems[] = [
                     'gate_user_id' => $dto->gateUserId,
                     'name' => $dto->name,
                     'status' => $status,
                     'person_id' => $result['person_id'],
                     'message' => $result['message'],
+                    'photo_synced' => $result['photo_synced'] ?? false,
                 ];
             } catch (Throwable $e) {
                 $summary['failed']++;
@@ -104,6 +121,7 @@ class GateSyncApplyService
                     'status' => 'failed',
                     'person_id' => null,
                     'message' => $e->getMessage(),
+                    'photo_synced' => false,
                 ];
             }
         }
@@ -138,7 +156,7 @@ class GateSyncApplyService
     /**
      * Atomically apply an individual Gate user DTO.
      *
-     * @return array{status: string, person_id: ?string, message: string}
+     * @return array{status: string, person_id: ?string, message: string, photo_synced: bool}
      */
     public function applySingleRecord(GateUserDTO $dto, ?User $actor = null): array
     {
@@ -147,10 +165,11 @@ class GateSyncApplyService
                 'status' => 'failed',
                 'person_id' => null,
                 'message' => 'Payload Gate tidak memiliki gate_user_id atau nama yang valid.',
+                'photo_synced' => false,
             ];
         }
 
-        return DB::transaction(function () use ($dto) {
+        $result = DB::transaction(function () use ($dto) {
             // 1. Lock Person record by gate_user_id
             $person = Person::where('gate_user_id', $dto->gateUserId)->lockForUpdate()->first();
 
@@ -194,6 +213,7 @@ class GateSyncApplyService
                         'status' => 'conflict',
                         'person_id' => $potentialMatch->id,
                         'message' => "Kandidat konflik dengan person {$potentialMatch->id}. Ditandai untuk tinjauan manual.",
+                        'photo_synced' => false,
                     ];
                 }
             }
@@ -206,12 +226,21 @@ class GateSyncApplyService
                 $isNew = true;
             }
 
-            // 4. Check if Unchanged
-            if (! $isNew && $person->checksum !== null && $person->checksum === $dto->checksum && $dto->sourceStatus === $person->source_status) {
+            // 4. Check if Unchanged (identity fields only — foto dicek terpisah)
+            $identityUnchanged = ! $isNew
+                && $person->checksum !== null
+                && $person->checksum === $dto->checksum
+                && $dto->sourceStatus === $person->source_status;
+
+            if ($identityUnchanged) {
+                // Meski identity unchanged, foto mungkin tetap perlu di-update
                 return [
                     'status' => 'unchanged',
                     'person_id' => $person->id,
                     'message' => 'Identitas lokal identik dengan data Gate.',
+                    'photo_synced' => false,
+                    '_person' => $person,
+                    '_dto' => $dto,
                 ];
             }
 
@@ -272,8 +301,105 @@ class GateSyncApplyService
                 'status' => $status,
                 'person_id' => $person->id,
                 'message' => "Proyeksi identitas berhasil diperbarui ({$status}).",
+                'photo_synced' => false,
+                '_person' => $person,
+                '_dto' => $dto,
             ];
         });
+
+        // 8. Download & sync foto DI LUAR TRANSAKSI (I/O tidak boleh di dalam transaksi DB)
+        if (isset($result['_person'], $result['_dto'])) {
+            $photoSynced = $this->syncPhoto($result['_person'], $result['_dto']);
+            unset($result['_person'], $result['_dto']);
+            $result['photo_synced'] = $photoSynced;
+        }
+
+        return $result;
+    }
+
+    /**
+     * Unduh dan simpan foto profil dari Gate SSO ke local storage.
+     * Hanya download jika checksum berbeda dengan yang sudah tersimpan.
+     * Tidak di-wrap dalam DB transaction karena melibatkan I/O file.
+     */
+    protected function syncPhoto(Person $person, GateUserDTO $dto): bool
+    {
+        if (! $dto->photoAvailable || ! $dto->photoUrl) {
+            return false;
+        }
+
+        // Skip jika checksum sama (foto tidak berubah)
+        if ($dto->photoChecksum && $person->photo_checksum === $dto->photoChecksum) {
+            return false;
+        }
+
+        try {
+            $content = $this->gateClient->downloadPhoto($dto->photoUrl);
+
+            if ($content === null || strlen($content) < 100) {
+                Log::warning('Gate syncPhoto: download gagal atau konten kosong', [
+                    'gate_user_id' => $dto->gateUserId,
+                ]);
+
+                return false;
+            }
+
+            // Deteksi ekstensi dari magic bytes
+            $ext = $this->detectImageExtension($content);
+            if ($ext === null) {
+                Log::warning('Gate syncPhoto: format gambar tidak dikenal', [
+                    'gate_user_id' => $dto->gateUserId,
+                ]);
+
+                return false;
+            }
+
+            // Hapus foto lama jika ada
+            if ($person->photo_path && Storage::disk(self::PHOTO_DISK)->exists($person->photo_path)) {
+                Storage::disk(self::PHOTO_DISK)->delete($person->photo_path);
+            }
+
+            // Simpan dengan nama acak untuk mencegah enumeration
+            $filename = Str::uuid().'.'.$ext;
+            Storage::disk(self::PHOTO_DISK)->put($filename, $content);
+
+            // Update person record (standalone update, tidak perlu full transaction)
+            $person->photo_path = $filename;
+            $person->photo_checksum = $dto->photoChecksum ?? hash('sha256', $content);
+            $person->save();
+
+            return true;
+        } catch (Throwable $e) {
+            Log::error('Gate syncPhoto exception', [
+                'gate_user_id' => $dto->gateUserId,
+                'exception_class' => $e::class,
+            ]);
+
+            return false;
+        }
+    }
+
+    /**
+     * Deteksi ekstensi gambar dari magic bytes (header file).
+     */
+    private function detectImageExtension(string $content): ?string
+    {
+        $header = substr($content, 0, 12);
+
+        if (str_starts_with($header, "\xFF\xD8\xFF")) {
+            return 'jpg';
+        }
+        if (str_starts_with($header, "\x89PNG\r\n\x1A\n")) {
+            return 'png';
+        }
+        if (str_starts_with($header, 'RIFF') && substr($content, 8, 4) === 'WEBP') {
+            return 'webp';
+        }
+        if (str_starts_with($header, 'GIF87a') || str_starts_with($header, 'GIF89a')) {
+            return 'gif';
+        }
+
+        return null;
     }
 
     /**

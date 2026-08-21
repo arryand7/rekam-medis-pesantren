@@ -75,6 +75,16 @@ return [
             'throw' => true,
         ],
 
+        // Private person profile photos synced from Gate SSO — never accessible via public URL
+        // Served only via authorized controller route (person.photo)
+        'person_photos' => [
+            'driver' => 'local',
+            'root' => storage_path('app/private/person-photos'),
+            'visibility' => 'private',
+            'serve' => false,
+            'throw' => true,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

@@ -30,6 +30,7 @@ use App\Http\Controllers\Referral\ReferralReturnReviewController;
 use App\Http\Controllers\Referral\ReferralStatusController;
 use App\Http\Controllers\Referral\ReferralTransportController;
 use App\Http\Controllers\Reporting\HealthReportController;
+use App\Http\Controllers\Person\PersonPhotoController;
 use App\Models\AuditLog;
 use App\Models\ClinicalConsultation;
 use App\Models\HealthcarePartner;
@@ -77,6 +78,9 @@ Route::middleware('auth')->group(function () {
     // Root & Dashboard Resolver
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard', [DashboardController::class, 'index']);
+
+    // Person photo — private storage served via authorized controller
+    Route::get('/person/{person}/photo', PersonPhotoController::class)->name('person.photo');
 
     // Phase 1 Management Shell Routes
     Route::get('/people', function () {

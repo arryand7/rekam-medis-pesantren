@@ -31,6 +31,7 @@ class FakeGateClientService implements GateClientContract
                 'source_updated_at' => '2026-08-01 10:00:00',
                 'source_version' => 'v1.0',
                 'checksum' => 'hash_san_001',
+                'photo' => ['available' => false, 'url' => null, 'checksum' => null],
             ],
             [
                 'gate_user_id' => 'GATE-UST-002',
@@ -45,6 +46,7 @@ class FakeGateClientService implements GateClientContract
                 'source_updated_at' => '2026-08-01 10:00:00',
                 'source_version' => 'v1.0',
                 'checksum' => 'hash_ust_002',
+                'photo' => ['available' => false, 'url' => null, 'checksum' => null],
             ],
             [
                 'gate_user_id' => 'GATE-MED-003',
@@ -59,6 +61,7 @@ class FakeGateClientService implements GateClientContract
                 'source_updated_at' => '2026-08-01 10:00:00',
                 'source_version' => 'v1.0',
                 'checksum' => 'hash_med_003',
+                'photo' => ['available' => false, 'url' => null, 'checksum' => null],
             ],
             [
                 'gate_user_id' => 'GATE-ADM-004',
@@ -73,6 +76,7 @@ class FakeGateClientService implements GateClientContract
                 'source_updated_at' => '2026-08-01 10:00:00',
                 'source_version' => 'v1.0',
                 'checksum' => 'hash_adm_004',
+                'photo' => ['available' => false, 'url' => null, 'checksum' => null],
             ],
             [
                 'gate_user_id' => 'GATE-BOT-005',
@@ -87,6 +91,7 @@ class FakeGateClientService implements GateClientContract
                 'source_updated_at' => '2026-08-01 10:00:00',
                 'source_version' => 'v1.0',
                 'checksum' => 'hash_bot_005',
+                'photo' => ['available' => false, 'url' => null, 'checksum' => null],
             ],
         ];
 
@@ -119,6 +124,14 @@ class FakeGateClientService implements GateClientContract
             return GateUserDTO::fromArray($this->mockUsers[$gateUserId]);
         }
 
+        return null;
+    }
+
+    /**
+     * Fake download: tidak ada foto di mode fake, selalu mengembalikan null.
+     */
+    public function downloadPhoto(string $signedUrl): ?string
+    {
         return null;
     }
 
