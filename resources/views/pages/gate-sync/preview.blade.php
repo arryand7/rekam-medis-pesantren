@@ -7,13 +7,46 @@
                 <h1 class="text-2xl font-bold text-[var(--foreground)] tracking-tight">Simulasi & Preview Gate Dry-Run Sync</h1>
                 <p class="text-sm text-[var(--foreground-muted)] mt-1">Pratinjau non-mutatif klasifikasi sinkronisasi pengguna dari Gate SSO. Tidak mengubah data database utama.</p>
             </div>
-            <div>
-                <a href="{{ route('gate-sync.preview', ['run' => 1]) }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-[var(--primary)] text-white hover:bg-[var(--primary-hover)] transition-colors shadow-xs">
+            <div class="flex items-center gap-2 flex-wrap">
+                <a href="{{ route('gate-sync.preview', ['run' => 1]) }}" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-[var(--surface-muted)] text-[var(--foreground)] hover:bg-[var(--border)] border border-[var(--border)] transition-colors shadow-xs">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Jalankan Simulasi Dry-Run
                 </a>
+
+                @can('execute-gate-sync-apply')
+                    @if($report)
+                        <form action="{{ route('gate.sync.apply') }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menerapkan sinkronisasi data {{ $report['summary']['total'] ?? 0 }} pengguna dari Gate SSO ke basis data lokal?');" class="inline">
+                            @csrf
+                            <input type="hidden" name="page" value="1">
+                            <input type="hidden" name="per_page" value="{{ max(50, ($report['summary']['total'] ?? 50)) }}">
+                            <button type="submit" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition-colors shadow-xs">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Terapkan Perubahan (Apply Sync)</span>
+                            </button>
+                        </form>
+                    @endif
+                @endcan
+
+                <a href="{{ route('gate.sync.index') }}" class="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-sky-600 dark:text-sky-400 hover:underline">
+                    Dashboard Sync &rarr;
+                </a>
             </div>
         </div>
+
+        <!-- Feedback Messages -->
+        @if (session('success'))
+            <div class="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900 text-emerald-800 dark:text-emerald-300 text-sm flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>{{ session('success') }}</span>
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="p-4 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 text-rose-800 dark:text-rose-300 text-sm flex items-center gap-2">
+                <svg class="w-4 h-4 text-rose-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                <span>{{ session('error') }}</span>
+            </div>
+        @endif
 
         @if($report)
             <!-- Dry Run Summary Stats -->
