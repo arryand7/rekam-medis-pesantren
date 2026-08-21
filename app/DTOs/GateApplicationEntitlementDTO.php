@@ -18,7 +18,9 @@ class GateApplicationEntitlementDTO
 
     public function isAllowed(): bool
     {
-        return strtolower($this->status) === 'allowed';
+        // Gate SSO menggunakan status 'active' untuk akses yang diberikan.
+        // 'allowed' adalah alias legacy yang tetap didukung.
+        return in_array(strtolower($this->status), ['active', 'allowed'], true);
     }
 
     /**
@@ -33,9 +35,9 @@ class GateApplicationEntitlementDTO
 
         return new self(
             gateUserId: (string) ($data['gate_user_id'] ?? $data['user_id'] ?? ''),
-            appCode: (string) ($data['app_code'] ?? $data['application_code'] ?? 'poskestren-health'),
+            appCode: (string) ($data['app_code'] ?? $data['application_code'] ?? $data['slug'] ?? 'unknown'),
             status: (string) ($data['status'] ?? 'not_assigned'),
-            assignedAt: isset($data['assigned_at']) ? (string) $data['assigned_at'] : null,
+            assignedAt: isset($data['assigned_at']) ? (string) $data['assigned_at'] : (isset($data['granted_at']) ? (string) $data['granted_at'] : null),
             expiresAt: isset($data['expires_at']) ? (string) $data['expires_at'] : null,
             roles: $roles
         );

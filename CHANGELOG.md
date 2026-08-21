@@ -35,6 +35,11 @@ Semua perubahan penting proyek dicatat di file ini.
   - Controller `logout()` sekarang memvalidasi domain — redirect ke Gate hanya jika `sso_enabled=true`, `is_ready=true`, **dan** host URL Gate cocok dengan `base_url` yang terkonfigurasi saat ini.
   - Session keys Gate (`gate_id_token`, `gate_auth_state`, dll.) dibersihkan lebih awal sebelum invalidasi session.
   - Session stale yang menyebabkan masalah ini sudah dihapus.
+- **Gate SSO Application Entitlement Access Denied (NOT_ASSIGNED)**:
+  - Gate SSO (`UserInfoController` & `OidcTokenService`) kini menyematkan claim `application_access` langsung pada payload UserInfo dan ID Token JWT berdasarkan `client_id` aplikasi pemanggil.
+  - `GateAuthenticationService` di POSKESTREN mengekstrak hak akses dari claim `application_access` (UserInfo / ID Token) tanpa memerlukan endpoint API eksternal terpisah yang sebelumnya memicu 404/NOT_ASSIGNED.
+  - `GateApplicationEntitlementDTO` mengenali status `'active'` dan `'allowed'` sebagai entitlement valid.
+  - Unit test `GateApplicationEntitlementDTOTest` ditambahkan dan terverifikasi passed.
 
 ## [0.27.0] — 2026-08-21 (Gate SSO Sync & Photo Integration)
 

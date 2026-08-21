@@ -7,6 +7,7 @@ class GateUserInfoDTO
     /**
      * @param  list<string>  $appRoles
      * @param  array<string, mixed>  $organizationAttributes
+     * @param  array<string, mixed>  $applicationAccess
      */
     public function __construct(
         public string $gateUserId,
@@ -22,7 +23,8 @@ class GateUserInfoDTO
         public array $organizationAttributes = [],
         public ?string $checksum = null,
         public ?string $sourceUpdatedAt = null,
-        public ?string $sourceVersion = null
+        public ?string $sourceVersion = null,
+        public array $applicationAccess = [],  // dari claim application_access userinfo Gate
     ) {}
 
     /**
@@ -58,7 +60,10 @@ class GateUserInfoDTO
             organizationAttributes: $orgAttributes,
             checksum: isset($data['checksum']) ? (string) $data['checksum'] : null,
             sourceUpdatedAt: isset($data['source_updated_at']) ? (string) $data['source_updated_at'] : null,
-            sourceVersion: isset($data['source_version']) ? (string) $data['source_version'] : null
+            sourceVersion: isset($data['source_version']) ? (string) $data['source_version'] : null,
+            applicationAccess: (isset($data['application_access']) && is_array($data['application_access']))
+                ? $data['application_access']
+                : [],
         );
     }
 

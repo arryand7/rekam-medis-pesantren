@@ -116,7 +116,12 @@ class FakeGateOidcClient implements GateOidcClientContract
             gender: 'laki-laki',
             sourceStatus: 'active',
             appRoles: ['health_officer'],
-            checksum: 'CHECKSUM-DEF-001'
+            checksum: 'CHECKSUM-DEF-001',
+            applicationAccess: [
+                'app_code' => 'poskestren-health',
+                'status' => 'active',
+                'application_role' => 'health_officer',
+            ]
         );
     }
 

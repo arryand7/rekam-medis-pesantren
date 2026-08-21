@@ -127,16 +127,34 @@ class GateAuthenticationService
         }
 
         try {
-            // 2. Fetch UserInfo
+            // 2. Fetch UserInfo (sekaligus membawa application_access claim)
             $userInfo = $this->oidcClient->fetchUserInfo($tokenResponse->accessToken);
 
             // 3. Enforce Application Entitlement
-            $appCode = (string) $this->configuration->get()['app_code'];
-            $entitlement = $this->oidcClient->fetchApplicationEntitlement(
-                $tokenResponse->accessToken,
-                $userInfo->gateUserId,
-                $appCode
-            );
+            // Prioritas 1: claim application_access dari /oauth/userinfo
+            $rawAccess = $userInfo->applicationAccess ?? [];
+
+            // Prioritas 2: decode claim application_access dari ID Token JWT
+            if (empty($rawAccess) && ! empty($tokenResponse->idToken)) {
+                $rawAccess = $this->extractApplicationAccessFromIdToken($tokenResponse->idToken);
+            }
+
+            // Prioritas 3: fallback ke oidcClient->fetchApplicationEntitlement jika masih kosong
+            if (! empty($rawAccess)) {
+                $entitlement = GateApplicationEntitlementDTO::fromArray(array_merge(
+                    $rawAccess,
+                    ['gate_user_id' => $userInfo->gateUserId]
+                ));
+            } else {
+                $configuredAppCode = (string) ($this->configuration->get()['app_code'] ?? 'poskestren-health');
+                $entitlement = $this->oidcClient->fetchApplicationEntitlement(
+                    $tokenResponse->accessToken,
+                    $userInfo->gateUserId,
+                    $configuredAppCode
+                );
+            }
+
+            $appCode = $entitlement->appCode;
         } catch (Throwable) {
             AuditLogService::log(
                 action: 'gate_login.failed',
@@ -370,5 +388,36 @@ class GateAuthenticationService
         $postLogoutRedirectUri = route('login');
 
         return $this->oidcClient->getEndSessionUrl($idToken, $postLogoutRedirectUri);
+    }
+
+    /**
+     * Decode and extract application_access claim from JWT id_token payload.
+     *
+     * @return array<string, mixed>
+     */
+    protected function extractApplicationAccessFromIdToken(string $idToken): array
+    {
+        $segments = explode('.', $idToken);
+        if (count($segments) < 2) {
+            return [];
+        }
+
+        $remainder = strlen($segments[1]) % 4;
+        $payloadB64 = $segments[1];
+        if ($remainder) {
+            $payloadB64 .= str_repeat('=', 4 - $remainder);
+        }
+
+        $payloadJson = base64_decode(strtr($payloadB64, '-_', '+/'), true);
+        if (! $payloadJson) {
+            return [];
+        }
+
+        $payload = json_decode($payloadJson, true);
+        if (is_array($payload) && isset($payload['application_access']) && is_array($payload['application_access'])) {
+            return $payload['application_access'];
+        }
+
+        return [];
     }
 }
